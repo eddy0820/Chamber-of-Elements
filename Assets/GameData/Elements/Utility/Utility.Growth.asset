@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
+  m_Name: Utility.Growth
+  m_EditorClassIdentifier: 
+  name: Growth
+  ID: 54
+  type: 5
+  affinityTypes: 
+  elementTexture: {fileID: 21300000, guid: 0cd1fb982dad51d4e87407ecb6990f68, type: 3}
+  description: 'UTILITY: Heals for 10 HP. Consumes a Life element to heal for an
+    additional 20 HP.'
+  damage: -1

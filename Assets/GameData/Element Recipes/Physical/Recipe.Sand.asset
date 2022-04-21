@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0358480e7328cfe4baa9a75a5873b342, type: 3}
+  m_Name: Recipe.Sand
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 11400000, guid: e8ade52758e3e924692d348596accce4, type: 2}
+  - {fileID: 11400000, guid: 164727a6fe7fa5343ad88ca7671c9464, type: 2}
+  result: {fileID: 11400000, guid: 32c8185cc35d5ec43bb8ad74e95a227f, type: 2}

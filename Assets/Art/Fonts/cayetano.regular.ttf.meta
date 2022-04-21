@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c34eda17796df614ba44a6abd106a84d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cayetano
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e29370f65e1f7d540beb371278fa92c5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

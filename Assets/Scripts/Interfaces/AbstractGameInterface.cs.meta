@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 468127d90d6842d46a0f3bd440f1225b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - elementSlots: {fileID: 11400000, guid: f9c8ed65654a0bf458c6159a488e65c8, type: 2}
+  - emptySlotSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

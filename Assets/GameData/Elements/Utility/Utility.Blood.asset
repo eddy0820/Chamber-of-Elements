@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
+  m_Name: Utility.Blood
+  m_EditorClassIdentifier: 
+  name: Blood
+  ID: 50
+  type: 5
+  affinityTypes: 
+  elementTexture: {fileID: 21300000, guid: 1bbd4716e502a4741810474fc857acb5, type: 3}
+  description: 'UTILITY: +10 to basic attack. Heal 10 HP'
+  damage: -1

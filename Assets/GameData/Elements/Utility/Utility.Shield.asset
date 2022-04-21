@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
+  m_Name: Utility.Shield
+  m_EditorClassIdentifier: 
+  name: Shield
+  ID: 62
+  type: 5
+  affinityTypes: 
+  elementTexture: {fileID: 21300000, guid: 45f855721986bd0479055cf477dc8901, type: 3}
+  description: 'UTILITY: Create a shield for 3 turns that absorbs 30 damage and gives
+    you immunity to your current affinity.'
+  damage: -1

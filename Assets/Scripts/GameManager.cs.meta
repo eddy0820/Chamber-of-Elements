@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a1fffc49ef5f2e04b8749f9088a9f9f0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - elementDatabase: {fileID: 11400000, guid: 7bcf9c209e23ba541b730a16d49f72c8, type: 2}
+  - elementRecipeDatabase: {fileID: 11400000, guid: 7e5d2bf994e7272478dae036379c7e1c, type: 2}
+  - affinityDatabase: {fileID: 11400000, guid: c9186c0a10fef2d409c59ebe85cab069, type: 2}
+  - elementSlotsInv: {fileID: 11400000, guid: f9c8ed65654a0bf458c6159a488e65c8, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
