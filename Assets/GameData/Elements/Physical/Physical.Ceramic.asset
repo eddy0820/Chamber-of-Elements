@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: d6dc259dc8db7884b9eb6d682db8bd66, type: 3}
   description: A fragile, earthly material.
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

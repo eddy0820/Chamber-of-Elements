@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca34ff8502f73844bac9ded8d05b06aa, type: 3}
+  m_Name: Database.Weathers
+  m_EditorClassIdentifier: 
+  weathers:
+  - {fileID: 11400000, guid: 27184cadfdf7fc44ea16c0916ffa4471, type: 2}
+  - {fileID: 11400000, guid: 283fe2a3e1bcbd94d8e79808d5739043, type: 2}
+  - {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
+  - {fileID: 11400000, guid: 96f307ae9b2254040910ac05d6361873, type: 2}

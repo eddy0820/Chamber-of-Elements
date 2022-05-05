@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+[System.Serializable]
 public abstract class CharacterStats
 {
     protected BaseStatsObject baseStats;
     protected Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
     public Dictionary<string, Stat> Stats => stats;
-    protected int currentHealth;
-    protected int currentMana;
-    public int generalResistance;
-    public int airResistance;
-    public int earthResistance;
-    public int fireResistance;
-    public int waterResistance;
-    public int CurrentHealth => currentHealth;
-    public int CurrentMana => currentMana;
+    protected float currentHealth;
+    protected float currentMana;
+    public float CurrentHealth => currentHealth;
+    public float CurrentMana => currentMana;
+    protected float lastHitDamage;
+    public float LastHitDamage => lastHitDamage;
 
     protected void InitializeCharacterStats()
     {
@@ -24,42 +23,52 @@ public abstract class CharacterStats
             stats.Add(baseStat.StatType.Name, new Stat(baseStat.StatType, baseStat.Value));
         }
 
-        currentHealth = (int)stats["MaxHealth"].value;
-        generalResistance = 0;
-        airResistance = 0;
-        earthResistance = 0;
-        fireResistance = 0;
-        waterResistance = 0;
+        currentHealth = stats["MaxHealth"].value;
     }
     
-    public void TakeDamage(int damage, AffinityTypes damageType, Character characterType)
+    public void TakeDamage(float damage, AffinityTypes damageType, Character characterType)
     {
+        if(damage <= 0)
+        {
+            if(damage < 0)
+            {
+                Debug.Log("This would heal, just use 'Heal()'");
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         switch(damageType)
         {
             case AffinityTypes.Air:
-                damage = Calculate(damage, airResistance);
+                damage = Calculate(damage, stats["AirResistance"].value);
                 break;
             case AffinityTypes.Earth:
-                damage = Calculate(damage, earthResistance);
+                damage = Calculate(damage, stats["EarthResistance"].value);
                 break;
             case AffinityTypes.Fire:
-                damage = Calculate(damage, fireResistance);
+                damage = Calculate(damage, stats["FireResistance"].value);
                 break;
             case AffinityTypes.Water:
-                damage = Calculate(damage, waterResistance);
+                damage = Calculate(damage, stats["WaterResistance"].value);
                 break;
             case AffinityTypes.None:
-                damage = Calculate(damage, generalResistance);
+                damage = Calculate(damage, stats["GeneralResistance"].value);
                 break;
             default:
                 Debug.Log("Unrecognized damage type, dealing general damage");
-                damage = Calculate(damage, generalResistance);
+                damage = Calculate(damage, stats["GeneralResistance"].value);
                 break;
         }
 
+        System.Math.Round(damage, 1);
+
         currentHealth -= damage;
 
-        GameObject damageIndicatorUI;
+        GameObject damageIndicatorUI = null;
 
         if(characterType.GetType() == typeof(Player))
         {
@@ -70,9 +79,12 @@ public abstract class CharacterStats
             damageIndicatorUI = GameManager.Instance.InfoCanvas.transform.GetChild(3).gameObject;
         }
 
-        //damageindicator
+        damageIndicatorUI.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+        damageIndicatorUI.GetComponent<Animator>().SetTrigger("Attacked");
 
         Debug.Log(characterType.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
+
+        lastHitDamage = damage;
 
         if(currentHealth <= 0)
         {
@@ -80,55 +92,48 @@ public abstract class CharacterStats
         }
     }
 
-    private int Calculate(int damage, int resistance)
+    public void Heal(float amount, Character character)
     {
-        //Re do this when deciding on float or int
-        float num1 = ((float)resistance)/100;
-        float num2 = num1 * (float)damage;
+        if(amount < 0)
+        {
+            Debug.Log("This would deal damage, just use 'TakeDamage()'");
+            return;
+        }
+        
+        if(amount > stats["MaxHealth"].value - currentHealth)
+        {
+            amount = stats["MaxHealth"].value - currentHealth;
+        }
+
+        currentHealth += amount;
+
+        Debug.Log(character.CharacterObject.Name + " heals for " + amount + ".");
+
+        if(currentHealth > stats["MaxHealth"].value)
+        {
+            currentHealth = stats["MaxHealth"].value;
+        }
+
+        Debug.Log(character.CharacterObject.Name + " now has " + currentHealth + " health.");
+    }
+
+    private float Calculate(float damage, float resistance)
+    {
+        float num1 = resistance/100;
+        float num2 = num1 * damage;
      
-        int finalValue = damage - (int)num2;
+        float finalValue = damage - num2;
+
+        if(finalValue < 1)
+        {
+            return 1;
+        }
+
         return finalValue;
     }
 
     public void Die(string debugName)
     {
         Debug.Log(debugName + " died.");
-    }
-
-    public void DebugTestStats()
-    {
-        DebugPrintCharacterStats();
-
-        StatModifier modifier = new StatModifier(10, StatModifierTypes.Flat);
-        
-        DebugTestAddModifiers(modifier);
-        DebugPrintCharacterStats();
-
-        DebugTestRemoveModifiers(modifier);
-        DebugPrintCharacterStats();
-    }  
-
-    private void DebugPrintCharacterStats()
-    {
-        foreach(KeyValuePair<string, Stat> stat in stats)
-        {
-            Debug.Log(stat.Key + " value: " + stat.Value.value);
-        }
-    }
-
-    private void DebugTestAddModifiers(StatModifier modifier)
-    {
-        foreach(KeyValuePair<string, Stat> stat in stats)
-        {
-            stat.Value.AddModifier(modifier);
-        }
-    }
-
-    private void DebugTestRemoveModifiers(StatModifier modifier)
-    {    
-        foreach(KeyValuePair<string, Stat> stat in stats)
-        {
-            stat.Value.RemoveModifier(modifier);
-        }
     }
 }

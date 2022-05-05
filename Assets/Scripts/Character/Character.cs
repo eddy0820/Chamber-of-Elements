@@ -4,23 +4,22 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    [Header("Character Specific")]
     [SerializeField] protected CharacterObject characterObject;
     public CharacterObject CharacterObject => characterObject;
+
+    [Space(15)]
     [ReadOnly, SerializeField] AffinityTypes affinityType;
     public AffinityTypes AffinityType => affinityType;
+    [ReadOnly, SerializeField] List<DebugCharacterStat> debugCharacterStats;
+
     HashSet<PassiveObject> passives = new HashSet<PassiveObject>();
     public HashSet<PassiveObject> Passives => passives;
-    [SerializeField] protected bool testStats;
     protected CharacterStats stats;
     public CharacterStats Stats => stats;
-
+    
     protected void InitCharacter(CharacterStats characterStats)
     {
-        if(testStats)
-        {
-            characterStats.DebugTestStats();
-        }  
-
         GetComponentInChildren<SpriteRenderer>().sprite = characterObject.Sprite;
         GetComponentInChildren<Animator>().runtimeAnimatorController = characterObject.AnimatorController;
 
@@ -29,6 +28,13 @@ public abstract class Character : MonoBehaviour
         foreach(PassiveObject passive in characterObject.StartingPassives)
         {
             AddPassive(passive);
+        }
+
+        debugCharacterStats = new List<DebugCharacterStat>();
+
+        foreach(KeyValuePair<string, Stat> stat in stats.Stats)
+        {
+            debugCharacterStats.Add(new DebugCharacterStat(stat.Key, stat.Value.value));
         }
     }
 
@@ -62,5 +68,16 @@ public abstract class Character : MonoBehaviour
         return removed;
     }
 
-    
+    [System.Serializable]
+    class DebugCharacterStat
+    {
+        [SerializeField] string statName;
+        [SerializeField] float value;
+
+        public DebugCharacterStat(string _statName, float _value)
+        {
+            statName = _statName;
+            value = _value;
+        }
+    }
 }

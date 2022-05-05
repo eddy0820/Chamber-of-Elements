@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [Header("Player Specific")]
+    [SerializeField] Sprite affinityNoneSprite; 
     SpriteRenderer affinitySprite;
-
+    
     private void Awake()
     {
         stats = new PlayerStats(characterObject.BaseStats);
@@ -16,6 +18,13 @@ public class Player : Character
 
     public void UpdateAffinitySprite(AffinityTypes type)
     {
-        affinitySprite.sprite = GameManager.Instance.AffinityDatabase.GetAffinity[type].Sprite;
+        if(type == AffinityTypes.None)
+        {
+            affinitySprite.sprite = affinityNoneSprite;
+        }
+        else
+        {
+            affinitySprite.sprite = GameManager.Instance.AffinityDatabase.GetAffinity[type].Sprite;
+        }
     }
 }

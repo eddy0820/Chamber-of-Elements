@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: fd0fcae1a96c155409933faf6e5a051b, type: 3}
   description: 'ATTACK: Deal 15 damage, generate all water primals next turn.'
   damage: 15
+  doAttackInBehavior: 0
+  behavior: {fileID: 4130917817620115265, guid: 2e56bd3477e9f6b4a8e3bfaf67073365, type: 3}
+  associatedElement: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: -1

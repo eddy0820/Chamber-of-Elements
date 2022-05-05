@@ -19,3 +19,6 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 6e75132dccadb9d4e8c7e8a17bc9760a, type: 3}
   description: 'UTILITY: +3 damage to your basic attack'
   damage: -1
+  behavior: {fileID: 7293199711104248805, guid: 932d97ef342f7df4389eef80c6e27801, type: 3}
+  healAmount: -1
+  extraValue: 3

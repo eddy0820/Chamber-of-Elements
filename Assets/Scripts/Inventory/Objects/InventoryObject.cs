@@ -53,6 +53,17 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    public void ReRollSpecificElement(ElementObject element)
+    {
+        for(int i = 0; i < container.elementSlots.Length; i++)
+        {
+            if(container.elementSlots[i].ID < 0)
+            {
+                container.elementSlots[i].UpdateSlot(new Element(element));
+            }
+        }
+    }
+
     public int CanCombine(Element hoverElement, Element mouseElement)
     {
         int result = -2;
@@ -73,6 +84,59 @@ public class InventoryObject : ScriptableObject
         }
 
         return result;
+    }
+
+    public int FindElement(int id)
+    {
+        for(int i = 0; i < container.elementSlots.Length; i++)
+        {
+            if(container.elementSlots[i].ID == id)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public List<int> FindElements(int id)
+    {
+        List<int> elements = new List<int>();
+
+        for(int i = 0; i < container.elementSlots.Length; i++)
+        {
+            if(container.elementSlots[i].ID == id)
+            {
+                elements.Add(i);
+            }
+        }
+
+        if(elements.Count > 0)
+        {
+            return elements;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public int FindFirstEmptySlot()
+    {
+        for(int i = 0; i < container.elementSlots.Length; i++)
+        {
+            if(container.elementSlots[i].ID == -1)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void ClearElements()
+    {
+        container.elementSlots = new Element[GameManager.Instance.InterfaceCanvas.transform.GetChild(0).childCount];
     }
 }
 

@@ -20,3 +20,10 @@ MonoBehaviour:
   description: 'UTILITY: Heals for 10 HP. Consumes a Life element to heal for an
     additional 20 HP.'
   damage: -1
+  doAttackInBehavior: 0
+  behavior: {fileID: 4793711156605736590, guid: 5080fd5e20308114fb9b2ee1e173c19f, type: 3}
+  associatedElement: {fileID: 11400000, guid: 10492d68889d08243b0ace09bd03d8ee, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: 20
+  healAmount: 10
+  doHealInBehavior: 0

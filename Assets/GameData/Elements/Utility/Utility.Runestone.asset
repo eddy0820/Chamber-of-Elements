@@ -19,3 +19,5 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 4484d0ae23f08ea46b7c1a7f18bdcd4a, type: 3}
   description: 'UTILITY: Consume all your elements and generate 3 mana.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  healAmount: -1

@@ -20,3 +20,5 @@ MonoBehaviour:
   description: 'UTILITY: Create a shield for 3 turns that absorbs 30 damage and gives
     you immunity to your current affinity.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  healAmount: -1

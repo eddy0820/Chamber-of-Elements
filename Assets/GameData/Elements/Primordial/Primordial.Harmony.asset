@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 6be20680bf618474786bfa15781d9886, type: 3}
   description: 'PRIMORDIAL: Balance in nature.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

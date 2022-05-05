@@ -19,3 +19,6 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: a256d0fea03cbcf41986e69460a0adb5, type: 3}
   description: 'UTILITY: Regenerates your empty slots with primal elements.'
   damage: -1
+  behavior: {fileID: 6633747187608140077, guid: b1d642bb857ef364585bf64b247b1864, type: 3}
+  healAmount: -1
+  extraValue: -1

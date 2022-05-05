@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat.AirResistance
   m_EditorClassIdentifier: 
   name: AirResistance
-  defaultValue: 100
+  defaultValue: 0

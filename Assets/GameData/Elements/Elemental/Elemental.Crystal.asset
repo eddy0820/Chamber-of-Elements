@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 78ce41e75abdcbd42994ca89b3683c3f, type: 3}
   description: 'ATTACK: A fragile, but sharp material.'
   damage: 15
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: f03262ff5b8c32e428528fdbcc863348, type: 3}
   description: 'ATTACK: Deal 20 damage and clear the weather.'
   damage: 20
+  doAttackInBehavior: 0
+  behavior: {fileID: 8017320438588627984, guid: c916fdd9d538e574dadfca5ad104ed5e, type: 3}
+  extraValue: -1
+  affectedWeather: {fileID: 0}
+  turnTimer: -1

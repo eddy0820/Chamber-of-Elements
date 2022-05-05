@@ -28,7 +28,7 @@ public class FocusObject : ScriptableObject
 
     private void PerformPlayer()
     {
-        GameManager.Instance.Player.Stats.TakeDamage((int) GameManager.Instance.Enemy.Stats.Stats["FocusDamage"].value, GameManager.Instance.Enemy.AffinityType, GameManager.Instance.Player);
+        GameManager.Instance.Player.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["FocusDamage"].value, GameManager.Instance.Enemy.AffinityType, GameManager.Instance.Player);
     }
 
     private void PerformMinion()

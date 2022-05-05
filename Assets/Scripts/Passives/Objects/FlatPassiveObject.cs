@@ -9,30 +9,32 @@ public class FlatPassiveObject : PassiveObject
     [SerializeField] AffinityTypes resistanceTo;
     [SerializeField] AffinityTypes[] removalTypes;
     public AffinityTypes[] RemovalTypes => removalTypes;
+    StatModifier modifier;
 
     public override void TakeAffect(CharacterStats stats)
     {
+        modifier = new StatModifier(percent, StatModifierTypes.Flat);
+
         switch(resistanceTo)
         {
-            // actual percent calculation todo
             case AffinityTypes.Air:
-                stats.airResistance += percent;
+                stats.Stats["AirResistance"].AddModifier(modifier);
                 break;
             case AffinityTypes.Earth:
-                stats.earthResistance += percent;
+                stats.Stats["EarthResistance"].AddModifier(modifier);
                 break;
             case AffinityTypes.Fire:
-                stats.fireResistance += percent;
+                stats.Stats["FireResistance"].AddModifier(modifier);
                 break;
             case AffinityTypes.Water:
-                stats.waterResistance += percent;
+                stats.Stats["WaterResistance"].AddModifier(modifier);
                 break;
             case AffinityTypes.None:
-                stats.generalResistance += percent;
+                stats.Stats["GeneralResistance"].AddModifier(modifier);
                 break;
             default:
                 Debug.Log("Unrecognized damage type, affecting general resistance");
-                stats.generalResistance += percent;
+                stats.Stats["GeneralResistance"].AddModifier(modifier);
                 break;
         }
     }
@@ -42,23 +44,23 @@ public class FlatPassiveObject : PassiveObject
         switch(resistanceTo)
         {
             case AffinityTypes.Air:
-                stats.airResistance -= percent;
+                stats.Stats["AirResistance"].RemoveModifier(modifier);
                 break;
             case AffinityTypes.Earth:
-                stats.earthResistance -= percent;
+                stats.Stats["EarthResistance"].RemoveModifier(modifier);
                 break;
             case AffinityTypes.Fire:
-                stats.fireResistance -= percent;
+                stats.Stats["FireResistance"].RemoveModifier(modifier);
                 break;
             case AffinityTypes.Water:
-                stats.waterResistance -= percent;
+                stats.Stats["WaterResistance"].RemoveModifier(modifier);
                 break;
             case AffinityTypes.None:
-                stats.generalResistance -= percent;
+                stats.Stats["GeneralResistance"].RemoveModifier(modifier);
                 break;
             default:
                 Debug.Log("Unrecognized damage type, affecting general resistance");
-                stats.generalResistance += percent;
+                stats.Stats["GeneralResistance"].RemoveModifier(modifier);
                 break;
         }
     }

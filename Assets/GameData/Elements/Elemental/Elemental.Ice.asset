@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 7a33b47aac8fbb14fb35403d8f6d5658, type: 3}
   description: An icy elemental synth
   damage: 8
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 9ebd1d8a4b92e6f47bb6df73f53a1fab, type: 3}
   description: 'MINION: A wise shaman.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

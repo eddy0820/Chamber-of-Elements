@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat.FireResistance
   m_EditorClassIdentifier: 
   name: FireResistance
-  defaultValue: 100
+  defaultValue: 0

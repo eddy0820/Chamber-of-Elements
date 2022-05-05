@@ -59,7 +59,30 @@ public class CharactersInterface : AbstractGameInterface
 
     public void OnPlayerClick(GameObject obj, PointerEventData eventData)
     {
+        if(GameManager.Instance.GameStateManager.currentState is PlayerTurnGameState)
+        {
+            if(eventData.button == PointerEventData.InputButton.Left)
+            {
+                if(GameManager.Instance.mouseElement.obj != null)
+                {
+                    ElementObject element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
 
+                    if(element.Type == ElementTypes.Utility)
+                    {
+                        if(!(((UtilityElementObject) element).DoHealInBehavior))
+                        {
+                            GameManager.Instance.Player.Stats.Heal(((UtilityElementObject) element).HealAmount, GameManager.Instance.Player);
+                        }
+
+                        if(element.Behavior.DoBehavior(element))
+                        {
+                            GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                        }
+                    }
+                }
+            }
+            else if(eventData.button == PointerEventData.InputButton.Right) {}
+        }
     }
 
     public void OnEnterEnemy(GameObject obj)
@@ -82,14 +105,28 @@ public class CharactersInterface : AbstractGameInterface
         {
             if(eventData.button == PointerEventData.InputButton.Left)
             {
+                ElementObject element = null;
+
+                if(GameManager.Instance.mouseElement.obj != null)
+                {
+                    element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
+                }
+                
                 if(GameManager.Instance.mouseElement.obj == null)
                 {
-                    GameManager.Instance.GameStateManager.playerTurnGameState.Attack(AffinityTypes.None, (int) GameManager.Instance.Player.Stats.Stats["BasicAttack"].value);
+                    GameManager.Instance.GameStateManager.playerTurnGameState.Attack(AffinityTypes.None, GameManager.Instance.Player.Stats.Stats["BasicAttack"].value);
                 }
-                else if(GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage > 0)
+                else if(element.Damage >= 0)
                 {
-                    GameManager.Instance.GameStateManager.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, (int) (GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID]).Damage);
-                    GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                    if(!element.DoAttackInBehavior)
+                    {
+                        GameManager.Instance.GameStateManager.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
+                    }
+
+                    if(element.Behavior.DoBehavior(element))
+                    {
+                        GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                    }
                 }
             }
             else if(eventData.button == PointerEventData.InputButton.Right) {}

@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: dc8e6c95696e0b340927bd118356e5d9, type: 3}
   description: 'ATTACK: Consume all Earth elements and deal 60 damage'
   damage: 60
+  doAttackInBehavior: 0
+  behavior: {fileID: 6973485075947670194, guid: 276e08361151db543b8db91a4ad03358, type: 3}
+  associatedElement: {fileID: 11400000, guid: c4805d769e864e445a4a5ae5a6a239f5, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: -1

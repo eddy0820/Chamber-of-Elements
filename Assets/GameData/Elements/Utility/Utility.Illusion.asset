@@ -20,3 +20,5 @@ MonoBehaviour:
   description: 'UTILITY: Consume your air primals. For each primal consumed, reduce
     enemy hit chance by 50% next turn.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  healAmount: -1

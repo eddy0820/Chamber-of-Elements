@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: c437baf3b03a0744c94f8f9209d4055d, type: 3}
   description: 'ATTACK: Deal 30 damage and give yourself a blood element.'
   damage: 30
+  doAttackInBehavior: 0
+  behavior: {fileID: 8204430039851843788, guid: 378026762ff39eb4aac4b0098e995d78, type: 3}
+  associatedElement: {fileID: 11400000, guid: c6160a64fb4716645bca7b83f2767fba, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: -1

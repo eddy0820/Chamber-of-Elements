@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat.WaterResistance
   m_EditorClassIdentifier: 
   name: WaterResistance
-  defaultValue: 100
+  defaultValue: 0

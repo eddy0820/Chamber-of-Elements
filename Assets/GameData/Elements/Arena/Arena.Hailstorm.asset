@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 4cf81c245b6b44c49b39da7775208026, type: 3}
   description: 'ARENA: Deal 30 damage and leave a hailstorm for 3 turns.'
   damage: 30
+  doAttackInBehavior: 0
+  behavior: {fileID: 3266119895919318165, guid: 29ce60d16e6a4594aa33efbf05cb599b, type: 3}
+  extraValue: -1
+  affectedWeather: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
+  turnTimer: 3

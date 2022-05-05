@@ -19,3 +19,6 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 27db594508b12774993c0f96fd0bceb1, type: 3}
   description: 'ATTACK: Deal 50 damage and consume all your elements.'
   damage: 50
+  doAttackInBehavior: 0
+  behavior: {fileID: 7818058846057016613, guid: 68027eff7ad1f2a4a9a28f1d9aa316b6, type: 3}
+  extraValue: -1

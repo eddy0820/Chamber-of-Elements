@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 713b952c9bd427a4ca1ce4891a982521, type: 3}
   description: 'ATTACK: Adds 90% to the enemy''s miss chance next turn.'
   damage: -1
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

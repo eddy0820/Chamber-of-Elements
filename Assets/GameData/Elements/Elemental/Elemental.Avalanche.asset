@@ -20,3 +20,6 @@ MonoBehaviour:
   description: 'ATTACK: Deal 50 damage & an additional 20 damage to everything while
     in a hailstorm.'
   damage: 50
+  doAttackInBehavior: 0
+  behavior: {fileID: 1323818629214021497, guid: 4fed108eecf50184fa2fe472cf86cccc, type: 3}
+  extraValue: 20

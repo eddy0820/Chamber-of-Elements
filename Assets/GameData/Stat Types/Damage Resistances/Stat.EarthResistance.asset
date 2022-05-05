@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat.EarthResistance
   m_EditorClassIdentifier: 
   name: EarthResistance
-  defaultValue: 100
+  defaultValue: 0

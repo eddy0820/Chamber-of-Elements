@@ -19,3 +19,4 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: b64e787eb7806824c8ec57554693bf1b, type: 3}
   description: 'ATTACK: Deal 15 damage and poison the enemy for 5 turns.'
   damage: 15
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

@@ -20,3 +20,8 @@ MonoBehaviour:
   description: 'ATTACK: Deal 30 damage. Consumes an energy element to deal an additional
     30 damage.'
   damage: 30
+  doAttackInBehavior: 0
+  behavior: {fileID: 7088026093644143202, guid: fe91a450a1019a6419381b987bcccafd, type: 3}
+  associatedElement: {fileID: 11400000, guid: 7336b7dee340e6b45a29a37c89a98da6, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: -1

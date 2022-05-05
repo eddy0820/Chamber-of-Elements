@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stat.GeneralResistance
   m_EditorClassIdentifier: 
   name: GeneralResistance
-  defaultValue: 100
+  defaultValue: 0

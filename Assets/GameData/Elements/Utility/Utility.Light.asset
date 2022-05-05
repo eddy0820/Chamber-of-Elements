@@ -19,3 +19,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 5aa511fa2866c9648b64453b4dbc6c39, type: 3}
   description: 'UTILITY: Heal 10-30 HP'
   damage: -1
+  doAttackInBehavior: 0
+  behavior: {fileID: 2153040473298335492, guid: 86f6b06ced93a1c428778ae6cff2fcc7, type: 3}
+  extraValue: 30
+  healAmount: 10
+  doHealInBehavior: 1

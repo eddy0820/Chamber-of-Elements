@@ -20,3 +20,8 @@ MonoBehaviour:
   description: 'UTILITY: Heal 10 HP (once per turn). Gives life to certain elements
     when combined.'
   damage: -1
+  doAttackInBehavior: 0
+  behavior: {fileID: 1748935754381683844, guid: 1c99e6870de6b394a9b23818aca2d6ba, type: 3}
+  extraValue: -1
+  healAmount: 10
+  doHealInBehavior: 1

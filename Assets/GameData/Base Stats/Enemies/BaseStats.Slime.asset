@@ -22,12 +22,12 @@ MonoBehaviour:
   - statType: {fileID: 11400000, guid: a559cd000acecfe4696ec9b3319a2666, type: 2}
     value: 15
   - statType: {fileID: 11400000, guid: bc9c0bcb4a173d149a213b4d3935538f, type: 2}
-    value: 100
+    value: 0
   - statType: {fileID: 11400000, guid: c8cd1a608135f7649ae601e472134598, type: 2}
-    value: 100
+    value: 0
   - statType: {fileID: 11400000, guid: 465c2cc5603de6649a63541923222c74, type: 2}
-    value: 100
+    value: 0
   - statType: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
-    value: 100
+    value: 0
   - statType: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
-    value: 100
+    value: 0

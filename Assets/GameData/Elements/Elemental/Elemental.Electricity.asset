@@ -20,3 +20,4 @@ MonoBehaviour:
   description: 'ATTACK: Deal 35 damage and an additional 20 damage if the enemy is
     wet.'
   damage: 35
+  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}

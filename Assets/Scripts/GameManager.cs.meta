@@ -8,7 +8,7 @@ MonoImporter:
   - elementRecipeDatabase: {fileID: 11400000, guid: 7e5d2bf994e7272478dae036379c7e1c, type: 2}
   - affinityDatabase: {fileID: 11400000, guid: c9186c0a10fef2d409c59ebe85cab069, type: 2}
   - elementSlotsInv: {fileID: 11400000, guid: f9c8ed65654a0bf458c6159a488e65c8, type: 2}
-  executionOrder: 0
+  executionOrder: -1
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

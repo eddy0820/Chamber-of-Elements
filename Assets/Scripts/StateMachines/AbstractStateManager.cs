@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class AbstractStateManager : MonoBehaviour
 {
-    public State currentState;
+    [ReadOnly] public State currentState;
 
     private void Update()
     {
+        OnUpdate();
         RunStateMachine();
     }
 
@@ -25,4 +26,6 @@ public abstract class AbstractStateManager : MonoBehaviour
     {
         currentState = nextState;
     }
+
+    protected virtual void OnUpdate() {}
 }

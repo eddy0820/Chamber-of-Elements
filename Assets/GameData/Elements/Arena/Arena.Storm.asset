@@ -19,3 +19,6 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: e52efe7580d382b408e7c8020f7639b3, type: 3}
   description: 'ARENA: Deal 30 damage and leave a storm for 2 turns.'
   damage: 30
+  behavior: {fileID: 3558896149847389434, guid: c3465d19f0267e646bc299c86a6f4949, type: 3}
+  affectedWeather: {fileID: 11400000, guid: 283fe2a3e1bcbd94d8e79808d5739043, type: 2}
+  turnTimer: 2

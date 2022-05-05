@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Element Database", menuName = "Databases/Element")]
-public class ElementDatabase : ScriptableObject, ISerializationCallbackReceiver
+public class ElementDatabase : ScriptableObject
 {
     [SerializeField] ElementObject[] elements;
     Dictionary<int, ElementObject> getElement = new Dictionary<int, ElementObject>();
@@ -11,6 +11,8 @@ public class ElementDatabase : ScriptableObject, ISerializationCallbackReceiver
 
     public void InitElements()
     {
+        InitializeElementIDs();
+
         getElement = new Dictionary<int, ElementObject>();
 
         for(int i = 0; i < elements.Length; i++)
@@ -19,24 +21,12 @@ public class ElementDatabase : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
-    public void OnAfterDeserialize()
-    {
-        for(int i = 0; i < elements.Length; i++)
-        {
-            elements[i].ID = i;
-        }
-    }
-
-    public void OnBeforeSerialize() {}
-
     [ContextMenu("Initialize Element IDs")]
-    private void InitializeElementIDs()
+    public void InitializeElementIDs()
     {
-        getElement = new Dictionary<int, ElementObject>();
-
         for(int i = 0; i < elements.Length; i++)
         {
-            Debug.Log("Giving " + elements[i].name + " an id of " + i + ".\n");
+            //Debug.Log("Giving " + elements[i].name + " an id of " + i + ".\n");
             elements[i].ID = i;
         }
     }
