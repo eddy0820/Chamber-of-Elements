@@ -6,7 +6,7 @@ public class ClarityBehavior : AbstractElementBehavior
 {
     public override bool DoBehavior(ElementObject element)
     {
-        AffinityTypes currentAffinity = GameManager.Instance.Player.AffinityType;
+        AffinityTypes currentAffinity = Player.Instance.AffinityType;
         AffinityTypes affinityType = GenerateAffinity();
         
         while(currentAffinity == affinityType)
@@ -14,8 +14,8 @@ public class ClarityBehavior : AbstractElementBehavior
             affinityType = GenerateAffinity();
         }
 
-        GameManager.Instance.Player.SwitchAffinity(affinityType);
-        GameManager.Instance.Player.UpdateAffinitySprite(affinityType);
+        Player.Instance.SwitchAffinity(affinityType);
+        Player.Instance.UpdateAffinitySprite(affinityType);
 
         return true;
     }

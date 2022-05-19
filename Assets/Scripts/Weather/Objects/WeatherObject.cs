@@ -8,4 +8,6 @@ public class WeatherObject : ScriptableObject
 {
     [SerializeField] new string name = "New Weather Name"; 
     public string Name => name;
+    [SerializeField] Sprite weatherTexture;
+    public Sprite WeatherTexture => weatherTexture;
 }

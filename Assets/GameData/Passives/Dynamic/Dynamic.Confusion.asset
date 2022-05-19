@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a35644917617554190869334cd12ed9, type: 3}
+  m_Name: Dynamic.Confusion
+  m_EditorClassIdentifier: 
+  name: Confusion
+  passiveTexture: {fileID: 21300000, guid: a9d09a8557b7545498363e89e97ca6a8, type: 3}
+  description: -'X'% Hit Chance.
+  additiveTypes: []
+  removalTypes: []
+  statModifyingPassive: 1
+  affectedStat: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
+  secondaryAffectedStat: {fileID: 0}
+  modifierType: 200
+  behaviorEveryTurnPassive: 0
+  behaviorType: 0
+  affinityTypeForDamageBehavior: 0

@@ -15,11 +15,11 @@ public class ElementSlotsInterface : AbstractGameInterface
 
     protected override void OnAwake()
     {
-        slots = new GameObject[transform.GetChild(0).childCount];
+        slots = new GameObject[transform.childCount];
 
-        for(int i = 0; i < transform.GetChild(0).childCount; i++)
+        for(int i = 0; i < transform.childCount; i++)
         {
-            slots[i] = transform.GetChild(0).GetChild(i).gameObject;
+            slots[i] = transform.GetChild(i).gameObject;
         }
     }
 
@@ -80,7 +80,7 @@ public class ElementSlotsInterface : AbstractGameInterface
 
     public void OnClick(GameObject obj, PointerEventData eventData)
     {
-        if(GameManager.Instance.GameStateManager.currentState is PlayerTurnGameState)
+        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
         {
             if(eventData.button == PointerEventData.InputButton.Left)
             {
@@ -156,8 +156,8 @@ public class ElementSlotsInterface : AbstractGameInterface
                 {
                     elementsDisplayed[mouseHoverObj].UpdateSlot(new Element());
 
-                    GameManager.Instance.Player.SwitchAffinity(mouseElement.AffinityType);
-                    GameManager.Instance.Player.UpdateAffinitySprite(mouseElement.AffinityType);
+                    Player.Instance.SwitchAffinity(mouseElement.AffinityType);
+                    Player.Instance.UpdateAffinitySprite(mouseElement.AffinityType);
 
                     elementOnMouse.RemoveMouseElement(Destroy);
                 }
@@ -178,9 +178,9 @@ public class ElementSlotsInterface : AbstractGameInterface
     {
         var elementOnMouse = GameManager.Instance.mouseElement;
 
-        if(elementOnMouse.element.ID < 0 && GameManager.Instance.Player.AffinityType != AffinityTypes.None && elementOnMouse.hoverElement.ID >= 0)
+        if(elementOnMouse.element.ID < 0 && Player.Instance.AffinityType != AffinityTypes.None && elementOnMouse.hoverElement.ID >= 0)
         {
-            int result = elementSlots.CanCombine(elementOnMouse.hoverElement, new Element(GameManager.Instance.AffinityDatabase.GetAffinity[GameManager.Instance.Player.AffinityType].RecipeElement));
+            int result = elementSlots.CanCombine(elementOnMouse.hoverElement, new Element(GameManager.Instance.AffinityDatabase.GetAffinity[Player.Instance.AffinityType].RecipeElement));
 
             if(result > -1)
             {

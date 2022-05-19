@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Weather.Storm
   m_EditorClassIdentifier: 
   name: Storm
+  weatherTexture: {fileID: 21300000, guid: e52efe7580d382b408e7c8020f7639b3, type: 3}

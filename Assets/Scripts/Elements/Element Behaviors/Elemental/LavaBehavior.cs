@@ -10,7 +10,7 @@ public class LavaBehavior : AbstractElementBehavior
 
         float damageAmount = Random.Range(elementalElement.Damage, elementalElement.ExtraValue);
 
-        GameManager.Instance.GameStateManager.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, damageAmount);
+        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, damageAmount);
 
         return true;
     }

@@ -8,7 +8,7 @@ public class FloodBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
         
-        GameManager.Instance.GameStateManager.SetReRollSpecificNextTurn(elementalElement.AssociatedElement);
+        GameStateManager.Instance.SetReRollSpecificNextTurn(elementalElement.AssociatedElement);
 
         return true;
     }

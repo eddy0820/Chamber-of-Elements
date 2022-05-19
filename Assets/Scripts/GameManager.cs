@@ -14,18 +14,18 @@ public class GameManager : MonoBehaviour
     public WeatherDatabase WeatherDatabase => weatherDatabase;
     [SerializeField] InventoryObject elementSlotsInv;
     public InventoryObject ElementSlotsInv => elementSlotsInv;
-    GameStateManager gameStateManager;
-    public GameStateManager GameStateManager => gameStateManager;
-    WeatherStateManager weatherStateManager;
-    public WeatherStateManager WeatherStateManager => weatherStateManager;
-    Player player;
-    public Player Player => player;
+
+    [Space(15)]
+    [ReadOnly] public int turnCounter;
+ 
     Enemy enemy;
     public Enemy Enemy => enemy;
     GameObject interfaceCanvas;
     public GameObject InterfaceCanvas => interfaceCanvas;
     GameObject infoCanvas;
     public GameObject InfoCanvas => infoCanvas;
+    
+    [Space(15)]
     public MouseElement mouseElement = new MouseElement();
 
     [Header("Debug")]
@@ -39,15 +39,19 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        gameStateManager = GetComponent<GameStateManager>();
-        weatherStateManager = GameObject.FindObjectOfType<WeatherStateManager>();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
-        interfaceCanvas = GameObject.FindObjectOfType<ElementSlotsInterface>().gameObject;
+        interfaceCanvas = GameObject.Find("Game Interface Canvas");
         infoCanvas = GameObject.FindObjectOfType<ElementTextDisplay>().transform.parent.gameObject;
+
         elementDatabase.InitElements();
         affinityDatabase.InitAffinities();
         weatherDatabase.InitWeathers();
+        //gamestate manager init
+        // weatherstate manager init
+        // player init 
+
+        turnCounter = 1;
     }
 
     private void Start()
@@ -84,6 +88,53 @@ public class GameManager : MonoBehaviour
                 elementSlotsInv.Container.elementSlots[4].UpdateSlot(new Element(debugElement5));
             }
         }
+    }
+
+    // find better place for this function
+    public bool IsImmuneElementAndAffinity(Character character, Element element) 
+    {
+        if(character.immunityAffinityTypes.Count > 0)
+        {
+            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> type in character.immunityAffinityTypes)
+            {
+                if(type.Key == element.AffinityType)
+                {
+                    Debug.Log("Immune!");
+                    return true;
+                }
+            }
+        }
+
+        if(character.immunityElements.Count > 0)
+        {
+            foreach(KeyValuePair<ElementObject, ImmunityPassiveObject> elementObject in character.immunityElements)
+            {
+                if(elementObject.Key.ID == element.ID)
+                {
+                    Debug.Log("Immune");
+                    return true;
+                }
+            }
+        } 
+
+        return false;
+    }
+
+    public bool IsImmuneAffinity(Character character, AffinityTypes type)
+    {
+        if(character.immunityAffinityTypes.Count > 0)
+        {
+            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> typeEntry in character.immunityAffinityTypes)
+            {
+                if(typeEntry.Key == type)
+                {
+                    Debug.Log("Immune!");
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void OnApplicationQuit()

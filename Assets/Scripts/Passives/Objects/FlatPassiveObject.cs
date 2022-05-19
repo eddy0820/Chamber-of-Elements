@@ -5,63 +5,91 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Flat Passive", menuName = "Passives/Flat")]
 public class FlatPassiveObject : PassiveObject
 {
-    [SerializeField] int percent;
-    [SerializeField] AffinityTypes resistanceTo;
-    [SerializeField] AffinityTypes[] removalTypes;
-    public AffinityTypes[] RemovalTypes => removalTypes;
-    StatModifier modifier;
+    [Header("Flat Passive Specific")]
 
-    public override void TakeAffect(CharacterStats stats)
+    [Header("Stat Modifying Passive")]
+    [SerializeField] bool statModifyingPassive;
+    public bool StatModifyingPassive => statModifyingPassive;
+    [SerializeField] StatTypeObject affectedStat;
+    public StatTypeObject AffectedStat => affectedStat;
+    [SerializeField] StatTypeObject secondaryAffectedStat;
+    public StatTypeObject SecondaryAffectedStat => secondaryAffectedStat;
+    [SerializeField] StatModifierTypes modifierType;
+    public StatModifierTypes ModifierType => modifierType;
+
+    [Header("Behavior Every Turn Passive")]
+    [SerializeField] bool behaviorEveryTurnPassive;
+    public bool BehaviorEveryTurnPassive => behaviorEveryTurnPassive;
+    [SerializeField] PassiveBehaviorTypes behaviorType;
+    public PassiveBehaviorTypes BehaviorType => behaviorType;
+    [SerializeField] AffinityTypes affinityTypeForDamageBehavior;
+    public AffinityTypes AffinityTypeForDamageBehavior => affinityTypeForDamageBehavior;
+    [SerializeField] float value;
+
+
+    public override void TakeAffect(Character character)
     {
-        modifier = new StatModifier(percent, StatModifierTypes.Flat);
-
-        switch(resistanceTo)
+        if(StatModifyingPassive)
+        {   
+            TakeAffectModifier(character);
+        } 
+        else if(BehaviorEveryTurnPassive)
         {
-            case AffinityTypes.Air:
-                stats.Stats["AirResistance"].AddModifier(modifier);
-                break;
-            case AffinityTypes.Earth:
-                stats.Stats["EarthResistance"].AddModifier(modifier);
-                break;
-            case AffinityTypes.Fire:
-                stats.Stats["FireResistance"].AddModifier(modifier);
-                break;
-            case AffinityTypes.Water:
-                stats.Stats["WaterResistance"].AddModifier(modifier);
-                break;
-            case AffinityTypes.None:
-                stats.Stats["GeneralResistance"].AddModifier(modifier);
-                break;
-            default:
-                Debug.Log("Unrecognized damage type, affecting general resistance");
-                stats.Stats["GeneralResistance"].AddModifier(modifier);
-                break;
+            TakeAffectBehavior(character);
         }
     }
 
-    public override void RemoveAffect(CharacterStats stats)
+    public override void RemoveAffect(Character character)
     {
-        switch(resistanceTo)
+        if(StatModifyingPassive)
         {
-            case AffinityTypes.Air:
-                stats.Stats["AirResistance"].RemoveModifier(modifier);
+            RemoveAffectModifier(character);
+        } 
+        else if(BehaviorEveryTurnPassive)
+        {
+            RemoveAffectBehavior(character);
+        }
+    }
+
+    private void TakeAffectModifier(Character character)
+    {
+        modifier = new StatModifier(value, ModifierType);
+
+        character.Stats.Stats[AffectedStat.Name].AddModifier(modifier);
+
+        if(SecondaryAffectedStat != null)
+        {
+            character.Stats.Stats[SecondaryAffectedStat.Name].AddModifier(modifier);
+        }
+    }
+
+    private void RemoveAffectModifier(Character character)
+    {
+        character.Stats.Stats[AffectedStat.Name].RemoveModifier(modifier);
+
+        if(SecondaryAffectedStat != null)
+        {
+            character.Stats.Stats[SecondaryAffectedStat.Name].RemoveModifier(modifier);
+        }
+    }
+
+    private void TakeAffectBehavior(Character character)
+    {
+        switch(BehaviorType)
+        {
+            case PassiveBehaviorTypes.Damage:
+                action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageBehavior, character);
                 break;
-            case AffinityTypes.Earth:
-                stats.Stats["EarthResistance"].RemoveModifier(modifier);
-                break;
-            case AffinityTypes.Fire:
-                stats.Stats["FireResistance"].RemoveModifier(modifier);
-                break;
-            case AffinityTypes.Water:
-                stats.Stats["WaterResistance"].RemoveModifier(modifier);
-                break;
-            case AffinityTypes.None:
-                stats.Stats["GeneralResistance"].RemoveModifier(modifier);
-                break;
-            default:
-                Debug.Log("Unrecognized damage type, affecting general resistance");
-                stats.Stats["GeneralResistance"].RemoveModifier(modifier);
+            case PassiveBehaviorTypes.Heal:
+                action = ()=> character.Stats.Heal(value, character);
                 break;
         }
+
+        character.actionsToDoEveryTurn.Add(action);
+    }
+
+    private void RemoveAffectBehavior(Character character)
+    {
+        character.actionsToDoEveryTurn.Remove(action);
     }
 }

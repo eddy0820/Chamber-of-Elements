@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class WeatherStateManager : AbstractStateManager 
 {
+    public static WeatherStateManager Instance {get; private set; }
+
     [SerializeField] WeatherObject startingWeather;
+    public WeatherObject StartingWeather => startingWeather;
     [ReadOnly, SerializeField] string currState;
-    [ReadOnly] public int turnsTillClearWeather = 0;
     [ReadOnly, SerializeField] int turnTimer = -1;
+
+    SpriteRenderer weatherSprite;
+
     Dictionary<WeatherObject, WeatherState> getWeatherState = new Dictionary<WeatherObject, WeatherState>();
     public Dictionary<WeatherObject, WeatherState> GetWeatherState => getWeatherState;
 
     private void Awake()
     {
+        Instance = this;
+        
+        weatherSprite = GetComponentInChildren<SpriteRenderer>();
         getWeatherState = new Dictionary<WeatherObject, WeatherState>();
 
         foreach(KeyValuePair<string, WeatherObject> pair in GameManager.Instance.WeatherDatabase.GetWeather)
@@ -22,32 +30,38 @@ public class WeatherStateManager : AbstractStateManager
             getWeatherState.Add(pair.Value, state);
         }
 
-        currentState = getWeatherState[startingWeather];
+        SwitchToNextState(getWeatherState[startingWeather]);
+
         currState = ((WeatherState) currentState).StateName;
+        weatherSprite.sprite = startingWeather.WeatherTexture;
     }
 
     protected override void OnUpdate()
     {
-        if(turnTimer == turnsTillClearWeather - 1)
+        if(turnTimer == GameManager.Instance.turnCounter)
         {
             ClearWeather();
-        }
-
-        currState = ((WeatherState) currentState).StateName;
+        }   
     }
 
     public void SwitchWeather(WeatherObject weather)
     {
         SwitchToNextState(getWeatherState[weather]);
+
         turnTimer = -1;
-        turnsTillClearWeather = 0;
+
+        currState = ((WeatherState) currentState).StateName;
+        weatherSprite.sprite = weather.WeatherTexture;
     }
 
     public void SwitchWeatherForTurns(WeatherObject weather, int _turnTimer)
     {
         SwitchToNextState(getWeatherState[weather]);
-        turnTimer = _turnTimer;
-        turnsTillClearWeather = 0;
+
+        turnTimer = GameManager.Instance.turnCounter + _turnTimer + 1;
+
+        currState = ((WeatherState) currentState).StateName;
+        weatherSprite.sprite = weather.WeatherTexture;
     }
 
     public void ExtendWeather(int addedTurnTimer)
@@ -59,13 +73,18 @@ public class WeatherStateManager : AbstractStateManager
     {
         SwitchToNextState(getWeatherState[weather]);
         ExtendWeather(addedturnTimer);
+
+        currState = ((WeatherState) currentState).StateName;
+        weatherSprite.sprite = weather.WeatherTexture;
     }
 
     public void ClearWeather()
     {
         SwitchToNextState(getWeatherState[startingWeather]);
         turnTimer = -1;
-        turnsTillClearWeather = 0;
+
+        currState = ((WeatherState) currentState).StateName;
+        weatherSprite.sprite = startingWeather.WeatherTexture;
     }
 
 }

@@ -8,7 +8,12 @@ public class HailstormBehavior : AbstractElementBehavior
     {
         ArenaElementObject arenaElement = (ArenaElementObject) element;
 
-        GameManager.Instance.WeatherStateManager.SwitchWeatherForTurns(arenaElement.AffectedWeather, arenaElement.TurnTimer);
+       WeatherStateManager.Instance.SwitchWeatherForTurns(arenaElement.AffectedWeather, arenaElement.TurnTimer);
+
+        if(GameManager.Instance.Enemy.Passives.Contains(arenaElement.AssociatedPassive))
+        {
+            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) arenaElement.SecondaryAssociatedPassive);
+        }
 
         return true;
     }

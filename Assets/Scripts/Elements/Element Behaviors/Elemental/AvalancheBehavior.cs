@@ -8,9 +8,14 @@ public class AvalancheBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(GameManager.Instance.WeatherStateManager.currentState.GetType() == GameManager.Instance.WeatherStateManager.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Hailstorm"]].GetType())
+        if(WeatherStateManager.Instance.currentState.GetType() ==WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Hailstorm"]].GetType())
         {
-            GameManager.Instance.GameStateManager.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
+            GameStateManager.Instance.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
+        }
+
+        if(GameManager.Instance.Enemy.Passives.Contains(elementalElement.AssociatedPassive))
+        {
+            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive);
         }
 
         return true;

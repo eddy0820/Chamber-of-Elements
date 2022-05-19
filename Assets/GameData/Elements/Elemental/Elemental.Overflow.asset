@@ -20,4 +20,8 @@ MonoBehaviour:
   description: 'ATTACK: Deal 30 damage for all your primal water elements & consume
     them.'
   damage: 30
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 1
+  behavior: {fileID: 4778872795781494474, guid: 609373a34d504264f85b137ee7c218cd, type: 3}
+  associatedElement: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: -1

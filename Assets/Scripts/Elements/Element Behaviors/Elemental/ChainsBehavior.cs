@@ -8,7 +8,12 @@ public class ChainsBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameManager.Instance.GameStateManager.enemyTurnGameState.cannotFocusCounter = (int) elementalElement.ExtraValue;
+        GameManager.Instance.Enemy.AddFlatPassiveForTurns((FlatPassiveObject) elementalElement.TertiaryAssociatedPassive, (int) elementalElement.ExtraValue);
+
+        if(GameManager.Instance.Enemy.Passives.Contains(elementalElement.AssociatedPassive))
+        {
+            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive);
+        }
 
         return true;
     }

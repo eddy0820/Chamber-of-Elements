@@ -6,18 +6,21 @@ using UnityEngine.EventSystems;
 
 public class CharactersInterface : AbstractGameInterface
 {
-    [SerializeField] Color playerInteractColor = new Color(0, 255, 255, 35);
-    [SerializeField] Color enemyInteractColor = new Color(255, 0, 0, 35);
+    [SerializeField] Color playerInteractColor = new Color(0, 191, 191, 35);
+    [SerializeField] Color enemyInteractColor = new Color(191, 0, 0, 35);
+    [SerializeField] Color weatherInteractColor = new Color(198, 32, 229, 35);
     [SerializeField] Sprite cursorUse;
     [SerializeField] Sprite cursorAttack;
    
     GameObject playerInteract;
     GameObject enemyInteract;
+    GameObject weatherInteract;
 
     protected override void OnAwake()
     {
-        playerInteract = transform.GetChild(1).GetChild(0).gameObject;
-        enemyInteract = transform.GetChild(1).GetChild(1).gameObject;
+        playerInteract = transform.GetChild(0).gameObject;
+        enemyInteract = transform.GetChild(1).gameObject;
+        weatherInteract = transform.GetChild(2).gameObject;
     }
 
     protected override void Initialize()
@@ -31,6 +34,11 @@ public class CharactersInterface : AbstractGameInterface
         AddEvent(enemyInteract, EventTriggerType.PointerExit, delegate { OnExitEnemy(enemyInteract); });
         AddEvent(enemyInteract, EventTriggerType.PointerClick, (data) => { OnEnemyClick(enemyInteract, (PointerEventData)data); });
         enemyInteract.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+        AddEvent(weatherInteract, EventTriggerType.PointerEnter, delegate { OnEnterWeather(weatherInteract); });
+        AddEvent(weatherInteract, EventTriggerType.PointerExit, delegate { OnExitWeather(weatherInteract); });
+        AddEvent(weatherInteract, EventTriggerType.PointerClick, (data) => { OnWeatherClick(weatherInteract, (PointerEventData)data); });
+        weatherInteract.GetComponent<Image>().color = new Color(0, 0, 0, 0);
     }
 
     protected override void UpdateInterface() {}
@@ -43,23 +51,23 @@ public class CharactersInterface : AbstractGameInterface
         }
     }
 
-    public void OnEnterPlayer(GameObject obj)
+    private void OnEnterPlayer(GameObject obj)
     {
         obj.GetComponent<Image>().color = playerInteractColor;
 
         CreateCursorTextObj(cursorUse);
     }
 
-    public void OnExitPlayer(GameObject obj)
+    private void OnExitPlayer(GameObject obj)
     {
         obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
 
         GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
     }
 
-    public void OnPlayerClick(GameObject obj, PointerEventData eventData)
+    private void OnPlayerClick(GameObject obj, PointerEventData eventData)
     {
-        if(GameManager.Instance.GameStateManager.currentState is PlayerTurnGameState)
+        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
         {
             if(eventData.button == PointerEventData.InputButton.Left)
             {
@@ -69,15 +77,18 @@ public class CharactersInterface : AbstractGameInterface
 
                     if(element.Type == ElementTypes.Utility)
                     {
-                        if(!(((UtilityElementObject) element).DoHealInBehavior))
+                        if(GameManager.Instance.IsImmuneElementAndAffinity(Player.Instance, GameManager.Instance.mouseElement.element) == false)
                         {
-                            GameManager.Instance.Player.Stats.Heal(((UtilityElementObject) element).HealAmount, GameManager.Instance.Player);
-                        }
+                            if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
+                            {
+                                Player.Instance.Stats.Heal(((UtilityElementObject) element).HealAmount, Player.Instance);
+                            }
 
-                        if(element.Behavior.DoBehavior(element))
-                        {
-                            GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
-                        }
+                            if(element.Behavior.DoBehavior(element))
+                            {
+                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            }
+                        } 
                     }
                 }
             }
@@ -85,47 +96,116 @@ public class CharactersInterface : AbstractGameInterface
         }
     }
 
-    public void OnEnterEnemy(GameObject obj)
+    private void OnEnterEnemy(GameObject obj)
     {
         obj.GetComponent<Image>().color = enemyInteractColor;
 
         CreateCursorTextObj(cursorAttack);
     }
 
-    public void OnExitEnemy(GameObject obj)
+    private void OnExitEnemy(GameObject obj)
     {
         obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
 
         GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
     }
 
-    public void OnEnemyClick(GameObject obj, PointerEventData eventData)
+    private void OnEnemyClick(GameObject obj, PointerEventData eventData)
     {
-        if(GameManager.Instance.GameStateManager.currentState is PlayerTurnGameState)
+        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
         {
             if(eventData.button == PointerEventData.InputButton.Left)
             {
                 ElementObject element = null;
 
-                if(GameManager.Instance.mouseElement.obj != null)
+                if(UnityEngine.Random.Range(0, 101) > Player.Instance.Stats.Stats["HitChance"].value)
+                {
+                    Debug.Log("Miss");
+
+                    GameStateManager.Instance.playerTurnGameState.GoToNextState();
+                    GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                }
+                else if(GameManager.Instance.mouseElement.obj != null)
                 {
                     element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
+
+                    if(element.Type != ElementTypes.Arena || element.Type != ElementTypes.Utility)
+                    {
+                        if(element.Damage >= 0)
+                        {
+                            if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
+                            {
+                                if(!element.DoAttackInBehavior)
+                                {
+                                    GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
+                                }
+
+                                if(element.Behavior.DoBehavior(element))
+                                {
+                                    GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                                }  
+                            }
+                            else
+                            {
+                                GameStateManager.Instance.playerTurnGameState.GoToNextState();
+                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    GameStateManager.Instance.playerTurnGameState.Attack(Player.Instance.AffinityType, Player.Instance.Stats.Stats["BasicAttack"].value);
                 }
                 
-                if(GameManager.Instance.mouseElement.obj == null)
-                {
-                    GameManager.Instance.GameStateManager.playerTurnGameState.Attack(AffinityTypes.None, GameManager.Instance.Player.Stats.Stats["BasicAttack"].value);
-                }
-                else if(element.Damage >= 0)
-                {
-                    if(!element.DoAttackInBehavior)
-                    {
-                        GameManager.Instance.GameStateManager.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
-                    }
+            }
+            else if(eventData.button == PointerEventData.InputButton.Right) {}
+        }
+    }
 
-                    if(element.Behavior.DoBehavior(element))
+    private void OnEnterWeather(GameObject obj)
+    {
+        obj.GetComponent<Image>().color = weatherInteractColor;
+
+        CreateCursorTextObj(cursorUse);
+    }
+
+    private void OnExitWeather(GameObject obj)
+    {
+        obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+        GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
+    }
+
+    private void OnWeatherClick(GameObject obj, PointerEventData eventData)
+    {
+        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
+        {
+            if(eventData.button == PointerEventData.InputButton.Left)
+            {
+                if(GameManager.Instance.mouseElement.obj != null)
+                {
+                    ElementObject element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
+
+                    if(element.Type == ElementTypes.Arena)
                     {
-                        GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                        if(!element.DoAttackInBehavior)
+                        {
+                            if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
+                            {
+                                GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
+                            }
+                            else
+                            {
+                                GameStateManager.Instance.playerTurnGameState.GoToNextState();
+                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            }
+                        }
+                        
+                        if(element.Behavior.DoBehavior(element)) /* IF DOING ATTACK IN BEHAVIOR MAKE SURE YOU CHECK FOR IMMUNITIES */
+                        {
+                            GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                        }
                     }
                 }
             }

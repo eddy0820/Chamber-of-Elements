@@ -13,7 +13,7 @@ public class ScorchBehavior : AbstractElementBehavior
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            GameManager.Instance.GameStateManager.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.Damage);
+            GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.Damage);
         }
 
         return true;

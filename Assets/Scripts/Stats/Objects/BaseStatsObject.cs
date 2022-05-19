@@ -17,7 +17,6 @@ public class BaseStatsObject : ScriptableObject
         [SerializeField] float value;
 
         public StatTypeObject StatType => statType;
-
         public float Value => value;
     }
 }

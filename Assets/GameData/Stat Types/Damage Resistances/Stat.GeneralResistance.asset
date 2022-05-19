@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: GeneralResistance
   defaultValue: 0
+  defaultMinValue: 0
+  defaultMaxValue: 100

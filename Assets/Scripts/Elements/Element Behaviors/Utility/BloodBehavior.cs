@@ -7,10 +7,8 @@ public class BloodBehavior : AbstractElementBehavior
     public override bool DoBehavior(ElementObject element)
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
-
-        StatModifier modifier = new StatModifier(utilityElement.ExtraValue, StatModifierTypes.Flat);
         
-        GameManager.Instance.Player.Stats.Stats["BasicAttack"].AddModifier(modifier);
+        Player.Instance.AddDynamicPassive((DynamicPassiveObject) utilityElement.AssociatedPassive, utilityElement.ExtraValue, false);
         
         return true;
     }

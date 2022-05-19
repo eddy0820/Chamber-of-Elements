@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UnityEngine;
 
 [Serializable]
 public class Stat
@@ -16,10 +17,23 @@ public class Stat
                 lastBaseValue = baseValue;
                 _value = CalculateFinalValue();
                 isDirty = false;
+
+                if(_value < minValue)
+                {
+                    _value = minValue;
+                }
+
+                if(_value > maxValue)
+                {
+                    _value = maxValue;
+                }
             }
+            
             return _value;
         }
     }
+    public float minValue;
+    public float maxValue;
     // To mark the fact a modifier was added or removed so that CalaculateFinalValue()
     // isn't called every time you get the value whether there was a modifier change or not.
     protected bool isDirty = true;
@@ -42,18 +56,25 @@ public class Stat
     {
         baseValue = _baseValue;
         type = null;
+        minValue = Mathf.NegativeInfinity;
+        maxValue = Mathf.Infinity;
+
     }
-    // Constructor to create a stat with a StatType ScriptableObject, using the value from the StatType.
+    // Constructor to create a stat with a StatType ScriptableObject, using the values from the StatType.
     public Stat(StatTypeObject _type) : this()
     {
         baseValue = _type.DefaultValue;
         type = _type;
+        minValue = _type.DefaultMinValue;
+        maxValue = _type.DefaultMaxValue;
     }
     // Constructor to create a stat with a BaseStats ScriptableObject, using the value and StatType from that.
     public Stat(StatTypeObject _type, float _baseValue) : this()
     {
         baseValue = _baseValue;
         type = _type;
+        minValue = _type.DefaultMinValue;
+        maxValue = _type.DefaultMaxValue;
     }
 
     public virtual void AddModifier(StatModifier modifier)

@@ -23,3 +23,7 @@ MonoBehaviour:
   doAttackInBehavior: 0
   behavior: {fileID: 1323818629214021497, guid: 4fed108eecf50184fa2fe472cf86cccc, type: 3}
   extraValue: 20
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+  secondaryAssociatedPassive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}

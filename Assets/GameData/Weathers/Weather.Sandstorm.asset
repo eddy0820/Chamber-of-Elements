@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Weather.Sandstorm
   m_EditorClassIdentifier: 
   name: Sandstorm
+  weatherTexture: {fileID: 21300000, guid: ad78e79149f73d941b16ea2d329067e2, type: 3}

@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: Flat.Wet
   m_EditorClassIdentifier: 
   name: Wet
-  percent: 10
-  resistanceTo: 1
-  removalTypes: 0300000001000000
+  passiveTexture: {fileID: 21300000, guid: ee6747753c859d841aaae95dc7383beb, type: 3}
+  description: +10% resistance to Fire Elements. Removed by Air & Fire Elements.
+  additiveTypes: []
+  removalTypes:
+  - affinityType: 3
+    passive: {fileID: 11400000, guid: 5b669a2b2c7800c459198bff8a5695f8, type: 2}
+  - affinityType: 1
+    passive: {fileID: 11400000, guid: 5b669a2b2c7800c459198bff8a5695f8, type: 2}
+  statModifyingPassive: 1
+  affectedStat: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
+  secondaryAffectedStat: {fileID: 0}
+  modifierType: 200
+  behaviorEveryTurnPassive: 0
+  behaviorType: 0
+  affinityTypeForDamageBehavior: 0
+  value: 0.1

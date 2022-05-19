@@ -8,10 +8,10 @@ public class RadianceBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(!GameManager.Instance.GameStateManager.playerTurnGameState.hasUsedRadiance)
+        if(!GameStateManager.Instance.playerTurnGameState.hasUsedRadiance)
         {
-            GameManager.Instance.Player.Stats.Heal(utilityElement.HealAmount, GameManager.Instance.Player);
-            GameManager.Instance.GameStateManager.playerTurnGameState.hasUsedRadiance = true;
+            Player.Instance.Stats.Heal(utilityElement.HealAmount, Player.Instance);
+            GameStateManager.Instance.playerTurnGameState.hasUsedRadiance = true;
 
             return true;
         }

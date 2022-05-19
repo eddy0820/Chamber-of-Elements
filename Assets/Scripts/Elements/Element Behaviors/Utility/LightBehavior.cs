@@ -10,7 +10,7 @@ public class LightBehavior : AbstractElementBehavior
 
         int healAmount = Random.Range((int) utilityElement.HealAmount, ((int) utilityElement.ExtraValue) + 1);
 
-        GameManager.Instance.Player.Stats.Heal(healAmount, GameManager.Instance.Player);
+        Player.Instance.Stats.Heal(healAmount, Player.Instance);
         
         return true;
     }

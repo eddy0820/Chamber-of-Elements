@@ -8,12 +8,12 @@ public class MoonBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(GameManager.Instance.WeatherStateManager.currentState.GetType() == GameManager.Instance.WeatherStateManager.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Storm"]].GetType())
+        if(WeatherStateManager.Instance.currentState.GetType() ==WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Storm"]].GetType())
         {
-            GameManager.Instance.Player.Stats.Heal(utilityElement.HealAmount, GameManager.Instance.Player);
+            Player.Instance.Stats.Heal(utilityElement.HealAmount, Player.Instance);
         }
 
-        GameManager.Instance.WeatherStateManager.ClearWeather();
+       WeatherStateManager.Instance.ClearWeather();
         
         return true;
     }

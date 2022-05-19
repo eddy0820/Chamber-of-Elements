@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Weather.Clear
   m_EditorClassIdentifier: 
   name: Clear
+  weatherTexture: {fileID: 21300000, guid: f03262ff5b8c32e428528fdbcc863348, type: 3}

@@ -10,10 +10,17 @@ public abstract class CharacterObject : ScriptableObject
     public BaseStatsObject BaseStats => baseStats;
     [SerializeField] AffinityTypes affinityType;
     public AffinityTypes AffinityType => affinityType;
-    [SerializeField] List<PassiveObject> startingPassives = new List<PassiveObject>();
-    public List<PassiveObject> StartingPassives => startingPassives;
+    [SerializeField] List<PassiveEntry> startingPassives = new List<PassiveEntry>();
+    public List<PassiveEntry> StartingPassives => startingPassives;
     [SerializeField] Sprite sprite;
     public Sprite Sprite => sprite;
     [SerializeField] RuntimeAnimatorController animationController;
     public RuntimeAnimatorController AnimatorController => animationController;
+
+    [System.Serializable]
+    public class PassiveEntry
+    {
+        public PassiveObject passive;
+        public float value = -1;
+    }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be729a9634db38742bc8757099f93918, type: 3}
+  m_Name: Flat.Scorched
+  m_EditorClassIdentifier: 
+  name: Scorched
+  passiveTexture: {fileID: 21300000, guid: 44c9e923ed879624a94e7a6672c56ce7, type: 3}
+  description: -10% Resistance to Air Elements. Removed by Water Elements.
+  additiveTypes: []
+  removalTypes:
+  - affinityType: 0
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+  statModifyingPassive: 1
+  affectedStat: {fileID: 11400000, guid: c8cd1a608135f7649ae601e472134598, type: 2}
+  secondaryAffectedStat: {fileID: 0}
+  modifierType: 200
+  behaviorEveryTurnPassive: 0
+  behaviorType: 0
+  affinityTypeForDamageBehavior: 0
+  value: -0.1

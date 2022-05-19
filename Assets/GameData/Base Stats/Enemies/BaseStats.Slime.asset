@@ -31,3 +31,9 @@ MonoBehaviour:
     value: 0
   - statType: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
     value: 0
+  - statType: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
+    value: 100
+  - statType: {fileID: 11400000, guid: f4bc853cb0be073489b00e2a4605e83b, type: 2}
+    value: 100
+  - statType: {fileID: 11400000, guid: b27bd369431c8594c86346745a1bb95c, type: 2}
+    value: 1

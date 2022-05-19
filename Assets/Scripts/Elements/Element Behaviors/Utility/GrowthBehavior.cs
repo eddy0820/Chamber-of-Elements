@@ -13,7 +13,7 @@ public class GrowthBehavior : AbstractElementBehavior
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            GameManager.Instance.Player.Stats.Heal(utilityElement.ExtraValue, GameManager.Instance.Player);
+            Player.Instance.Stats.Heal(utilityElement.ExtraValue, Player.Instance);
         }
 
         return true;

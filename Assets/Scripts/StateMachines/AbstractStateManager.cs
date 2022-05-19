@@ -22,9 +22,15 @@ public abstract class AbstractStateManager : MonoBehaviour
         }
     }
 
-    protected void SwitchToNextState(State nextState)
-    {
+    protected virtual void SwitchToNextState(State nextState)
+    {   
+        if(currentState != null)
+        {
+            currentState.OnExitState();
+        }
+        
         currentState = nextState;
+        currentState.OnEnterState();
     }
 
     protected virtual void OnUpdate() {}

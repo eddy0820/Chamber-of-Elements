@@ -26,7 +26,7 @@ public abstract class CharacterStats
         currentHealth = stats["MaxHealth"].value;
     }
     
-    public void TakeDamage(float damage, AffinityTypes damageType, Character characterType)
+    public void TakeDamage(float damage, AffinityTypes damageType, Character character)
     {
         if(damage <= 0)
         {
@@ -68,28 +68,19 @@ public abstract class CharacterStats
 
         currentHealth -= damage;
 
-        GameObject damageIndicatorUI = null;
-
-        if(characterType.GetType() == typeof(Player))
-        {
-            damageIndicatorUI = GameManager.Instance.InfoCanvas.transform.GetChild(2).gameObject;
-        }
-        else if(characterType.GetType() == typeof(Enemy))
-        {
-            damageIndicatorUI = GameManager.Instance.InfoCanvas.transform.GetChild(3).gameObject;
-        }
-
+        GameObject damageIndicatorUI = GameObject.Instantiate(character.DamageIndicatorPrefab, character.DamageIndicatorPrefab.transform.position, Quaternion.identity, GameManager.Instance.InfoCanvas.transform);
         damageIndicatorUI.GetComponent<TextMeshProUGUI>().text = damage.ToString();
-        damageIndicatorUI.GetComponent<Animator>().SetTrigger("Attacked");
 
-        Debug.Log(characterType.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
+        Debug.Log(character.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
 
         lastHitDamage = damage;
 
         if(currentHealth <= 0)
         {
-            Die(characterType.CharacterObject.Name);
+            Die(character.CharacterObject.Name);
         }
+
+        HandlePassiveAdditiveRemovalTypes(character, damageType);
     }
 
     public void Heal(float amount, Character character)
@@ -135,5 +126,59 @@ public abstract class CharacterStats
     public void Die(string debugName)
     {
         Debug.Log(debugName + " died.");
+    }
+
+    private void HandlePassiveAdditiveRemovalTypes(Character character, AffinityTypes damageType)
+    {
+        List<PassiveObject.ChangeTypeEntry> passivesToAdd = new List<PassiveObject.ChangeTypeEntry>();
+        List<PassiveObject> passivesToRemove = new List<PassiveObject>();
+        
+        foreach(PassiveObject passive in character.Passives)
+        {
+            foreach(PassiveObject.ChangeTypeEntry typeEntry in passive.AdditiveTypes)
+            {
+                if(typeEntry.AffinityType == damageType)
+                {
+                    if(typeEntry.Passive != null)
+                    {
+                        passivesToAdd.Add(typeEntry);
+                    }
+                }
+            }
+
+            foreach(PassiveObject.ChangeTypeEntry typeEntry in passive.RemovalTypes)
+            {
+                if(typeEntry.AffinityType == damageType)
+                {
+                    passivesToRemove.Add(passive);
+
+                    if(typeEntry.Passive != null)
+                    {
+                        passivesToAdd.Add(typeEntry);
+                    }
+                }
+            } 
+        }  
+        
+        foreach(PassiveObject.ChangeTypeEntry typeEntry in passivesToAdd)
+        {
+            if(typeEntry.Passive is FlatPassiveObject)
+            {
+                character.AddFlatPassive((FlatPassiveObject) typeEntry.Passive);
+            }
+            else if(typeEntry.Passive is DynamicPassiveObject)
+            {
+                character.AddDynamicPassive((DynamicPassiveObject) typeEntry.Passive, typeEntry.Value, false);
+            }
+            else if(typeEntry.Passive is ImmunityPassiveObject)
+            {
+                character.AddImmunityPassive((ImmunityPassiveObject) typeEntry.Passive);
+            }  
+        }
+
+        foreach(PassiveObject passive in passivesToRemove)
+        {
+            character.RemovePassive(passive);
+        }  
     }
 }

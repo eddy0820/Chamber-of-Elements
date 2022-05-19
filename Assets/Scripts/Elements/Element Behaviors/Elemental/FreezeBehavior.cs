@@ -17,6 +17,11 @@ public class FreezeBehavior : AbstractElementBehavior
                 GameManager.Instance.ElementSlotsInv.Container.elementSlots[i].UpdateSlot(new Element(elementalElement.AssociatedElement));
             }
         }
+
+        if(GameManager.Instance.Enemy.Passives.Contains(elementalElement.AssociatedPassive))
+        {
+            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive);
+        }
         
         return true;
     }

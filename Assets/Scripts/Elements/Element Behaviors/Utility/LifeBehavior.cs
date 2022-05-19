@@ -8,10 +8,10 @@ public class LifeBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(!GameManager.Instance.GameStateManager.playerTurnGameState.hasUsedLife)
+        if(!GameStateManager.Instance.playerTurnGameState.hasUsedLife)
         {
-            GameManager.Instance.Player.Stats.Heal(utilityElement.HealAmount, GameManager.Instance.Player);
-            GameManager.Instance.GameStateManager.playerTurnGameState.hasUsedLife = true;
+            Player.Instance.Stats.Heal(utilityElement.HealAmount, Player.Instance);
+            GameStateManager.Instance.playerTurnGameState.hasUsedLife = true;
 
             return true;
         }

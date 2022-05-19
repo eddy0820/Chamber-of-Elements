@@ -6,7 +6,7 @@ public class SunBehavior : AbstractElementBehavior
 {
     public override bool DoBehavior(ElementObject element)
     {
-        GameManager.Instance.WeatherStateManager.ClearWeather();
+       WeatherStateManager.Instance.ClearWeather();
         
         return true;
     }

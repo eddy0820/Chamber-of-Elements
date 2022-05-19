@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MaxHealth
   defaultValue: 100
+  defaultMinValue: 0
+  defaultMaxValue: Infinity

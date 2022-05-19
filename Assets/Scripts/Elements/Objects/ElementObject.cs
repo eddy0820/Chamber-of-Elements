@@ -34,20 +34,42 @@ public abstract class ElementObject : ScriptableObject
     [Header("Behavior")]
     [SerializeField] protected GameObject behavior;
     public AbstractElementBehavior Behavior => behavior.GetComponent<AbstractElementBehavior>();
+    [SerializeField] float extraValue = -1;
+    public float ExtraValue => extraValue;
+    [SerializeField] float secondaryExtraValue = -1;
+    public float SecondaryExtraValue => secondaryExtraValue;
+
+    [Space(15)]
+
     [SerializeField] ElementObject associatedElement;
     public ElementObject AssociatedElement => associatedElement;
     [SerializeField] ElementObject secondaryAssociatedElement;
     public ElementObject SecondaryAssociatedElement => secondaryAssociatedElement;
-    [SerializeField] float extraValue = -1;
-    public float ExtraValue => extraValue;
+
+    [Space(15)]
+
+    [SerializeField] PassiveObject associatedPassive;
+    public PassiveObject AssociatedPassive => associatedPassive;
+    [SerializeField] PassiveObject secondaryAssociatedPassive;
+    public PassiveObject SecondaryAssociatedPassive => secondaryAssociatedPassive;
+    [SerializeField] PassiveObject tertiaryAssociatedPassive;
+    public PassiveObject TertiaryAssociatedPassive => tertiaryAssociatedPassive;
+    
+    [System.NonSerialized] public string permaScriptPath = "";
+    [System.NonSerialized] public string permaPrefabPath = "";
+    [System.NonSerialized] public string permaNewName = "";
 
     protected void SetType(ElementTypes _type)
     {
         type = _type;
     }
 
-    public void CreateElementBehaviorScript(out string scriptPath, out string prefabPath, out string newName)
+    public void CreateElementBehaviorScript()
     {
+        string scriptPath;
+        string prefabPath;
+        string newName;
+
         newName = Regex.Replace(name, @"\s+", "");
 
         switch(type)
@@ -82,7 +104,7 @@ public abstract class ElementObject : ScriptableObject
                 break;
         }
 
-        prefabPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
+        //prefabPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
         
         if(File.Exists(scriptPath) == false)
         {
@@ -107,19 +129,23 @@ public abstract class ElementObject : ScriptableObject
         {
             Debug.Log("Behavior Script Already Exists!");
         }
+
+        permaScriptPath = scriptPath;
+        permaPrefabPath = prefabPath;
+        permaNewName = newName;
     }
 
-    public void CreateElementBehaviorPrefab(string scriptPath, string prefabPath, string newName)
+    public void CreateElementBehaviorPrefab()
     {
-        if(prefabPath != "" && File.Exists(prefabPath) == false)
+        if(permaPrefabPath != "" && File.Exists(permaPrefabPath) == false)
         {
-            GameObject obj = new GameObject(newName + "Behavior");
+            GameObject obj = new GameObject(permaNewName + "Behavior");
             obj.transform.position = Vector3.zero;
             obj.transform.rotation = Quaternion.identity;
             obj.transform.localScale = Vector3.one;
 
-            obj.AddComponent(System.Type.GetType(newName + "Behavior"));
-            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj, prefabPath);  
+            obj.AddComponent(System.Type.GetType(permaNewName + "Behavior"));
+            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj, permaPrefabPath);  
             DestroyImmediate(obj);
 
             behavior = prefab;

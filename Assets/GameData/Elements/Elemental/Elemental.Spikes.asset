@@ -20,4 +20,8 @@ MonoBehaviour:
   description: 'ATTACK: Deal 50 damage. Consume your Ice elements and deal 30 additional
     damage for each element consumed.'
   damage: 50
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 0
+  behavior: {fileID: 25659411416431022, guid: 5adb8bd3744d61048a289c01d013c2d2, type: 3}
+  associatedElement: {fileID: 11400000, guid: d79a0eafd53c74a418c6159de94281ce, type: 2}
+  secondaryAssociatedElement: {fileID: 0}
+  extraValue: 30

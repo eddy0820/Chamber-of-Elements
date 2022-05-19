@@ -1,11 +1,22 @@
 # Chamber of Elements
 
-- make code ork with multile affinity types for elements
-- change blood and buff elements to passives
-- change arena elements to new interface
-- give elements an associative element for behaviors
+- re do affinity types class and object class becuase theres a discconect
+  - make it easier to add affinities
+- make code work with multile affinity types for elements (when your doing passives)
 - re do how i do re roll elements and using the array
-- turn chains cant attack into a passive
+- re do "reroll specific" code
+- create a stat resistance database or something for the takedamge function
+- make more thing singletons
+- might want to fuck with the order for strength and weakness.
+- IFocusable for minions and enemies maybe
+- "miss" ui element
+- "immune" ui element
+- drop down menu for dynamic passives to see what theyve got stacked on top and how many turns for each stack
+- need to fix the order of all the scripts and their awake functions or your gonna conitune to have issues with error
+
+
+- take art folder out of repository
+- re do parts of onplayerclikc and onenemyclick because i fucked up the abstratcion between an element and an element object
 
 - Clean up using stuff in every script
 
@@ -20,7 +31,25 @@
 	- Runestone - when adding mana system
 	- Shield - ask joey about this one
   - Elemental
-    - Acid - when adding passive stuff
 	- Electricity - when adding passive stuff
+	- Gale - when adding passive stuff
+	- Melt - passive stuff
+	- Poison - passive stuff
+	- Smoke - passive stuff
+	- Tornado - passive stuff
+	
+- confusion element
+
+
+- minions
+- relics
+- visuals
+- hover tooltip for elements
+- create enemies that existed
+- menus
+
+- Ability for minion and element slots
+
+
 	
 	

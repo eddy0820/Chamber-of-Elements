@@ -8,7 +8,7 @@ public class StormBehavior : AbstractElementBehavior
     {
         ArenaElementObject arenaElement = (ArenaElementObject) element;
 
-        GameManager.Instance.WeatherStateManager.SwitchWeatherForTurns(arenaElement.AffectedWeather, arenaElement.TurnTimer);
+       WeatherStateManager.Instance.SwitchWeatherForTurns(arenaElement.AffectedWeather, arenaElement.TurnTimer);
         
         return true;
     }

@@ -12,6 +12,10 @@ public class WeatherState : State
         return this;
     }
 
+    public override void OnEnterState() {}
+
+    public override void OnExitState() {}
+
     public void InitWeatherState(string _stateName)
     {
         stateName = _stateName;

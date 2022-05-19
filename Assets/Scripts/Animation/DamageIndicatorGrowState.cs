@@ -8,5 +8,6 @@ public class DamageIndicatorGrowState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<TextMeshProUGUI>().text = "";
+        Destroy(animator.gameObject);
     }
 }

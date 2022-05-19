@@ -15,7 +15,6 @@ MonoBehaviour:
   name: Wizard
   baseStats: {fileID: 11400000, guid: 4a50d26c70a7c3e47bcaa53bfa40ed6d, type: 2}
   affinityType: 6
-  startingPassives:
-  - {fileID: 0}
+  startingPassives: []
   sprite: {fileID: -3417436698567514372, guid: afea853677156e84caea72894a4fba29, type: 3}
   animationController: {fileID: 9100000, guid: 6d717cab3ae79144b94652cde9553eb6, type: 2}
