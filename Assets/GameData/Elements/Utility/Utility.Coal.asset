@@ -21,12 +21,20 @@ MonoBehaviour:
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 7293199711104248805, guid: 932d97ef342f7df4389eef80c6e27801, type: 3}
-  extraValue: 3
+  extraValue: -1
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
+    value: 3
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Utility/CoalBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Utility/CoalBehavior.prefab
   healAmount: -1
   doHealInBehavior: 0

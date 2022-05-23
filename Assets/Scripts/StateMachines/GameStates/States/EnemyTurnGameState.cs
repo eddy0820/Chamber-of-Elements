@@ -49,9 +49,14 @@ public class EnemyTurnGameState : GameState
 
     public override void OnExitState()
     {
-        foreach(System.Action action in GameManager.Instance.Enemy.actionsToDoEveryTurn)
+        foreach(KeyValuePair<int, System.Action> action in GameManager.Instance.Enemy.actionsToDoEveryTurn)
         {
-            action.Invoke();
+            action.Value.Invoke();
+
+            if(action.Key == 1000)
+            {
+                return;
+            }
         }
 
         if(gameStateManager.enemyTurnGameState.currentFocusCounter == GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value && GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)

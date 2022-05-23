@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LavaBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class AcidBehavior : AbstractElementBehavior
 { 
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameManager.Instance.Enemy.AddDynamicPassiveForTurns((DynamicPassiveObject) elementalElement.AssociatedPassive, elementalElement.ExtraValue, (int) elementalElement.SecondaryExtraValue, false);
+        character.AddDynamicPassiveForTurns((DynamicPassiveObject) elementalElement.AssociatedPassive.passive, elementalElement.AssociatedPassive.value, ((int) elementalElement.ExtraValue) - 1, false);
 
         return true;
     }

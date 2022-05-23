@@ -16,11 +16,4 @@ public abstract class CharacterObject : ScriptableObject
     public Sprite Sprite => sprite;
     [SerializeField] RuntimeAnimatorController animationController;
     public RuntimeAnimatorController AnimatorController => animationController;
-
-    [System.Serializable]
-    public class PassiveEntry
-    {
-        public PassiveObject passive;
-        public float value = -1;
-    }
 }

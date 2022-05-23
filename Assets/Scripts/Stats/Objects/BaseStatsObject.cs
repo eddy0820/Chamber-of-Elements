@@ -14,6 +14,7 @@ public class BaseStatsObject : ScriptableObject
     public class BaseStat
     {
         [SerializeField] StatTypeObject statType = null;
+
         [SerializeField] float value;
 
         public StatTypeObject StatType => statType;

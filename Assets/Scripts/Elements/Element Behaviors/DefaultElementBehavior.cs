@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultElementBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         Debug.Log("No Behavior.");
         

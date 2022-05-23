@@ -20,6 +20,10 @@ public abstract class PassiveObject : ScriptableObject
     [SerializeField] ChangeTypeEntry[] removalTypes;
     public ChangeTypeEntry[] RemovalTypes => removalTypes;
 
+    [Space(15)]
+    [SerializeField] bool isPositiveEffect = true;
+    public bool IsPositiveEffect => isPositiveEffect;
+
     protected StatModifier modifier;
     protected Action action;
 

@@ -20,4 +20,20 @@ MonoBehaviour:
   description: 'ATTACK: Deal 30 damage. If the target is Scorched, deal an additional
     30 damage.'
   damage: 30
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 0
+  behavior: {fileID: 383022335381711025, guid: 1c3c52a4fd1a1dc479cba6fd118aef35, type: 3}
+  extraValue: 30
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 1bb5d532e1c32a448b9dca3a6a8ab2d4, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/MeltBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/MeltBehavior.prefab

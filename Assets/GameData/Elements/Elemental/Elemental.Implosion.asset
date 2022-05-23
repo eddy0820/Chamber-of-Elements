@@ -19,4 +19,15 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: b5c19b5b6b12f58438d3e969dc5a27af, type: 3}
   description: 'ATTACK: Deal 75 damage.'
   damage: 75
+  doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  extraValue: -1
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive: {fileID: 0}
+  secondaryAssociatedPassive: {fileID: 0}
+  tertiaryAssociatedPassive: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 
+  permaNewName: 

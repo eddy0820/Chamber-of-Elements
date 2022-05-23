@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785ba9a413ac6a14eb18d11cd348728e, type: 3}
+  m_Name: Minion.WaterElemental
+  m_EditorClassIdentifier: 
+  name: Water Elemental
+  baseStats: {fileID: 11400000, guid: c5b80c37810643145ba4026f31010b09, type: 2}
+  affinityType: 0
+  startingPassives: []
+  sprite: {fileID: 21300000, guid: 85b6ab8e4e01b6f40ba2118dbe0f86bb, type: 3}
+  animationController: {fileID: 0}
+  description: A living being of water.

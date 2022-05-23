@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class IceBehavior : AbstractElementBehavior
 { 
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(GameManager.Instance.Enemy.Passives.Contains(elementalElement.AssociatedPassive))
+        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
         {
-            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
         }
 
         return true;

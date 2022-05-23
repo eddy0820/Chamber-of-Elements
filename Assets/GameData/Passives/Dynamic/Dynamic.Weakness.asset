@@ -17,6 +17,7 @@ MonoBehaviour:
   description: -'X' to Basic Attack
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 0
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: 510ba4a6d9299a1458c50fd8b12bffcf, type: 2}
   secondaryAffectedStat: {fileID: 0}

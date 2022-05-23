@@ -11,7 +11,7 @@ public class UtilityElementObject : ElementObject
     [SerializeField] bool doHealInBehavior;
     public bool DoHealInBehavior => doHealInBehavior;
 
-    private void Awake()
+    public override void OnAwake()
     {
         SetType(ElementTypes.Utility);
     }

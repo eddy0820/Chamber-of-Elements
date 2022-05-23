@@ -22,7 +22,17 @@ MonoBehaviour:
   doAttackInBehavior: 0
   behavior: {fileID: 3892989219091329750, guid: 28ebc965be342664792e5cbf2256b9a6, type: 3}
   extraValue: 35
+  secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-  secondaryAssociatedPassive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/HailBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/HailBehavior.prefab

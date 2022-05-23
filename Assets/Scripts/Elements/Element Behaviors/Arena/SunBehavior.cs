@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SunBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
-       WeatherStateManager.Instance.ClearWeather();
+        WeatherStateManager.Instance.ClearWeather();
         
         return true;
     }

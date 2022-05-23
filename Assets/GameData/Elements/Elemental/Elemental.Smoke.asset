@@ -17,6 +17,22 @@ MonoBehaviour:
   type: 2
   affinityTypes: 
   elementTexture: {fileID: 21300000, guid: ac52ba9ce01d40748bf46835b732ee90, type: 3}
-  description: 'ATTACK: Deal 10 damage, give the enemy a -25% miss chance for 3 turns.'
+  description: 'ATTACK: Deal 10 damage, give the enemy Confusion(25) for 3 turns.'
   damage: 10
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 0
+  behavior: {fileID: 158519045638960137, guid: 479c3d7e85b90804399cf3bcadf32bb5, type: 3}
+  extraValue: 3
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: d4b8056d12c077a458b6efeaa44f4f5b, type: 2}
+    value: -0.25
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/SmokeBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/SmokeBehavior.prefab

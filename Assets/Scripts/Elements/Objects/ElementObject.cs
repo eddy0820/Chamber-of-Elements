@@ -48,75 +48,82 @@ public abstract class ElementObject : ScriptableObject
 
     [Space(15)]
 
-    [SerializeField] PassiveObject associatedPassive;
-    public PassiveObject AssociatedPassive => associatedPassive;
-    [SerializeField] PassiveObject secondaryAssociatedPassive;
-    public PassiveObject SecondaryAssociatedPassive => secondaryAssociatedPassive;
-    [SerializeField] PassiveObject tertiaryAssociatedPassive;
-    public PassiveObject TertiaryAssociatedPassive => tertiaryAssociatedPassive;
+    [SerializeField] PassiveEntry associatedPassive;
+    public PassiveEntry AssociatedPassive => associatedPassive;
+    [SerializeField] PassiveEntry secondaryAssociatedPassive;
+    public PassiveEntry SecondaryAssociatedPassive => secondaryAssociatedPassive;
+    [SerializeField] PassiveEntry tertiaryAssociatedPassive;
+    public PassiveEntry TertiaryAssociatedPassive => tertiaryAssociatedPassive;
     
-    [System.NonSerialized] public string permaScriptPath = "";
-    [System.NonSerialized] public string permaPrefabPath = "";
-    [System.NonSerialized] public string permaNewName = "";
+    [Header("File Paths")]
+    [ReadOnly] public string permaScriptPath = "";
+    [ReadOnly] public string permaPrefabPath = "";
+    private string permaNewName = "";
+
+    private void Awake()
+    {
+        OnAwake();
+        CreateFilePaths();
+    }
+
+    public abstract void OnAwake();
 
     protected void SetType(ElementTypes _type)
     {
         type = _type;
     }
 
-    public void CreateElementBehaviorScript()
+    [ContextMenu("Create File Paths")]
+    public void CreateFilePaths()
     {
-        string scriptPath;
-        string prefabPath;
-        string newName;
-
-        newName = Regex.Replace(name, @"\s+", "");
+        permaNewName = Regex.Replace(name, @"\s+", "");
 
         switch(type)
         {
             case ElementTypes.Primal:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Primal/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Primal/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Primal/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Primal/" + permaNewName + "Behavior.prefab";
                 break;
             case ElementTypes.Primordial:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Primordial/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Primordial/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Primordial/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Primordial/" + permaNewName + "Behavior.prefab";
                 break;
             case ElementTypes.Elemental:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Elemental/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Elemental/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Elemental/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Elemental/" + permaNewName + "Behavior.prefab";
                 break;
             case ElementTypes.Physical:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Physical/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Physical/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Physical/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Physical/" + permaNewName + "Behavior.prefab";
                 break;
             case ElementTypes.Arena:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Arena/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Arena/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Arena/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Arena/" + permaNewName + "Behavior.prefab";
                 break;
             case ElementTypes.Utility:
-                scriptPath = "Assets/Scripts/Elements/Element Behaviors/Utility/" + newName + "Behavior.cs";
-                prefabPath = "Assets/Prefabs/Element Behaviors/Utility/" + newName + "Behavior.prefab";
+                permaScriptPath = "Assets/Scripts/Elements/Element Behaviors/Utility/" + permaNewName + "Behavior.cs";
+                permaPrefabPath = "Assets/Prefabs/ElementBehaviors/Utility/" + permaNewName + "Behavior.prefab";
                 break;
             default:
-                scriptPath = "";
-                prefabPath = "";
+                permaScriptPath = "";
+                permaPrefabPath = "";
                 break;
         }
+    }
 
-        //prefabPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
-        
-        if(File.Exists(scriptPath) == false)
+    public void CreateElementBehaviorScript()
+    {   
+        if(File.Exists(permaScriptPath) == false)
         {
-            using (StreamWriter outfile = new StreamWriter(scriptPath))
+            using (StreamWriter outfile = new StreamWriter(permaScriptPath))
             {
                 outfile.WriteLine("using UnityEngine;");
                 outfile.WriteLine("using System.Collections;");
                 outfile.WriteLine("using System.Collections.Generic;");
                 outfile.WriteLine("");
-                outfile.WriteLine("public class " + newName + "Behavior : AbstractElementBehavior");
+                outfile.WriteLine("public class " + permaNewName + "Behavior : AbstractElementBehavior");
                 outfile.WriteLine("{ ");
-                outfile.WriteLine("    public override bool DoBehavior(ElementObject element)");
+                outfile.WriteLine("    public override bool DoBehavior(ElementObject element, Character character)");
                 outfile.WriteLine("    {");
                 outfile.WriteLine("        throw new System.NotImplementedException();");
                 outfile.WriteLine("    }");         
@@ -129,30 +136,20 @@ public abstract class ElementObject : ScriptableObject
         {
             Debug.Log("Behavior Script Already Exists!");
         }
-
-        permaScriptPath = scriptPath;
-        permaPrefabPath = prefabPath;
-        permaNewName = newName;
     }
 
     public void CreateElementBehaviorPrefab()
     {
-        if(permaPrefabPath != "" && File.Exists(permaPrefabPath) == false)
-        {
-            GameObject obj = new GameObject(permaNewName + "Behavior");
-            obj.transform.position = Vector3.zero;
-            obj.transform.rotation = Quaternion.identity;
-            obj.transform.localScale = Vector3.one;
+        GameObject obj = new GameObject(permaNewName + "Behavior");
+        obj.transform.position = Vector3.zero;
+        obj.transform.rotation = Quaternion.identity;
+        obj.transform.localScale = Vector3.one;
 
-            obj.AddComponent(System.Type.GetType(permaNewName + "Behavior"));
-            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj, permaPrefabPath);  
-            DestroyImmediate(obj);
+        obj.AddComponent(System.Type.GetType(permaNewName + "Behavior"));
 
-            behavior = prefab;
-        }
-        else
-        {
-            Debug.Log("Behavior Prefab Already Exists!");
-        } 
+        GameObject prefab = PrefabUtility.SaveAsPrefabAsset(obj, permaPrefabPath);  
+        DestroyImmediate(obj);
+
+        behavior = prefab;
     }
 }

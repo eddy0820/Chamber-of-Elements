@@ -20,4 +20,20 @@ MonoBehaviour:
   description: 'ATTACK: Deal 35 damage and an additional 20 damage if the enemy is
     wet.'
   damage: 35
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 0
+  behavior: {fileID: 463639846088297436, guid: fa94d31d4cb47db40b90d35caa8f3f9c, type: 3}
+  extraValue: 20
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/ElectricityBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/ElectricityBehavior.prefab

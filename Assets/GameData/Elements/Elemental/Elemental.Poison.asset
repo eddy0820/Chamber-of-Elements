@@ -17,6 +17,22 @@ MonoBehaviour:
   type: 2
   affinityTypes: 
   elementTexture: {fileID: 21300000, guid: d2905f361dcb85b48aaf5e73c0054e70, type: 3}
-  description: 'ATTACK: Poisons the enemy, dealing 10 damage per turn for 5 turns.'
-  damage: -1
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  description: 'ATTACK: Give the enemy Poison(10) for 5 turns'
+  damage: 0
+  doAttackInBehavior: 0
+  behavior: {fileID: 441139630168981830, guid: ca3b252fb7773724aac24bd7df6b16f2, type: 3}
+  extraValue: 5
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 3ff469d76801c3048908fe2602662328, type: 2}
+    value: 10
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/PoisonBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/PoisonBehavior.prefab

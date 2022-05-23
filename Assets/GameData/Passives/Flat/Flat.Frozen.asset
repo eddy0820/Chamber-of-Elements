@@ -19,6 +19,8 @@ MonoBehaviour:
   removalTypes:
   - affinityType: 1
     passive: {fileID: 0}
+    value: -1
+  isPositiveEffect: 0
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
   secondaryAffectedStat: {fileID: 0}

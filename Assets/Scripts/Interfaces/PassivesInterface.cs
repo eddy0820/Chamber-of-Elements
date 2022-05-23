@@ -14,7 +14,6 @@ public class PassivesInterface : AbstractGameInterface
 
     protected override void Initialize() {}
 
-
     public void InitPassiveSlotUI(PassiveObject passive)
     {
         GameObject obj = Instantiate(passiveUIPrefab, transform.position, Quaternion.identity, gameObject.transform);
@@ -41,13 +40,13 @@ public class PassivesInterface : AbstractGameInterface
 
             if(dynamicPassive.StatModifyingPassive && (dynamicPassive.ModifierType == StatModifierTypes.PercentAdd || dynamicPassive.ModifierType == StatModifierTypes.PercentMult))
             {
-                newTitle = passive.Name + "(" + (dynamicPassive.Value * 100).ToString() + ")";
-                newDescription = newDescription.Replace("'X'", (dynamicPassive.Value * 100).ToString());
+                newTitle = passive.Name + "(" + Mathf.Abs((dynamicPassive.Value * 100)).ToString() + ")";
+                newDescription = newDescription.Replace("'X'", Mathf.Abs((dynamicPassive.Value * 100)).ToString());
             }
             else
             {
-                newTitle = passive.Name + "(" + dynamicPassive.Value.ToString() + ")";
-                newDescription = newDescription.Replace("'X'", dynamicPassive.Value.ToString());
+                newTitle = passive.Name + "(" + Mathf.Abs(dynamicPassive.Value).ToString() + ")";
+                newDescription = newDescription.Replace("'X'", Mathf.Abs(dynamicPassive.Value).ToString());
             }
             
             textTitle.text = newTitle;
@@ -81,13 +80,13 @@ public class PassivesInterface : AbstractGameInterface
 
         if(passive.StatModifyingPassive && (passive.ModifierType == StatModifierTypes.PercentAdd || passive.ModifierType == StatModifierTypes.PercentMult))
         {
-            newTitle = passive.Name + "(" + (((DynamicPassiveObject) passive).Value * 100).ToString() + ")";
-            newDescription = newDescription.Replace("'X'", (((DynamicPassiveObject) passive).Value * 100).ToString());
+            newTitle = passive.Name + "(" + Mathf.Abs((((DynamicPassiveObject) passive).Value * 100)).ToString() + ")";
+            newDescription = newDescription.Replace("'X'", Mathf.Abs((((DynamicPassiveObject) passive).Value * 100)).ToString());
         }
         else
         {
-            newTitle = passive.Name + "(" + ((DynamicPassiveObject) passive).Value.ToString() + ")";
-            newDescription = newDescription.Replace("'X'", ((DynamicPassiveObject) passive).Value.ToString());
+            newTitle = passive.Name + "(" + Mathf.Abs(((DynamicPassiveObject) passive).Value).ToString() + ")";
+            newDescription = newDescription.Replace("'X'", Mathf.Abs(((DynamicPassiveObject) passive).Value).ToString());
         }
         
         textTitle.text = newTitle;

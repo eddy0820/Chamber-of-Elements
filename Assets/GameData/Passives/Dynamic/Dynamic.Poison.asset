@@ -17,10 +17,12 @@ MonoBehaviour:
   description: Take 'X' damage every turn.
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 0
   statModifyingPassive: 0
   affectedStat: {fileID: 0}
   secondaryAffectedStat: {fileID: 0}
   modifierType: 0
   behaviorEveryTurnPassive: 1
   behaviorType: 0
+  behaviorOrder: 1
   affinityTypeForDamageBehavior: 6

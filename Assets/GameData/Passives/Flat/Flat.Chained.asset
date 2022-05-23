@@ -17,6 +17,7 @@ MonoBehaviour:
   description: Cannot do Focus Attack
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 0
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: b27bd369431c8594c86346745a1bb95c, type: 2}
   secondaryAffectedStat: {fileID: 0}

@@ -23,6 +23,8 @@ public class DynamicPassiveObject : PassiveObject
     public bool BehaviorEveryTurnPassive => behaviorEveryTurnPassive;
     [SerializeField] PassiveBehaviorTypes behaviorType;
     public PassiveBehaviorTypes BehaviorType => behaviorType;
+    [SerializeField] int behaviorOrder;
+    public int BehaviorOrder => behaviorOrder;
     [SerializeField] AffinityTypes affinityTypeForDamageBehavior;
     public AffinityTypes AffinityTypeForDamageBehavior => affinityTypeForDamageBehavior;
     float value = 0;
@@ -109,9 +111,18 @@ public class DynamicPassiveObject : PassiveObject
                     action = ()=> character.Stats.Heal(value, character); 
                     break;
             }
-
-            character.actionsToDoEveryTurn.Add(action);
-            initPassive = false;
+            
+            if(character.actionsToDoEveryTurn.ContainsKey(behaviorOrder))
+            {
+                Debug.Log("'ActionsToDoEveryTurn' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+                initPassive = false;
+            }
+            else
+            {
+                character.actionsToDoEveryTurn.Add(behaviorOrder, action);
+                initPassive = false;
+            }
+            
         }
         else
         {
@@ -121,7 +132,7 @@ public class DynamicPassiveObject : PassiveObject
 
     private void RemoveAffectBehavior(Character character)
     {
-        character.actionsToDoEveryTurn.Remove(action);
+        character.actionsToDoEveryTurn.Remove(behaviorOrder);
         initPassive = false;
     }
 }

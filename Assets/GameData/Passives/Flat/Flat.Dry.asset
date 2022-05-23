@@ -23,6 +23,7 @@ MonoBehaviour:
   - affinityType: 0
     passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
     value: -1
+  isPositiveEffect: 0
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
   secondaryAffectedStat: {fileID: 0}

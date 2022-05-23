@@ -11,7 +11,7 @@ public class ArenaElementObject : ElementObject
     [SerializeField] int turnTimer = -1;
     public int TurnTimer => turnTimer;
 
-    private void Awake()
+    public override void OnAwake()
     {
         SetType(ElementTypes.Arena);
     }

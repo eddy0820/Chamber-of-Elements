@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LightBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
         int healAmount = Random.Range((int) utilityElement.HealAmount, ((int) utilityElement.ExtraValue) + 1);
 
-        Player.Instance.Stats.Heal(healAmount, Player.Instance);
+        character.Stats.Heal(healAmount, character);
         
         return true;
     }

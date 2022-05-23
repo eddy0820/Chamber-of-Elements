@@ -22,9 +22,19 @@ MonoBehaviour:
   doAttackInBehavior: 0
   behavior: {fileID: 3266119895919318165, guid: 29ce60d16e6a4594aa33efbf05cb599b, type: 3}
   extraValue: -1
+  secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-  secondaryAssociatedPassive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Arena/HailstormBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Arena/HailstormBehavior.prefab
   affectedWeather: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
   turnTimer: 3

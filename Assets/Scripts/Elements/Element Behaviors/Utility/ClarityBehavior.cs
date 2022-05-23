@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClarityBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         AffinityTypes currentAffinity = Player.Instance.AffinityType;
         AffinityTypes affinityType = GenerateAffinity();

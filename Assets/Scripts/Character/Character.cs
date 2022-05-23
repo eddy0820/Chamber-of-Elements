@@ -22,7 +22,7 @@ public abstract class Character : MonoBehaviour
     public HashSet<PassiveObject> Passives => passives;
     protected PassivesInterface passivesInterface;
     public PassivesInterface PassivesInterface => passivesInterface;
-    [System.NonSerialized] public List<Action> actionsToDoEveryTurn;
+    [System.NonSerialized] public SortedList<int, Action> actionsToDoEveryTurn;
     Dictionary<string, PassiveWithTurnsInfo> passivesWithTurns;
 
     [System.NonSerialized] public Dictionary<AffinityTypes, ImmunityPassiveObject> immunityAffinityTypes;
@@ -43,15 +43,15 @@ public abstract class Character : MonoBehaviour
 
         passives = new HashSet<PassiveObject>();
 
-        actionsToDoEveryTurn = new List<Action>();
-        actionsToDoEveryTurn.Add(()=> PassiveTurnCalcRemove());
+        actionsToDoEveryTurn = new SortedList<int, Action>();
+        actionsToDoEveryTurn.Add(1000, ()=> PassiveTurnCalcRemove());
         passivesWithTurns = new Dictionary<string, PassiveWithTurnsInfo>();
 
         immunityAffinityTypes = new Dictionary<AffinityTypes, ImmunityPassiveObject>();
         immunityPassives = new Dictionary<PassiveObject, ImmunityPassiveObject>();
         immunityElements = new Dictionary<ElementObject, ImmunityPassiveObject>();
 
-        foreach(CharacterObject.PassiveEntry passive in characterObject.StartingPassives)
+        foreach(PassiveEntry passive in characterObject.StartingPassives)
         {
             if(passive.passive is FlatPassiveObject)
             {
@@ -319,19 +319,6 @@ public abstract class Character : MonoBehaviour
         }
 
         return removed;
-    }
-
-    [System.Serializable]
-    class DebugCharacterStat
-    {
-        [SerializeField] string statName;
-        [SerializeField] float value;
-
-        public DebugCharacterStat(string _statName, float _value)
-        {
-            statName = _statName;
-            value = _value;
-        }
     }
 
     [System.Serializable]

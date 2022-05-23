@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrowthBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
@@ -13,7 +13,7 @@ public class GrowthBehavior : AbstractElementBehavior
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            Player.Instance.Stats.Heal(utilityElement.ExtraValue, Player.Instance);
+            character.Stats.Heal(utilityElement.ExtraValue, Player.Instance);
         }
 
         return true;

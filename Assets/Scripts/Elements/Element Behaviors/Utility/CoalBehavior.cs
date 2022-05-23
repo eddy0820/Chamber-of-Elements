@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CoalBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
         
-        Player.Instance.AddDynamicPassive((DynamicPassiveObject) utilityElement.AssociatedPassive, utilityElement.ExtraValue, false);
+        character.AddDynamicPassive((DynamicPassiveObject) utilityElement.AssociatedPassive.passive, utilityElement.AssociatedPassive.value, false);
 
         return true;
     }

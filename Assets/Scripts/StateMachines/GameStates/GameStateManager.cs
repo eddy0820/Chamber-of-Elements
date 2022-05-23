@@ -31,6 +31,7 @@ public class GameStateManager : AbstractStateManager
     {
         Player.Instance.Stats.TakeDamage(value, damageType, Player.Instance);
         GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, GameManager.Instance.Enemy);
+        GameManager.Instance.Minion.Stats.TakeDamage(value, damageType, GameManager.Instance.Minion);
         ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
         // minion damage
     }
@@ -40,6 +41,7 @@ public class GameStateManager : AbstractStateManager
     public void DealDamageToEverythingExceptEnemy(AffinityTypes damageType, float value)
     {
         Player.Instance.Stats.TakeDamage(value, damageType, Player.Instance);
+        GameManager.Instance.Minion.Stats.TakeDamage(value, damageType, GameManager.Instance.Minion);
         ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
         // minion damage
     }

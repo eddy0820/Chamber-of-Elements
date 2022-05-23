@@ -47,9 +47,14 @@ public class PlayerTurnGameState : GameState
 
     public override void OnExitState()
     {
-        foreach(System.Action action in Player.Instance.actionsToDoEveryTurn)
+        foreach(KeyValuePair<int, System.Action> action in Player.Instance.actionsToDoEveryTurn)
         {
-            action.Invoke();
+            action.Value.Invoke();
+
+            if(action.Key == 1000)
+            {
+                return;
+            }
         }
     }
 

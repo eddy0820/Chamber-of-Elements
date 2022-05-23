@@ -26,6 +26,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-  secondaryAssociatedPassive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-  tertiaryAssociatedPassive: {fileID: 11400000, guid: be8d45382c553914da183e8eb3d83199, type: 2}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 11400000, guid: be8d45382c553914da183e8eb3d83199, type: 2}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/ChainsBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/ChainsBehavior.prefab

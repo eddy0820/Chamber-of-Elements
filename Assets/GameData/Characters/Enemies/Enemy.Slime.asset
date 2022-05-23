@@ -16,7 +16,7 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: adc78727390cc58439aaa74b00fadb37, type: 2}
   affinityType: 6
   startingPassives:
-  - passive: {fileID: 11400000, guid: 5b669a2b2c7800c459198bff8a5695f8, type: 2}
+  - passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
     value: -1
   sprite: {fileID: 368543389579951487, guid: 68d0c5b5288b2cf46a7042c6af08fcd4, type: 3}
   animationController: {fileID: 9100000, guid: 5cabead5fc117b84f81b5d412a13f287, type: 2}

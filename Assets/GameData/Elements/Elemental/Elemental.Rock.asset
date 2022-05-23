@@ -19,4 +19,15 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 86c2b3fec89a1354f90db1a450e3b609, type: 3}
   description: 'ATTACK: A sturdy, jagged material.'
   damage: 10
+  doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  extraValue: -1
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive: {fileID: 0}
+  secondaryAssociatedPassive: {fileID: 0}
+  tertiaryAssociatedPassive: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 
+  permaNewName: 

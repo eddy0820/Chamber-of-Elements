@@ -22,5 +22,14 @@ MonoBehaviour:
   doAttackInBehavior: 0
   behavior: {fileID: 1815639776195474911, guid: 569978eede3b35541979f066039a8f6c, type: 3}
   extraValue: -1
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive: {fileID: 0}
+  secondaryAssociatedPassive: {fileID: 0}
+  tertiaryAssociatedPassive: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 
+  permaNewName: 
   affectedWeather: {fileID: 11400000, guid: 96f307ae9b2254040910ac05d6361873, type: 2}
   turnTimer: 3

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
  
     Enemy enemy;
     public Enemy Enemy => enemy;
+    Minion minion;
+    public Minion Minion => minion;
     GameObject interfaceCanvas;
     public GameObject InterfaceCanvas => interfaceCanvas;
     GameObject infoCanvas;
@@ -41,15 +43,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
+        minion = GameObject.FindWithTag("Minion").GetComponent<Minion>();
         interfaceCanvas = GameObject.Find("Game Interface Canvas");
         infoCanvas = GameObject.FindObjectOfType<ElementTextDisplay>().transform.parent.gameObject;
 
         elementDatabase.InitElements();
         affinityDatabase.InitAffinities();
         weatherDatabase.InitWeathers();
-        //gamestate manager init
-        // weatherstate manager init
-        // player init 
 
         turnCounter = 1;
     }

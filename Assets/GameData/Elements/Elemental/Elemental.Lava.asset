@@ -22,3 +22,12 @@ MonoBehaviour:
   doAttackInBehavior: 1
   behavior: {fileID: 5950557669057501599, guid: 5fc2d0019418c1640a976dbd5e19b0c1, type: 3}
   extraValue: 50
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive: {fileID: 0}
+  secondaryAssociatedPassive: {fileID: 0}
+  tertiaryAssociatedPassive: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 
+  permaNewName: 

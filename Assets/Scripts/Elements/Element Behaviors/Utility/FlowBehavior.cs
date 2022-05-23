@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlowBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         GameManager.Instance.ElementSlotsInv.ReRollElements();
         

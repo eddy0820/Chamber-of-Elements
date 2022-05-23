@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Physical Element", menuName = "Elements/Physical")]
 public class PhysicalElementObject : ElementObject
 {
-    private void Awake()
+    public override void OnAwake()
     {
         SetType(ElementTypes.Physical);
     }

@@ -21,9 +21,18 @@ MonoBehaviour:
   damage: 15
   doAttackInBehavior: 0
   behavior: {fileID: 5634525863368042736, guid: 56bb61b5d36dbdb47ac9635ed60e828f, type: 3}
-  extraValue: 10
-  secondaryExtraValue: 5
+  extraValue: 5
+  secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: 3ff469d76801c3048908fe2602662328, type: 2}
-  secondaryAssociatedPassive: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 3ff469d76801c3048908fe2602662328, type: 2}
+    value: 10
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/AcidBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/AcidBehavior.prefab

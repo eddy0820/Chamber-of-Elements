@@ -40,7 +40,7 @@ public class AnimationEventListener : MonoBehaviour
 
     private void DoEnemyAttackHelper()
     {
-        if(UnityEngine.Random.Range(0, 101) > Player.Instance.Stats.Stats["HitChance"].value)
+        if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["HitChance"].value)
         {
             Debug.Log("Miss");
         }

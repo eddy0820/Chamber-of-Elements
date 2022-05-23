@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Primordial Element", menuName = "Elements/Primordial")]
 public class PrimordialElementObject : ElementObject
 {
-    private void Awake()
+    public override void OnAwake()
     {
         SetType(ElementTypes.Primordial);
     }

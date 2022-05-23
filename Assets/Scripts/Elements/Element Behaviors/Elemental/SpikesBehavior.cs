@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SpikesBehavior : AbstractElementBehavior
 { 
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
@@ -21,7 +21,7 @@ public class SpikesBehavior : AbstractElementBehavior
             }
         }
 
-        Player.Instance.Stats.TakeDamage(damage, GameManager.Instance.mouseElement.element.AffinityType, Player.Instance);
+        character.Stats.TakeDamage(damage, GameManager.Instance.mouseElement.element.AffinityType, character);
     
         return true;
     }

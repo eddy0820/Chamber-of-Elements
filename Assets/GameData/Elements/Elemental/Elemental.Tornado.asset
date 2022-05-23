@@ -17,6 +17,22 @@ MonoBehaviour:
   type: 2
   affinityTypes: 
   elementTexture: {fileID: 21300000, guid: b1c9a504c765e124ba7fa712d1c3bb30, type: 3}
-  description: 'ATTACK: Deal 15 damage, give the enemy -50% hit chance next turn.'
+  description: 'ATTACK: Deal 15 damage, give the enemy Confusion(50) for one turn.'
   damage: 15
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
+  doAttackInBehavior: 0
+  behavior: {fileID: 3128198397191786311, guid: 6b631245c5b1ada4fa8d12ee991f8ced, type: 3}
+  extraValue: 1
+  secondaryExtraValue: -1
+  associatedElement: {fileID: 0}
+  secondaryAssociatedElement: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: d4b8056d12c077a458b6efeaa44f4f5b, type: 2}
+    value: -0.5
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/TornadoBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/TornadoBehavior.prefab

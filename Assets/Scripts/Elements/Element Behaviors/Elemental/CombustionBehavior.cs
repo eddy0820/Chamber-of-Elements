@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CombustionBehavior : AbstractElementBehavior
 { 
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 

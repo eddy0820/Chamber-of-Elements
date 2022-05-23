@@ -12,23 +12,21 @@ public class ElementObjectCustom : Editor
 
         ElementObject elementObject = (ElementObject) target;
 
-        if(GUILayout.Button("Create Element Behavior Script", GUILayout.Height(50)))
+        if(GUILayout.Button("Create File Paths", GUILayout.Height(25)))
+        {
+            elementObject.CreateFilePaths();
+        }
+
+        if(GUILayout.Button("Create Element Behavior Script", GUILayout.Height(40)))
         {
             elementObject.CreateElementBehaviorScript();
         }
 
-        if(GUILayout.Button("Create Element Behavior Prefab", GUILayout.Height(50)))
+        if(GUILayout.Button("Create Element Behavior Prefab", GUILayout.Height(40)))
         {
             if(!EditorApplication.isCompiling)
             {
-                if(File.Exists(elementObject.permaScriptPath))
-                {
-                    elementObject.CreateElementBehaviorPrefab();
-                }
-                else
-                {
-                    Debug.Log("Create The Script First!");
-                }
+                elementObject.CreateElementBehaviorPrefab();
             }
             else
             {
@@ -37,17 +35,10 @@ public class ElementObjectCustom : Editor
             
         }
 
-        if(GUILayout.Button("Open Behavior Scipt", GUILayout.Height(50)))
-        {
-            if(File.Exists(elementObject.permaScriptPath))
-            {
-                var script = (MonoScript)AssetDatabase.LoadAssetAtPath(elementObject.permaScriptPath, typeof(MonoScript));
-                AssetDatabase.OpenAsset(script);
-            }
-            else
-            {
-                Debug.Log("Create The Script First!");
-            }
+        if(GUILayout.Button("Open Behavior Scipt", GUILayout.Height(25)))
+        { 
+            var script = (MonoScript)AssetDatabase.LoadAssetAtPath(elementObject.permaScriptPath, typeof(MonoScript));
+            AssetDatabase.OpenAsset(script);
         }
     }
 

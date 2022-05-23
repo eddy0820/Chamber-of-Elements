@@ -22,7 +22,17 @@ MonoBehaviour:
   doAttackInBehavior: 0
   behavior: {fileID: 8667380633053144098, guid: 5b4c2ae8c5c14c542a91683bfde8f4eb, type: 3}
   extraValue: -1
+  secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-  secondaryAssociatedPassive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+  associatedPassive:
+    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/IceBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/IceBehavior.prefab

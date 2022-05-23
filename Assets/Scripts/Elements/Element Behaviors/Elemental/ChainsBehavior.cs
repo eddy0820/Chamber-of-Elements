@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 public class ChainsBehavior : AbstractElementBehavior
 { 
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameManager.Instance.Enemy.AddFlatPassiveForTurns((FlatPassiveObject) elementalElement.TertiaryAssociatedPassive, (int) elementalElement.ExtraValue);
+        character.AddFlatPassiveForTurns((FlatPassiveObject) elementalElement.TertiaryAssociatedPassive.passive, (int) elementalElement.ExtraValue);
 
-        if(GameManager.Instance.Enemy.Passives.Contains(elementalElement.AssociatedPassive))
+        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
         {
-            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
         }
 
         return true;

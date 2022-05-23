@@ -17,6 +17,7 @@ MonoBehaviour:
   description: -'X'% Hit Chance.
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 0
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
   secondaryAffectedStat: {fileID: 0}

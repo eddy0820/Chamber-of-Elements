@@ -8,6 +8,9 @@ public class FlatPassiveObject : PassiveObject
     [Header("Flat Passive Specific")]
 
     [Header("Stat Modifying Passive")]
+    
+    [SerializeField] float value;
+
     [SerializeField] bool statModifyingPassive;
     public bool StatModifyingPassive => statModifyingPassive;
     [SerializeField] StatTypeObject affectedStat;
@@ -22,10 +25,10 @@ public class FlatPassiveObject : PassiveObject
     public bool BehaviorEveryTurnPassive => behaviorEveryTurnPassive;
     [SerializeField] PassiveBehaviorTypes behaviorType;
     public PassiveBehaviorTypes BehaviorType => behaviorType;
+    [SerializeField] int behaviorOrder;
+    public int BehaviorOrder => behaviorOrder;
     [SerializeField] AffinityTypes affinityTypeForDamageBehavior;
     public AffinityTypes AffinityTypeForDamageBehavior => affinityTypeForDamageBehavior;
-    [SerializeField] float value;
-
 
     public override void TakeAffect(Character character)
     {
@@ -85,11 +88,18 @@ public class FlatPassiveObject : PassiveObject
                 break;
         }
 
-        character.actionsToDoEveryTurn.Add(action);
+        if(character.actionsToDoEveryTurn.ContainsKey(behaviorOrder))
+        {
+            Debug.Log("'ActionsToDoEveryTurn' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+        }
+        else
+        {
+            character.actionsToDoEveryTurn.Add(behaviorOrder, action);
+        }
     }
 
     private void RemoveAffectBehavior(Character character)
     {
-        character.actionsToDoEveryTurn.Remove(action);
+        character.actionsToDoEveryTurn.Remove(behaviorOrder);
     }
 }

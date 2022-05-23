@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MoonBehavior : AbstractElementBehavior
 {
-    public override bool DoBehavior(ElementObject element)
+    public override bool DoBehavior(ElementObject element, Character character)
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(WeatherStateManager.Instance.currentState.GetType() ==WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Storm"]].GetType())
+        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Storm"]].GetType())
         {
-            Player.Instance.Stats.Heal(utilityElement.HealAmount, Player.Instance);
+           character.Stats.Heal(utilityElement.HealAmount, character);
         }
 
        WeatherStateManager.Instance.ClearWeather();

@@ -3,42 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class CharactersInterface : AbstractGameInterface
-{
-    [SerializeField] Color playerInteractColor = new Color(0, 191, 191, 35);
-    [SerializeField] Color enemyInteractColor = new Color(191, 0, 0, 35);
-    [SerializeField] Color weatherInteractColor = new Color(198, 32, 229, 35);
+{   
+    [SerializeField] CharacterInteractEntry playerInteract;
+    [SerializeField] CharacterInteractEntry enemyInteract;
+    [SerializeField] CharacterInteractEntry weatherInteract;
+    [SerializeField] CharacterInteractEntry minionInteract;
+
     [SerializeField] Sprite cursorUse;
     [SerializeField] Sprite cursorAttack;
    
-    GameObject playerInteract;
-    GameObject enemyInteract;
-    GameObject weatherInteract;
+    TextMeshProUGUI minionText;
 
-    protected override void OnAwake()
+    protected override void OnAwake() 
     {
-        playerInteract = transform.GetChild(0).gameObject;
-        enemyInteract = transform.GetChild(1).gameObject;
-        weatherInteract = transform.GetChild(2).gameObject;
+        minionText = GameManager.Instance.InfoCanvas.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        minionText.text = "";
     }
 
     protected override void Initialize()
     {
-        AddEvent(playerInteract, EventTriggerType.PointerEnter, delegate { OnEnterPlayer(playerInteract); });
-        AddEvent(playerInteract, EventTriggerType.PointerExit, delegate { OnExitPlayer(playerInteract); });
-        AddEvent(playerInteract, EventTriggerType.PointerClick, (data) => { OnPlayerClick(playerInteract, (PointerEventData)data); });
-        playerInteract.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        AddEvent(playerInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterPlayer(playerInteract.interactObject); });
+        AddEvent(playerInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitPlayer(playerInteract.interactObject); });
+        AddEvent(playerInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnPlayerClick(playerInteract.interactObject, (PointerEventData)data); });
+        playerInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         
-        AddEvent(enemyInteract, EventTriggerType.PointerEnter, delegate { OnEnterEnemy(enemyInteract); });
-        AddEvent(enemyInteract, EventTriggerType.PointerExit, delegate { OnExitEnemy(enemyInteract); });
-        AddEvent(enemyInteract, EventTriggerType.PointerClick, (data) => { OnEnemyClick(enemyInteract, (PointerEventData)data); });
-        enemyInteract.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        AddEvent(enemyInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterEnemy(enemyInteract.interactObject); });
+        AddEvent(enemyInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitEnemy(enemyInteract.interactObject); });
+        AddEvent(enemyInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnEnemyClick(enemyInteract.interactObject, (PointerEventData)data); });
+        enemyInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
 
-        AddEvent(weatherInteract, EventTriggerType.PointerEnter, delegate { OnEnterWeather(weatherInteract); });
-        AddEvent(weatherInteract, EventTriggerType.PointerExit, delegate { OnExitWeather(weatherInteract); });
-        AddEvent(weatherInteract, EventTriggerType.PointerClick, (data) => { OnWeatherClick(weatherInteract, (PointerEventData)data); });
-        weatherInteract.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        AddEvent(weatherInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterWeather(weatherInteract.interactObject); });
+        AddEvent(weatherInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitWeather(weatherInteract.interactObject); });
+        AddEvent(weatherInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnWeatherClick(weatherInteract.interactObject, (PointerEventData)data); });
+        weatherInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+        AddEvent(minionInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterMinion(minionInteract.interactObject); });
+        AddEvent(minionInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitMinion(minionInteract.interactObject); });
+        AddEvent(minionInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnMinionClick(minionInteract.interactObject, (PointerEventData)data); });
+        minionInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
     }
 
     protected override void UpdateInterface() {}
@@ -53,7 +58,7 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterPlayer(GameObject obj)
     {
-        obj.GetComponent<Image>().color = playerInteractColor;
+        obj.GetComponent<Image>().color = playerInteract.interactColor;
 
         CreateCursorTextObj(cursorUse);
     }
@@ -84,7 +89,7 @@ public class CharactersInterface : AbstractGameInterface
                                 Player.Instance.Stats.Heal(((UtilityElementObject) element).HealAmount, Player.Instance);
                             }
 
-                            if(element.Behavior.DoBehavior(element))
+                            if(element.Behavior.DoBehavior(element, Player.Instance))
                             {
                                 GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
                             }
@@ -98,7 +103,7 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterEnemy(GameObject obj)
     {
-        obj.GetComponent<Image>().color = enemyInteractColor;
+        obj.GetComponent<Image>().color = enemyInteract.interactColor;
 
         CreateCursorTextObj(cursorAttack);
     }
@@ -140,7 +145,7 @@ public class CharactersInterface : AbstractGameInterface
                                     GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
                                 }
 
-                                if(element.Behavior.DoBehavior(element))
+                                if(element.Behavior.DoBehavior(element, GameManager.Instance.Enemy))
                                 {
                                     GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
                                 }  
@@ -165,7 +170,7 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterWeather(GameObject obj)
     {
-        obj.GetComponent<Image>().color = weatherInteractColor;
+        obj.GetComponent<Image>().color = weatherInteract.interactColor;
 
         CreateCursorTextObj(cursorUse);
     }
@@ -202,10 +207,54 @@ public class CharactersInterface : AbstractGameInterface
                             }
                         }
                         
-                        if(element.Behavior.DoBehavior(element)) /* IF DOING ATTACK IN BEHAVIOR MAKE SURE YOU CHECK FOR IMMUNITIES */
+                        if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
                         {
-                            GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            if(element.Behavior.DoBehavior(element, GameManager.Instance.Enemy))
+                            {
+                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            }
                         }
+                    }
+                }
+            }
+            else if(eventData.button == PointerEventData.InputButton.Right) {}
+        }
+    }
+
+    private void OnEnterMinion(GameObject obj)
+    {
+        minionText.text = ((MinionObject) GameManager.Instance.Minion.CharacterObject).Description;
+    }
+
+    private void OnExitMinion(GameObject obj)
+    {
+        minionText.text = "";
+    }
+
+    private void OnMinionClick(GameObject obj, PointerEventData eventData)
+    {
+        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
+        {
+            if(eventData.button == PointerEventData.InputButton.Left)
+            {
+                if(GameManager.Instance.mouseElement.obj != null)
+                {
+                    ElementObject element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
+
+                    if(element.Type == ElementTypes.Utility)
+                    {
+                        if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Minion, GameManager.Instance.mouseElement.element) == false)
+                        {
+                            if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
+                            {
+                                GameManager.Instance.Minion.Stats.Heal(((UtilityElementObject) element).HealAmount, GameManager.Instance.Minion);
+                            }
+
+                            if(element.Behavior.DoBehavior(element, GameManager.Instance.Minion))
+                            {
+                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                            }
+                        } 
                     }
                 }
             }
@@ -231,5 +280,12 @@ public class CharactersInterface : AbstractGameInterface
         image.raycastTarget = false;
 
         GameManager.Instance.mouseElement.cursorTextObj = cursorObject; 
+    }
+
+    [System.Serializable]
+    struct CharacterInteractEntry
+    {
+        public GameObject interactObject;
+        public Color interactColor;
     }
 }

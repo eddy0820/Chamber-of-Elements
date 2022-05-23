@@ -21,6 +21,13 @@ MonoBehaviour:
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 7913525976658918208, guid: dcaa98346e1db6c4d8d5a90be3c432ae, type: 3}
+  extraValue: 10
+  secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  extraValue: 10
+  associatedPassive: {fileID: 0}
+  secondaryAssociatedPassive: {fileID: 0}
+  tertiaryAssociatedPassive: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 
+  permaNewName: 
