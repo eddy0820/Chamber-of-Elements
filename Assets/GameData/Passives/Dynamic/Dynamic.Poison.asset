@@ -22,7 +22,10 @@ MonoBehaviour:
   affectedStat: {fileID: 0}
   secondaryAffectedStat: {fileID: 0}
   modifierType: 0
-  behaviorEveryTurnPassive: 1
+  behaviorPassive: 1
+  startOfTurnBehavior: 0
+  endOfTurnBehavior: 1
+  onHitBehavior: 0
   behaviorType: 0
   behaviorOrder: 1
-  affinityTypeForDamageBehavior: 6
+  affinityTypeForDamageSelfBehavior: 6

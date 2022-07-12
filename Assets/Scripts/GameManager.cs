@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
  
     Enemy enemy;
     public Enemy Enemy => enemy;
-    Minion minion;
-    public Minion Minion => minion;
     GameObject interfaceCanvas;
     public GameObject InterfaceCanvas => interfaceCanvas;
     GameObject infoCanvas;
@@ -43,7 +41,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
-        minion = GameObject.FindWithTag("Minion").GetComponent<Minion>();
         interfaceCanvas = GameObject.Find("Game Interface Canvas");
         infoCanvas = GameObject.FindObjectOfType<ElementTextDisplay>().transform.parent.gameObject;
 
@@ -88,53 +85,6 @@ public class GameManager : MonoBehaviour
                 elementSlotsInv.Container.elementSlots[4].UpdateSlot(new Element(debugElement5));
             }
         }
-    }
-
-    // find better place for this function
-    public bool IsImmuneElementAndAffinity(Character character, Element element) 
-    {
-        if(character.immunityAffinityTypes.Count > 0)
-        {
-            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> type in character.immunityAffinityTypes)
-            {
-                if(type.Key == element.AffinityType)
-                {
-                    Debug.Log("Immune!");
-                    return true;
-                }
-            }
-        }
-
-        if(character.immunityElements.Count > 0)
-        {
-            foreach(KeyValuePair<ElementObject, ImmunityPassiveObject> elementObject in character.immunityElements)
-            {
-                if(elementObject.Key.ID == element.ID)
-                {
-                    Debug.Log("Immune");
-                    return true;
-                }
-            }
-        } 
-
-        return false;
-    }
-
-    public bool IsImmuneAffinity(Character character, AffinityTypes type)
-    {
-        if(character.immunityAffinityTypes.Count > 0)
-        {
-            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> typeEntry in character.immunityAffinityTypes)
-            {
-                if(typeEntry.Key == type)
-                {
-                    Debug.Log("Immune!");
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     private void OnApplicationQuit()

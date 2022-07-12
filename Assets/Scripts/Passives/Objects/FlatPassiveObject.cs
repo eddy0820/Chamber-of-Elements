@@ -5,10 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Flat Passive", menuName = "Passives/Flat")]
 public class FlatPassiveObject : PassiveObject
 {
+    [Header("Stat Modifying Passive")]
     [Header("Flat Passive Specific")]
 
-    [Header("Stat Modifying Passive")]
-    
     [SerializeField] float value;
 
     [SerializeField] bool statModifyingPassive;
@@ -21,22 +20,37 @@ public class FlatPassiveObject : PassiveObject
     public StatModifierTypes ModifierType => modifierType;
 
     [Header("Behavior Every Turn Passive")]
-    [SerializeField] bool behaviorEveryTurnPassive;
-    public bool BehaviorEveryTurnPassive => behaviorEveryTurnPassive;
+    [SerializeField] bool behaviorPassive;
+    public bool BehaviorPassive => behaviorPassive;
+
+    [Space(15)]
+    [SerializeField] bool startOfTurnBehavior;
+    public bool StartOfTurnBehavior => startOfTurnBehavior;
+    [SerializeField] bool endOfTurnBehavior;
+    public bool EndOfTurnBehavior => endOfTurnBehavior;
+    [SerializeField] bool onHitBehavior;
+    public bool OnHitBehavior => onHitBehavior;
+
+    [Space(15)]
     [SerializeField] PassiveBehaviorTypes behaviorType;
     public PassiveBehaviorTypes BehaviorType => behaviorType;
     [SerializeField] int behaviorOrder;
     public int BehaviorOrder => behaviorOrder;
-    [SerializeField] AffinityTypes affinityTypeForDamageBehavior;
-    public AffinityTypes AffinityTypeForDamageBehavior => affinityTypeForDamageBehavior;
+    [SerializeField] AffinityTypes affinityTypeForDamageSelfBehavior;
+    public AffinityTypes AffinityTypeForDamageSelfBehavior => affinityTypeForDamageSelfBehavior;
 
     public override void TakeAffect(Character character)
     {
+        if(ForceOnPlayer)
+        {
+            character = Player.Instance;
+        }
+
         if(StatModifyingPassive)
         {   
             TakeAffectModifier(character);
         } 
-        else if(BehaviorEveryTurnPassive)
+        else if(BehaviorPassive)
         {
             TakeAffectBehavior(character);
         }
@@ -44,11 +58,16 @@ public class FlatPassiveObject : PassiveObject
 
     public override void RemoveAffect(Character character)
     {
+        if(ForceOnPlayer)
+        {
+            character = Player.Instance;
+        }
+        
         if(StatModifyingPassive)
         {
             RemoveAffectModifier(character);
         } 
-        else if(BehaviorEveryTurnPassive)
+        else if(BehaviorPassive)
         {
             RemoveAffectBehavior(character);
         }
@@ -80,26 +99,86 @@ public class FlatPassiveObject : PassiveObject
     {
         switch(BehaviorType)
         {
-            case PassiveBehaviorTypes.Damage:
-                action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageBehavior, character);
+            case PassiveBehaviorTypes.DamageToSelf:
+
+                if(OnHitBehavior)
+                {
+                    action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, character, null);
+                }
+                else
+                {
+                    action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, character, null);
+                }
+                
+                break;
+            case PassiveBehaviorTypes.DamageToAttacker:
+                // need to change to attacker
+                if(OnHitBehavior)
+                {
+                    action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, null);
+                }
+                else
+                {
+                    action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character.Attacker, null);
+                }
+
                 break;
             case PassiveBehaviorTypes.Heal:
                 action = ()=> character.Stats.Heal(value, character);
                 break;
+            case PassiveBehaviorTypes.Enlightenment:
+                action = ()=> GameManager.Instance.InterfaceCanvas.transform.GetChild(0).GetComponent<ElementSlotsInterface>().DoEnlightenment();
+                break;
         }
 
-        if(character.actionsToDoEveryTurn.ContainsKey(behaviorOrder))
+        if(StartOfTurnBehavior)
         {
-            Debug.Log("'ActionsToDoEveryTurn' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+            if(character.actionsToDoStartOfEveryTurn.ContainsKey(behaviorOrder))
+            {
+                Debug.Log("'ActionsToDoStartOfEveryTurn' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+            }
+            else
+            {
+                character.actionsToDoStartOfEveryTurn.Add(behaviorOrder, action);
+            }
         }
-        else
+        else if(EndOfTurnBehavior)
         {
-            character.actionsToDoEveryTurn.Add(behaviorOrder, action);
+            if(character.actionsToDoEndOfEveryTurn.ContainsKey(behaviorOrder))
+            {
+                Debug.Log("'ActionsToDoEndOfEveryTurn' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+            }
+            else
+            {
+                character.actionsToDoEndOfEveryTurn.Add(behaviorOrder, action);
+            }
+        }
+        else if(OnHitBehavior)
+        {
+            if(character.actionsToDoOnHit.ContainsKey(behaviorOrder))
+            {
+                Debug.Log("'ActionsToDoOnHit' already contains key " + behaviorOrder + ". Source: " + this.Name + ".");
+            }
+            else
+            {
+                character.actionsToDoOnHit.Add(behaviorOrder, action);
+            }
         }
     }
 
     private void RemoveAffectBehavior(Character character)
     {
-        character.actionsToDoEveryTurn.Remove(behaviorOrder);
+        if(StartOfTurnBehavior)
+        {
+            character.actionsToDoStartOfEveryTurn.Remove(behaviorOrder);
+        }
+        else if(EndOfTurnBehavior)
+        {
+            character.actionsToDoEndOfEveryTurn.Remove(behaviorOrder);
+        }
+        else if(OnHitBehavior)
+        {
+            character.actionsToDoOnHit.Remove(behaviorOrder);
+        }
     }
 }

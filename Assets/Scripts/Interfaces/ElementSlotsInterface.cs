@@ -161,6 +161,19 @@ public class ElementSlotsInterface : AbstractGameInterface
 
                     elementOnMouse.RemoveMouseElement(Destroy);
                 }
+                else
+                {
+                    MinionObject minion = elementSlots.CanCombineMinion(elementsDisplayed[obj], mouseElement);
+
+                    // Minion Recipe
+                    if(minion != null)
+                    {
+                        elementsDisplayed[mouseHoverObj].UpdateSlot(new Element());
+                        elementOnMouse.RemoveMouseElement(Destroy);
+
+                        Player.Instance.Minion.CreateMinion(minion);
+                    }
+                }
             }
             // There is no element in the slot
             else
@@ -168,8 +181,7 @@ public class ElementSlotsInterface : AbstractGameInterface
                 elementsDisplayed[mouseHoverObj].UpdateSlot(mouseElement);
 
                 elementOnMouse.hoverElement.UpdateSlot(mouseElement);
-                elementOnMouse.RemoveMouseElement(Destroy);
-                
+                elementOnMouse.RemoveMouseElement(Destroy);   
             }
         }
     }
@@ -191,6 +203,22 @@ public class ElementSlotsInterface : AbstractGameInterface
             {
                 elementsDisplayed[elementOnMouse.hoverObj].UpdateSlot(new Element());
             } 
+        }
+    }
+
+    public void DoEnlightenment()
+    {
+        int num = UnityEngine.Random.Range(0, 2);
+        int midSlot = Mathf.CeilToInt(elementSlots.Container.elementSlots.Length / 2);
+
+        switch(num)
+        {
+            case 0:
+                elementSlots.Container.elementSlots[midSlot].UpdateSlot(new Element(elementSlots.Database.GetElement[4]));
+            break;
+            case 1:
+                elementSlots.Container.elementSlots[midSlot].UpdateSlot(new Element(elementSlots.Database.GetElement[5]));
+            break;
         }
     }
 }

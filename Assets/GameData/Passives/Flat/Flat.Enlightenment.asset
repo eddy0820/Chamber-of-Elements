@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be729a9634db38742bc8757099f93918, type: 3}
+  m_Name: Flat.Enlightenment
+  m_EditorClassIdentifier: 
+  name: Enlightenment
+  passiveTexture: {fileID: 21300000, guid: 40d573cf27499af4c8f8de3eaf377c44, type: 3}
+  description: Generates an Order or Disorder element in your middle slot at the
+    beginning of your turn.
+  additiveTypes: []
+  removalTypes: []
+  isPositiveEffect: 1
+  forceOnPlayer: 1
+  value: 0
+  statModifyingPassive: 0
+  affectedStat: {fileID: 0}
+  secondaryAffectedStat: {fileID: 0}
+  modifierType: 0
+  behaviorPassive: 1
+  startOfTurnBehavior: 1
+  endOfTurnBehavior: 0
+  onHitBehavior: 0
+  behaviorType: 3
+  behaviorOrder: 1
+  affinityTypeForDamageSelfBehavior: 6

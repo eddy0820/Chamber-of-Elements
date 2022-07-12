@@ -23,6 +23,8 @@ public abstract class PassiveObject : ScriptableObject
     [Space(15)]
     [SerializeField] bool isPositiveEffect = true;
     public bool IsPositiveEffect => isPositiveEffect;
+    [SerializeField] bool forceOnPlayer = false;
+    public bool ForceOnPlayer => forceOnPlayer;
 
     protected StatModifier modifier;
     protected Action action;

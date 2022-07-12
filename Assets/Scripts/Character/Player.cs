@@ -9,6 +9,12 @@ public class Player : Character
     [Header("Player Specific")]
     [SerializeField] Sprite affinityNoneSprite; 
     SpriteRenderer affinitySprite;
+
+    [ReadOnly] bool minionExists;
+    public bool MinionExists => minionExists;
+
+    Minion minion;
+    public Minion Minion => minion;
     
     private void Awake()
     {
@@ -16,9 +22,11 @@ public class Player : Character
         
         stats = new PlayerStats(characterObject.BaseStats);
         affinitySprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
-        passivesInterface = GameManager.Instance.InterfaceCanvas.transform.GetChild(2).GetComponent<PassivesInterface>();
 
         InitCharacter();
+        ChangeAttacker(GameManager.Instance.Enemy);
+
+        minion = GameObject.FindWithTag("Minion").GetComponent<Minion>();
     }
 
     public void UpdateAffinitySprite(AffinityTypes type)
@@ -31,5 +39,10 @@ public class Player : Character
         {
             affinitySprite.sprite = GameManager.Instance.AffinityDatabase.GetAffinity[type].Sprite;
         }
+    }
+
+    public void SetMinionExists(bool exists)
+    {
+        minionExists = exists;
     }
 }

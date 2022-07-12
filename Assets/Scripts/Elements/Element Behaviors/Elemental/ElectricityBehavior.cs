@@ -10,7 +10,7 @@ public class ElectricityBehavior : AbstractElementBehavior
 
         if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
         {
-            character.Stats.TakeDamage(elementalElement.ExtraValue, new Element(elementalElement).AffinityType, GameManager.Instance.Enemy);
+            character.Stats.TakeDamage(elementalElement.ExtraValue, new Element(elementalElement).AffinityType, character, Player.Instance);
         }
 
         return true;

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 7bcf9c209e23ba541b730a16d49f72c8, type: 2}
   recipeDatabase: {fileID: 11400000, guid: 7e5d2bf994e7272478dae036379c7e1c, type: 2}
+  minionRecipeDatabase: {fileID: 11400000, guid: a91caffec3b084e47945463ba7fa21b8, type: 2}
   reRollElements:
   - {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
   - {fileID: 11400000, guid: 2cd49fac583ab4d4c93708f3cc9bea97, type: 2}

@@ -18,12 +18,18 @@ public abstract class Character : MonoBehaviour
     [SerializeField] GameObject damageIndicatorPrefab;
     public GameObject DamageIndicatorPrefab => damageIndicatorPrefab;
 
-    HashSet<PassiveObject> passives = new HashSet<PassiveObject>();
+    protected HashSet<PassiveObject> passives = new HashSet<PassiveObject>();
     public HashSet<PassiveObject> Passives => passives;
-    protected PassivesInterface passivesInterface;
+    [SerializeField] protected PassivesInterface passivesInterface;
     public PassivesInterface PassivesInterface => passivesInterface;
-    [System.NonSerialized] public SortedList<int, Action> actionsToDoEveryTurn;
-    Dictionary<string, PassiveWithTurnsInfo> passivesWithTurns;
+
+    Character attacker;
+    public Character Attacker => attacker;
+    
+    [System.NonSerialized] public SortedList<int, Action> actionsToDoStartOfEveryTurn;
+    [System.NonSerialized] public SortedList<int, Action> actionsToDoEndOfEveryTurn;
+    [System.NonSerialized] public SortedList<int, Action> actionsToDoOnHit;
+    protected Dictionary<string, PassiveWithTurnsInfo> passivesWithTurns;
 
     [System.NonSerialized] public Dictionary<AffinityTypes, ImmunityPassiveObject> immunityAffinityTypes;
     [System.NonSerialized] public Dictionary<PassiveObject, ImmunityPassiveObject> immunityPassives;
@@ -31,8 +37,6 @@ public abstract class Character : MonoBehaviour
 
     protected CharacterStats stats;
     public CharacterStats Stats => stats;
-
-    private int turnTimer;
     
     protected void InitCharacter()
     {
@@ -43,8 +47,11 @@ public abstract class Character : MonoBehaviour
 
         passives = new HashSet<PassiveObject>();
 
-        actionsToDoEveryTurn = new SortedList<int, Action>();
-        actionsToDoEveryTurn.Add(1000, ()=> PassiveTurnCalcRemove());
+        actionsToDoStartOfEveryTurn = new SortedList<int, Action>();
+        actionsToDoEndOfEveryTurn = new SortedList<int, Action>();
+        actionsToDoEndOfEveryTurn.Add(1000, ()=> PassiveTurnCalcRemove());
+        actionsToDoOnHit = new SortedList<int, Action>();
+
         passivesWithTurns = new Dictionary<string, PassiveWithTurnsInfo>();
 
         immunityAffinityTypes = new Dictionary<AffinityTypes, ImmunityPassiveObject>();
@@ -320,9 +327,59 @@ public abstract class Character : MonoBehaviour
 
         return removed;
     }
+    public bool IsImmuneElementAndAffinity(Element element) 
+    {
+        if(immunityAffinityTypes.Count > 0)
+        {
+            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> type in immunityAffinityTypes)
+            {
+                if(type.Key == element.AffinityType)
+                {
+                    Debug.Log("Immune!");
+                    return true;
+                }
+            }
+        }
 
+        if(immunityElements.Count > 0)
+        {
+            foreach(KeyValuePair<ElementObject, ImmunityPassiveObject> elementObject in immunityElements)
+            {
+                if(elementObject.Key.ID == element.ID)
+                {
+                    Debug.Log("Immune");
+                    return true;
+                }
+            }
+        } 
+
+        return false;
+    }
+
+    public bool IsImmuneAffinity(AffinityTypes type)
+    {
+        if(immunityAffinityTypes.Count > 0)
+        {
+            foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> typeEntry in immunityAffinityTypes)
+            {
+                if(typeEntry.Key == type)
+                {
+                    Debug.Log("Immune!");
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void ChangeAttacker(Character character)
+    {
+        attacker = character;
+    }
+    
     [System.Serializable]
-    class PassiveWithTurnsInfo
+    protected class PassiveWithTurnsInfo
     {
         public PassiveObject passive;
         public int turnCounter;

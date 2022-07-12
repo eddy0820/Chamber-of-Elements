@@ -17,7 +17,15 @@ public class PlayerTurnGameState : GameState
             hasUsedLife = false;
             hasUsedRadiance = false;
 
-            return gameStateManager.enemyTurnGameState;
+            if(Player.Instance.MinionExists)
+            {
+                return gameStateManager.minionTurnGameState;
+            }
+            else
+            {
+                return gameStateManager.enemyTurnGameState;
+            }
+            
         }
         else
         {
@@ -31,12 +39,17 @@ public class PlayerTurnGameState : GameState
 
         GameManager.Instance.turnCounter++;
 
+        foreach(KeyValuePair<int, System.Action> action in Player.Instance.actionsToDoStartOfEveryTurn)
+        {
+            action.Value.Invoke();
+        }
+
         DoReRoll();
     }
 
     public void Attack(AffinityTypes damageType, float value)
     {
-        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, GameManager.Instance.Enemy);
+        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, GameManager.Instance.Enemy, Player.Instance);
 
         ScreenShakeBehavior.Instance.StartShake(0.7f, 0.3f, 7.5f);
 
@@ -47,13 +60,13 @@ public class PlayerTurnGameState : GameState
 
     public override void OnExitState()
     {
-        foreach(KeyValuePair<int, System.Action> action in Player.Instance.actionsToDoEveryTurn)
+        foreach(KeyValuePair<int, System.Action> action in Player.Instance.actionsToDoEndOfEveryTurn)
         {
             action.Value.Invoke();
 
             if(action.Key == 1000)
             {
-                return;
+                break;
             }
         }
     }

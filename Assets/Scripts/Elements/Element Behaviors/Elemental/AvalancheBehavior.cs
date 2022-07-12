@@ -10,7 +10,7 @@ public class AvalancheBehavior : AbstractElementBehavior
 
         if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Hailstorm"]].GetType())
         {
-            GameStateManager.Instance.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
+            ElementBehaviorUtil.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
         }
 
         if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))

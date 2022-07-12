@@ -27,5 +27,13 @@ MonoBehaviour:
     value: 0
   - statType: {fileID: 11400000, guid: bc9c0bcb4a173d149a213b4d3935538f, type: 2}
     value: 0
+  - statType: {fileID: 11400000, guid: 69749360545cfae4cacfc8e2bf4abd61, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 6dbf4a891e7a02241b7d05105d738609, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: abc248c702af88c489509f3f9c43a948, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 35cdfedadc6d9ad4ebd4efadf618ec53, type: 2}
+    value: 0
   - statType: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
     value: 100

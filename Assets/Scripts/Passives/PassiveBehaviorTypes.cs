@@ -4,6 +4,8 @@ using UnityEngine;
 
 public enum PassiveBehaviorTypes
 {
-    Damage,
+    DamageToSelf,
+    DamageToAttacker,
     Heal,
+    Enlightenment
 }

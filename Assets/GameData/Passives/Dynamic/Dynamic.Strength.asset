@@ -17,10 +17,12 @@ MonoBehaviour:
   description: +'X' to Basic Attack
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 1
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: 510ba4a6d9299a1458c50fd8b12bffcf, type: 2}
   secondaryAffectedStat: {fileID: 0}
   modifierType: 100
   behaviorEveryTurnPassive: 0
   behaviorType: 0
+  behaviorOrder: 0
   affinityTypeForDamageBehavior: 0

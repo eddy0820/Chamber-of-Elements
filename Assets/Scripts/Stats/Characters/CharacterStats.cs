@@ -26,7 +26,25 @@ public abstract class CharacterStats
         currentHealth = stats["MaxHealth"].value;
     }
     
-    public void TakeDamage(float damage, AffinityTypes damageType, Character character)
+    public void TakeDamage(float damage, AffinityTypes damageType, Character character, Character source)
+    {
+        TakeDamageNoActions(damage, damageType, character, source);
+        
+        if(damage <= 0)
+        {
+            return;
+        }
+     
+        if(currentHealth > 0)
+        {
+            foreach(KeyValuePair<int, System.Action> action in character.actionsToDoOnHit) 
+            {
+                action.Value.Invoke();
+            }
+        } 
+    }
+
+    public void TakeDamageNoActions(float damage, AffinityTypes damageType, Character character, Character source)
     {
         if(damage <= 0)
         {
@@ -41,28 +59,9 @@ public abstract class CharacterStats
             }
         }
 
-        switch(damageType)
-        {
-            case AffinityTypes.Air:
-                damage = Calculate(damage, stats["AirResistance"].value);
-                break;
-            case AffinityTypes.Earth:
-                damage = Calculate(damage, stats["EarthResistance"].value);
-                break;
-            case AffinityTypes.Fire:
-                damage = Calculate(damage, stats["FireResistance"].value);
-                break;
-            case AffinityTypes.Water:
-                damage = Calculate(damage, stats["WaterResistance"].value);
-                break;
-            case AffinityTypes.None:
-                damage = Calculate(damage, stats["GeneralResistance"].value);
-                break;
-            default:
-                Debug.Log("Unrecognized damage type, dealing general damage");
-                damage = Calculate(damage, stats["GeneralResistance"].value);
-                break;
-        }
+        character.ChangeAttacker(source);
+
+        damage = CalcDamage(damage, damageType, character, source);
 
         System.Math.Round(damage, 1);
 
@@ -72,6 +71,7 @@ public abstract class CharacterStats
         damageIndicatorUI.GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
         Debug.Log(character.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
+        Debug.Log(currentHealth);
 
         lastHitDamage = damage;
 
@@ -81,6 +81,76 @@ public abstract class CharacterStats
         }
 
         HandlePassiveAdditiveRemovalTypes(character, damageType);
+    }
+
+    private float CalcDamage(float damage, AffinityTypes damageType, Character character, Character source)
+    {
+        float newDamage;
+
+        switch(damageType)
+        {
+            case AffinityTypes.Air:
+
+                if(source == null)
+                {
+                    newDamage = Calculate(damage, stats["AirResistance"].value);
+                }
+                else
+                {
+                    newDamage = CalculateWithSpellPower(damage, stats["AirResistance"].value, source.Stats.stats["SpellPowerAir"].value);
+                }
+                
+                break;
+            case AffinityTypes.Earth:
+
+                if(source == null)
+                {
+                    newDamage = Calculate(damage, stats["EarthResistance"].value);
+                }
+                else
+                {
+                    newDamage = CalculateWithSpellPower(damage, stats["EarthResistance"].value, source.Stats.stats["SpellPowerEarth"].value);
+                }
+
+                break;
+            case AffinityTypes.Fire:
+
+                if(source == null)
+                {
+                    newDamage = Calculate(damage, stats["FireResistance"].value);
+                }
+                else
+                {
+                    newDamage = CalculateWithSpellPower(damage, stats["FireResistance"].value, source.Stats.stats["SpellPowerFire"].value);
+                }
+
+                break;
+            case AffinityTypes.Water:
+
+                if(source == null)
+                {
+                    newDamage = Calculate(damage, stats["WaterResistance"].value);
+                }
+                else
+                {
+                    newDamage = CalculateWithSpellPower(damage, stats["WaterResistance"].value, source.Stats.stats["SpellPowerWater"].value);
+                }
+                
+                break;
+            case AffinityTypes.None:
+
+                newDamage = Calculate(damage, stats["GeneralResistance"].value);
+
+                break;
+            default:
+
+                Debug.Log("Unrecognized damage type, dealing general damage");
+                newDamage = Calculate(damage, stats["GeneralResistance"].value);
+
+                break;
+        }
+
+        return newDamage;
     }
 
     public void Heal(float amount, Character character)
@@ -112,18 +182,36 @@ public abstract class CharacterStats
     {
         float num1 = resistance/100;
         float num2 = num1 * damage;
-     
+        
         float finalValue = damage - num2;
 
         if(finalValue < 1)
         {
             return 1;
         }
-
-        return finalValue;
+        
+        return finalValue;  
     }
 
-    public void Die(string debugName)
+    private float CalculateWithSpellPower(float damage, float resistance, float spellPower)
+    {
+        float num1 = resistance/100;
+        float num2 = num1 * damage;
+
+        float num3 = spellPower/100;
+        float num4 = num3 * damage;
+
+        float finalValue = damage - num2 + num3;
+
+        if(finalValue < 1)
+        {
+            return 1;
+        }
+        
+        return finalValue;  
+    }
+
+    public virtual void Die(string debugName)
     {
         Debug.Log(debugName + " died.");
     }

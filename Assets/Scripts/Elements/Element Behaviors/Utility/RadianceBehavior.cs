@@ -8,15 +8,29 @@ public class RadianceBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(!GameStateManager.Instance.playerTurnGameState.hasUsedRadiance)
+        if(character is Player)
         {
-            character.Stats.Heal(utilityElement.HealAmount, character);
+            if(!GameStateManager.Instance.playerTurnGameState.hasUsedRadiance)
+            {
+                character.Stats.Heal(utilityElement.HealAmount, character);
 
-            GameStateManager.Instance.playerTurnGameState.hasUsedRadiance = true;
+                GameStateManager.Instance.playerTurnGameState.hasUsedRadiance = true;
 
-            return true;
+                return true;
+            }
         }
+        else if(character is Minion)
+        {
+            if(!GameStateManager.Instance.minionTurnGameState.hasUsedRadiance)
+            {
+                character.Stats.Heal(utilityElement.HealAmount, character);
 
+                GameStateManager.Instance.minionTurnGameState.hasUsedRadiance = true;
+
+                return true;
+            }
+        }
+        
         return false;
     }
 }

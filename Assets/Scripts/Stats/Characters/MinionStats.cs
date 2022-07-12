@@ -24,4 +24,11 @@ public class MinionStats : CharacterStats
             currentMana = 0;
         }
     }
+
+    public override void Die(string debugName)
+    {
+        base.Die(debugName);
+
+        Player.Instance.Minion.NullifyMinion();
+    }
 }

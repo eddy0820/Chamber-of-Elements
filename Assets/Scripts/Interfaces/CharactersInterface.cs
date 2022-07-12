@@ -82,7 +82,7 @@ public class CharactersInterface : AbstractGameInterface
 
                     if(element.Type == ElementTypes.Utility)
                     {
-                        if(GameManager.Instance.IsImmuneElementAndAffinity(Player.Instance, GameManager.Instance.mouseElement.element) == false)
+                        if(Player.Instance.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                         {
                             if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
                             {
@@ -138,7 +138,7 @@ public class CharactersInterface : AbstractGameInterface
                     {
                         if(element.Damage >= 0)
                         {
-                            if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
+                            if(GameManager.Instance.Enemy.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                             {
                                 if(!element.DoAttackInBehavior)
                                 {
@@ -196,7 +196,7 @@ public class CharactersInterface : AbstractGameInterface
                     {
                         if(!element.DoAttackInBehavior)
                         {
-                            if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
+                            if(GameManager.Instance.Enemy.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                             {
                                 GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
                             }
@@ -207,7 +207,7 @@ public class CharactersInterface : AbstractGameInterface
                             }
                         }
                         
-                        if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Enemy, GameManager.Instance.mouseElement.element) == false)
+                        if(GameManager.Instance.Enemy.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                         {
                             if(element.Behavior.DoBehavior(element, GameManager.Instance.Enemy))
                             {
@@ -223,43 +223,52 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterMinion(GameObject obj)
     {
-        minionText.text = ((MinionObject) GameManager.Instance.Minion.CharacterObject).Description;
+        if(Player.Instance.MinionExists)
+        {
+            minionText.text = ((MinionObject) Player.Instance.Minion.CharacterObject).Description;
+        }
     }
 
     private void OnExitMinion(GameObject obj)
     {
-        minionText.text = "";
+        if(Player.Instance.MinionExists)
+        {
+            minionText.text = "";
+        }  
     }
 
     private void OnMinionClick(GameObject obj, PointerEventData eventData)
     {
-        if(GameStateManager.Instance.currentState is PlayerTurnGameState)
+        if(Player.Instance.MinionExists)
         {
-            if(eventData.button == PointerEventData.InputButton.Left)
+            if(GameStateManager.Instance.currentState is PlayerTurnGameState)
             {
-                if(GameManager.Instance.mouseElement.obj != null)
+                if(eventData.button == PointerEventData.InputButton.Left)
                 {
-                    ElementObject element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
-
-                    if(element.Type == ElementTypes.Utility)
+                    if(GameManager.Instance.mouseElement.obj != null)
                     {
-                        if(GameManager.Instance.IsImmuneElementAndAffinity(GameManager.Instance.Minion, GameManager.Instance.mouseElement.element) == false)
-                        {
-                            if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
-                            {
-                                GameManager.Instance.Minion.Stats.Heal(((UtilityElementObject) element).HealAmount, GameManager.Instance.Minion);
-                            }
+                        ElementObject element = GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID];
 
-                            if(element.Behavior.DoBehavior(element, GameManager.Instance.Minion))
+                        if(element.Type == ElementTypes.Utility)
+                        {
+                            if(Player.Instance.Minion.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                             {
-                                GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
-                            }
-                        } 
+                                if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
+                                {
+                                    Player.Instance.Minion.Stats.Heal(((UtilityElementObject) element).HealAmount, Player.Instance.Minion);
+                                }
+
+                                if(element.Behavior.DoBehavior(element, Player.Instance.Minion))
+                                {
+                                    GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+                                }
+                            } 
+                        }
                     }
                 }
+                else if(eventData.button == PointerEventData.InputButton.Right) {}
             }
-            else if(eventData.button == PointerEventData.InputButton.Right) {}
-        }
+        }   
     }
 
     private void CreateCursorTextObj(Sprite sprite)

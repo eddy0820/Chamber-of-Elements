@@ -17,5 +17,6 @@ MonoBehaviour:
   affinityType: 0
   startingPassives: []
   sprite: {fileID: 21300000, guid: 85b6ab8e4e01b6f40ba2118dbe0f86bb, type: 3}
-  animationController: {fileID: 0}
+  animationController: {fileID: 9100000, guid: d78dd4b269816624cadd0db77884b810, type: 2}
+  focus: {fileID: 0}
   description: A living being of water.

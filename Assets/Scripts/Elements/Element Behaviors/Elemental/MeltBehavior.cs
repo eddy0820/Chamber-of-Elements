@@ -10,7 +10,7 @@ public class MeltBehavior : AbstractElementBehavior
 
         if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
         {
-            character.Stats.TakeDamage(elementalElement.Damage, new Element(elementalElement).AffinityType, character);
+            character.Stats.TakeDamage(elementalElement.Damage, new Element(elementalElement).AffinityType, character, Player.Instance);
         }
 
         return true;

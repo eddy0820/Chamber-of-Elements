@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyTurnGameState : GameState
 {
+    [SerializeField] GameObject focusUI;
+
+    [Space(15)]
     [ReadOnly] public int currentFocusCounter = 0;
     [System.NonSerialized] public bool finishedAttacking;
     bool hasAttacked;
@@ -27,15 +30,20 @@ public class EnemyTurnGameState : GameState
     public override void OnEnterState()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
+        foreach(KeyValuePair<int, System.Action> action in GameManager.Instance.Enemy.actionsToDoStartOfEveryTurn)
+        {
+            action.Value.Invoke();
+        }
     }
 
     private void Attack()
     {
         if(!hasAttacked)
         {
-            if(GameManager.Instance.InfoCanvas.transform.GetChild(2).gameObject.activeInHierarchy)
+            if(focusUI.gameObject.activeInHierarchy)
             {
-                GameManager.Instance.InfoCanvas.transform.GetChild(2).gameObject.SetActive(false);
+                focusUI.gameObject.SetActive(false);
             }
 
             GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
@@ -49,19 +57,19 @@ public class EnemyTurnGameState : GameState
 
     public override void OnExitState()
     {
-        foreach(KeyValuePair<int, System.Action> action in GameManager.Instance.Enemy.actionsToDoEveryTurn)
+        foreach(KeyValuePair<int, System.Action> action in GameManager.Instance.Enemy.actionsToDoEndOfEveryTurn)
         {
             action.Value.Invoke();
 
             if(action.Key == 1000)
             {
-                return;
+                break;
             }
         }
 
-        if(gameStateManager.enemyTurnGameState.currentFocusCounter == GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value && GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
+        if(currentFocusCounter == GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value && GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
         {
-            GameManager.Instance.InfoCanvas.transform.GetChild(2).gameObject.SetActive(true);
+            focusUI.SetActive(true);
         } 
     }
 }

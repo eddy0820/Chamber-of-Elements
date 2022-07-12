@@ -16,6 +16,7 @@ public class GameStateManager : AbstractStateManager
 
     [System.NonSerialized] public PlayerTurnGameState playerTurnGameState;
     [System.NonSerialized] public EnemyTurnGameState enemyTurnGameState;
+    [System.NonSerialized] public MinionTurnGameState minionTurnGameState;
     
 
     private void Awake()
@@ -25,25 +26,7 @@ public class GameStateManager : AbstractStateManager
         currentState = startingState;
         playerTurnGameState = GetComponent<PlayerTurnGameState>();
         enemyTurnGameState = GetComponent<EnemyTurnGameState>();
-    }
-
-    public void DealDamageToEverything(AffinityTypes damageType, float value)
-    {
-        Player.Instance.Stats.TakeDamage(value, damageType, Player.Instance);
-        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, GameManager.Instance.Enemy);
-        GameManager.Instance.Minion.Stats.TakeDamage(value, damageType, GameManager.Instance.Minion);
-        ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
-        // minion damage
-    }
-
-    //  This needs to be addressed when theres more minion slot and enemy slots, you need to come up with a way to know which enemy class is which enemy
-    //  Damage needs to be done passing in a "source" character
-    public void DealDamageToEverythingExceptEnemy(AffinityTypes damageType, float value)
-    {
-        Player.Instance.Stats.TakeDamage(value, damageType, Player.Instance);
-        GameManager.Instance.Minion.Stats.TakeDamage(value, damageType, GameManager.Instance.Minion);
-        ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
-        // minion damage
+        minionTurnGameState = GetComponent<MinionTurnGameState>();
     }
 
     public void SetReRollSpecificNextTurn(ElementObject element)

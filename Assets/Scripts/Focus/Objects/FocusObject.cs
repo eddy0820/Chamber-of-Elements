@@ -7,32 +7,39 @@ public class FocusObject : ScriptableObject
 {
     [SerializeField] bool damagePlayer;
     [SerializeField] bool damageMinion;
+    [SerializeField] bool damageEnemy;
     [SerializeField] ElementObject[] elementsToConsume;
 
-    public void PerformFocus()
+    public void PerformFocus(Character character)
     {
-        if(damagePlayer && damageMinion)
+        if(damagePlayer)
         {
-            PerformPlayer();
-            PerformMinion();
+            PerformPlayer(character);
         }
-        else if(damagePlayer)
+
+        if(damageMinion)
         {
-            PerformPlayer();
+            PerformMinion(character);
         }
-        else if(damageMinion)
+
+        if(damageEnemy)
         {
-            PerformMinion();
+            PerformEnemy(character);
         }
     }
 
-    private void PerformPlayer()
+    private void PerformPlayer(Character character)
     {
-        Player.Instance.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["FocusDamage"].value, GameManager.Instance.Enemy.AffinityType, Player.Instance);
+        Player.Instance.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, Player.Instance, character);
     }
 
-    private void PerformMinion()
+    private void PerformMinion(Character character)
     {
+        Player.Instance.Minion.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, Player.Instance.Minion, character);
+    }
 
+    private void PerformEnemy(Character character)
+    {
+        GameManager.Instance.Enemy.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, GameManager.Instance.Enemy, character);
     }
 }

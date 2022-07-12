@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009cf2ab2b4943b40b03e2ac22f0927d, type: 3}
+  m_Name: BaseStats.CrystalGolem
+  m_EditorClassIdentifier: 
+  stats:
+  - statType: {fileID: 11400000, guid: 339fe0a088a15614795dec56ed351d2e, type: 2}
+    value: 20
+  - statType: {fileID: 11400000, guid: 510ba4a6d9299a1458c50fd8b12bffcf, type: 2}
+    value: 20
+  - statType: {fileID: 11400000, guid: c8cd1a608135f7649ae601e472134598, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 465c2cc5603de6649a63541923222c74, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: bc9c0bcb4a173d149a213b4d3935538f, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 69749360545cfae4cacfc8e2bf4abd61, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 6dbf4a891e7a02241b7d05105d738609, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: abc248c702af88c489509f3f9c43a948, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 35cdfedadc6d9ad4ebd4efadf618ec53, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
+    value: 100

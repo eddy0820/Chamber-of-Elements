@@ -25,6 +25,11 @@ public class ImmunityPassiveObject : PassiveObject
 
     public override void TakeAffect(Character character)
     {
+        if(ForceOnPlayer)
+        {
+            character = Player.Instance;
+        }
+
         if(immuneToAffinityTypes)
         {
             foreach(AffinityTypes type in immuneToAffinitesList)
@@ -52,6 +57,11 @@ public class ImmunityPassiveObject : PassiveObject
 
     public override void RemoveAffect(Character character) 
     {
+        if(ForceOnPlayer)
+        {
+            character = Player.Instance;
+        }
+        
         if(immuneToAffinityTypes)
         {
             foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> type in character.immunityAffinityTypes)

@@ -8,13 +8,27 @@ public class LifeBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(!GameStateManager.Instance.playerTurnGameState.hasUsedLife)
+        if(character is Player)
         {
-            character.Stats.Heal(utilityElement.HealAmount, character);
-            GameStateManager.Instance.playerTurnGameState.hasUsedLife = true;
+            if(!GameStateManager.Instance.playerTurnGameState.hasUsedLife)
+            {
+                character.Stats.Heal(utilityElement.HealAmount, character);
+                GameStateManager.Instance.playerTurnGameState.hasUsedLife = true;
 
-            return true;
+                return true;
+            }
         }
+        else if(character is Minion)
+        {
+            if(!GameStateManager.Instance.minionTurnGameState.hasUsedLife)
+            {
+                character.Stats.Heal(utilityElement.HealAmount, character);
+                GameStateManager.Instance.minionTurnGameState.hasUsedLife = true;
+
+                return true;
+            }
+        }
+        
 
         return false;
     }

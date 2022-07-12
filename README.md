@@ -7,21 +7,20 @@
 - re do "reroll specific" code
 - create a stat resistance database or something for the takedamge function
 - might want to fuck with the order for strength and weakness.
-- IFocusable for minions and enemies maybe
 - "miss" ui element
 - "immune" ui element
 - drop down menu for dynamic passives to see what theyve got stacked on top and how many turns for each stack
 - need to fix the order of all the scripts and their awake functions or your gonna conitune to have issues with error
 - for elements that deal damage two seperate times you need to delay the hit markers with a queue and coroutines maybe
 - screen shake settings
-- need to update hailstorm and frost when multiple enemies are added
+
+- ice elemental affinity type to cause freeze
 
 
 - take art folder out of repository
 - re do parts of onplayerclikc and onenemyclick because i fucked up the abstratcion between an element and an element object
-- do i really need different stats class for the different character types
-
-- Clean up using stuff in every script
+- need to update hailstorm and frost when multiple enemies are added
+- need to update radiance and light when multiple minions are added
 
 - Elements That Need To Be Implemented
   - Arena - Done
@@ -32,36 +31,34 @@
 	- Runestone - when adding mana system
 	- Shield - ask joey about this one
   - Elemental - Done
-  
-- radianc and light need to deal with minions
 	
 - confusion element
 
 - Minions
- - Shaman
- - Cleric
- - Knight
- - Earth Elemental
- - Air Elemental
- - Fire Elemental
- - Water Elemental
- - Ice Elemental
- - Magma Elemental
- - Metal Golem
- - Crystal Golem
- - Rock Golem
- - Living Soul
- - Lightning Elemental
- - Human
- - Living Spirit
- - Golden Golem
- - Clay Golem
- - Ceramic Golem
- - Diamond Golem
- - Obsidian Golem
- - Skeleton
- - Glass Golem
- - Dust Devil
+  - Golden Golem - On Death - Relics
+  - Ceramic Golem - Don't Implement
+  - Diamond Golem - Don't Implement
+ 
+  - Rock Golem - Retaliation
+  - Living Soul - Death Rattle
+  - Lightning Elemental - Focus
+  - Human - Death Rattle
+  - Knight - Strength, Death Rattle
+  - Shaman - Enlightenment, Death Rattle
+  - Cleric - Focus, Death Rattle
+  - Living Spirit - Fear
+  - Clay Golem - Spell Power (Earth)
+  - Obsidian Golem - Death Rattle
+  - Skeleton - Death Rattle
+  - Glass Golem - Retaliation
+  - Dust Devil - Weather Affinity (Sandstorm)
+ 
+ - Retaliation - On Hit Deal Damage
+ - Enlightenment - Start of Turn
+ - Spell Power (Earth) - Affinity Attack
+ - Weather Affinity (Sandstorm) - Attack in weather
+ 
+ - Death Rattle Feature
 
 
 - minions
@@ -71,11 +68,25 @@
 - create enemies that existed
 - menus
 
+- Mana System
 - Ability for minion and element slots
+- RogueLike
 
-Behavior Every Turn Passive Orders
+Sprites Needed
+- Retaliation Passive
+- Enlightenment Passive
+- Spell Powers
+- Weather Affinity
+
+Behavior Every End Of Turn Passive Orders
 1 - Poison
 1000 - PassiveTurnCalcRemove
+
+Behavior Start of Turn Passive Orders
+1 - Enlightenment
+
+Behavior On Hit Passive Orders
+1 - Retaliation
 
 Changed Or Added Things from Godot
 - Weather Interact Object

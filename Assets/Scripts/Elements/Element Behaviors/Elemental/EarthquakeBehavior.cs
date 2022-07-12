@@ -8,7 +8,7 @@ public class EarthquakeBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameStateManager.Instance.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
+        ElementBehaviorUtil.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.ExtraValue);
     
         return true;
     }

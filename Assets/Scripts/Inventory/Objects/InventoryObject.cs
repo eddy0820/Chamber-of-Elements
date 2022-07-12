@@ -10,6 +10,8 @@ public class InventoryObject : ScriptableObject
     public ElementDatabase Database => database;
     [SerializeField] ElementRecipeDatabase recipeDatabase;
     public ElementRecipeDatabase RecipeDatabase => recipeDatabase;
+    [SerializeField] MinionRecipeDatabase minionRecipeDatabase;
+    public MinionRecipeDatabase MinionRecipeDatabase => minionRecipeDatabase;
     [SerializeField] ElementObject[] reRollElements;
     [SerializeField] Inventory container;
     public Inventory Container => container;
@@ -84,6 +86,38 @@ public class InventoryObject : ScriptableObject
         }
 
         return result;
+    }
+
+    public MinionObject CanCombineMinion(Element hoverElement, Element mouseElement)
+    {
+        MinionObject minion = null;
+
+        foreach(MinionRecipeObject recipe in minionRecipeDatabase.minionRecipeObjects)
+        {
+            if(recipe.CatalystElement.ID == hoverElement.ID || recipe.CatalystElement.ID == mouseElement.ID)
+            {
+                Element catalyst;
+                Element otherElement;
+
+                if(recipe.CatalystElement.ID == hoverElement.ID)
+                {
+                    catalyst = hoverElement;
+                    otherElement = mouseElement;
+                }
+                else
+                {
+                    catalyst = mouseElement;
+                    otherElement = hoverElement;
+                }
+
+                if(recipe.SecondaryIngredients.Contains(database.GetElement[otherElement.ID]))
+                {
+                    minion = recipe.Result;
+                }
+            }
+        }
+
+        return minion;
     }
 
     public int FindElement(int id)

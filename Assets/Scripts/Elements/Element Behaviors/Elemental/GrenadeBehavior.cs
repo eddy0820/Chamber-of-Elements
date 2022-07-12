@@ -8,7 +8,7 @@ public class GrenadeBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameStateManager.Instance.DealDamageToEverythingExceptEnemy(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.Damage);
+        ElementBehaviorUtil.DealDamageToEverythingExceptEnemy(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.Damage);
         
         return true;
     }
