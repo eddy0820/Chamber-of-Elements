@@ -6,6 +6,8 @@ public class WeatherState : State
 {
     [ReadOnly, SerializeField] string stateName;
     public string StateName => stateName;
+    WeatherObject weatherObject;
+    public WeatherObject WeatherObject => weatherObject;
     
     public override State RunCurrentState()
     {
@@ -16,8 +18,9 @@ public class WeatherState : State
 
     public override void OnExitState() {}
 
-    public void InitWeatherState(string _stateName)
+    public void InitWeatherState(string _stateName, WeatherObject _weatherObject)
     {
         stateName = _stateName;
+        weatherObject = _weatherObject;
     }
 }

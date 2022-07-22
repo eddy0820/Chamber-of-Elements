@@ -18,5 +18,7 @@ MonoBehaviour:
   startingPassives: []
   sprite: {fileID: 21300000, guid: 24967aa14075d6648a942b3da8d85558, type: 3}
   animationController: {fileID: 9100000, guid: d78dd4b269816624cadd0db77884b810, type: 2}
+  deathRattles: []
   focus: {fileID: 0}
   description: A living being of magma.
+  passivesToGivePlayer: []

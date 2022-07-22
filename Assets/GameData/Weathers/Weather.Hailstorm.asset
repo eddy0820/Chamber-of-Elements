@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hailstorm
   weatherTexture: {fileID: 21300000, guid: 4cf81c245b6b44c49b39da7775208026, type: 3}
+  weatherAffinity: {fileID: 11400000, guid: 90fa49b5e62e6fb4cb2ed880ebaa104c, type: 2}
+  weatherPotency: {fileID: 11400000, guid: 3b7ef3c0e32086d4781fcd796b2944e3, type: 2}

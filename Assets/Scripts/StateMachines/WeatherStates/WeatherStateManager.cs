@@ -26,7 +26,7 @@ public class WeatherStateManager : AbstractStateManager
         foreach(KeyValuePair<string, WeatherObject> pair in GameManager.Instance.WeatherDatabase.GetWeather)
         {
             WeatherState state = gameObject.AddComponent<WeatherState>();
-            state.InitWeatherState(pair.Key);
+            state.InitWeatherState(pair.Key, pair.Value);
             getWeatherState.Add(pair.Value, state);
         }
 

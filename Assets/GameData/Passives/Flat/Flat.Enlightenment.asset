@@ -19,7 +19,7 @@ MonoBehaviour:
   additiveTypes: []
   removalTypes: []
   isPositiveEffect: 1
-  forceOnPlayer: 1
+  forceOnPlayerIfMinion: 1
   value: 0
   statModifyingPassive: 0
   affectedStat: {fileID: 0}

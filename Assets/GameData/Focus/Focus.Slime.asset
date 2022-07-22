@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7dd37c9b2ac8a48bd58929e6061fd0, type: 3}
   m_Name: Focus.Slime
   m_EditorClassIdentifier: 
-  damagePlayer: 1
-  damageMinion: 0
+  doHeal: 0
+  affectPlayer: 1
+  affectMinion: 0
+  affectEnemy: 0
   elementsToConsume: []

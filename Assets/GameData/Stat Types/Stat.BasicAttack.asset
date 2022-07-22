@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Stat.BasicAttack
   m_EditorClassIdentifier: 
   name: BasicAttack
-  defaultValue: 1
+  defaultValue: 0
   defaultMinValue: 0
   defaultMaxValue: Infinity

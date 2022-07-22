@@ -11,4 +11,14 @@ public class MinionObject : CharacterObject
     [TextArea(15, 20)]
     [SerializeField] string description;
     public string Description => description;
+
+    [Header("Minion")]
+    [SerializeField] List<PassiveEntryTarget> passivesToGiveCharacters = new List<PassiveEntryTarget>();
+    public List<PassiveEntryTarget> PassivesToGiveCharacters => passivesToGiveCharacters;
+
+    [System.Serializable]
+    public class PassiveEntryTarget : PassiveEntry
+    {
+        public CharacterEntry character;
+    }
 }

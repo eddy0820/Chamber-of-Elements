@@ -41,11 +41,6 @@ public class FlatPassiveObject : PassiveObject
 
     public override void TakeAffect(Character character)
     {
-        if(ForceOnPlayer)
-        {
-            character = Player.Instance;
-        }
-
         if(StatModifyingPassive)
         {   
             TakeAffectModifier(character);
@@ -58,11 +53,6 @@ public class FlatPassiveObject : PassiveObject
 
     public override void RemoveAffect(Character character)
     {
-        if(ForceOnPlayer)
-        {
-            character = Player.Instance;
-        }
-        
         if(StatModifyingPassive)
         {
             RemoveAffectModifier(character);
@@ -112,7 +102,6 @@ public class FlatPassiveObject : PassiveObject
                 
                 break;
             case PassiveBehaviorTypes.DamageToAttacker:
-                // need to change to attacker
                 if(OnHitBehavior)
                 {
                     action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, null);

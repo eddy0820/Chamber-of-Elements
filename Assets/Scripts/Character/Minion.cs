@@ -10,9 +10,9 @@ public class Minion : Character
         {
             stats = new MinionStats(characterObject.BaseStats);
 
-            InitCharacter();
             ChangeAttacker(GameManager.Instance.Enemy);
-
+            InitCharacter();
+        
             Player.Instance.SetMinionExists(true);
         }
         else
@@ -28,6 +28,13 @@ public class Minion : Character
     {
         if(characterObject != null)
         {
+            foreach(MinionObject.PassiveEntryTarget characterPassive in ((MinionObject) characterObject).PassivesToGiveCharacters) 
+            {
+                Character character = GameManager.Instance.ConvertCharacterEntry(characterPassive.character);
+
+                character.RemovePassive(characterPassive.passive);
+            } 
+
             characterObject = null;
             stats = null;
 
@@ -42,8 +49,8 @@ public class Minion : Character
             foreach(PassiveObject passive in deletePassives)
             {
                 RemovePassive(passive);
-            }            
-            
+            }   
+ 
             passives = new HashSet<PassiveObject>();
 
             actionsToDoStartOfEveryTurn = null;
@@ -69,10 +76,33 @@ public class Minion : Character
 
             stats = new MinionStats(characterObject.BaseStats);
 
-            InitCharacter();
             ChangeAttacker(GameManager.Instance.Enemy);
-
+            InitCharacter();
+        
             Player.Instance.SetMinionExists(true);
         }   
+    }
+
+    protected override void InitCharacter()
+    {
+        base.InitCharacter();
+
+        foreach(MinionObject.PassiveEntryTarget characterPassive in ((MinionObject) characterObject).PassivesToGiveCharacters)
+        {
+            Character character = GameManager.Instance.ConvertCharacterEntry(characterPassive.character);
+
+            if(characterPassive.passive is FlatPassiveObject)
+            {
+                character.AddFlatPassive((FlatPassiveObject) characterPassive.passive);
+            }
+            else if(characterPassive.passive is DynamicPassiveObject)
+            {
+                character.AddDynamicPassive(((DynamicPassiveObject) characterPassive.passive), characterPassive.value, false);
+            }
+            else if(characterPassive.passive is ImmunityPassiveObject)
+            {
+                character.AddImmunityPassive((ImmunityPassiveObject) characterPassive.passive);
+            }
+        }
     }
 }

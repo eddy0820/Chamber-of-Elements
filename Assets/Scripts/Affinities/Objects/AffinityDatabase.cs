@@ -15,7 +15,7 @@ public class AffinityDatabase : ScriptableObject
 
         foreach(AffinityObject affinity in affinities)
         {
-            getAffinity[affinity.Type] = affinity;
+            getAffinity.Add(affinity.Type, affinity);
         }
     }
 }

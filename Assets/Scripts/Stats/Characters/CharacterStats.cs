@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public abstract class CharacterStats
     protected BaseStatsObject baseStats;
     protected Dictionary<string, Stat> stats = new Dictionary<string, Stat>();
     public Dictionary<string, Stat> Stats => stats;
+    Dictionary<StatTypeObject, Stat> getStat = new Dictionary<StatTypeObject, Stat>();
+    public Dictionary<StatTypeObject, Stat> GetStat = new Dictionary<StatTypeObject, Stat>();
     protected float currentHealth;
     protected float currentMana;
     public float CurrentHealth => currentHealth;
@@ -20,7 +23,9 @@ public abstract class CharacterStats
     {
         foreach(BaseStatsObject.BaseStat baseStat in baseStats.Stats)
         {
-            stats.Add(baseStat.StatType.Name, new Stat(baseStat.StatType, baseStat.Value));
+            Stat stat = new Stat(baseStat.StatType, baseStat.Value);
+            stats.Add(baseStat.StatType.Name, stat);
+            getStat.Add(baseStat.StatType, stat);
         }
 
         currentHealth = stats["MaxHealth"].value;
@@ -61,7 +66,7 @@ public abstract class CharacterStats
 
         character.ChangeAttacker(source);
 
-        damage = CalcDamage(damage, damageType, character, source);
+        damage = CalcDamage(damage, damageType, character, source, (WeatherState) WeatherStateManager.Instance.currentState);
 
         System.Math.Round(damage, 1);
 
@@ -77,80 +82,60 @@ public abstract class CharacterStats
 
         if(currentHealth <= 0)
         {
-            Die(character.CharacterObject.Name);
+            Die(character);
         }
 
         HandlePassiveAdditiveRemovalTypes(character, damageType);
     }
 
-    private float CalcDamage(float damage, AffinityTypes damageType, Character character, Character source)
+    private float CalcDamage(float damage, AffinityTypes damageType, Character character, Character source, WeatherState weather)
     {
-        float newDamage;
-
-        switch(damageType)
+        float attackerStength;
+        float attackerPotency;
+        float attackerSpellPower;
+        float defense = stats["Defense"].value;
+        float resistance;
+        if(source == null)
         {
-            case AffinityTypes.Air:
+            Debug.Log("source is null");
+        }
+        float attackerWeatherAffinity = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherAffinity].value;
+        float attackerWeatherPotency = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherPotency].value;
 
-                if(source == null)
-                {
-                    newDamage = Calculate(damage, stats["AirResistance"].value);
-                }
-                else
-                {
-                    newDamage = CalculateWithSpellPower(damage, stats["AirResistance"].value, source.Stats.stats["SpellPowerAir"].value);
-                }
-                
-                break;
-            case AffinityTypes.Earth:
+        if(source == null)
+        {
+            attackerStength = 0;
+            attackerPotency = 0;
+            attackerSpellPower = 0;
 
-                if(source == null)
-                {
-                    newDamage = Calculate(damage, stats["EarthResistance"].value);
-                }
-                else
-                {
-                    newDamage = CalculateWithSpellPower(damage, stats["EarthResistance"].value, source.Stats.stats["SpellPowerEarth"].value);
-                }
+            if(damageType == AffinityTypes.None)
+            {
+                resistance = 0;
+            }
+            else
+            {
+                resistance = getStat[GameManager.Instance.AffinityDatabase.GetAffinity[damageType].AffinityResistance].value;
+            }
+        }
+        else
+        {
+            attackerStength = source.Stats.stats["Strength"].value;
 
-                break;
-            case AffinityTypes.Fire:
-
-                if(source == null)
-                {
-                    newDamage = Calculate(damage, stats["FireResistance"].value);
-                }
-                else
-                {
-                    newDamage = CalculateWithSpellPower(damage, stats["FireResistance"].value, source.Stats.stats["SpellPowerFire"].value);
-                }
-
-                break;
-            case AffinityTypes.Water:
-
-                if(source == null)
-                {
-                    newDamage = Calculate(damage, stats["WaterResistance"].value);
-                }
-                else
-                {
-                    newDamage = CalculateWithSpellPower(damage, stats["WaterResistance"].value, source.Stats.stats["SpellPowerWater"].value);
-                }
-                
-                break;
-            case AffinityTypes.None:
-
-                newDamage = Calculate(damage, stats["GeneralResistance"].value);
-
-                break;
-            default:
-
-                Debug.Log("Unrecognized damage type, dealing general damage");
-                newDamage = Calculate(damage, stats["GeneralResistance"].value);
-
-                break;
+            if(damageType == AffinityTypes.None)
+            {
+                attackerPotency = 0;
+                attackerSpellPower = 0;
+                resistance = 0;
+            }
+            else
+            {
+                attackerPotency = source.Stats.getStat[GameManager.Instance.AffinityDatabase.GetAffinity[damageType].AffinityStrength].value;
+                attackerSpellPower = source.Stats.getStat[GameManager.Instance.AffinityDatabase.GetAffinity[damageType].AffinitySpellPower].value;
+                resistance = getStat[GameManager.Instance.AffinityDatabase.GetAffinity[damageType].AffinityResistance].value;
+            }
         }
 
-        return newDamage;
+        return ((damage + attackerStength + attackerPotency + attackerWeatherPotency) - defense) + ((attackerWeatherAffinity/100) * damage) + ((attackerSpellPower/100) * damage) - ((resistance/100) * damage);
     }
 
     public void Heal(float amount, Character character)
@@ -178,42 +163,14 @@ public abstract class CharacterStats
         Debug.Log(character.CharacterObject.Name + " now has " + currentHealth + " health.");
     }
 
-    private float Calculate(float damage, float resistance)
+    public virtual void Die(Character character)
     {
-        float num1 = resistance/100;
-        float num2 = num1 * damage;
-        
-        float finalValue = damage - num2;
+        Debug.Log(character.CharacterObject.Name + " died.");
 
-        if(finalValue < 1)
+        foreach(DeathRattleObject dr in character.CharacterObject.DeathRattles)
         {
-            return 1;
+            dr.Behavior.DoBehavior(character, dr);
         }
-        
-        return finalValue;  
-    }
-
-    private float CalculateWithSpellPower(float damage, float resistance, float spellPower)
-    {
-        float num1 = resistance/100;
-        float num2 = num1 * damage;
-
-        float num3 = spellPower/100;
-        float num4 = num3 * damage;
-
-        float finalValue = damage - num2 + num3;
-
-        if(finalValue < 1)
-        {
-            return 1;
-        }
-        
-        return finalValue;  
-    }
-
-    public virtual void Die(string debugName)
-    {
-        Debug.Log(debugName + " died.");
     }
 
     private void HandlePassiveAdditiveRemovalTypes(Character character, AffinityTypes damageType)

@@ -1939,7 +1939,7 @@ MonoBehaviour:
   debug: 1
   debugElement1: {fileID: 11400000, guid: c6160a64fb4716645bca7b83f2767fba, type: 2}
   debugElement2: {fileID: 11400000, guid: 2b97594d72ec7354887b52f6afb4c055, type: 2}
-  debugElement3: {fileID: 11400000, guid: 10492d68889d08243b0ace09bd03d8ee, type: 2}
+  debugElement3: {fileID: 11400000, guid: cd87d7633e2746e4395550748de154c7, type: 2}
   debugElement4: {fileID: 11400000, guid: d85d34a882459ee4db6360ac39a64e4a, type: 2}
   debugElement5: {fileID: 11400000, guid: c1fcbabb972eb2c49805aff658573ace, type: 2}
 --- !u!4 &1625356783
@@ -2189,7 +2189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a970865065125c248938e82f0949e3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterObject: {fileID: 11400000, guid: 6a39468ab1416db4bb5b0a7eb432af86, type: 2}
+  characterObject: {fileID: 11400000, guid: 9fd69c91a3f7c674b88dfbb5e6fe441c, type: 2}
   affinityType: 0
   damageIndicatorPrefab: {fileID: 3071657686418835446, guid: a396cf9012c41774fb9101f374394059, type: 3}
   passivesInterface: {fileID: 1490562595}

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public enum AffinityTypes
 {
-    Water,
-    Fire,
-    Earth,
-    Air,
-    Order,
-    Disorder,
-    None,
+    Water = 0,
+    Fire = 1,
+    Earth = 2,
+    Air = 3,
+    Order = 4,
+    Disorder = 5,
+    None = 6,
 }

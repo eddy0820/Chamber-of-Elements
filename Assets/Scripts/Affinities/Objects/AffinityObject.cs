@@ -11,5 +11,14 @@ public class AffinityObject : ScriptableObject
     public Sprite Sprite => sprite;
     [SerializeField] ElementObject recipeElement;
     public ElementObject RecipeElement => recipeElement;
+
+    [Header("Stats")]
+
+    [SerializeField] StatTypeObject affinityResistance;
+    public StatTypeObject AffinityResistance => affinityResistance;
+    [SerializeField] StatTypeObject affinityStrength;
+    public StatTypeObject AffinityStrength => affinityStrength;
+    [SerializeField] StatTypeObject affinitySpellPower;
+    public StatTypeObject AffinitySpellPower => affinitySpellPower;
 }
 

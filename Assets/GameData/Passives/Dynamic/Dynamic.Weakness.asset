@@ -18,10 +18,15 @@ MonoBehaviour:
   additiveTypes: []
   removalTypes: []
   isPositiveEffect: 0
+  forceOnPlayer: 0
   statModifyingPassive: 1
-  affectedStat: {fileID: 11400000, guid: 510ba4a6d9299a1458c50fd8b12bffcf, type: 2}
+  affectedStat: {fileID: 11400000, guid: f239068cab184574b93850a06d3dc44a, type: 2}
   secondaryAffectedStat: {fileID: 0}
   modifierType: 100
-  behaviorEveryTurnPassive: 0
+  behaviorPassive: 0
+  startOfTurnBehavior: 0
+  endOfTurnBehavior: 0
+  onHitBehavior: 0
   behaviorType: 0
-  affinityTypeForDamageBehavior: 0
+  behaviorOrder: 0
+  affinityTypeForDamageSelfBehavior: 0

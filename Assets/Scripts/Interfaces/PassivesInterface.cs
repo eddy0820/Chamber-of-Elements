@@ -20,8 +20,8 @@ public class PassivesInterface : AbstractGameInterface
 
         obj.GetComponent<Image>().sprite = passive.PassiveTexture;
 
-        var title = obj.transform.GetChild(0);
-        var description = obj.transform.GetChild(1);
+        var title = obj.transform.GetChild(0).GetChild(0);
+        var description = title.transform.GetChild(0);
 
         TextMeshProUGUI textTitle = title.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI textDescription = description.GetComponent<TextMeshProUGUI>();
@@ -95,14 +95,14 @@ public class PassivesInterface : AbstractGameInterface
 
     private void OnEnterSlot(GameObject obj)
     {
-        obj.transform.GetChild(0).gameObject.SetActive(true);
-        obj.transform.GetChild(1).gameObject.SetActive(true);
+        obj.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        obj.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
     }
 
     private void OnExitSlot(GameObject obj)
     {
-        obj.transform.GetChild(0).gameObject.SetActive(false);
-        obj.transform.GetChild(1).gameObject.SetActive(false);
+        obj.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+        obj.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
     }
 
     protected override void UpdateInterface() {}

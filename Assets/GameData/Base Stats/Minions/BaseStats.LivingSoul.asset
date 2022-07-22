@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009cf2ab2b4943b40b03e2ac22f0927d, type: 3}
+  m_Name: BaseStats.LivingSoul
+  m_EditorClassIdentifier: 
+  stats:
+  - statType: {fileID: 11400000, guid: 339fe0a088a15614795dec56ed351d2e, type: 2}
+    value: 30
+  - statType: {fileID: 11400000, guid: 510ba4a6d9299a1458c50fd8b12bffcf, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: e588c2ede53e5d8429ba1dd025852e9b, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: f239068cab184574b93850a06d3dc44a, type: 2}
+    value: 5
+  - statType: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
+    value: 100
+  resistanceStats:
+  - statType: {fileID: 11400000, guid: c8cd1a608135f7649ae601e472134598, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 465c2cc5603de6649a63541923222c74, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
+    value: 0
+  potencyStats:
+  - statType: {fileID: 11400000, guid: afd382e7c5e2f624b84bc4b980232c3a, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 09fc6d0670cd18348801deb72d0200fb, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: ff005103301dd914a8797757d9e80953, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: bd1c40ca954618f41acecb7e242109bf, type: 2}
+    value: 0
+  spellPowerStats:
+  - statType: {fileID: 11400000, guid: 69749360545cfae4cacfc8e2bf4abd61, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 6dbf4a891e7a02241b7d05105d738609, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: abc248c702af88c489509f3f9c43a948, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 35cdfedadc6d9ad4ebd4efadf618ec53, type: 2}
+    value: 0
+  weatherAffinityStats:
+  - statType: {fileID: 11400000, guid: 878624a0a92c92544b714b4efcbbedd9, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 90fa49b5e62e6fb4cb2ed880ebaa104c, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 2e2c49419a3b48b489e0ac9e22e03957, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: d9257648fc3a4824d9e0ab3cfb5c914c, type: 2}
+    value: 0
+  weatherPotencyStats:
+  - statType: {fileID: 11400000, guid: cad11a64844966d4d83f4528fa912c40, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 3b7ef3c0e32086d4781fcd796b2944e3, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 75c062257f0e8d74cac261aec44b4665, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: c82e98d946cc63041a035c8140264f60, type: 2}
+    value: 0

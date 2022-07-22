@@ -91,4 +91,19 @@ public class GameManager : MonoBehaviour
     {
         elementSlotsInv.ClearElements();
     }
+
+    // Find another place for this
+    public Character ConvertCharacterEntry(CharacterEntry characterEntry)
+    {
+        switch(characterEntry)
+        {
+            case CharacterEntry.Player:
+                return Player.Instance;
+            
+            case CharacterEntry.Enemy:
+                return GameManager.Instance.Enemy;
+            default:
+                return null;
+        }
+    }
 }

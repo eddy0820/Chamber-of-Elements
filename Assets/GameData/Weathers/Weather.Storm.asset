@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Storm
   weatherTexture: {fileID: 21300000, guid: e52efe7580d382b408e7c8020f7639b3, type: 3}
+  weatherAffinity: {fileID: 11400000, guid: d9257648fc3a4824d9e0ab3cfb5c914c, type: 2}
+  weatherPotency: {fileID: 11400000, guid: c82e98d946cc63041a035c8140264f60, type: 2}

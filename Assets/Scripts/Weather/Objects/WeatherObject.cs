@@ -10,4 +10,8 @@ public class WeatherObject : ScriptableObject
     public string Name => name;
     [SerializeField] Sprite weatherTexture;
     public Sprite WeatherTexture => weatherTexture;
+    [SerializeField] StatTypeObject weatherAffinity;
+    public StatTypeObject WeatherAffinity => weatherAffinity;
+    [SerializeField] StatTypeObject weatherPotency;
+    public StatTypeObject WeatherPotency => weatherPotency;
 }

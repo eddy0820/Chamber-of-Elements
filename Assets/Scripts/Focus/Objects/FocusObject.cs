@@ -5,41 +5,41 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Focus", menuName = "Focus")]
 public class FocusObject : ScriptableObject
 {
-    [SerializeField] bool damagePlayer;
-    [SerializeField] bool damageMinion;
-    [SerializeField] bool damageEnemy;
+    [SerializeField] bool doHeal;
+
+    [Space(15)]
+    [SerializeField] bool affectPlayer;
+    [SerializeField] bool affectMinion;
+    [SerializeField] bool affectEnemy;
     [SerializeField] ElementObject[] elementsToConsume;
 
     public void PerformFocus(Character character)
     {
-        if(damagePlayer)
+        if(affectPlayer)
         {
-            PerformPlayer(character);
+            Perform(character, Player.Instance);
         }
 
-        if(damageMinion)
+        if(affectMinion)
         {
-            PerformMinion(character);
+            Perform(character, Player.Instance.Minion);
         }
 
-        if(damageEnemy)
+        if(affectEnemy)
         {
-            PerformEnemy(character);
+            Perform(character, GameManager.Instance.Enemy);
         }
     }
 
-    private void PerformPlayer(Character character)
+    private void Perform(Character character, Character affected)
     {
-        Player.Instance.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, Player.Instance, character);
-    }
-
-    private void PerformMinion(Character character)
-    {
-        Player.Instance.Minion.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, Player.Instance.Minion, character);
-    }
-
-    private void PerformEnemy(Character character)
-    {
-        GameManager.Instance.Enemy.Stats.TakeDamage(character.Stats.Stats["FocusDamage"].value, character.AffinityType, GameManager.Instance.Enemy, character);
+        if(doHeal)
+        {
+            affected.Stats.Heal(character.Stats.Stats["FocusValue"].value, affected);
+        }
+        else
+        {
+            affected.Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, affected, character);
+        }
     }
 }

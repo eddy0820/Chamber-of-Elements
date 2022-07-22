@@ -25,9 +25,9 @@ public class MinionStats : CharacterStats
         }
     }
 
-    public override void Die(string debugName)
+    public override void Die(Character character)
     {
-        base.Die(debugName);
+        base.Die(character);
 
         Player.Instance.Minion.NullifyMinion();
     }

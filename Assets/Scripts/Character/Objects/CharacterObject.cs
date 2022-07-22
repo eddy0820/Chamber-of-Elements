@@ -16,4 +16,6 @@ public abstract class CharacterObject : ScriptableObject
     public Sprite Sprite => sprite;
     [SerializeField] RuntimeAnimatorController animationController;
     public RuntimeAnimatorController AnimatorController => animationController;
+    [SerializeField] DeathRattleObject[] deathRattles;
+    public DeathRattleObject[] DeathRattles => deathRattles;
 }

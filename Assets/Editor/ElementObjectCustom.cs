@@ -5,7 +5,6 @@ using System.IO;
 [CustomEditor(typeof(ElementObject), true)]
 public class ElementObjectCustom : Editor
 {
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector(); 
@@ -41,6 +40,4 @@ public class ElementObjectCustom : Editor
             AssetDatabase.OpenAsset(script);
         }
     }
-
-    
 }

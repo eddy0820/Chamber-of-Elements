@@ -13,6 +13,5 @@ public class PlayerStats : CharacterStats
     {
         baseStats = _baseStats;
         InitializeCharacterStats();
-        currentMana = (int)stats["MaxMana"].value;
     }
 }

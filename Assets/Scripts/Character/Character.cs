@@ -38,7 +38,7 @@ public abstract class Character : MonoBehaviour
     protected CharacterStats stats;
     public CharacterStats Stats => stats;
     
-    protected void InitCharacter()
+    protected virtual void InitCharacter()
     {
         GetComponentInChildren<SpriteRenderer>().sprite = characterObject.Sprite;
         GetComponentInChildren<Animator>().runtimeAnimatorController = characterObject.AnimatorController;

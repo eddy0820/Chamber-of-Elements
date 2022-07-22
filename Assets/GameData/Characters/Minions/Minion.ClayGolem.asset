@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785ba9a413ac6a14eb18d11cd348728e, type: 3}
+  m_Name: Minion.ClayGolem
+  m_EditorClassIdentifier: 
+  name: Clay Golem
+  baseStats: {fileID: 11400000, guid: f23244d2efeda6246b448c4c48e529bf, type: 2}
+  affinityType: 2
+  startingPassives: []
+  sprite: {fileID: 21300000, guid: b01c9741fef01954fa9e5a6a802405d8, type: 3}
+  animationController: {fileID: 9100000, guid: d78dd4b269816624cadd0db77884b810, type: 2}
+  deathRattles: []
+  focus: {fileID: 0}
+  description: 
+  passivesToGiveCharacters:
+  - passive: {fileID: 11400000, guid: d893ccbdfaa09ed46bf860b7c7918f8a, type: 2}
+    value: 10
+    character: 0

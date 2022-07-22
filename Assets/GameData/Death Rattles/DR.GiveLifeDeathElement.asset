@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32271055c60938e4d8043389744c62fa, type: 3}
+  m_Name: DR.GiveLifeDeathElement
+  m_EditorClassIdentifier: 
+  name: GiveLifeDeathElement
+  behavior: {fileID: 1990747287281596895, guid: 46a87014628f2fb40b2885fdbf9df558, type: 3}
+  associatedValue: -1
+  associatedElement: {fileID: 11400000, guid: 10492d68889d08243b0ace09bd03d8ee, type: 2}
+  secondaryAssociatedElement: {fileID: 11400000, guid: 2034e48c0c51ea4459e9d4983570bcba, type: 2}
+  associatedCharacter: 3
+  permaScriptPath: Assets/Scripts/DeathRattle/GiveLifeDeathElementDRBehavior.cs
+  permaPrefabPath: Assets/Prefabs/DeathRattles/GiveLifeDeathElementDRBehavior.prefab

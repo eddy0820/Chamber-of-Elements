@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Dynamic Passive", menuName = "Passives/Dynamic")]
 public class DynamicPassiveObject : PassiveObject 
 {
-    
-
     [Header("Stat Modifying Passive")]
     [Header("Dynamic Passive Specific")]
     
@@ -57,11 +55,6 @@ public class DynamicPassiveObject : PassiveObject
 
     public override void TakeAffect(Character character)
     {
-        if(ForceOnPlayer)
-        {
-            character = Player.Instance;
-        }
-
         if(StatModifyingPassive)
         {   
             TakeAffectModifier(character);
@@ -73,12 +66,7 @@ public class DynamicPassiveObject : PassiveObject
     }
 
     public override void RemoveAffect(Character character)
-    {
-        if(ForceOnPlayer)
-        {
-            character = Player.Instance;
-        }
-        
+    {   
         if(StatModifyingPassive)
         {
             RemoveAffectModifier(character);
@@ -139,14 +127,13 @@ public class DynamicPassiveObject : PassiveObject
 
                     break;
                 case PassiveBehaviorTypes.DamageToAttacker:
-                    // need to change for attacker
                     if(OnHitBehavior)
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, null);
+                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, character);
                     }
                     else
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character.Attacker, null);
+                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character.Attacker, character);
                     }
 
                     break;
