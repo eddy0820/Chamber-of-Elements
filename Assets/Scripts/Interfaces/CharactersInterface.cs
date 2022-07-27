@@ -15,7 +15,7 @@ public class CharactersInterface : AbstractGameInterface
     [SerializeField] Sprite cursorUse;
     [SerializeField] Sprite cursorAttack;
    
-    TextMeshProUGUI minionText;
+    [System.NonSerialized] public TextMeshProUGUI minionText;
 
     protected override void OnAwake() 
     {

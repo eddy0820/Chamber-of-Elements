@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3982afd3bbad2d44897f980a11de694, type: 3}
+  m_Name: RRecipe.EmeraldRing
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
+  - {fileID: 11400000, guid: 45cea955715ff2048942fb6ab62a9fc4, type: 2}
+  result: {fileID: 11400000, guid: 9ec9d77c5a38d3e4a9f595f00a563d2c, type: 2}

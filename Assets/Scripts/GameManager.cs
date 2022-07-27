@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance {get; private set; }
     [SerializeField] ElementDatabase elementDatabase;
     public ElementDatabase ElementDatabase => elementDatabase;
-    [SerializeField] ElementRecipeDatabase elementRecipeDatabase;
     [SerializeField] AffinityDatabase affinityDatabase;
     public AffinityDatabase AffinityDatabase => affinityDatabase;
     [SerializeField] WeatherDatabase weatherDatabase;

@@ -95,10 +95,6 @@ public abstract class CharacterStats
         float attackerSpellPower;
         float defense = stats["Defense"].value;
         float resistance;
-        if(source == null)
-        {
-            Debug.Log("source is null");
-        }
         float attackerWeatherAffinity = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherAffinity].value;
         float attackerWeatherPotency = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherPotency].value;
 
@@ -145,6 +141,10 @@ public abstract class CharacterStats
             Debug.Log("This would deal damage, just use 'TakeDamage()'");
             return;
         }
+
+        float healScale = stats["HealScale"].value;
+
+        amount = ((healScale / 100) * amount);
         
         if(amount > stats["MaxHealth"].value - currentHealth)
         {
@@ -213,7 +213,7 @@ public abstract class CharacterStats
             }
             else if(typeEntry.Passive is DynamicPassiveObject)
             {
-                character.AddDynamicPassive((DynamicPassiveObject) typeEntry.Passive, typeEntry.Value, false);
+                character.AddDynamicPassive((DynamicPassiveObject) typeEntry.Passive, typeEntry.Value, false, false);
             }
             else if(typeEntry.Passive is ImmunityPassiveObject)
             {

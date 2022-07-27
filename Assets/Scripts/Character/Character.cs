@@ -30,6 +30,7 @@ public abstract class Character : MonoBehaviour
     [System.NonSerialized] public SortedList<int, Action> actionsToDoEndOfEveryTurn;
     [System.NonSerialized] public SortedList<int, Action> actionsToDoOnHit;
     protected Dictionary<string, PassiveWithTurnsInfo> passivesWithTurns;
+    protected Dictionary<DynamicPassiveObject, float> minDynamicPassivesList;
 
     [System.NonSerialized] public Dictionary<AffinityTypes, ImmunityPassiveObject> immunityAffinityTypes;
     [System.NonSerialized] public Dictionary<PassiveObject, ImmunityPassiveObject> immunityPassives;
@@ -53,6 +54,7 @@ public abstract class Character : MonoBehaviour
         actionsToDoOnHit = new SortedList<int, Action>();
 
         passivesWithTurns = new Dictionary<string, PassiveWithTurnsInfo>();
+        minDynamicPassivesList = new Dictionary<DynamicPassiveObject, float>();
 
         immunityAffinityTypes = new Dictionary<AffinityTypes, ImmunityPassiveObject>();
         immunityPassives = new Dictionary<PassiveObject, ImmunityPassiveObject>();
@@ -66,7 +68,7 @@ public abstract class Character : MonoBehaviour
             }
             else if(passive.passive is DynamicPassiveObject)
             {
-                AddDynamicPassive(((DynamicPassiveObject) passive.passive), passive.value, false);
+                AddDynamicPassive(((DynamicPassiveObject) passive.passive), passive.value, false, false);
             }
             else if(passive.passive is ImmunityPassiveObject)
             {
@@ -83,13 +85,13 @@ public abstract class Character : MonoBehaviour
         {
             if(passive.Value.turnCounter == GameManager.Instance.turnCounter)
             {
-                if(!(passive.Value.passive  is DynamicPassiveObject))
+                if(!(passive.Value.passive is DynamicPassiveObject))
                 {
                     RemovePassive(passive.Value.passive);
                 }
                 else
                 {
-                    SubtractDynamicPassive((DynamicPassiveObject) passive.Value.passive, passive.Value.addedValue);
+                    SubtractDynamicPassive((DynamicPassiveObject) passive.Value.passive, passive.Value.addedValue, false);
                 }
                 
                 passiveGUIDsToRemoveFromTurns.Add(passive.Value.GUID);
@@ -102,7 +104,7 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public void SwitchAffinity(AffinityTypes type)
+    public virtual void SwitchAffinity(AffinityTypes type)
     {
         affinityType = type;
     }
@@ -198,7 +200,7 @@ public abstract class Character : MonoBehaviour
         return added;
     }
 
-    public bool AddDynamicPassive(DynamicPassiveObject passive, float value, bool replace)
+    public bool AddDynamicPassive(DynamicPassiveObject passive, float value, bool replace, bool addToMinValue)
     {
         foreach(KeyValuePair<PassiveObject, ImmunityPassiveObject> passiveObject in immunityPassives)
         {
@@ -208,6 +210,18 @@ public abstract class Character : MonoBehaviour
             }
         }
 
+        if(addToMinValue)
+        {
+            if(minDynamicPassivesList.ContainsKey(passive))
+            {
+                minDynamicPassivesList[passive] = minDynamicPassivesList[passive] + value;
+            }
+            else
+            {
+                minDynamicPassivesList.Add(passive, value);
+            }
+        }
+        
         bool added = false;
 
         if(replace)
@@ -266,7 +280,7 @@ public abstract class Character : MonoBehaviour
             }
         }
 
-        bool added = AddDynamicPassive(passive, value, replace);
+        bool added = AddDynamicPassive(passive, value, replace, false);
 
         if(replace)
         {
@@ -300,16 +314,53 @@ public abstract class Character : MonoBehaviour
         passivesInterface.UpdateDynamicPassiveUI(passive);
     }
 
-    public void SubtractDynamicPassive(DynamicPassiveObject passive, float value)
+    public void SubtractDynamicPassive(DynamicPassiveObject passive, float value, bool removeMinValue)
     {
+        if(removeMinValue)
+        {
+            minDynamicPassivesList[passive] = minDynamicPassivesList[passive] - value;
+
+            if(minDynamicPassivesList[passive] <= 0)
+            {
+                minDynamicPassivesList.Remove(passive);
+            }
+        }
+
         if(passive.Value - value == 0)
         {
-            RemovePassive(passive);
+            if(minDynamicPassivesList.ContainsKey(passive))
+            {
+                passive.RemoveAffect(this);
+                passive.InitDynamicPassive(minDynamicPassivesList[passive]);
+                passive.TakeAffect(this);
+                passivesInterface.UpdateDynamicPassiveUI(passive);
+            }
+            else
+            {
+                RemovePassive(passive);
+            }
+            
         }
         else
         {
             passive.RemoveAffect(this);
-            passive.InitDynamicPassive(passive.Value - value);
+
+            if(minDynamicPassivesList.ContainsKey(passive))
+            {
+                if(passive.Value - value < minDynamicPassivesList[passive])
+                {
+                    passive.InitDynamicPassive(minDynamicPassivesList[passive]);
+                }
+                else
+                {
+                    passive.InitDynamicPassive(passive.Value - value);
+                }
+            }
+            else
+            {
+                passive.InitDynamicPassive(passive.Value - value);
+            }
+            
             passive.TakeAffect(this);
             passivesInterface.UpdateDynamicPassiveUI(passive);
         } 

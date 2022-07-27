@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
+  m_Name: Relic.PhilosophersStone
+  m_EditorClassIdentifier: 
+  name: Philosopher's Stone
+  relicTexture: {fileID: 21300000, guid: 81cb4c549c0a0a540b8e776168d5f2e3, type: 3}
+  description: Transmutes metals.
+  behavior: {fileID: 5451923849444992363, guid: 3e68cd94f7c11b94480747d278ebc4f7, type: 3}
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  associatedElements:
+  - {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
+  - {fileID: 11400000, guid: b8a61e91befef35479f2a9d93a4e01c4, type: 2}
+  - {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
+  associatedRecipeSet: {fileID: 0}
+  permaScriptPath: 
+  permaPrefabPath: 

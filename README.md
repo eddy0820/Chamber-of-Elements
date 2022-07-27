@@ -11,23 +11,15 @@
 - re do parts of onplayerclikc and onenemyclick because i fucked up the abstratcion between an element and an element object
 - need to update hailstorm and frost when multiple enemies are added
 - need to update radiance and light when multiple minions are added
+- add animation for new element when using philosophers stone as well as adding a animation for the philosophers stone aswell
+- make more singletons
 
 - Elements That Need To Be Implemented
-  - Arena - Done
-  - Utility
-    - Death - when adding minions
-	- Enchant - when adding mana system
-	- Hearth - when adding minions
-	- Runestone - when adding mana system
 	- Shield - ask joey about this one
-  - Elemental - Done
-	
-- confusion element
-
+	- confusion element
 - Minions
   - Golden Golem - On Death - Relics
-  - Ceramic Golem - Don't Implement
-  - Diamond Golem - Don't Implement
+  
 
 
 - relics
@@ -41,6 +33,15 @@
 - RogueLike
 - book
 
+When Adding Mana
+-------
+- Diamond Ring 
+- Ceramic Golem
+- Diamond Golem
+- Enchant
+- Runestone
+
+
 Sprites Needed
 - Retaliation Passive
 - Enlightenment Passive
@@ -49,6 +50,7 @@ Sprites Needed
 - Weather Affinites
 - Weather Potencies
 - Weathers
+- enlightened healing passive
 
 Behavior Every End Of Turn Passive Orders
 1 - Poison

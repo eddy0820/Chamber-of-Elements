@@ -72,8 +72,8 @@ public class PassivesInterface : AbstractGameInterface
     {
         GameObject passiveObject = passivesDisplayed[passive.Name];
 
-        TextMeshProUGUI textTitle = passiveObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI textDescription = passiveObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI textTitle = passiveObject.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI textDescription = textTitle.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         string newTitle;
         string newDescription = passive.Description;

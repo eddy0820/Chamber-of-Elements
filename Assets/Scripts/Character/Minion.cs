@@ -57,12 +57,15 @@ public class Minion : Character
             actionsToDoEndOfEveryTurn = null;
             actionsToDoOnHit = null;
             passivesWithTurns = null;
+            minDynamicPassivesList = null;
 
             immunityAffinityTypes = null;
             immunityPassives = null;
             immunityElements = null;
 
             ChangeAttacker(null);
+
+            GameManager.Instance.InterfaceCanvas.GetComponentInChildren<CharactersInterface>().minionText.text = "";
 
             Player.Instance.SetMinionExists(false);
         }
@@ -97,7 +100,7 @@ public class Minion : Character
             }
             else if(characterPassive.passive is DynamicPassiveObject)
             {
-                character.AddDynamicPassive(((DynamicPassiveObject) characterPassive.passive), characterPassive.value, false);
+                character.AddDynamicPassive(((DynamicPassiveObject) characterPassive.passive), characterPassive.value, false, false);
             }
             else if(characterPassive.passive is ImmunityPassiveObject)
             {

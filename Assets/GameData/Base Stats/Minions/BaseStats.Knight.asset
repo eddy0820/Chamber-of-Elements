@@ -23,6 +23,8 @@ MonoBehaviour:
     value: 15
   - statType: {fileID: 11400000, guid: a35cda7cd75021948b2a30bb731f008b, type: 2}
     value: 100
+  - statType: {fileID: 11400000, guid: 03b032d36feb418468326fcc613cc287, type: 2}
+    value: 100
   focusStats: []
   resistanceStats:
   - statType: {fileID: 11400000, guid: c8cd1a608135f7649ae601e472134598, type: 2}

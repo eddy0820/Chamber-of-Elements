@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
+  m_Name: Relic.SapphireRing
+  m_EditorClassIdentifier: 
+  name: Sapphire Ring
+  relicTexture: {fileID: 21300000, guid: 1e9a3512acb7802458a768072a46388d, type: 3}
+  description: Start your battles with Water affinity.
+  behavior: {fileID: 344231201997034890, guid: 612996ba255d92c4b8b51bc91f58f216, type: 3}
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  permaScriptPath: Assets/Scripts/Relics/Relic Behaviors/SapphireRingRelicBehavior.cs
+  permaPrefabPath: Assets/Prefabs/RelicBehaviors/SapphireRingRelicBehavior.prefab

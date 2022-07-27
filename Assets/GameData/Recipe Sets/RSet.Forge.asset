@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b90e42469c5d24585fb458271839a6, type: 3}
+  m_Name: RSet.Forge
+  m_EditorClassIdentifier: 
+  elementRecipes:
+  - {fileID: 11400000, guid: 76689c815b0852841b67556f37ff0ee1, type: 2}
+  - {fileID: 11400000, guid: e0b2274eabe3c6549b9162bb986066e4, type: 2}
+  - {fileID: 11400000, guid: 074848d6500c04246b5e76675b42496a, type: 2}
+  - {fileID: 11400000, guid: e2b784327fa287e4fbb99c67063a993c, type: 2}
+  minionRecipes: []

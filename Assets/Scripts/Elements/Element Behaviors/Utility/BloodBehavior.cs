@@ -8,7 +8,7 @@ public class BloodBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
         
-        character.AddDynamicPassive((DynamicPassiveObject) utilityElement.AssociatedPassive.passive, utilityElement.AssociatedPassive.value, false);
+        character.AddDynamicPassive((DynamicPassiveObject) utilityElement.AssociatedPassive.passive, utilityElement.AssociatedPassive.value, false, false);
         
         return true;
     }

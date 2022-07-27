@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3982afd3bbad2d44897f980a11de694, type: 3}
+  m_Name: RRecipe.Forge
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 11400000, guid: bfff4ba9f4940ce4ba2a73335cc00ecd, type: 2}
+  - {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
+  result: {fileID: 11400000, guid: 9ea805ea64f126442ae26b099ce01afb, type: 2}

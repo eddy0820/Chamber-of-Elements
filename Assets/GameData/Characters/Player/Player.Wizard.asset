@@ -18,3 +18,9 @@ MonoBehaviour:
   startingPassives: []
   sprite: {fileID: -3417436698567514372, guid: afea853677156e84caea72894a4fba29, type: 3}
   animationController: {fileID: 9100000, guid: 6d717cab3ae79144b94652cde9553eb6, type: 2}
+  deathRattles: []
+  unlockedStartingAffinities: 00000000010000000200000003000000
+  unlockedRecipeEntries:
+  - recipeSet: 1
+    set: {fileID: 11400000, guid: 74452cf772977af44a33247c0fd71513, type: 2}
+    recipe: {fileID: 0}

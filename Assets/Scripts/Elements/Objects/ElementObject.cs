@@ -63,7 +63,6 @@ public abstract class ElementObject : ScriptableObject
     private void Awake()
     {
         OnAwake();
-        CreateFilePaths();
     }
 
     public abstract void OnAwake();

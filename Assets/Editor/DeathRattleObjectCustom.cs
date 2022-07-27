@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 
 [CustomEditor(typeof(DeathRattleObject), true)]
-public class DeathRattleCustom : Editor
+public class DeathRattleObjectCustom : Editor
 {
     public override void OnInspectorGUI()
     {

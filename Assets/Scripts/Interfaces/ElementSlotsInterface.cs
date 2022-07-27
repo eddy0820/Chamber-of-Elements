@@ -108,7 +108,7 @@ public class ElementSlotsInterface : AbstractGameInterface
         rectTransform.sizeDelta = new Vector2(32, 32);
         rectTransform.localScale = new Vector3(4, 4, 1);
 
-        mouseObject.transform.SetParent(transform);
+        mouseObject.transform.SetParent(transform.parent);
 
         if(elementsDisplayed[obj].ID >= 0)
         {
@@ -157,7 +157,6 @@ public class ElementSlotsInterface : AbstractGameInterface
                     elementsDisplayed[mouseHoverObj].UpdateSlot(new Element());
 
                     Player.Instance.SwitchAffinity(mouseElement.AffinityType);
-                    Player.Instance.UpdateAffinitySprite(mouseElement.AffinityType);
 
                     elementOnMouse.RemoveMouseElement(Destroy);
                 }
@@ -172,6 +171,19 @@ public class ElementSlotsInterface : AbstractGameInterface
                         elementOnMouse.RemoveMouseElement(Destroy);
 
                         Player.Instance.Minion.CreateMinion(minion);
+                    }
+                    // Relic Recipe
+                    else
+                    {
+                        RelicObject relic = elementSlots.CanCombineRelic(elementsDisplayed[obj], mouseElement);
+
+                        if(relic != null)
+                        {
+                            elementsDisplayed[mouseHoverObj].UpdateSlot(new Element());
+                            elementOnMouse.RemoveMouseElement(Destroy);
+
+                            Player.Instance.Relic.CreateRelic(relic);
+                        }
                     }
                 }
             }

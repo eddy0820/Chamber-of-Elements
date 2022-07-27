@@ -17,7 +17,7 @@ MonoBehaviour:
   affinityType: 6
   startingPassives: []
   sprite: {fileID: 21300000, guid: b7d968e164217234d8e2b82268f8bddf, type: 3}
-  animationController: {fileID: 9100000, guid: d78dd4b269816624cadd0db77884b810, type: 2}
+  animationController: {fileID: 9100000, guid: 0438a364e5126da4786e05ec467a5e8f, type: 2}
   deathRattles:
   - {fileID: 11400000, guid: 32e1247027a973a41af0d30b5e9cd337, type: 2}
   focus: {fileID: 0}

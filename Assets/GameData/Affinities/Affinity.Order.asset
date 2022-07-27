@@ -15,3 +15,6 @@ MonoBehaviour:
   type: 4
   sprite: {fileID: 21300000, guid: 1891d55b3a5f5fa45b17bc1e5dd927aa, type: 3}
   recipeElement: {fileID: 11400000, guid: c92789f418bd01944a17cc2395b75ddf, type: 2}
+  affinityResistance: {fileID: 11400000, guid: 07f11cecd8da1a049abafe374d39b1e9, type: 2}
+  affinityStrength: {fileID: 11400000, guid: 92da9967a731e3149bb12a1775af1f0a, type: 2}
+  affinitySpellPower: {fileID: 11400000, guid: e773a936b1ade7047aef4479db40cd79, type: 2}

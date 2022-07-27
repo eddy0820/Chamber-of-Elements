@@ -8,10 +8,6 @@ public class InventoryObject : ScriptableObject
 {
     [SerializeField] ElementDatabase database;
     public ElementDatabase Database => database;
-    [SerializeField] ElementRecipeDatabase recipeDatabase;
-    public ElementRecipeDatabase RecipeDatabase => recipeDatabase;
-    [SerializeField] MinionRecipeDatabase minionRecipeDatabase;
-    public MinionRecipeDatabase MinionRecipeDatabase => minionRecipeDatabase;
     [SerializeField] ElementObject[] reRollElements;
     [SerializeField] Inventory container;
     public Inventory Container => container;
@@ -68,31 +64,35 @@ public class InventoryObject : ScriptableObject
 
     public int CanCombine(Element hoverElement, Element mouseElement)
     {
-        int result = -2;
-
-        foreach(ElementRecipeObject recipe in recipeDatabase.elementRecipeObjects)
+        if(hoverElement.ID == mouseElement.ID)
         {
-            if(hoverElement.ID == mouseElement.ID)
+            if(hoverElement.AffinityType != AffinityTypes.None)
             {
-                if(database.GetElement[hoverElement.ID].Type == ElementTypes.Primal)
+                AffinityObject affinity = GameManager.Instance.AffinityDatabase.GetAffinity[hoverElement.AffinityType];
+
+                if(hoverElement.ID == affinity.RecipeElement.ID && Player.Instance.UnlockedAffinities.unlocked.Contains(affinity.Type))
                 {
-                    result = -1;
+                    return -1;
                 } 
-            }
-            else if(recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID]))
+            } 
+        }
+
+        foreach(ElementRecipeObject recipe in Player.Instance.UnlockedElementRecipes.unlocked)
+        {  
+            if(recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID]))
             {
-                result = recipe.Result.ID;
+                return recipe.Result.ID;
             }
         }
 
-        return result;
+        return -2;
     }
 
     public MinionObject CanCombineMinion(Element hoverElement, Element mouseElement)
     {
         MinionObject minion = null;
 
-        foreach(MinionRecipeObject recipe in minionRecipeDatabase.minionRecipeObjects)
+        foreach(MinionRecipeObject recipe in Player.Instance.UnlockedMinionRecipes.unlocked)
         {
             if(recipe.CatalystElement.ID == hoverElement.ID || recipe.CatalystElement.ID == mouseElement.ID)
             {
@@ -110,7 +110,7 @@ public class InventoryObject : ScriptableObject
                     otherElement = hoverElement;
                 }
 
-                if(recipe.SecondaryIngredients.Contains(database.GetElement[otherElement.ID]))
+                if(recipe.Ingredients.Contains(database.GetElement[otherElement.ID]))
                 {
                     minion = recipe.Result;
                 }
@@ -118,6 +118,19 @@ public class InventoryObject : ScriptableObject
         }
 
         return minion;
+    }
+
+    public RelicObject CanCombineRelic(Element hoverElement, Element mouseElement)
+    {
+        foreach(RelicRecipeObject recipe in Player.Instance.UnlockedRelicRecipes.unlocked)
+        {
+            if(recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID]))
+            {
+                return recipe.Result;
+            }
+        }
+
+        return null;
     }
 
     public int FindElement(int id)

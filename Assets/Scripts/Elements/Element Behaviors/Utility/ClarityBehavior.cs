@@ -15,7 +15,6 @@ public class ClarityBehavior : AbstractElementBehavior
         }
 
         Player.Instance.SwitchAffinity(affinityType);
-        Player.Instance.UpdateAffinitySprite(affinityType);
 
         return true;
     }
