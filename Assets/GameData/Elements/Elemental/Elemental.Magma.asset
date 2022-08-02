@@ -17,6 +17,8 @@ MonoBehaviour:
   type: 2
   affinityTypes: 01000000
   elementTexture: {fileID: 21300000, guid: 93d5509c6ab5cee42b1423f00310d2d8, type: 3}
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: 2033bb0cfca1f124fbb824b6d3243a10, type: 3}
   description: A molten elemental synthesis.
   damage: 8
   doAttackInBehavior: 0
@@ -25,9 +27,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   permaScriptPath: 
   permaPrefabPath: 
-  permaNewName: 

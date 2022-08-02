@@ -20,6 +20,12 @@ public abstract class ElementObject : ScriptableObject
     [SerializeField] Sprite elementTexture;
     public Sprite ElementTexture => elementTexture;
 
+    [Header("Hit Particle")]
+    [SerializeField] GameObject hitParticle;
+    public GameObject HitParticle => hitParticle;
+    [SerializeField] Sprite hitParticleTexture;
+    public Sprite HitParticleTexture => hitParticleTexture;
+
     [Space(20)]
     [TextArea(15, 20)]
     [SerializeField] string description;

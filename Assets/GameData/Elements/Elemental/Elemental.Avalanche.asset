@@ -17,6 +17,8 @@ MonoBehaviour:
   type: 2
   affinityTypes: 00000000
   elementTexture: {fileID: 21300000, guid: e3880a15834e8464493d2465d51e508d, type: 3}
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: b490ff83e36c93c4692d9da7c608ef6f, type: 3}
   description: 'ATTACK: Deal 50 damage & an additional 20 damage to everything while
     in a hailstorm.'
   damage: 50

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785ba9a413ac6a14eb18d11cd348728e, type: 3}
+  m_Name: Minion.GoldenGolem
+  m_EditorClassIdentifier: 
+  name: Golden Golem
+  baseStats: {fileID: 11400000, guid: cb7488cd3e1f49f45bcde8cdebb8eefd, type: 2}
+  affinityType: 6
+  startingPassives: []
+  sprite: {fileID: 21300000, guid: 04a5605ca51b1224d84601c594bed157, type: 3}
+  animationController: {fileID: 9100000, guid: 0438a364e5126da4786e05ec467a5e8f, type: 2}
+  deathRattles:
+  - {fileID: 11400000, guid: 0ec5b47fdcc0c3e4b9a4512a76e49ca5, type: 2}
+  focus: {fileID: 0}
+  description: 
+  passivesToGiveCharacters: []

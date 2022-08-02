@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
         interfaceCanvas = GameObject.Find("Game Interface Canvas");
-        infoCanvas = GameObject.FindObjectOfType<ElementTextDisplay>().transform.parent.gameObject;
+        infoCanvas = GameObject.Find("Game Info Canvas");
 
         elementDatabase.InitElements();
         affinityDatabase.InitAffinities();

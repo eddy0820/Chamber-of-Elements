@@ -35,6 +35,10 @@ MonoBehaviour:
     value: 0
   - statType: {fileID: 11400000, guid: 2036eaaecce30344eb2ac140f0c2ee02, type: 2}
     value: 0
+  - statType: {fileID: 11400000, guid: 07f11cecd8da1a049abafe374d39b1e9, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: f6483e3e7a6481640acaff1b620ef015, type: 2}
+    value: 0
   potencyStats:
   - statType: {fileID: 11400000, guid: afd382e7c5e2f624b84bc4b980232c3a, type: 2}
     value: 0
@@ -44,6 +48,10 @@ MonoBehaviour:
     value: 0
   - statType: {fileID: 11400000, guid: bd1c40ca954618f41acecb7e242109bf, type: 2}
     value: 0
+  - statType: {fileID: 11400000, guid: 92da9967a731e3149bb12a1775af1f0a, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 27eb0556f54db9d479d786731c03f26b, type: 2}
+    value: 0
   spellPowerStats:
   - statType: {fileID: 11400000, guid: 69749360545cfae4cacfc8e2bf4abd61, type: 2}
     value: 0
@@ -52,6 +60,10 @@ MonoBehaviour:
   - statType: {fileID: 11400000, guid: abc248c702af88c489509f3f9c43a948, type: 2}
     value: 0
   - statType: {fileID: 11400000, guid: 35cdfedadc6d9ad4ebd4efadf618ec53, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: e773a936b1ade7047aef4479db40cd79, type: 2}
+    value: 0
+  - statType: {fileID: 11400000, guid: 5205e05201ddd5b45ab40b296cb28cc1, type: 2}
     value: 0
   weatherAffinityStats:
   - statType: {fileID: 11400000, guid: 878624a0a92c92544b714b4efcbbedd9, type: 2}

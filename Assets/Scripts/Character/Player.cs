@@ -9,6 +9,7 @@ public class Player : Character
 
     [Header("Player Specific")]
     [SerializeField] Sprite affinityNoneSprite; 
+    public Sprite AffinityNoneSprite => affinityNoneSprite;
     SpriteRenderer affinitySprite;
 
     [ReadOnly] bool minionExists;

@@ -17,7 +17,9 @@ MonoBehaviour:
   type: 0
   affinityTypes: 02000000
   elementTexture: {fileID: 21300000, guid: af1c69b1e867aa64997c2beafa798d1f, type: 3}
-  description: 'PRIMAL: Earth'
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: a58edfd9b69e4cd4cb4cd9938078e4bd, type: 3}
+  description: 
   damage: 5
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
@@ -25,9 +27,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   permaScriptPath: 
   permaPrefabPath: 
-  permaNewName: 

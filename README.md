@@ -8,7 +8,6 @@
 - for elements that deal damage two seperate times you need to delay the hit markers with a queue and coroutines maybe
 - screen shake settings
 - take art folder out of repository
-- re do parts of onplayerclikc and onenemyclick because i fucked up the abstratcion between an element and an element object
 - need to update hailstorm and frost when multiple enemies are added
 - need to update radiance and light when multiple minions are added
 - add animation for new element when using philosophers stone as well as adding a animation for the philosophers stone aswell
@@ -17,14 +16,8 @@
 - Elements That Need To Be Implemented
 	- Shield - ask joey about this one
 	- confusion element
-- Minions
-  - Golden Golem - On Death - Relics
   
-
-
-- relics
 - visuals
-- hover tooltip for elements
 - create enemies that existed
 - menus
 

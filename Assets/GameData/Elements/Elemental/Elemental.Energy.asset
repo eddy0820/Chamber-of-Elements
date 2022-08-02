@@ -17,6 +17,8 @@ MonoBehaviour:
   type: 2
   affinityTypes: 06000000
   elementTexture: {fileID: 21300000, guid: 15a212da9aaa10e468584c821291e1b9, type: 3}
+  hitParticle: {fileID: 3283479993209639264, guid: 8db46d5df3a01f443bf370919a28159c, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: 4cd10ce0a08beaa4badfadaa39bf76c7, type: 3}
   description: 'ATTACK: Deal 10 damage.'
   damage: 10
   doAttackInBehavior: 0
@@ -25,9 +27,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   permaScriptPath: 
   permaPrefabPath: 
-  permaNewName: 

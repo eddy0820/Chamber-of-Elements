@@ -22,6 +22,8 @@ public class DeathRattleObject : ScriptableObject
     public ElementObject SecondaryAssociatedElement => secondaryAssociatedElement;
     [SerializeField] CharacterEntry associatedCharacter;
     public CharacterEntry AssociatedCharacter => associatedCharacter;
+    [SerializeField] RelicObject[] associatedRelics;
+    public RelicObject[] AssociatedRelics => associatedRelics;
 
     [Header("File Paths")]
     [ReadOnly] public string permaScriptPath = "";

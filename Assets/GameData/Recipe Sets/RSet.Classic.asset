@@ -115,6 +115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a288be5ed54c9a478c400bb6b61dcd4, type: 2}
   - {fileID: 11400000, guid: d11ec5507efb122438ed51a49c2bb1be, type: 2}
   - {fileID: 11400000, guid: db9cc4c54823d0b4c87d670a37aa27f4, type: 2}
+  - {fileID: 11400000, guid: 9060b421b8692de418b8f0ecc5b9d082, type: 2}
   relicRecipes:
   - {fileID: 11400000, guid: 5d64dff0117f65541b5d26977ec89420, type: 2}
   - {fileID: 11400000, guid: 8c5032df5345ffc42bd3973e87f2aa7a, type: 2}

@@ -19,7 +19,7 @@ public class CharactersInterface : AbstractGameInterface
 
     protected override void OnAwake() 
     {
-        minionText = GameManager.Instance.InfoCanvas.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        minionText = GameManager.Instance.InfoCanvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         minionText.text = "";
     }
 
@@ -140,6 +140,14 @@ public class CharactersInterface : AbstractGameInterface
                         {
                             if(GameManager.Instance.Enemy.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                             {
+                                if(element.HitParticle != null)
+                                {
+                                    GameObject particle = Instantiate(element.HitParticle, GameManager.Instance.Enemy.transform.position, Quaternion.identity);
+                                    ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+                                    particleSystem.textureSheetAnimation.SetSprite(0, element.HitParticleTexture);
+                                    particleSystem.Play();
+                                }
+                                
                                 if(!element.DoAttackInBehavior)
                                 {
                                     GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);

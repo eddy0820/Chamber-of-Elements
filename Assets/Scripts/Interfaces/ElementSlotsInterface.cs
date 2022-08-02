@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ElementSlotsInterface : AbstractGameInterface
 {
     [SerializeField] InventoryObject elementSlots;
     [SerializeField] Sprite emptySlotSprite;
     [SerializeField] RuntimeAnimatorController mouseElementController;
+    [SerializeField] GameObject tooltip;
 
     GameObject[] slots;
     Dictionary<GameObject, Element> elementsDisplayed = new Dictionary<GameObject, Element>();
@@ -69,6 +71,8 @@ public class ElementSlotsInterface : AbstractGameInterface
         if(elementsDisplayed.ContainsKey(obj))
         {
             GameManager.Instance.mouseElement.hoverElement.UpdateSlot(elementsDisplayed[obj]);
+
+            UpdateToolTip(GameManager.Instance.mouseElement.hoverElement); 
         }
     }
 
@@ -76,6 +80,7 @@ public class ElementSlotsInterface : AbstractGameInterface
     {
         GameManager.Instance.mouseElement.hoverObj = null;
         GameManager.Instance.mouseElement.hoverElement = new Element();
+        tooltip.SetActive(false);
     }
 
     public void OnClick(GameObject obj, PointerEventData eventData)
@@ -125,6 +130,8 @@ public class ElementSlotsInterface : AbstractGameInterface
 
         GameManager.Instance.mouseElement.hoverElement.UpdateSlot(new Element());
         elementsDisplayed[obj].UpdateSlot(new Element()); 
+
+        tooltip.SetActive(false);
     }
 
     public void OnDragEnd(GameObject obj)
@@ -145,11 +152,16 @@ public class ElementSlotsInterface : AbstractGameInterface
                 // Recipe Exists
                 if(result > -1)
                 {
-                    elementsDisplayed[mouseHoverObj].UpdateSlot(new Element(elementSlots.Database.GetElement[result]));
+                    Element e = new Element(elementSlots.Database.GetElement[result]);
+
+                    elementsDisplayed[mouseHoverObj].UpdateSlot(e);
 
                     mouseHoverObj.transform.GetChild(0).GetComponent<Animator>().SetTrigger("NewElement");
 
                     elementOnMouse.RemoveMouseElement(Destroy);
+
+                    mouseHoverElement.UpdateSlot(e);
+                    UpdateToolTip(e);
                 }
                 // Affinity Recipe
                 else if(result == -1)
@@ -159,6 +171,8 @@ public class ElementSlotsInterface : AbstractGameInterface
                     Player.Instance.SwitchAffinity(mouseElement.AffinityType);
 
                     elementOnMouse.RemoveMouseElement(Destroy);
+
+                    tooltip.SetActive(false);
                 }
                 else
                 {
@@ -171,6 +185,8 @@ public class ElementSlotsInterface : AbstractGameInterface
                         elementOnMouse.RemoveMouseElement(Destroy);
 
                         Player.Instance.Minion.CreateMinion(minion);
+
+                        tooltip.SetActive(false);
                     }
                     // Relic Recipe
                     else
@@ -183,6 +199,8 @@ public class ElementSlotsInterface : AbstractGameInterface
                             elementOnMouse.RemoveMouseElement(Destroy);
 
                             Player.Instance.Relic.CreateRelic(relic);
+
+                            tooltip.SetActive(false);
                         }
                     }
                 }
@@ -193,7 +211,10 @@ public class ElementSlotsInterface : AbstractGameInterface
                 elementsDisplayed[mouseHoverObj].UpdateSlot(mouseElement);
 
                 elementOnMouse.hoverElement.UpdateSlot(mouseElement);
-                elementOnMouse.RemoveMouseElement(Destroy);   
+
+                UpdateToolTip(mouseElement);
+
+                elementOnMouse.RemoveMouseElement(Destroy);  
             }
         }
     }
@@ -216,6 +237,25 @@ public class ElementSlotsInterface : AbstractGameInterface
                 elementsDisplayed[elementOnMouse.hoverObj].UpdateSlot(new Element());
             } 
         }
+    }
+
+    private void UpdateToolTip(Element element)
+    {
+        if(element.ID > -1)
+        {
+            tooltip.SetActive(true);
+            tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = element.Name;
+            if(element.AffinityType is AffinityTypes.None)
+            {
+                tooltip.transform.GetChild(1).GetComponent<Image>().sprite = Player.Instance.AffinityNoneSprite;
+            }
+            else
+            {
+                tooltip.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.Instance.AffinityDatabase.GetAffinity[element.AffinityType].Sprite;
+            }
+            tooltip.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Type.ToString();
+            tooltip.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Description;
+        } 
     }
 
     public void DoEnlightenment()
