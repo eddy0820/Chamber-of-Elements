@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Radiance
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Radiance
   ID: 60
   type: 5
-  affinityTypes: 
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: bc078cd69e5751c4a90aa27e3cc050d6, type: 3}
   description: 'UTILITY: Heal 30 HP (Once per turn)'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 5680869791295202317, guid: 56284d61c22e8a744830277eff3d6964, type: 3}
@@ -25,11 +29,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   healAmount: 30
   doHealInBehavior: 1

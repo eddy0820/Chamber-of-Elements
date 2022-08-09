@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Crystal
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Crystal
   ID: 13
   type: 2
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 78ce41e75abdcbd42994ca89b3683c3f, type: 3}
+  hitParticle: {fileID: 9192612883960613093, guid: 732d65bd40a570c4d92620b5c2b85507, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: b17a523df33aa214d88dcc84bf54ce7a, type: 3}
   description: 'ATTACK: A fragile, but sharp material.'
   damage: 15
   doAttackInBehavior: 0
@@ -25,9 +29,12 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1

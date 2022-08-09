@@ -8,12 +8,14 @@ public class Minion : Character
     {
         if(characterObject != null)
         {
-            stats = new MinionStats(characterObject.BaseStats);
+            stats = new MinionStats(characterObject.BaseStats, HPText);
 
             ChangeAttacker(GameManager.Instance.Enemy);
             InitCharacter();
         
             Player.Instance.SetMinionExists(true);
+
+            HPText.SetActive(true);
         }
         else
         {
@@ -21,6 +23,8 @@ public class Minion : Character
             GetComponentInChildren<Animator>().runtimeAnimatorController = null;
 
             SwitchAffinity(AffinityTypes.None);
+
+            HPText.SetActive(false);
         }
     }
 
@@ -68,6 +72,8 @@ public class Minion : Character
             GameManager.Instance.InterfaceCanvas.GetComponentInChildren<CharactersInterface>().minionText.text = "";
 
             Player.Instance.SetMinionExists(false);
+
+            HPText.SetActive(false);
         }
     }
 
@@ -77,12 +83,14 @@ public class Minion : Character
         {
             characterObject = minionObject;
 
-            stats = new MinionStats(characterObject.BaseStats);
+            stats = new MinionStats(characterObject.BaseStats, HPText);
 
             ChangeAttacker(GameManager.Instance.Enemy);
             InitCharacter();
         
             Player.Instance.SetMinionExists(true);
+
+            HPText.SetActive(true);
         }   
     }
 

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Magma
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Magma
   ID: 11
   type: 2
-  affinityTypes: 01000000
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: 93d5509c6ab5cee42b1423f00310d2d8, type: 3}
   hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: 2033bb0cfca1f124fbb824b6d3243a10, type: 3}
@@ -36,5 +38,3 @@ MonoBehaviour:
   tertiaryAssociatedPassive:
     passive: {fileID: 0}
     value: -1
-  permaScriptPath: 
-  permaPrefabPath: 

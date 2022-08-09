@@ -33,12 +33,11 @@ public class Player : Character
     [ReadOnly, SerializeField] UnlockedList<RelicRecipeObject> unlockedRelicRecipes;
     public UnlockedList<RelicRecipeObject> UnlockedRelicRecipes => unlockedRelicRecipes;
 
-
     private void Awake()
     {
         Instance = this;
         
-        stats = new PlayerStats(characterObject.BaseStats);
+        stats = new PlayerStats(characterObject.BaseStats, HPText);
         affinitySprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         InitCharacter();

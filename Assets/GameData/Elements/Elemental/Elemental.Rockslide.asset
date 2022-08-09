@@ -12,22 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Rockslide
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/RockslideBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/RockslideBehavior.prefab
   name: Rockslide
   ID: 35
   type: 2
-  affinityTypes: 
+  affinityType: 2
   elementTexture: {fileID: 21300000, guid: 5c4e932d88e13974caecfb32b2a95f8a, type: 3}
   description: 'ATTACK: Deal 20-70 damage.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 20
   doAttackInBehavior: 1
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
-  extraValue: 70
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  behavior: {fileID: 6855690890714614010, guid: 7b1792aeb283b5f4da7cceda3534af63, type: 3}
+  behaviorEntries:
+    float1: 70
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

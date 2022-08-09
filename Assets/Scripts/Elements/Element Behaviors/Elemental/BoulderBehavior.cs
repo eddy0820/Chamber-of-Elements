@@ -8,7 +8,7 @@ public class BoulderBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
         
-        List<int> earthPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.AssociatedElement.ID);
+        List<int> earthPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.BehaviorEntries.Element1.ID);
 
         if(earthPrimals != null)
         {

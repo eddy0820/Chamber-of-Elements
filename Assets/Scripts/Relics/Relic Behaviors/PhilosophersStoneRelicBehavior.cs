@@ -13,9 +13,9 @@ public class PhilosophersStoneRelicBehavior : AbstractRelicBehavior, IOnClickRel
 
     public void OnRelicClick(RelicObject relic, Element element)
     {
-        ElementObject metal = relic.AssociatedElements[0];
-        ElementObject silver = relic.AssociatedElements[1];
-        ElementObject gold = relic.AssociatedElements[2];
+        ElementObject metal = relic.BehaviorEntries.Element1;
+        ElementObject silver = relic.BehaviorEntries.Element2;
+        ElementObject gold = relic.BehaviorEntries.Element3;
         
         ElementObject elementObject = null;
 

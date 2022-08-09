@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Shield
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Shield
   ID: 62
   type: 5
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 45f855721986bd0479055cf477dc8901, type: 3}
   description: 'UTILITY: Create a shield for 3 turns that absorbs 30 damage and gives
     you immunity to your current affinity.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
@@ -26,11 +30,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   healAmount: -1
   doHealInBehavior: 0

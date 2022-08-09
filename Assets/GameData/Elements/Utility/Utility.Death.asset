@@ -12,24 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Death
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Death
   ID: 48
   type: 5
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: a8e38ccaf874d29448912d9cb5cae9bb, type: 3}
   description: 'UTILITY: Instantly kills your current minion.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
-  behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  behavior: {fileID: 5064692302402639217, guid: 9c70e9df007a9034cafbb57038d2553a, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
   healAmount: -1
   doHealInBehavior: 0

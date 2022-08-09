@@ -229,12 +229,19 @@ public class ElementSlotsInterface : AbstractGameInterface
 
             if(result > -1)
             {
-                elementsDisplayed[elementOnMouse.hoverObj].UpdateSlot(new Element(elementSlots.Database.GetElement[result]));
+                Element e = new Element(elementSlots.Database.GetElement[result]);
+                elementsDisplayed[elementOnMouse.hoverObj].UpdateSlot(e);
                 elementOnMouse.hoverObj.transform.GetChild(0).GetComponent<Animator>().SetTrigger("NewElement");
+
+                elementOnMouse.hoverElement.UpdateSlot(e);
+                UpdateToolTip(e);
             }
             else if(result == -1)
             {
                 elementsDisplayed[elementOnMouse.hoverObj].UpdateSlot(new Element());
+
+                elementOnMouse.hoverElement.UpdateSlot(new Element());
+                tooltip.SetActive(false);
             } 
         }
     }

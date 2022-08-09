@@ -8,9 +8,9 @@ public class ElectricityBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
+        if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.Stats.TakeDamage(elementalElement.ExtraValue, new Element(elementalElement).AffinityType, character, Player.Instance);
+            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, new Element(elementalElement).AffinityType, character, Player.Instance);
         }
 
         return true;

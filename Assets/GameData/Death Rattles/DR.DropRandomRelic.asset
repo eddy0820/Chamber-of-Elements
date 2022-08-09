@@ -12,22 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32271055c60938e4d8043389744c62fa, type: 3}
   m_Name: DR.DropRandomRelic
   m_EditorClassIdentifier: 
-  name: DropRandomRelic
-  behavior: {fileID: 7664904772378499084, guid: c84ac233de1949140ad4384ae3fac5c2, type: 3}
-  associatedValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedCharacter: 3
-  associatedRelics:
-  - {fileID: 11400000, guid: 0fbcdeb4e0c778d489da793fb3fc96eb, type: 2}
-  - {fileID: 11400000, guid: 4c5358d3b7ca9c04fad68d9ec697ab20, type: 2}
-  - {fileID: 11400000, guid: 9ec9d77c5a38d3e4a9f595f00a563d2c, type: 2}
-  - {fileID: 11400000, guid: 239dfb224bcc76c43ab0aeef0db9715f, type: 2}
-  - {fileID: 11400000, guid: 9ea805ea64f126442ae26b099ce01afb, type: 2}
-  - {fileID: 11400000, guid: bbb67bdfdba66b44692690fecb3a7782, type: 2}
-  - {fileID: 11400000, guid: 671def49deb5bfc439d70b6da994f4d0, type: 2}
-  - {fileID: 11400000, guid: f915eecc845aab844a04b949df7dfdc8, type: 2}
-  - {fileID: 11400000, guid: e0645d2b12110694fac9278985a30222, type: 2}
-  - {fileID: 11400000, guid: cd6a0439b7848b84a87ef4d00c86ddc2, type: 2}
   permaScriptPath: Assets/Scripts/DeathRattle/DropRandomRelicDRBehavior.cs
   permaPrefabPath: Assets/Prefabs/DeathRattles/DropRandomRelicDRBehavior.prefab
+  name: DropRandomRelic
+  behavior: {fileID: 7664904772378499084, guid: c84ac233de1949140ad4384ae3fac5c2, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList:
+    - {fileID: 11400000, guid: 0fbcdeb4e0c778d489da793fb3fc96eb, type: 2}
+    - {fileID: 11400000, guid: 4c5358d3b7ca9c04fad68d9ec697ab20, type: 2}
+    - {fileID: 11400000, guid: 9ec9d77c5a38d3e4a9f595f00a563d2c, type: 2}
+    - {fileID: 11400000, guid: 239dfb224bcc76c43ab0aeef0db9715f, type: 2}
+    - {fileID: 11400000, guid: 9ea805ea64f126442ae26b099ce01afb, type: 2}
+    - {fileID: 11400000, guid: bbb67bdfdba66b44692690fecb3a7782, type: 2}
+    - {fileID: 11400000, guid: 671def49deb5bfc439d70b6da994f4d0, type: 2}
+    - {fileID: 11400000, guid: f915eecc845aab844a04b949df7dfdc8, type: 2}
+    - {fileID: 11400000, guid: e0645d2b12110694fac9278985a30222, type: 2}
+    - {fileID: 11400000, guid: cd6a0439b7848b84a87ef4d00c86ddc2, type: 2}
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e849d132837d8409b43efc3746d61b, type: 3}
   m_Name: Primal.Air
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Air
   ID: 3
   type: 0
-  affinityTypes: 03000000
+  affinityType: 3
   elementTexture: {fileID: 21300000, guid: 0972d435f5c528d438c430c059e52b95, type: 3}
+  description: 
   hitParticle: {fileID: 4915700979415859555, guid: 65fcb1097860b47478d7146529f1cfa1, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: 945be67aa96e4824d9a915a507f9092b, type: 3}
-  description: 
   damage: 5
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
@@ -36,5 +38,3 @@ MonoBehaviour:
   tertiaryAssociatedPassive:
     passive: {fileID: 0}
     value: -1
-  permaScriptPath: 
-  permaPrefabPath: 

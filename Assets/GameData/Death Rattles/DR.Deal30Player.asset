@@ -12,11 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32271055c60938e4d8043389744c62fa, type: 3}
   m_Name: DR.Deal30Player
   m_EditorClassIdentifier: 
-  name: Deal30Player
-  behavior: {fileID: 0}
-  associatedValue: 30
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedCharacter: 0
   permaScriptPath: Assets/Scripts/DeathRattle/Deal30PlayerDRBehavior.cs
   permaPrefabPath: Assets/Prefabs/DeathRattles/Deal30PlayerDRBehavior.prefab
+  name: Deal30Player
+  behavior: {fileID: 2044065584526774952, guid: f0483ef0816eac84eb850d8c09d2278f, type: 3}
+  behaviorEntries:
+    float1: 30
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

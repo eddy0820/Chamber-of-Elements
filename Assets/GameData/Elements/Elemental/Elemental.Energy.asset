@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Energy
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Energy
   ID: 12
   type: 2
-  affinityTypes: 06000000
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 15a212da9aaa10e468584c821291e1b9, type: 3}
   hitParticle: {fileID: 3283479993209639264, guid: 8db46d5df3a01f443bf370919a28159c, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: 4cd10ce0a08beaa4badfadaa39bf76c7, type: 3}
@@ -36,5 +38,3 @@ MonoBehaviour:
   tertiaryAssociatedPassive:
     passive: {fileID: 0}
     value: -1
-  permaScriptPath: 
-  permaPrefabPath: 

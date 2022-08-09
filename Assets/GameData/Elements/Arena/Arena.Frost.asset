@@ -12,29 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b86ef904049b4e4680835a83fe63951, type: 3}
   m_Name: Arena.Frost
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Arena/FrostBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Arena/FrostBehavior.prefab
   name: Frost
   ID: 63
   type: 4
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 40fcb0fe26a7fc645a2c1ed45d15fe1a, type: 3}
   description: 'ARENA: Extend the weather for 5 turns. Turns a storm into a hailstorm.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 0
   doAttackInBehavior: 0
   behavior: {fileID: 8411254593666159777, guid: de4a46f5bf599184cbfa624eee46fbc6, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Arena/FrostBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Arena/FrostBehavior.prefab
-  affectedWeather: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
-  turnTimer: 5
+  behaviorEntries:
+    float1: 5
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 11400000, guid: 283fe2a3e1bcbd94d8e79808d5739043, type: 2}
+    weather2: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
+    weather3: {fileID: 0}

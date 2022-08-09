@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a368cd79c76123468fa7bb705102ae7, type: 3}
   m_Name: Physical.Human
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Human
   ID: 87
   type: 3
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: c96029fde78cd2b4ba2c6135a9f797cb, type: 3}
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   description: A complex elemental synthesis. Contains minimal feelings.
   damage: -1
   doAttackInBehavior: 0
@@ -25,9 +29,12 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1

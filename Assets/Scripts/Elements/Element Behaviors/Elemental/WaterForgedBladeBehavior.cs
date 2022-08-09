@@ -10,7 +10,7 @@ public class WaterForgedBladeBehavior : AbstractElementBehavior
 
         int slot = GameManager.Instance.ElementSlotsInv.FindFirstEmptySlot();
 
-        GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element(elementalElement.AssociatedElement));
+        GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element(elementalElement.BehaviorEntries.Element1));
 
         return true;
     }

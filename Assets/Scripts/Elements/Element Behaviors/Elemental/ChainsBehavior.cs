@@ -8,11 +8,11 @@ public class ChainsBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        character.AddFlatPassiveForTurns((FlatPassiveObject) elementalElement.TertiaryAssociatedPassive.passive, (int) elementalElement.ExtraValue);
+        character.AddFlatPassiveForTurns((FlatPassiveObject) elementalElement.BehaviorEntries.Passive3.passive, (int) elementalElement.BehaviorEntries.Float1);
 
-        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
+        if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.BehaviorEntries.Passive2.passive);
         }
 
         return true;

@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e849d132837d8409b43efc3746d61b, type: 3}
   m_Name: Primal.Fire
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Fire
   ID: 1
   type: 0
-  affinityTypes: 01000000
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: 6d6b778351619404c88f8b315f3d455f, type: 3}
+  description: 
   hitParticle: {fileID: 1404114790277230183, guid: 3eb033a12d1614548b01dbde1d33d190, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: cbb191dbb8d21794fa64a04dc56b95fc, type: 3}
-  description: 
   damage: 5
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
@@ -36,5 +38,3 @@ MonoBehaviour:
   tertiaryAssociatedPassive:
     passive: {fileID: 0}
     value: -1
-  permaScriptPath: 
-  permaPrefabPath: 

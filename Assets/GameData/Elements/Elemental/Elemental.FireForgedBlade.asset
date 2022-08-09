@@ -12,22 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.FireForgedBlade
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/FireForgedBladeBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/FireForgedBladeBehavior.prefab
   name: Fire Forged Blade
   ID: 44
   type: 2
-  affinityTypes: 01000000
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: 5638eb1a22f58d845a830c50179ab297, type: 3}
   description: 'ATTACK: Deal 30 damage and give yourself a blood element.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 3380937305654129270, guid: bb796d43f1290084f820f898ee1974fd, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 11400000, guid: c6160a64fb4716645bca7b83f2767fba, type: 2}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 11400000, guid: c6160a64fb4716645bca7b83f2767fba, type: 2}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

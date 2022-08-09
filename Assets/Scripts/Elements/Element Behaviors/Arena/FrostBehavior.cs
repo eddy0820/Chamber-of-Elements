@@ -8,11 +8,18 @@ public class FrostBehavior : AbstractElementBehavior
     {
         ArenaElementObject arenaElement = (ArenaElementObject) element;
 
-        WeatherStateManager.Instance.SwitchAndExtendWeather(arenaElement.AffectedWeather, arenaElement.TurnTimer);
+        BehaviorScriptEntries be = arenaElement.BehaviorEntries;
 
-        if(GameManager.Instance.Enemy.Passives.Contains(arenaElement.AssociatedPassive.passive))
+        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[be.Weather1].GetType())
         {
-            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) arenaElement.SecondaryAssociatedPassive.passive);
+            WeatherStateManager.Instance.SwitchWeather(be.Weather2);
+        }
+        
+        WeatherStateManager.Instance.ExtendWeather((int) be.Float1);
+
+        if(GameManager.Instance.Enemy.Passives.Contains(be.Passive1.passive))
+        {
+            GameManager.Instance.Enemy.AddFlatPassive((FlatPassiveObject) be.Passive2.passive);
         }
         
         return true;

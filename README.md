@@ -9,17 +9,24 @@
 - screen shake settings
 - take art folder out of repository
 - need to update hailstorm and frost when multiple enemies are added
-- need to update radiance and light when multiple minions are added
+- need to update radiance and light/life when multiple minions are added
 - add animation for new element when using philosophers stone as well as adding a animation for the philosophers stone aswell
 - make more singletons
+- add minion attack particles
+- health grows bigger on hit
+- clariy element needs to be changed to work with other affinitytypes
+- attack particles for enemy wizard and guardian
+- guardian focus particles
 
 - Elements That Need To Be Implemented
 	- Shield - ask joey about this one
+	- hearth
 	- confusion element
   
 - visuals
-- create enemies that existed
 - menus
+- pause screen and win/lose state
+- component guide
 
 - Mana System
 - Ability for minion and element slots
@@ -58,3 +65,4 @@ Behavior On Hit Passive Orders
 Changed Or Added Things from Godot
 - Weather Interact Object
 - Minions behave like other characters (i.e. have passives and utitlity elements can be used on them
+- Element tooltip

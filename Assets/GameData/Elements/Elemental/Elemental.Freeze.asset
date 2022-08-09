@@ -12,27 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Freeze
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/FreezeBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/FreezeBehavior.prefab
   name: Freeze
   ID: 24
   type: 2
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 1cc7c6bb9415fc049adf18657e7c79e6, type: 3}
   description: 'ATTACK: Deal 25 damage. Changes your water primals to ice.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 25
   doAttackInBehavior: 0
   behavior: {fileID: 7721560977433934652, guid: 649353436aed0c742aa1b9ee6c501f1d, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 11400000, guid: d79a0eafd53c74a418c6159de94281ce, type: 2}
-  secondaryAssociatedElement: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/FreezeBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/FreezeBehavior.prefab
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 11400000, guid: d79a0eafd53c74a418c6159de94281ce, type: 2}
+    element2: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

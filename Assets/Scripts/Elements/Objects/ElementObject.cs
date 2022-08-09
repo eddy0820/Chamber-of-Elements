@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
 
-public abstract class ElementObject : ScriptableObject
+public abstract class ElementObject : AbstractCustomScriptable
 {
     public new string name = "New Element Name";
 
@@ -15,21 +15,22 @@ public abstract class ElementObject : ScriptableObject
     public ElementTypes Type => type;
 
     [Header("General Info")]
-    [SerializeField] AffinityTypes[] affinityTypes;
-    public AffinityTypes[] AffinityTypes => affinityTypes;
+    [SerializeField] AffinityTypes affinityType = AffinityTypes.None;
+    public AffinityTypes AffinityType => affinityType;
     [SerializeField] Sprite elementTexture;
     public Sprite ElementTexture => elementTexture;
+
+    [Space(20)]
+
+    [TextArea(15, 20)]
+    [SerializeField] string description;
+    public string Description => description;
 
     [Header("Hit Particle")]
     [SerializeField] GameObject hitParticle;
     public GameObject HitParticle => hitParticle;
     [SerializeField] Sprite hitParticleTexture;
     public Sprite HitParticleTexture => hitParticleTexture;
-
-    [Space(20)]
-    [TextArea(15, 20)]
-    [SerializeField] string description;
-    public string Description => description;
 
     [Header("Damage")]
     [SerializeField] float damage = -1;
@@ -40,31 +41,8 @@ public abstract class ElementObject : ScriptableObject
     [Header("Behavior")]
     [SerializeField] protected GameObject behavior;
     public AbstractElementBehavior Behavior => behavior.GetComponent<AbstractElementBehavior>();
-    [SerializeField] float extraValue = -1;
-    public float ExtraValue => extraValue;
-    [SerializeField] float secondaryExtraValue = -1;
-    public float SecondaryExtraValue => secondaryExtraValue;
-
-    [Space(15)]
-
-    [SerializeField] ElementObject associatedElement;
-    public ElementObject AssociatedElement => associatedElement;
-    [SerializeField] ElementObject secondaryAssociatedElement;
-    public ElementObject SecondaryAssociatedElement => secondaryAssociatedElement;
-
-    [Space(15)]
-
-    [SerializeField] PassiveEntry associatedPassive;
-    public PassiveEntry AssociatedPassive => associatedPassive;
-    [SerializeField] PassiveEntry secondaryAssociatedPassive;
-    public PassiveEntry SecondaryAssociatedPassive => secondaryAssociatedPassive;
-    [SerializeField] PassiveEntry tertiaryAssociatedPassive;
-    public PassiveEntry TertiaryAssociatedPassive => tertiaryAssociatedPassive;
-    
-    [Header("File Paths")]
-    [ReadOnly] public string permaScriptPath = "";
-    [ReadOnly] public string permaPrefabPath = "";
-    private string permaNewName = "";
+    [SerializeField] BehaviorScriptEntries behaviorEntries;
+    public BehaviorScriptEntries BehaviorEntries => behaviorEntries;
 
     private void Awake()
     {
@@ -79,7 +57,7 @@ public abstract class ElementObject : ScriptableObject
     }
 
     [ContextMenu("Create File Paths")]
-    public void CreateFilePaths()
+    public override void CreateFilePaths()
     {
         permaNewName = Regex.Replace(name, @"\s+", "");
 
@@ -116,7 +94,7 @@ public abstract class ElementObject : ScriptableObject
         }
     }
 
-    public void CreateElementBehaviorScript()
+    public override void CreateBehaviorScript()
     {   
         if(File.Exists(permaScriptPath) == false)
         {
@@ -143,7 +121,7 @@ public abstract class ElementObject : ScriptableObject
         }
     }
 
-    public void CreateElementBehaviorPrefab()
+    public override void CreateBehaviorPrefab()
     {
         GameObject obj = new GameObject(permaNewName + "Behavior");
         obj.transform.position = Vector3.zero;
@@ -156,5 +134,9 @@ public abstract class ElementObject : ScriptableObject
         DestroyImmediate(obj);
 
         behavior = prefab;
+
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 }

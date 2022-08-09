@@ -7,7 +7,7 @@ using UnityEditor;
 
 
 [CreateAssetMenu(fileName = "New Relic", menuName = "Relic")]
-public class RelicObject : ScriptableObject
+public class RelicObject : AbstractCustomScriptable
 {
     [SerializeField] new string name;
     public string Name => name;
@@ -22,20 +22,12 @@ public class RelicObject : ScriptableObject
     [Header("Behavior")]
     [SerializeField] protected GameObject behavior;
     public AbstractRelicBehavior Behavior => behavior.GetComponent<AbstractRelicBehavior>();
-    [SerializeField] PassiveEntry associatedPassive;
-    public PassiveEntry AssociatedPassive => associatedPassive; 
-    [SerializeField] ElementObject[] associatedElements;
-    public ElementObject[] AssociatedElements => associatedElements;
-    [SerializeField] RecipeSet associatedRecipeSet;
-    public RecipeSet AssociatedRecipeSet => associatedRecipeSet;
+    [SerializeField] BehaviorScriptEntries behaviorEntries;
+    public BehaviorScriptEntries BehaviorEntries => behaviorEntries;
 
-    [Header("File Paths")]
-    [ReadOnly] public string permaScriptPath = "";
-    [ReadOnly] public string permaPrefabPath = "";
-    private string permaNewName = "";
 
     [ContextMenu("Create File Paths")]
-    public void CreateFilePaths()
+    public override void CreateFilePaths()
     {
         permaNewName = Regex.Replace(name, @"\s+", "");
         permaNewName = Regex.Replace(permaNewName, "'", "");
@@ -44,7 +36,7 @@ public class RelicObject : ScriptableObject
         permaPrefabPath = "Assets/Prefabs/RelicBehaviors/" + permaNewName + "RelicBehavior.prefab";
     }
 
-    public void CreateRelicBehaviorScript()
+    public override void CreateBehaviorScript()
     {   
         if(File.Exists(permaScriptPath) == false)
         {
@@ -81,7 +73,7 @@ public class RelicObject : ScriptableObject
         }
     }
 
-    public void CreateRelicBehaviorPrefab()
+    public override void CreateBehaviorPrefab()
     {
         GameObject obj = new GameObject(permaNewName + "RelicBehavior");
         obj.transform.position = Vector3.zero;
@@ -94,6 +86,10 @@ public class RelicObject : ScriptableObject
         DestroyImmediate(obj);
 
         behavior = prefab;
+
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 
 }

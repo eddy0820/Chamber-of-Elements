@@ -23,15 +23,7 @@ public class Element
     {
         name = element.name;
         id = element.ID;
-
-        if(element.AffinityTypes.Length < 1)
-        {
-            affinityType = AffinityTypes.None;
-        }
-        else
-        {
-            affinityType = element.AffinityTypes[0]; // Might have to change this later if matters.
-        }
+        affinityType = element.AffinityType;
     }
 
     public void UpdateSlot(Element element)

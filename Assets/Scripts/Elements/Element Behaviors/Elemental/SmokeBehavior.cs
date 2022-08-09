@@ -8,7 +8,7 @@ public class SmokeBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        character.AddDynamicPassiveForTurns((DynamicPassiveObject) elementalElement.AssociatedPassive.passive, elementalElement.AssociatedPassive.value, ((int) elementalElement.ExtraValue) - 1, false);
+        character.AddDynamicPassiveForTurns((DynamicPassiveObject) elementalElement.BehaviorEntries.Passive1.passive, elementalElement.BehaviorEntries.Passive1.value, ((int) elementalElement.BehaviorEntries.Float1) - 1, false);
     
         return true;
     }

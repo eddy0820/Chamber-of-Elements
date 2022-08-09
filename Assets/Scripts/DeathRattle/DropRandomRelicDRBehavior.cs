@@ -6,9 +6,9 @@ public class DropRandomRelicDRBehavior : AbstractDeathRattle
 { 
     public override void DoBehavior(Character character, DeathRattleObject deathRattle)
     {
-        int arraySize = deathRattle.AssociatedRelics.Length;
+        int arraySize = deathRattle.BehaviorEntries.RelicList.Length;
         int relic = Random.Range(0, arraySize);
         
-        Player.Instance.Relic.CreateRelic(deathRattle.AssociatedRelics[relic]);
+        Player.Instance.Relic.CreateRelic(deathRattle.BehaviorEntries.RelicList[relic]);
     }
 }

@@ -8,14 +8,14 @@ public class HailBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[GameManager.Instance.WeatherDatabase.GetWeather["Hailstorm"]].GetType())
+        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[elementalElement.BehaviorEntries.Weather1].GetType())
         {
-            character.Stats.TakeDamage(elementalElement.ExtraValue, GameManager.Instance.mouseElement.element.AffinityType, character, Player.Instance);
+            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, GameManager.Instance.mouseElement.element.AffinityType, character, Player.Instance);
         }
 
-        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
+        if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.BehaviorEntries.Passive2.passive);
         }
 
         return true;

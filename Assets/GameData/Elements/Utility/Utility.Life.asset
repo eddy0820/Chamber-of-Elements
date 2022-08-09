@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Life
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Life
   ID: 47
   type: 5
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: fbcd0f43f7ece30449105c730a54ead5, type: 3}
   description: 'UTILITY: Heal 10 HP (once per turn). Gives life to certain elements
     when combined.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 1748935754381683844, guid: 1c99e6870de6b394a9b23818aca2d6ba, type: 3}
@@ -26,11 +30,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   healAmount: 10
   doHealInBehavior: 1

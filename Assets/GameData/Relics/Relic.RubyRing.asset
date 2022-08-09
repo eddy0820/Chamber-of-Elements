@@ -12,12 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
   m_Name: Relic.RubyRing
   m_EditorClassIdentifier: 
-  name: Ruby Ring
-  relicTexture: {fileID: 21300000, guid: 0e50d3c597487754bae0a7edf35a3727, type: 3}
-  description: Start your battles with Fire daffinity.
-  behavior: {fileID: 1430656900138012577, guid: c90e9b6ff09d28e4c92f104e8581776e, type: 3}
-  associatedPassive:
-    passive: {fileID: 0}
-    value: -1
   permaScriptPath: Assets/Scripts/Relics/Relic Behaviors/RubyRingRelicBehavior.cs
   permaPrefabPath: Assets/Prefabs/RelicBehaviors/RubyRingRelicBehavior.prefab
+  name: Ruby Ring
+  relicTexture: {fileID: 21300000, guid: 0e50d3c597487754bae0a7edf35a3727, type: 3}
+  description: Start your battles with Fire affinity.
+  behavior: {fileID: 1430656900138012577, guid: c90e9b6ff09d28e4c92f104e8581776e, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

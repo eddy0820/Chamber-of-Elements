@@ -12,14 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
   m_Name: Relic.Forge
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Forge
   relicTexture: {fileID: 21300000, guid: 075b9f2a58b13444ababfd390ae0be88, type: 3}
   description: Allows blades to be combined with primal elements.
   behavior: {fileID: 7731863612511090431, guid: 1803c3936ede48c4cbc96e7c6dc00fc8, type: 3}
-  associatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  associatedElements: []
-  associatedRecipeSet: {fileID: 11400000, guid: 33cb1815a5361844997fd7886dd83f38, type: 2}
-  permaScriptPath: 
-  permaPrefabPath: 
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 11400000, guid: 33cb1815a5361844997fd7886dd83f38, type: 2}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

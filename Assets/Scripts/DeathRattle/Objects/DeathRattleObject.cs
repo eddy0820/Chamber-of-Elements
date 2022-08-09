@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Death Rattle", menuName = "Death Rattle")]
-public class DeathRattleObject : ScriptableObject
+public class DeathRattleObject : AbstractCustomScriptable
 {
     [SerializeField] protected new string name;
     public string Name => name;
@@ -14,25 +14,11 @@ public class DeathRattleObject : ScriptableObject
     [Header("Behavior")]
     [SerializeField] protected GameObject behavior;
     public AbstractDeathRattle Behavior => behavior.GetComponent<AbstractDeathRattle>();
-    [SerializeField] float associatedValue = -1;
-    public float AssociatedValue => associatedValue;
-    [SerializeField] ElementObject associatedElement;
-    public ElementObject AssociatedElement => associatedElement;
-    [SerializeField] ElementObject secondaryAssociatedElement;
-    public ElementObject SecondaryAssociatedElement => secondaryAssociatedElement;
-    [SerializeField] CharacterEntry associatedCharacter;
-    public CharacterEntry AssociatedCharacter => associatedCharacter;
-    [SerializeField] RelicObject[] associatedRelics;
-    public RelicObject[] AssociatedRelics => associatedRelics;
-
-    [Header("File Paths")]
-    [ReadOnly] public string permaScriptPath = "";
-    [ReadOnly] public string permaPrefabPath = "";
-    private string permaNewName = "";
-    
+    [SerializeField] BehaviorScriptEntries behaviorEntries;
+    public BehaviorScriptEntries BehaviorEntries => behaviorEntries;
 
     [ContextMenu("Create File Paths")]
-    public void CreateFilePaths()
+    public override void CreateFilePaths()
     {
         permaNewName = Regex.Replace(name, @"\s+", "");
 
@@ -40,7 +26,7 @@ public class DeathRattleObject : ScriptableObject
         permaPrefabPath = "Assets/Prefabs/DeathRattles/" + permaNewName + "DRBehavior.prefab";    
     }
 
-    public void CreateDRBehaviorScript()
+    public override void CreateBehaviorScript()
     {   
         if(File.Exists(permaScriptPath) == false)
         {
@@ -67,7 +53,7 @@ public class DeathRattleObject : ScriptableObject
         }
     }
 
-    public void CreateDRBehaviorPrefab()
+    public override void CreateBehaviorPrefab()
     {
         GameObject obj = new GameObject(permaNewName + "DRBehavior");
         obj.transform.position = Vector3.zero;
@@ -80,5 +66,9 @@ public class DeathRattleObject : ScriptableObject
         DestroyImmediate(obj);
 
         behavior = prefab;
+
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 }

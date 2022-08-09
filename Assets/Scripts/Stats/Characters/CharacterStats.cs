@@ -19,6 +19,8 @@ public abstract class CharacterStats
     protected float lastHitDamage;
     public float LastHitDamage => lastHitDamage;
 
+    protected GameObject HPText;
+
     protected void InitializeCharacterStats()
     {
         foreach(BaseStatsObject.BaseStat baseStat in baseStats.Stats)
@@ -72,11 +74,13 @@ public abstract class CharacterStats
 
         currentHealth -= damage;
 
+        HPText.GetComponent<TextMeshProUGUI>().text = currentHealth + " HP";
+
         GameObject damageIndicatorUI = GameObject.Instantiate(character.DamageIndicatorPrefab, character.DamageIndicatorPrefab.transform.position, Quaternion.identity, GameManager.Instance.InfoCanvas.transform);
         damageIndicatorUI.GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
-        Debug.Log(character.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
-        Debug.Log(currentHealth);
+        //Debug.Log(character.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
+        //Debug.Log(currentHealth);
 
         lastHitDamage = damage;
 
@@ -153,14 +157,16 @@ public abstract class CharacterStats
 
         currentHealth += amount;
 
-        Debug.Log(character.CharacterObject.Name + " heals for " + amount + ".");
+        //Debug.Log(character.CharacterObject.Name + " heals for " + amount + ".");
 
         if(currentHealth > stats["MaxHealth"].value)
         {
             currentHealth = stats["MaxHealth"].value;
         }
 
-        Debug.Log(character.CharacterObject.Name + " now has " + currentHealth + " health.");
+        HPText.GetComponent<TextMeshProUGUI>().text = currentHealth + " HP";
+
+        //Debug.Log(character.CharacterObject.Name + " now has " + currentHealth + " health.");
     }
 
     public virtual void Die(Character character)

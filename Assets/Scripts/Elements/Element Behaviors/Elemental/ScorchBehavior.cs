@@ -8,12 +8,12 @@ public class ScorchBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        int slot = GameManager.Instance.ElementSlotsInv.FindElement(element.AssociatedElement.ID);
+        int slot = GameManager.Instance.ElementSlotsInv.FindElement(element.BehaviorEntries.Element1.ID);
 
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.Damage);
+            character.Stats.TakeDamage(elementalElement.Damage, elementalElement.AffinityType, character, Player.Instance);
         }
 
         return true;

@@ -12,29 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Coal
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Utility/CoalBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Utility/CoalBehavior.prefab
   name: Coal
   ID: 49
   type: 5
-  affinityTypes: 
+  affinityType: 2
   elementTexture: {fileID: 21300000, guid: 6e75132dccadb9d4e8c7e8a17bc9760a, type: 3}
   description: 'UTILITY: Give Strength(3)'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 7293199711104248805, guid: 932d97ef342f7df4389eef80c6e27801, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
-    value: 3
-  secondaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Utility/CoalBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Utility/CoalBehavior.prefab
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
+      value: 3
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
   healAmount: -1
   doHealInBehavior: 0

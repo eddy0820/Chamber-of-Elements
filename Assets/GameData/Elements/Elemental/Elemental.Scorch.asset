@@ -12,23 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Scorch
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/ScorchBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/ScorchBehavior.prefab
   name: Scorch
   ID: 36
   type: 2
-  affinityTypes: 01000000
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: 38e3cd7be11b96d4baab85f1deacecd7, type: 3}
   description: 'ATTACK: Deal 30 damage. Consumes an energy element to deal an additional
     30 damage.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 7088026093644143202, guid: fe91a450a1019a6419381b987bcccafd, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 11400000, guid: 7336b7dee340e6b45a29a37c89a98da6, type: 2}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 11400000, guid: 7336b7dee340e6b45a29a37c89a98da6, type: 2}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

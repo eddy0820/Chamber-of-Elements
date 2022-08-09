@@ -10,19 +10,12 @@ public class MinionStats : CharacterStats
         stats = new Dictionary<string, Stat>();
     }
 
-    public MinionStats(BaseStatsObject _baseStats)
+    public MinionStats(BaseStatsObject _baseStats, GameObject _HPText)
     {
         baseStats = _baseStats;
         InitializeCharacterStats();
 
-        if(stats.ContainsKey("MaxMana"))
-        {
-            currentMana = (int)stats["MaxMana"].value;
-        }
-        else
-        {
-            currentMana = 0;
-        }
+        HPText = _HPText;
     }
 
     public override void Die(Character character)

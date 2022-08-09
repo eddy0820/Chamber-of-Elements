@@ -12,30 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b5aaaf31e6347449ab3f67fae8ba44, type: 3}
   m_Name: Utility.Illusion
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Utility/IllusionBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Utility/IllusionBehavior.prefab
   name: Illusion
   ID: 56
   type: 5
-  affinityTypes: 
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 2c8fc87ca26870d47bb2717a23c1c2f9, type: 3}
   description: 'UTILITY: Consume your air primals up to 2. For each primal consumed,
     give the enemy Confusion(50) for one turn'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: -1
   doAttackInBehavior: 0
   behavior: {fileID: 3779755758033444172, guid: e3bd2aa7fd4bb734d9537e32cd8b91bd, type: 3}
-  extraValue: 2
-  secondaryExtraValue: 1
-  associatedElement: {fileID: 11400000, guid: 164727a6fe7fa5343ad88ca7671c9464, type: 2}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: d4b8056d12c077a458b6efeaa44f4f5b, type: 2}
-    value: -0.5
-  secondaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Utility/IllusionBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Utility/IllusionBehavior.prefab
+  behaviorEntries:
+    float1: 2
+    float2: 1
+    float3: -1
+    element1: {fileID: 11400000, guid: 164727a6fe7fa5343ad88ca7671c9464, type: 2}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: d4b8056d12c077a458b6efeaa44f4f5b, type: 2}
+      value: 50
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
   healAmount: -1
   doHealInBehavior: 0

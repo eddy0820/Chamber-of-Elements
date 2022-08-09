@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6e22ca0f8b14c4c8a4dac78dccbaa8, type: 3}
+  m_Name: Enemy.Guardian
+  m_EditorClassIdentifier: 
+  name: Guardian
+  baseStats: {fileID: 11400000, guid: 9d3c11a57f3b4884d87296f41fdbfa54, type: 2}
+  affinityType: 0
+  startingPassives:
+  - passive: {fileID: 11400000, guid: 567263ae0a2471e488ace9dea5decd95, type: 2}
+    value: -1
+  sprite: {fileID: 5279917591105545394, guid: c475abdeb18c8ad48bda67ac3f627069, type: 3}
+  animationController: {fileID: 9100000, guid: 8682c5060822204429a2fa6540be2f72, type: 2}
+  deathRattles: []
+  position: {x: 4.16, y: 0.15, z: 0}
+  focus: {fileID: 11400000, guid: 990e651a345a43b41afa5769da2ad30f, type: 2}
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}

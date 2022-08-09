@@ -12,14 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
   m_Name: Relic.LightPrism
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Light Prism
   relicTexture: {fileID: 21300000, guid: 884b7d40cbefbd54ba1954117c0ca5e6, type: 3}
   description: Give the player Enlightened Healing (25)
-  behavior: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 3c7fcc5e64847ae44856251e8fc7d835, type: 2}
-    value: -1
-  associatedElements: []
-  associatedRecipeSet: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
+  behavior: {fileID: 8090184023252855555, guid: b9e7e1bc9b797fd4eba8ac8a275e5f22, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 3c7fcc5e64847ae44856251e8fc7d835, type: 2}
+      value: 25
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

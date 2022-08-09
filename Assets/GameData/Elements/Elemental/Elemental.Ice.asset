@@ -12,27 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Ice
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/IceBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/IceBehavior.prefab
   name: Ice
   ID: 10
   type: 2
-  affinityTypes: 00000000
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 7a33b47aac8fbb14fb35403d8f6d5658, type: 3}
   description: An icy elemental synth
+  hitParticle: {fileID: 9192612883960613093, guid: 732d65bd40a570c4d92620b5c2b85507, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: 5435e5bef9edd1d4f82920cf4967dac3, type: 3}
   damage: 8
   doAttackInBehavior: 0
   behavior: {fileID: 8667380633053144098, guid: 5b4c2ae8c5c14c542a91683bfde8f4eb, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/IceBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/IceBehavior.prefab
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

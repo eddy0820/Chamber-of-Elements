@@ -8,17 +8,17 @@ public class IllusionBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        List<int> airPrimals = GameManager.Instance.ElementSlotsInv.FindElements(utilityElement.AssociatedElement.ID);
+        List<int> airPrimals = GameManager.Instance.ElementSlotsInv.FindElements(utilityElement.BehaviorEntries.Element1.ID);
 
         if(airPrimals != null)
         {
             int counter = 0;
             foreach(int i in airPrimals)
             {
-                if(counter < utilityElement.ExtraValue)
+                if(counter < utilityElement.BehaviorEntries.Float1)
                 {
                     GameManager.Instance.ElementSlotsInv.Container.elementSlots[i].UpdateSlot(new Element());
-                    GameManager.Instance.Enemy.AddDynamicPassiveForTurns((DynamicPassiveObject) utilityElement.AssociatedPassive.passive,  utilityElement.AssociatedPassive.value, ((int) utilityElement.SecondaryExtraValue) - 1, false);
+                    GameManager.Instance.Enemy.AddDynamicPassiveForTurns((DynamicPassiveObject) utilityElement.BehaviorEntries.Passive1.passive,  utilityElement.BehaviorEntries.Passive1.value, ((int) utilityElement.BehaviorEntries.Float2) - 1, false);
                     
                     counter++;
                 }

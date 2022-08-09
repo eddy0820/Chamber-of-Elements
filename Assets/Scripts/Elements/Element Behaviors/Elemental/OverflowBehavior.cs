@@ -8,7 +8,7 @@ public class OverflowBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        List<int> waterPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.AssociatedElement.ID);
+        List<int> waterPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.BehaviorEntries.Element1.ID);
 
         float damage = 0;
 

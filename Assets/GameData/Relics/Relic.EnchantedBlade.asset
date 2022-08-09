@@ -12,12 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
   m_Name: Relic.EnchantedBlade
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Relics/Relic Behaviors/EnchantedBladeRelicBehavior.cs
+  permaPrefabPath: Assets/Prefabs/RelicBehaviors/EnchantedBladeRelicBehavior.prefab
   name: Enchanted Blade
   relicTexture: {fileID: 21300000, guid: daff8812d1b5da94e98c5d4873d83b8f, type: 3}
   description: Have Strength(20) while this relic is equipped.
   behavior: {fileID: 1569196755965910848, guid: 429d83c2669cf6045a6c83eb3ac5d7a3, type: 3}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
-    value: 20
-  permaScriptPath: Assets/Scripts/Relics/Relic Behaviors/EnchantedBladeRelicBehavior.cs
-  permaPrefabPath: Assets/Prefabs/RelicBehaviors/EnchantedBladeRelicBehavior.prefab
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: a1e5c64c475fbf04da095f096ffb8d56, type: 2}
+      value: 20
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

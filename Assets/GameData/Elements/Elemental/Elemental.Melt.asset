@@ -12,28 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Melt
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/MeltBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/MeltBehavior.prefab
   name: Melt
   ID: 30
   type: 2
-  affinityTypes: 
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: 7af12ef8f10dfb84a992b4a269a1d000, type: 3}
   description: 'ATTACK: Deal 30 damage. If the target is Scorched, deal an additional
     30 damage.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 383022335381711025, guid: 1c3c52a4fd1a1dc479cba6fd118aef35, type: 3}
-  extraValue: 30
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 1bb5d532e1c32a448b9dca3a6a8ab2d4, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/MeltBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/MeltBehavior.prefab
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 1bb5d532e1c32a448b9dca3a6a8ab2d4, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

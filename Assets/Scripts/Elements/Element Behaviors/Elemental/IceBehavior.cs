@@ -8,9 +8,9 @@ public class IceBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
+        if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.BehaviorEntries.Passive2.passive);
         }
 
         return true;

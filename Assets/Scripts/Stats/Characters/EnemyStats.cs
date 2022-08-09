@@ -9,18 +9,11 @@ public class EnemyStats : CharacterStats
         baseStats = null;
         stats = new Dictionary<string, Stat>();
     }
-    public EnemyStats(BaseStatsObject _baseStats)
+    public EnemyStats(BaseStatsObject _baseStats, GameObject _HPText)
     {
         baseStats = _baseStats;
         InitializeCharacterStats();
 
-        if(stats.ContainsKey("MaxMana"))
-        {
-            currentMana = (int)stats["MaxMana"].value;
-        }
-        else
-        {
-            currentMana = 0;
-        }
+        HPText = _HPText;
     }
 }

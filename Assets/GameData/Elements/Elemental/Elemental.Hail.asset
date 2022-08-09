@@ -12,27 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Hail
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/HailBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/HailBehavior.prefab
   name: Hail
   ID: 27
   type: 2
-  affinityTypes: 00000000
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: 13587ed1b3ac55144bf16f6b9719dffd, type: 3}
   description: 'ATTACK: Deal 15 damage & an additional 35 damage in a hailstorm.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 15
   doAttackInBehavior: 0
   behavior: {fileID: 3892989219091329750, guid: 28ebc965be342664792e5cbf2256b9a6, type: 3}
-  extraValue: 35
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/HailBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/HailBehavior.prefab
+  behaviorEntries:
+    float1: 35
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

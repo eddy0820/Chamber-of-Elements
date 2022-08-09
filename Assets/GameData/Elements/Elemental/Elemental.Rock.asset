@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Rock
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Rock
   ID: 34
   type: 2
-  affinityTypes: 
+  affinityType: 2
   elementTexture: {fileID: 21300000, guid: 86c2b3fec89a1354f90db1a450e3b609, type: 3}
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   description: 'ATTACK: A sturdy, jagged material.'
   damage: 10
   doAttackInBehavior: 0
@@ -25,9 +29,12 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1

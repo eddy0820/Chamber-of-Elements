@@ -8,7 +8,9 @@ public class AcidBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        character.AddDynamicPassiveForTurns((DynamicPassiveObject) elementalElement.AssociatedPassive.passive, elementalElement.AssociatedPassive.value, ((int) elementalElement.ExtraValue) - 1, false);
+        BehaviorScriptEntries be = elementalElement.BehaviorEntries;
+
+        character.AddDynamicPassiveForTurns((DynamicPassiveObject) be.Passive1.passive, be.Passive1.value, ((int) be.Float1) - 1, false);
 
         return true;
     }

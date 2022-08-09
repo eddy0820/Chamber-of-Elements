@@ -8,7 +8,7 @@ public class SpikesBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        List<int> iceElements = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.AssociatedElement.ID);
+        List<int> iceElements = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.BehaviorEntries.Element1.ID);
 
         float damage = 0;
 
@@ -16,7 +16,7 @@ public class SpikesBehavior : AbstractElementBehavior
         {
             foreach(int i in iceElements)
             {
-                damage += elementalElement.ExtraValue;
+                damage += elementalElement.BehaviorEntries.Float1;
                 GameManager.Instance.ElementSlotsInv.Container.elementSlots[i].UpdateSlot(new Element());
             }
         }

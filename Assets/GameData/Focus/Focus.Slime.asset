@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7dd37c9b2ac8a48bd58929e6061fd0, type: 3}
   m_Name: Focus.Slime
   m_EditorClassIdentifier: 
-  doHeal: 0
-  affectPlayer: 1
-  affectMinion: 0
-  affectEnemy: 0
-  elementsToConsume: []
+  name: Slime
+  behavior: {fileID: 2864702665856269318, guid: edd32880e001d3949b5b6e6526b317fc, type: 3}
+  permaScriptPath: 
+  permaPrefabPath: 

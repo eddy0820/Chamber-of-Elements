@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Character : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public abstract class Character : MonoBehaviour
     public HashSet<PassiveObject> Passives => passives;
     [SerializeField] protected PassivesInterface passivesInterface;
     public PassivesInterface PassivesInterface => passivesInterface;
+
+    [SerializeField] protected GameObject HPText;
 
     Character attacker;
     public Character Attacker => attacker;
@@ -74,7 +77,9 @@ public abstract class Character : MonoBehaviour
             {
                 AddImmunityPassive((ImmunityPassiveObject) passive.passive);
             }
-        }   
+        } 
+
+        HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP";  
     }
 
     private void PassiveTurnCalcRemove()

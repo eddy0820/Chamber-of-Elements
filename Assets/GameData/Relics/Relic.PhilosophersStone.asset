@@ -12,17 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96436ba01b4a9db4ea7ab9aa1827c921, type: 3}
   m_Name: Relic.PhilosophersStone
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Philosopher's Stone
   relicTexture: {fileID: 21300000, guid: 81cb4c549c0a0a540b8e776168d5f2e3, type: 3}
   description: Transmutes metals.
   behavior: {fileID: 5451923849444992363, guid: 3e68cd94f7c11b94480747d278ebc4f7, type: 3}
-  associatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  associatedElements:
-  - {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
-  - {fileID: 11400000, guid: b8a61e91befef35479f2a9d93a4e01c4, type: 2}
-  - {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
-  associatedRecipeSet: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
+    element2: {fileID: 11400000, guid: b8a61e91befef35479f2a9d93a4e01c4, type: 2}
+    element3: {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}

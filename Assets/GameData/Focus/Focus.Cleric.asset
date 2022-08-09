@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7dd37c9b2ac8a48bd58929e6061fd0, type: 3}
   m_Name: Focus.Cleric
   m_EditorClassIdentifier: 
-  doHeal: 1
-  affectPlayer: 1
-  affectMinion: 0
-  affectEnemy: 0
-  elementsToConsume: []
+  name: Cleric
+  behavior: {fileID: 2475655926776588179, guid: b1bdc82dc2859864b893d8faa464ca05, type: 3}
+  permaScriptPath: Assets/Scripts/Focus/Focus Behaviors/ClericFocusBehavior.cs
+  permaPrefabPath: Assets/Prefabs/FocusBehaviors/ClericFocusBehavior.prefab

@@ -8,19 +8,19 @@ public class FreezeBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        List<int> waterPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.SecondaryAssociatedElement.ID);
+        List<int> waterPrimals = GameManager.Instance.ElementSlotsInv.FindElements(elementalElement.BehaviorEntries.Element2.ID);
 
         if(waterPrimals != null)
         {
             foreach(int i in waterPrimals)
             {
-                GameManager.Instance.ElementSlotsInv.Container.elementSlots[i].UpdateSlot(new Element(elementalElement.AssociatedElement));
+                GameManager.Instance.ElementSlotsInv.Container.elementSlots[i].UpdateSlot(new Element(elementalElement.BehaviorEntries.Element1));
             }
         }
 
-        if(character.Passives.Contains(elementalElement.AssociatedPassive.passive))
+        if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.AddFlatPassive((FlatPassiveObject) elementalElement.SecondaryAssociatedPassive.passive);
+            character.AddFlatPassive((FlatPassiveObject) elementalElement.BehaviorEntries.Passive2.passive);
         }
         
         return true;

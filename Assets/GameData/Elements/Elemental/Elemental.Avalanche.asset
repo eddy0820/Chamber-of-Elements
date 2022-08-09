@@ -12,30 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e506e178106dd4d92e070f9bd8a95a, type: 3}
   m_Name: Elemental.Avalanche
   m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/AvalancheBehavior.cs
+  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/AvalancheBehavior.prefab
   name: Avalanche
   ID: 17
   type: 2
-  affinityTypes: 00000000
+  affinityType: 6
   elementTexture: {fileID: 21300000, guid: e3880a15834e8464493d2465d51e508d, type: 3}
-  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
-  hitParticleTexture: {fileID: 21300000, guid: b490ff83e36c93c4692d9da7c608ef6f, type: 3}
   description: 'ATTACK: Deal 50 damage & an additional 20 damage to everything while
     in a hailstorm.'
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: b490ff83e36c93c4692d9da7c608ef6f, type: 3}
   damage: 50
   doAttackInBehavior: 0
   behavior: {fileID: 1323818629214021497, guid: 4fed108eecf50184fa2fe472cf86cccc, type: 3}
-  extraValue: 20
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: Assets/Scripts/Elements/Element Behaviors/Elemental/AvalancheBehavior.cs
-  permaPrefabPath: Assets/Prefabs/ElementBehaviors/Elemental/AvalancheBehavior.prefab
+  behaviorEntries:
+    float1: 20
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
+      value: -1
+    passive2:
+      passive: {fileID: 11400000, guid: 8ae9f158b03ba4740ab3d1ad93229c04, type: 2}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

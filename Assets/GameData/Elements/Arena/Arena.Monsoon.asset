@@ -12,24 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b86ef904049b4e4680835a83fe63951, type: 3}
   m_Name: Arena.Monsoon
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Monsoon
   ID: 66
   type: 4
-  affinityTypes: 00000000
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: 357b23da776f9924888ce23b24b8aa76, type: 3}
   description: 'ARENA: Deal 30 damage and leave a storm for 4 turns.'
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 7242534439181569775, guid: 1b7201d2e301aea42874036ee2c54bf1, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
-  affectedWeather: {fileID: 11400000, guid: 283fe2a3e1bcbd94d8e79808d5739043, type: 2}
-  turnTimer: 4
+  behaviorEntries:
+    float1: 4
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 11400000, guid: 283fe2a3e1bcbd94d8e79808d5739043, type: 2}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}

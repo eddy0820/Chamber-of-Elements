@@ -9,9 +9,11 @@ public class PlayerStats : CharacterStats
         baseStats = null;
         stats = new Dictionary<string, Stat>();
     }
-    public PlayerStats(BaseStatsObject _baseStats)
+    public PlayerStats(BaseStatsObject _baseStats, GameObject _HPText)
     {
         baseStats = _baseStats;
         InitializeCharacterStats();
+
+        HPText = _HPText;
     }
 }

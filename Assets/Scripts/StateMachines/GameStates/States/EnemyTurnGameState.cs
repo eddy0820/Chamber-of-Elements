@@ -46,8 +46,38 @@ public class EnemyTurnGameState : GameState
                 focusUI.gameObject.SetActive(false);
             }
 
-            GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
-            hasAttacked = true;
+            if(currentFocusCounter < GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value)
+            {
+                GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
+                hasAttacked = true;
+                
+                currentFocusCounter++;
+            }
+            else
+            {
+                if(GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
+                {
+                    if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["FocusHitChance"].value)
+                    {
+                        Debug.Log("Focus Miss");
+                    }
+                    else
+                    {
+                        GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Focus");
+                    }
+
+                    currentFocusCounter = 0;
+                    hasAttacked = true;
+                }
+                else
+                {
+                    GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
+                    hasAttacked = true;
+                }
+                
+            }
+
+            
         }
         
         /* ACTUAL ATTACK TAKES PLACE IN ANIMATION EVENT LISTENER */

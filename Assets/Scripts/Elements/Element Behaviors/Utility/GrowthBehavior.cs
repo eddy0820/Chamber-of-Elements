@@ -8,12 +8,12 @@ public class GrowthBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        int slot = GameManager.Instance.ElementSlotsInv.FindElement(utilityElement.AssociatedElement.ID);
+        int slot = GameManager.Instance.ElementSlotsInv.FindElement(utilityElement.BehaviorEntries.Element1.ID);
 
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            character.Stats.Heal(utilityElement.ExtraValue, Player.Instance);
+            character.Stats.Heal(utilityElement.BehaviorEntries.Float1, Player.Instance);
         }
 
         return true;

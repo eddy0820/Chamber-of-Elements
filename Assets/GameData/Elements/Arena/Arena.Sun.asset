@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b86ef904049b4e4680835a83fe63951, type: 3}
   m_Name: Arena.Sun
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Sun
   ID: 69
   type: 4
-  affinityTypes: 01000000
+  affinityType: 1
   elementTexture: {fileID: 21300000, guid: f03262ff5b8c32e428528fdbcc863348, type: 3}
+  hitParticle: {fileID: 0}
+  hitParticleTexture: {fileID: 0}
   description: 'ATTACK: Deal 20 damage and clear the weather.'
   damage: 20
   doAttackInBehavior: 0
@@ -25,11 +29,14 @@ MonoBehaviour:
   secondaryExtraValue: -1
   associatedElement: {fileID: 0}
   secondaryAssociatedElement: {fileID: 0}
-  associatedPassive: {fileID: 0}
-  secondaryAssociatedPassive: {fileID: 0}
-  tertiaryAssociatedPassive: {fileID: 0}
-  permaScriptPath: 
-  permaPrefabPath: 
-  permaNewName: 
+  associatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  secondaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
+  tertiaryAssociatedPassive:
+    passive: {fileID: 0}
+    value: -1
   affectedWeather: {fileID: 0}
   turnTimer: -1

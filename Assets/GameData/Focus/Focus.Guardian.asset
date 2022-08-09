@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7dd37c9b2ac8a48bd58929e6061fd0, type: 3}
+  m_Name: Focus.Guardian
+  m_EditorClassIdentifier: 
+  permaScriptPath: Assets/Scripts/Focus/Focus Behaviors/GuardianFocusBehavior.cs
+  permaPrefabPath: Assets/Prefabs/FocusBehaviors/GuardianFocusBehavior.prefab
+  name: Guardian
+  behavior: {fileID: 967478100640629171, guid: ca65d8bbd90a6504f857a0bc31cafa16, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
+    animController1: {fileID: 9100000, guid: 8682c5060822204429a2fa6540be2f72, type: 2}
+    animController2: {fileID: 9100000, guid: 22e9e5c327b351940895649790a132a2, type: 2}
+    affinity1: 0
+    affinity2: 1
+    affinity3: 6

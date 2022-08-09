@@ -6,40 +6,6 @@ public class AnimationEventListener : MonoBehaviour
 {
     public void EnemyAttack()
     {
-        EnemyTurnGameState enemyTurnGameState = GameManager.Instance.gameObject.GetComponent<EnemyTurnGameState>();
-
-        if(enemyTurnGameState.currentFocusCounter < GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value)
-        {
-            DoEnemyAttackHelper();
-            
-            enemyTurnGameState.currentFocusCounter++;
-        }
-        else
-        {
-            if(GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
-            {
-                if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["FocusHitChance"].value)
-                {
-                    Debug.Log("Focus Miss");
-                }
-                else
-                {
-                    ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.PerformFocus(GameManager.Instance.Enemy);
-                    ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
-                }
-
-                enemyTurnGameState.currentFocusCounter = 0;
-            }
-            else
-            {
-                DoEnemyAttackHelper();
-            }
-            
-        }
-    }
-
-    private void DoEnemyAttackHelper()
-    {
         if(!Player.Instance.MinionExists)
         {
             if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["HitChance"].value)
@@ -50,6 +16,14 @@ public class AnimationEventListener : MonoBehaviour
             {
                 Player.Instance.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, Player.Instance, GameManager.Instance.Enemy);
                 ScreenShakeBehavior.Instance.StartShake(0.7f, 0.3f, 7.5f);
+
+                if(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle != null)
+                {
+                    GameObject particle = Instantiate(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle, Player.Instance.transform.position, Quaternion.identity);
+                    ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+                    particleSystem.textureSheetAnimation.SetSprite(0, ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticleTexture);
+                    particleSystem.Play();
+                }
             }
         }
         else
@@ -62,8 +36,21 @@ public class AnimationEventListener : MonoBehaviour
             {
                 Player.Instance.Minion.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, Player.Instance.Minion, GameManager.Instance.Enemy);
                 ScreenShakeBehavior.Instance.StartShake(0.7f, 0.3f, 7.5f);
+                
+                if(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle != null)
+                {
+                    GameObject particle = Instantiate(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle, Player.Instance.transform.position, Quaternion.identity);
+                    ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+                    particleSystem.textureSheetAnimation.SetSprite(0, ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticleTexture);
+                    particleSystem.Play();
+                }
             }
-        } 
+        }
+    }
+
+    public void EnemyAttackFocus()
+    {
+        ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.Behavior.PerformFocus(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus, GameManager.Instance.Enemy);
     }
 
     public void EnemyFinishedAttacking()
@@ -93,7 +80,7 @@ public class AnimationEventListener : MonoBehaviour
                     }
                     else
                     {
-                        ((MinionObject) Player.Instance.Minion.CharacterObject).Focus.PerformFocus(Player.Instance.Minion);
+                        ((MinionObject) Player.Instance.Minion.CharacterObject).Focus.Behavior.PerformFocus(((MinionObject) Player.Instance.Minion.CharacterObject).Focus, Player.Instance.Minion);
                         ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
                     }
 
