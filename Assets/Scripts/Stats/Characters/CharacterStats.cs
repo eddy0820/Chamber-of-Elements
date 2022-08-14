@@ -57,7 +57,7 @@ public abstract class CharacterStats
         {
             if(damage < 0)
             {
-                Debug.Log("This would heal, just use 'Heal()'");
+                Debug.LogWarning("This would heal, just use 'Heal()'");
                 return;
             }
             else
@@ -142,7 +142,7 @@ public abstract class CharacterStats
     {
         if(amount < 0)
         {
-            Debug.Log("This would deal damage, just use 'TakeDamage()'");
+            Debug.LogWarning("This would deal damage, just use 'TakeDamage()'");
             return;
         }
 

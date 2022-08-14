@@ -26,6 +26,31 @@ public class BaseStatsObject : ScriptableObject
 
         public StatTypeObject StatType => statType;
         public float Value => value;
+
+        /*public BaseStat(StatTypeObject _statType)
+        {
+            statType = _statType;
+            value = -1;
+        }
+
+        public override bool Equals(System.Object obj)
+        {
+            if(obj == null || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else 
+            {
+                StatTypeObject statTypeIn = ((BaseStat) obj).statType;
+
+                return statType.Name.Equals(statTypeIn.Name);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            throw new Exception("Sorry I don't know what GetHashCode should do for BaseStats");
+        }*/
     }
 }
 

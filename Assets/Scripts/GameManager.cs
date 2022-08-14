@@ -35,10 +35,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] ElementObject debugElement4;
     [SerializeField] ElementObject debugElement5;
 
+    DataHolder dataHolder;
+
     private void Awake()
     {
         Instance = this;
-
+    
+        try
+        {
+            dataHolder = GameObject.Find("DataHolder").GetComponent<DataHolder>();
+        }
+        catch {}
+        
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
         interfaceCanvas = GameObject.Find("Game Interface Canvas");
         infoCanvas = GameObject.Find("Game Info Canvas");
@@ -48,6 +56,19 @@ public class GameManager : MonoBehaviour
         weatherDatabase.InitWeathers();
 
         turnCounter = 1;
+
+        if(dataHolder != null)
+        {
+            GameObject.Find("Player").GetComponent<Player>().DoAwake(dataHolder.Player);
+            enemy.DoAwake(dataHolder.Enemy);
+        }
+        else
+        {
+            GameObject.Find("Player").GetComponent<Player>().DoAwake(null);
+            enemy.DoAwake(null);
+        }
+        
+        
     }
 
     private void Start()

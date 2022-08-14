@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Enemy : Character
 { 
-    private void Awake()
+    public void DoAwake(EnemyObject enemyObject)
     {
+        if(enemyObject != null)
+        {
+            characterObject = enemyObject;
+        }
+
         stats = new EnemyStats(characterObject.BaseStats, HPText);
     
         InitCharacter();

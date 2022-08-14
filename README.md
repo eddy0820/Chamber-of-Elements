@@ -17,6 +17,8 @@
 - clariy element needs to be changed to work with other affinitytypes
 - attack particles for enemy wizard and guardian
 - guardian focus particles
+- make gridy layout for character card be resizable depending on how many characters
+- redo main menu navigation
 
 - Elements That Need To Be Implemented
 	- Shield - ask joey about this one
@@ -24,7 +26,6 @@
 	- confusion element
   
 - visuals
-- menus
 - pause screen and win/lose state
 - component guide
 

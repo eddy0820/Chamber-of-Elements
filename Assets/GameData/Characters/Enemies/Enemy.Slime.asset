@@ -25,3 +25,5 @@ MonoBehaviour:
   focus: {fileID: 11400000, guid: 312966a0f7b6f7946a20a2a813176405, type: 2}
   hitParticle: {fileID: 3696209894953670854, guid: 7870e362ff7fb5a468c829f0c6d062c7, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: 16c144d2370f36147a315f458aa3ace9, type: 3}
+  cardPosition: {x: 227, y: 554, z: 0}
+  cardScale: {x: 6, y: 6, z: 1}

@@ -33,9 +33,14 @@ public class Player : Character
     [ReadOnly, SerializeField] UnlockedList<RelicRecipeObject> unlockedRelicRecipes;
     public UnlockedList<RelicRecipeObject> UnlockedRelicRecipes => unlockedRelicRecipes;
 
-    private void Awake()
+    public void DoAwake(PlayerObject playerObject)
     {
         Instance = this;
+
+        if(playerObject != null)
+        {
+            characterObject = playerObject;
+        }
         
         stats = new PlayerStats(characterObject.BaseStats, HPText);
         affinitySprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -45,6 +50,7 @@ public class Player : Character
 
         minion = GameObject.FindWithTag("Minion").GetComponent<Minion>();
         relic = GetComponentInChildren<Relic>();
+        
     }
 
     public override void SwitchAffinity(AffinityTypes type)

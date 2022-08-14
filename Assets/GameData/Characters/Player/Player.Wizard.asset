@@ -24,3 +24,5 @@ MonoBehaviour:
   - recipeSet: 1
     set: {fileID: 11400000, guid: 74452cf772977af44a33247c0fd71513, type: 2}
     recipe: {fileID: 0}
+  cardPosition: {x: 220.28, y: 598, z: 0}
+  cardScale: {x: 6, y: 6, z: 1}

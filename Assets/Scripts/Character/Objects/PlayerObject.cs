@@ -12,6 +12,12 @@ public class PlayerObject : CharacterObject
     [SerializeField] List<UnlockedRecipeEntry> unlockedRecipeEntries;
     public List<UnlockedRecipeEntry> UnlockedElementRecipeEntries => unlockedRecipeEntries;
 
+    [Header("Character Card Settings")]
+    [SerializeField] Vector3 cardPosition;
+    public Vector3 CardPosition => cardPosition;
+    [SerializeField] Vector3 cardScale = Vector3.one;
+    public Vector3 CardScale => cardScale;
+
     [System.Serializable]
     public class UnlockedRecipeEntry
     {
