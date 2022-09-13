@@ -1,15 +1,14 @@
 # Chamber of Elements
-- for elements that deal damage two seperate times you need to delay the hit markers with a queue and coroutines maybe
 - take art folder out of repository
 - need to update hailstorm and frost when multiple enemies are added
 - need to update radiance and light/life when multiple minions are added
-- make more singletons
 - add minion attack particles
 - attack particles for enemy wizard and guardian
 - guardian focus particles
 - make gridy layout for character card be resizable depending on how many characters
 - redo main menu navigation
-- fix passive particle not moving w enemy on attck and making it above enemy
+
+- clean this readme
 
 - Elements That Need To Be Implemented
 	- Shield - ask joey about this one

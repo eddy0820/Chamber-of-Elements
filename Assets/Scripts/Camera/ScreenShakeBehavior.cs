@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ScreenShakeBehavior : MonoBehaviour
 {   
-    static ScreenShakeBehavior instance; 
-    public static ScreenShakeBehavior Instance => instance;
+    public static ScreenShakeBehavior Instance {get; private set; }
     float shakeTimeRemaining;
     float shakeMagnitude;
     float shakeFadeTime;
@@ -18,7 +17,7 @@ public class ScreenShakeBehavior : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         startingPos = transform.position;
     }
 

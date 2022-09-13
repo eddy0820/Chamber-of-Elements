@@ -116,7 +116,7 @@ public class FlatPassiveObject : PassiveObject
                 action = ()=> character.Stats.Heal(value);
                 break;
             case PassiveBehaviorTypes.Enlightenment:
-                action = ()=> GameManager.Instance.InterfaceCanvas.transform.GetChild(0).GetComponent<ElementSlotsInterface>().DoEnlightenment();
+                action = ()=> ElementSlotsInterface.Instance.DoEnlightenment();
                 break;
         }
 

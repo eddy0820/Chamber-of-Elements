@@ -363,12 +363,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82556192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -1.2, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.5, y: 6.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1783780305}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.4166403}
 --- !u!95 &82556194
 Animator:
   serializedVersion: 3
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0701c9b73bc6864887cdf5d3fe131c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageIndicatorPrefab: {fileID: 2261304637777387811, guid: b54d3236b42ab044fa1524f8b9a0aeee, type: 3}
+  damageIndicatorPrefab: {fileID: 5497176736688108515, guid: b54d3236b42ab044fa1524f8b9a0aeee, type: 3}
   defaultDissapearTimer: 0.8
   defaultFadeOutSpeed: 5
   defaultMoveYSpeed: 1.5
@@ -3453,8 +3453,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910115546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.16, y: 0.15, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 4.32, y: -0.61, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136328463}
   m_Father: {fileID: 0}
@@ -3472,7 +3472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4c4bca2165fc8469e9edae6a4aef2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterObject: {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
+  characterObject: {fileID: 11400000, guid: 3e29a632cba76a0459b2e87f29b6c2d2, type: 2}
   affinityType: 6
   passivesInterface: {fileID: 1326106934}
   HPText: {fileID: 1230385433}
@@ -4196,7 +4196,7 @@ Transform:
   m_GameObject: {fileID: 1136328462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 6.5, y: 6.5, z: 1}
   m_Children: []
   m_Father: {fileID: 910115547}
   m_RootOrder: 0
@@ -4260,7 +4260,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5279917591105545394, guid: c475abdeb18c8ad48bda67ac3f627069, type: 3}
+  m_Sprite: {fileID: 368543389579951487, guid: 68d0c5b5288b2cf46a7042c6af08fcd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6226,8 +6226,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426745153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.74, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.5, y: 6.5, z: 0}
   m_Children: []
   m_Father: {fileID: 2077357108}
   m_RootOrder: 0
@@ -6272,12 +6272,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3417436698567514372, guid: afea853677156e84caea72894a4fba29, type: 3}
+  m_Sprite: {fileID: 3422849895820167655, guid: afea853677156e84caea72894a4fba29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6857,8 +6857,6 @@ MonoBehaviour:
   dataHolderPrefab: {fileID: 2061387983360291898, guid: f15723a3fbd665e408d4230946a6151f, type: 3}
   turnCounter: 0
   turnCounterText: {fileID: 1638360860}
-  interfaceCanvas: {fileID: 1340025845}
-  infoCanvas: {fileID: 1215122375}
   winCanvas: {fileID: 1345430091}
   loseCanvas: {fileID: 14911152}
   flashCanvas: {fileID: 1550353920}
@@ -6907,6 +6905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a36e5b6f73d1748a0c9f498c42e064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackStartDelay: 2
   focusUI: {fileID: 1466842539}
   currentFocusCounter: 0
 --- !u!114 &1625356785
@@ -6949,6 +6948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836c3b43bee2b604287055d2b06d9f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackStartDelay: 1.5
   focusUI: {fileID: 1892400404}
   currentFocusCounter: 0
 --- !u!114 &1625356788
@@ -7345,6 +7345,7 @@ MonoBehaviour:
     interactColor: {r: 0, g: 0, b: 0, a: 0}
   cursorUse: {fileID: 21300000, guid: 3cb10413e5eee1240b50bba62a7a0083, type: 3}
   cursorAttack: {fileID: 21300000, guid: 62506dc1a6274504fa2b2526b0fcefb7, type: 3}
+  minionText: {fileID: 750804534}
 --- !u!1 &1783780303
 GameObject:
   m_ObjectHideFlags: 0
@@ -7387,8 +7388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783780303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.45, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: -1.77, y: -0.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 82556193}
   m_Father: {fileID: 0}
@@ -7682,6 +7683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicObject: {fileID: 0}
   noRelicSprite: {fileID: 21300000, guid: 565063e4a8f26b3489fc5de6bb9d8eb3, type: 3}
+  relicImage: {fileID: 770804998}
 --- !u!1 &1919842917
 GameObject:
   m_ObjectHideFlags: 0
@@ -8335,8 +8337,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077357106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3681, y: -0.2, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: -4.09, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1426745154}
   - {fileID: 1288988099}

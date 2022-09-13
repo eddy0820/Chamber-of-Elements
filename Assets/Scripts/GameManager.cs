@@ -27,10 +27,6 @@ public class GameManager : MonoBehaviour
 
     [Space(15)]
 
-    [SerializeField] GameObject interfaceCanvas;
-    public GameObject InterfaceCanvas => interfaceCanvas;
-    [SerializeField] GameObject infoCanvas;
-    public GameObject InfoCanvas => infoCanvas;
     [SerializeField] GameObject winCanvas;
     public GameObject WinCanvas => winCanvas;
     [SerializeField] GameObject loseCanvas;
@@ -141,6 +137,8 @@ public class GameManager : MonoBehaviour
             
             case CharacterEntry.Enemy:
                 return GameManager.Instance.Enemy;
+            case CharacterEntry.Minion:
+                return Player.Instance.Minion;
             default:
                 return null;
         }

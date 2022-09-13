@@ -99,14 +99,16 @@ public abstract class CharacterStats
         float attackerSpellPower;
         float defense = stats["Defense"].value;
         float resistance;
-        float attackerWeatherAffinity = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherAffinity].value;
-        float attackerWeatherPotency = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherPotency].value;
+        float attackerWeatherAffinity;
+        float attackerWeatherPotency;
 
         if(source == null)
         {
             attackerStength = 0;
             attackerPotency = 0;
             attackerSpellPower = 0;
+            attackerWeatherAffinity = 0;
+            attackerWeatherPotency = 0;
 
             if(damageType == AffinityTypes.None)
             {
@@ -120,6 +122,8 @@ public abstract class CharacterStats
         else
         {
             attackerStength = source.Stats.stats["Strength"].value;
+            attackerWeatherAffinity = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherAffinity].value;
+            attackerWeatherPotency = source.Stats.getStat[((WeatherState) WeatherStateManager.Instance.currentState).WeatherObject.WeatherPotency].value;
 
             if(damageType == AffinityTypes.None)
             {

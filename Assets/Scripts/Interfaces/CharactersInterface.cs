@@ -7,6 +7,7 @@ using TMPro;
 
 public class CharactersInterface : AbstractGameInterface
 {   
+    public static CharactersInterface Instance {get; private set; }
     [SerializeField] CharacterInteractEntry playerInteract;
     [SerializeField] CharacterInteractEntry enemyInteract;
     [SerializeField] CharacterInteractEntry weatherInteract;
@@ -14,12 +15,15 @@ public class CharactersInterface : AbstractGameInterface
 
     [SerializeField] Sprite cursorUse;
     [SerializeField] Sprite cursorAttack;
-   
-    [System.NonSerialized] public TextMeshProUGUI minionText;
+
+    [Space(15)]
+
+    public TextMeshProUGUI minionText;
 
     protected override void OnAwake() 
     {
-        minionText = GameManager.Instance.InfoCanvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        Instance = this;
+        
         minionText.text = "";
     }
 

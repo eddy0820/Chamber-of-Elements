@@ -195,7 +195,7 @@ public class InventoryObject : ScriptableObject
 
     public void ClearElements()
     {
-        container.elementSlots = new Element[GameManager.Instance.InterfaceCanvas.transform.GetChild(0).childCount];
+        container.elementSlots = new Element[ElementSlotsInterface.Instance.transform.childCount];
     }
 }
 

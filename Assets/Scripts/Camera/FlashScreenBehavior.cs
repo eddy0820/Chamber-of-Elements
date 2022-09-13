@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class FlashScreenBehavior : MonoBehaviour
 {
-    static FlashScreenBehavior instance;
-    public static FlashScreenBehavior Instance => instance;
+    public static FlashScreenBehavior Instance {get; private set; }
 
     CanvasGroup canvasGroup;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         canvasGroup = GameManager.Instance.FlashCanvas.GetComponent<CanvasGroup>();
     }
 

@@ -6,10 +6,13 @@ using TMPro;
 
 public class RelicInterface : AbstractGameInterface
 {
+    public static RelicInterface Instance {get; private set; }
     [SerializeField] GameObject relicDescription;
 
     protected override void OnAwake()
     {
+        Instance = this;
+        
         relicDescription.GetComponent<TextMeshProUGUI>().text = "";
     }
 

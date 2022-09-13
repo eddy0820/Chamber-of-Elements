@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerObject : CharacterObject 
 {
     [Header("Player")]
+
+    [HorizontalLine(color: EColor.Gray, height: 2)]
+
     [SerializeField] List<AffinityTypes> unlockedStartingAffinities;
     public List<AffinityTypes> UnlockedStartingAffinities => unlockedStartingAffinities;
 
@@ -16,6 +19,9 @@ public class PlayerObject : CharacterObject
     public List<ElementObject> StartingReRollElements => startingReRollElements;
 
     [Header("Character Card Settings")]
+    
+    [HorizontalLine(color: EColor.Gray, height: 2)]
+
     [SerializeField] Vector3 cardPosition;
     public Vector3 CardPosition => cardPosition;
     [SerializeField] Vector3 cardScale = Vector3.one;

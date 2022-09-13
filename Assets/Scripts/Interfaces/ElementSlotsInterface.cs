@@ -7,6 +7,8 @@ using TMPro;
 
 public class ElementSlotsInterface : AbstractGameInterface
 {
+    public static ElementSlotsInterface Instance {get; private set; }
+
     [SerializeField] InventoryObject elementSlots;
     [SerializeField] Sprite emptySlotSprite;
     [SerializeField] RuntimeAnimatorController mouseElementController;
@@ -17,6 +19,8 @@ public class ElementSlotsInterface : AbstractGameInterface
 
     protected override void OnAwake()
     {
+        Instance = this;
+
         slots = new GameObject[transform.childCount];
 
         for(int i = 0; i < transform.childCount; i++)

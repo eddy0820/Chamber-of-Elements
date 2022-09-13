@@ -8,12 +8,10 @@ public class Relic : MonoBehaviour
     [SerializeField] RelicObject relicObject;
     public RelicObject RelicObject => relicObject;
     [SerializeField] Sprite noRelicSprite;
-    Image relicImage;
+    [SerializeField] Image relicImage;
 
     public void Awake()
     {
-        relicImage = GameManager.Instance.InterfaceCanvas.GetComponentInChildren<RelicInterface>().transform.GetChild(1).GetChild(0).GetComponent<Image>();
-
         if(relicObject != null)
         {
             Player.Instance.SetHasRelic(true);

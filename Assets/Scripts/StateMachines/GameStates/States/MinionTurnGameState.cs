@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MinionTurnGameState : GameState
 {
+    [SerializeField] float attackStartDelay = 1.5f;
     [SerializeField] GameObject focusUI;
 
     [Space(15)]
@@ -46,6 +47,8 @@ public class MinionTurnGameState : GameState
     {
         if(!hasAttacked)
         {
+            hasAttacked = true;
+
             if(Player.Instance.Minion.Stats.Stats.ContainsKey("FocusCooldown") && Player.Instance.Minion.Stats.Stats.ContainsKey("CanFocus") && Player.Instance.Minion.Stats.Stats.ContainsKey("FocusHitChance"))
             {
                 if(focusUI.activeInHierarchy)
@@ -54,9 +57,17 @@ public class MinionTurnGameState : GameState
                 }
             }
 
-            Player.Instance.Minion.GetComponentInChildren<Animator>().SetTrigger("Attack");
-            hasAttacked = true;
+            StartCoroutine(DoAttack());
         }
+    }
+
+    private IEnumerator DoAttack()
+    {
+        yield return new WaitForSeconds(attackStartDelay);
+
+        Player.Instance.Minion.GetComponentInChildren<Animator>().SetTrigger("Attack");
+
+        yield break;
     }
 
     public override void OnExitState()

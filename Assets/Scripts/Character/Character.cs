@@ -63,6 +63,7 @@ public abstract class Character : MonoBehaviour
         immunityAffinityTypes = new Dictionary<AffinityTypes, ImmunityPassiveObject>();
         immunityPassives = new Dictionary<PassiveObject, ImmunityPassiveObject>();
         immunityElements = new Dictionary<ElementObject, ImmunityPassiveObject>();
+        particles = new Dictionary<PassiveObject, GameObject>(); 
 
         foreach(PassiveEntry passive in characterObject.StartingPassives)
         {
@@ -81,8 +82,6 @@ public abstract class Character : MonoBehaviour
         } 
 
         HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP"; 
-
-        particles = new Dictionary<PassiveObject, GameObject>(); 
     }
 
     private void PassiveTurnCalcRemove()
@@ -451,7 +450,7 @@ public abstract class Character : MonoBehaviour
     {
         if(passive.Particle != null)
         {
-            GameObject particle = Instantiate(passive.Particle, transform.position, Quaternion.identity, transform);
+            GameObject particle = Instantiate(passive.Particle, transform.position, Quaternion.identity, transform.GetComponentInChildren<Animator>().transform);
             ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
             particleSystem.textureSheetAnimation.SetSprite(0, passive.ParticleTexture);
             particleSystem.Play();

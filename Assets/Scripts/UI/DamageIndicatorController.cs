@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class DamageIndicatorController : MonoBehaviour
 {
-    static DamageIndicatorController instance;
-    public static DamageIndicatorController Instance => instance;
-
+    public static DamageIndicatorController Instance {get; private set; }
     [SerializeField] GameObject damageIndicatorPrefab;
 
     [Space(15)]
@@ -22,7 +20,7 @@ public class DamageIndicatorController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         _defaultScaleFactor = defaultScaleFactor / 1000;
     }
 

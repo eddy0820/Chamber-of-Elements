@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyTurnGameState : GameState
 {
+    [SerializeField] float attackStartDelay = 1.5f;
     [SerializeField] GameObject focusUI;
 
     [Space(15)]
@@ -41,54 +42,61 @@ public class EnemyTurnGameState : GameState
     {
         if(!hasAttacked)
         {
+            hasAttacked = true;
+
             if(focusUI.gameObject.activeInHierarchy)
             {
                 focusUI.gameObject.SetActive(false);
             }
 
-            if(currentFocusCounter < GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value)
-            {
-                GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
-                hasAttacked = true;
-                
-                currentFocusCounter++;
-            }
-            else
-            {
-                if(GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
-                {
-                    if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["FocusHitChance"].value)
-                    {
-                        foreach(CharacterEntry characterEntry in ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.BehaviorEntries.FocusAffectedCharacters)
-                        {
-                            Character character = GameManager.Instance.ConvertCharacterEntry(characterEntry);
-
-                            if(character.CharacterObject != null)
-                            {
-                                DamageIndicatorController.Instance.DoMissIndicator(character.transform.position);
-                            }
-                        }    
-                    }
-                    else
-                    {
-                        GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Focus");
-                    }
-
-                    currentFocusCounter = 0;
-                    hasAttacked = true;
-                }
-                else
-                {
-                    GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
-                    hasAttacked = true;
-                }
-                
-            } 
+            StartCoroutine(DoAttack());
         }
         
         /* ACTUAL ATTACK TAKES PLACE IN ANIMATION EVENT LISTENER */
  
         /* FINISHED ATTACKING BOOL IS SWITCHED TO TRUE IN ANIMATION EVENT LISTENER */
+    }
+
+    private IEnumerator DoAttack()
+    {
+        yield return new WaitForSeconds(attackStartDelay);
+
+        if(currentFocusCounter < GameManager.Instance.Enemy.Stats.Stats["FocusCooldown"].value)
+        {
+            GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
+                
+            currentFocusCounter++;
+        }
+        else
+        {
+            if(GameManager.Instance.Enemy.Stats.Stats["CanFocus"].value > 0)
+            {
+                if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["FocusHitChance"].value)
+                {
+                    foreach(CharacterEntry characterEntry in ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.BehaviorEntries.FocusAffectedCharacters)
+                    {
+                        Character character = GameManager.Instance.ConvertCharacterEntry(characterEntry);
+
+                        if(character.CharacterObject != null)
+                        {
+                            DamageIndicatorController.Instance.DoMissIndicator(character.transform.position);
+                        }
+                    }    
+                }
+                else
+                {
+                    GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Focus");
+                }
+
+                currentFocusCounter = 0;
+            }
+            else
+            {
+                GameManager.Instance.Enemy.GetComponentInChildren<Animator>().SetTrigger("Attack");
+            }
+        } 
+
+        yield break;
     }
 
     public override void OnExitState()

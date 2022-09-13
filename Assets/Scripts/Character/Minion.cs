@@ -69,7 +69,7 @@ public class Minion : Character
 
             ChangeAttacker(null);
 
-            GameManager.Instance.InterfaceCanvas.GetComponentInChildren<CharactersInterface>().minionText.text = "";
+            CharactersInterface.Instance.minionText.text = "";
 
             Player.Instance.SetMinionExists(false);
 
