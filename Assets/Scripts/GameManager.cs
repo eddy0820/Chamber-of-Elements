@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,19 +14,35 @@ public class GameManager : MonoBehaviour
     public WeatherDatabase WeatherDatabase => weatherDatabase;
     [SerializeField] InventoryObject elementSlotsInv;
     public InventoryObject ElementSlotsInv => elementSlotsInv;
+    [SerializeField] GameObject dataHolderPrefab;
 
     [Space(15)]
-    [ReadOnly] public int turnCounter;
+
+    [ReadOnly, SerializeField] int turnCounter;
+    public int TurnCounter => turnCounter;
+    [SerializeField] GameObject turnCounterText;
  
     Enemy enemy;
     public Enemy Enemy => enemy;
-    GameObject interfaceCanvas;
+
+    [Space(15)]
+
+    [SerializeField] GameObject interfaceCanvas;
     public GameObject InterfaceCanvas => interfaceCanvas;
-    GameObject infoCanvas;
+    [SerializeField] GameObject infoCanvas;
     public GameObject InfoCanvas => infoCanvas;
+    [SerializeField] GameObject winCanvas;
+    public GameObject WinCanvas => winCanvas;
+    [SerializeField] GameObject loseCanvas;
+    public GameObject LoseCanvas => loseCanvas;
+    [SerializeField] GameObject flashCanvas;
+    public GameObject FlashCanvas => flashCanvas;
+    [SerializeField] GameObject pauseCanvas;
+    public GameObject PauseCanvas => pauseCanvas;
     
     [Space(15)]
-    public MouseElement mouseElement = new MouseElement();
+
+    public MouseElement mouseElement = new MouseElement(); 
 
     [Header("Debug")]
     public bool debug;
@@ -36,6 +53,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ElementObject debugElement5;
 
     DataHolder dataHolder;
+    public DataHolder DataHolder => dataHolder;
 
     private void Awake()
     {
@@ -43,13 +61,11 @@ public class GameManager : MonoBehaviour
     
         try
         {
-            dataHolder = GameObject.Find("DataHolder").GetComponent<DataHolder>();
+            dataHolder = GameObject.FindWithTag("DataHolder").GetComponent<DataHolder>();
         }
         catch {}
         
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
-        interfaceCanvas = GameObject.Find("Game Interface Canvas");
-        infoCanvas = GameObject.Find("Game Info Canvas");
 
         elementDatabase.InitElements();
         affinityDatabase.InitAffinities();
@@ -66,9 +82,12 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Find("Player").GetComponent<Player>().DoAwake(null);
             enemy.DoAwake(null);
-        }
-        
-        
+
+            GameObject dataHolderObject = Instantiate(dataHolderPrefab, dataHolderPrefab.transform.position, dataHolderPrefab.transform.rotation);
+            dataHolder = dataHolderObject.GetComponent<DataHolder>();
+            dataHolder.SetPlayer(Player.Instance.CharacterObject as PlayerObject);
+            dataHolder.SetEnemy(enemy.CharacterObject as EnemyObject);
+        }  
     }
 
     private void Start()
@@ -78,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(debug)
+        if(PauseMenu.Instance.IsGamePaused == false && debug)
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -125,5 +144,11 @@ public class GameManager : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void SetTurnCounter(int amount)
+    {
+        turnCounter = amount;
+        turnCounterText.GetComponent<TextMeshProUGUI>().text = "Turn " + turnCounter;
     }
 }

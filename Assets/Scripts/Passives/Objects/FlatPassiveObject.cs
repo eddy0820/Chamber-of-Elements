@@ -93,27 +93,27 @@ public class FlatPassiveObject : PassiveObject
 
                 if(OnHitBehavior)
                 {
-                    action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, character, null);
+                    action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, null);
                 }
                 else
                 {
-                    action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, character, null);
+                    action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, null);
                 }
                 
                 break;
             case PassiveBehaviorTypes.DamageToAttacker:
                 if(OnHitBehavior)
                 {
-                    action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, null);
+                    action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, null);
                 }
                 else
                 {
-                    action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character.Attacker, null);
+                    action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, null);
                 }
 
                 break;
             case PassiveBehaviorTypes.Heal:
-                action = ()=> character.Stats.Heal(value, character);
+                action = ()=> character.Stats.Heal(value);
                 break;
             case PassiveBehaviorTypes.Enlightenment:
                 action = ()=> GameManager.Instance.InterfaceCanvas.transform.GetChild(0).GetComponent<ElementSlotsInterface>().DoEnlightenment();

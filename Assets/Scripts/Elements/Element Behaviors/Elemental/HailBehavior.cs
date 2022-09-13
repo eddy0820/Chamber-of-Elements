@@ -10,7 +10,7 @@ public class HailBehavior : AbstractElementBehavior
 
         if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[elementalElement.BehaviorEntries.Weather1].GetType())
         {
-            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, GameManager.Instance.mouseElement.element.AffinityType, character, Player.Instance);
+            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, GameManager.Instance.mouseElement.element.AffinityType, Player.Instance);
         }
 
         if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))

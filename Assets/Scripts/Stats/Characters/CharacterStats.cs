@@ -12,6 +12,7 @@ public abstract class CharacterStats
     public Dictionary<string, Stat> Stats => stats;
     Dictionary<StatTypeObject, Stat> getStat = new Dictionary<StatTypeObject, Stat>();
     public Dictionary<StatTypeObject, Stat> GetStat = new Dictionary<StatTypeObject, Stat>();
+    protected Character character;
     protected float currentHealth;
     protected float currentMana;
     public float CurrentHealth => currentHealth;
@@ -33,9 +34,9 @@ public abstract class CharacterStats
         currentHealth = stats["MaxHealth"].value;
     }
     
-    public void TakeDamage(float damage, AffinityTypes damageType, Character character, Character source)
+    public void TakeDamage(float damage, AffinityTypes damageType, Character source)
     {
-        TakeDamageNoActions(damage, damageType, character, source);
+        TakeDamageNoActions(damage, damageType, source);
         
         if(damage <= 0)
         {
@@ -51,7 +52,7 @@ public abstract class CharacterStats
         } 
     }
 
-    public void TakeDamageNoActions(float damage, AffinityTypes damageType, Character character, Character source)
+    public void TakeDamageNoActions(float damage, AffinityTypes damageType, Character source)
     {
         if(damage <= 0)
         {
@@ -68,31 +69,30 @@ public abstract class CharacterStats
 
         character.ChangeAttacker(source);
 
-        damage = CalcDamage(damage, damageType, character, source, (WeatherState) WeatherStateManager.Instance.currentState);
+        damage = CalcDamage(damage, damageType, source, (WeatherState) WeatherStateManager.Instance.currentState);
 
         System.Math.Round(damage, 1);
 
         currentHealth -= damage;
 
         HPText.GetComponent<TextMeshProUGUI>().text = currentHealth + " HP";
-
-        GameObject damageIndicatorUI = GameObject.Instantiate(character.DamageIndicatorPrefab, character.DamageIndicatorPrefab.transform.position, Quaternion.identity, GameManager.Instance.InfoCanvas.transform);
-        damageIndicatorUI.GetComponent<TextMeshProUGUI>().text = damage.ToString();
-
-        //Debug.Log(character.CharacterObject.Name + " takes " + damage + " " + damageType.ToString() + " damage.");
-        //Debug.Log(currentHealth);
+        HPText.GetComponent<Animator>().SetTrigger("Grow");
 
         lastHitDamage = damage;
 
         if(currentHealth <= 0)
         {
-            Die(character);
+            Die();
+        }
+        else
+        {
+            DamageIndicatorController.Instance.DoDamageIndicator(damage, character.transform.position);
         }
 
-        HandlePassiveAdditiveRemovalTypes(character, damageType);
+        HandlePassiveAdditiveRemovalTypes(damageType);
     }
 
-    private float CalcDamage(float damage, AffinityTypes damageType, Character character, Character source, WeatherState weather)
+    private float CalcDamage(float damage, AffinityTypes damageType, Character source, WeatherState weather)
     {
         float attackerStength;
         float attackerPotency;
@@ -138,7 +138,7 @@ public abstract class CharacterStats
         return ((damage + attackerStength + attackerPotency + attackerWeatherPotency) - defense) + ((attackerWeatherAffinity/100) * damage) + ((attackerSpellPower/100) * damage) - ((resistance/100) * damage);
     }
 
-    public void Heal(float amount, Character character)
+    public void Heal(float amount)
     {
         if(amount < 0)
         {
@@ -157,19 +157,16 @@ public abstract class CharacterStats
 
         currentHealth += amount;
 
-        //Debug.Log(character.CharacterObject.Name + " heals for " + amount + ".");
-
         if(currentHealth > stats["MaxHealth"].value)
         {
             currentHealth = stats["MaxHealth"].value;
         }
 
         HPText.GetComponent<TextMeshProUGUI>().text = currentHealth + " HP";
-
-        //Debug.Log(character.CharacterObject.Name + " now has " + currentHealth + " health.");
+        HPText.GetComponent<Animator>().SetTrigger("Grow");
     }
 
-    public virtual void Die(Character character)
+    public virtual void Die()
     {
         Debug.Log(character.CharacterObject.Name + " died.");
 
@@ -179,7 +176,7 @@ public abstract class CharacterStats
         }
     }
 
-    private void HandlePassiveAdditiveRemovalTypes(Character character, AffinityTypes damageType)
+    private void HandlePassiveAdditiveRemovalTypes(AffinityTypes damageType)
     {
         List<PassiveObject.ChangeTypeEntry> passivesToAdd = new List<PassiveObject.ChangeTypeEntry>();
         List<PassiveObject> passivesToRemove = new List<PassiveObject>();

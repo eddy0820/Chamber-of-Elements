@@ -6,6 +6,6 @@ public class Deal30PlayerDRBehavior : AbstractDeathRattle
 { 
     public override void DoBehavior(Character character, DeathRattleObject deathRattle)
     {
-        Player.Instance.Stats.TakeDamage(deathRattle.BehaviorEntries.Float1, character.AffinityType, Player.Instance, null);
+        Player.Instance.Stats.TakeDamage(deathRattle.BehaviorEntries.Float1, character.AffinityType, null);
     }
 }

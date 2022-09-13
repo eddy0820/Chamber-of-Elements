@@ -6,12 +6,12 @@ public class WizardFocusBehavior : AbstractFocusBehavior
 { 
     public override void PerformFocus(FocusObject focus, Character character)
     {
-        Player.Instance.Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, Player.Instance, character);
-        DoParticleEffectEnemy(Player.Instance);
+        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
+        DoParticleEffectEnemy(GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]));
 
-        Player.Instance.Minion.Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, Player.Instance.Minion, character);
-        DoParticleEffectEnemy(Player.Instance.Minion);
+        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
+        DoParticleEffectEnemy(GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]));
 
-        ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
+        ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }
 }

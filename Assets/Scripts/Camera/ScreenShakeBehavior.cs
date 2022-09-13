@@ -13,6 +13,9 @@ public class ScreenShakeBehavior : MonoBehaviour
     float rotationMultiplier;
     Vector3 startingPos;
 
+    [SerializeField] ShakeSettings shakeSettings;
+
+
     private void Awake()
     {
         instance = this;
@@ -54,5 +57,51 @@ public class ScreenShakeBehavior : MonoBehaviour
 
         rotationMultiplier = _rotationMultiplier;
         shakeRotation = magnitude * rotationMultiplier;
+    }
+
+    public void StartShake(ShakePresets preset)
+    {
+        switch(preset)
+        {
+            case ShakePresets.Small:
+                StartShake(shakeSettings.SPSmallLength, shakeSettings.SPSmallMagnitude, shakeSettings.SPSmallRotationMultiplier);
+                break;
+
+            case ShakePresets.Medium:
+                StartShake(shakeSettings.SPMediumLength, shakeSettings.SPMediumMagnitude, shakeSettings.SPMediumRotationMultiplier);
+                break;
+
+            case ShakePresets.Large:
+                StartShake(shakeSettings.SPLargeLength, shakeSettings.SPLargeMagnitude, shakeSettings.SPLargeRotationMultiplier);
+                break;
+        }
+    }
+
+    public enum ShakePresets
+    {
+        Small,
+        Medium,
+        Large
+    }
+
+    [System.Serializable]
+    class ShakeSettings
+    {
+        public float SPSmallLength = 0.25f;
+        public float SPSmallMagnitude = 0.1f;
+        public float SPSmallRotationMultiplier = 7.5f;
+
+        [HorizontalLine(color: EColor.Gray, height: 2)]
+
+        public float SPMediumLength = 0.7f;
+        public float SPMediumMagnitude = 0.3f;
+        public float SPMediumRotationMultiplier = 7.5f;
+
+        [HorizontalLine(color: EColor.Gray, height: 2)]
+
+        public float SPLargeLength = 1.5f;
+        public float SPLargeMagnitude = 0.8f;
+        public float SPLargeRotationMultiplier = 7.5f;
+
     }
 }

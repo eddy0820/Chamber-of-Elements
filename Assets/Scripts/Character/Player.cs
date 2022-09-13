@@ -24,14 +24,16 @@ public class Player : Character
     public Relic Relic => relic;
     
     [Space(15)]
-    [ReadOnly, SerializeField] UnlockedList<AffinityTypes> unlockedAffinities;
-    public UnlockedList<AffinityTypes> UnlockedAffinities => unlockedAffinities;
-    [ReadOnly, SerializeField] UnlockedList<ElementRecipeObject> unlockedElementRecipes;
-    public UnlockedList<ElementRecipeObject> UnlockedElementRecipes => unlockedElementRecipes;
-    [ReadOnly, SerializeField] UnlockedList<MinionRecipeObject> unlockedMinionRecipes;
-    public UnlockedList<MinionRecipeObject> UnlockedMinionRecipes => unlockedMinionRecipes;
-    [ReadOnly, SerializeField] UnlockedList<RelicRecipeObject> unlockedRelicRecipes;
-    public UnlockedList<RelicRecipeObject> UnlockedRelicRecipes => unlockedRelicRecipes;
+    [ReadOnly, SerializeField] SerializableHashSet<AffinityTypes> unlockedAffinities;
+    public SerializableHashSet<AffinityTypes> UnlockedAffinities => unlockedAffinities;
+    [ReadOnly, SerializeField] SerializableHashSet<ElementRecipeObject> unlockedElementRecipes;
+    public SerializableHashSet<ElementRecipeObject> UnlockedElementRecipes => unlockedElementRecipes;
+    [ReadOnly, SerializeField] SerializableHashSet<MinionRecipeObject> unlockedMinionRecipes;
+    public SerializableHashSet<MinionRecipeObject> UnlockedMinionRecipes => unlockedMinionRecipes;
+    [ReadOnly, SerializeField] SerializableHashSet<RelicRecipeObject> unlockedRelicRecipes;
+    public SerializableHashSet<RelicRecipeObject> UnlockedRelicRecipes => unlockedRelicRecipes;
+    [ReadOnly, SerializeField] SerializableHashSet<ElementObject> reRollElements;
+    public SerializableHashSet<ElementObject> ReRollElements => reRollElements;
 
     public void DoAwake(PlayerObject playerObject)
     {
@@ -42,7 +44,7 @@ public class Player : Character
             characterObject = playerObject;
         }
         
-        stats = new PlayerStats(characterObject.BaseStats, HPText);
+        stats = new PlayerStats(characterObject.BaseStats, HPText, this);
         affinitySprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         InitCharacter();
@@ -75,34 +77,42 @@ public class Player : Character
     {
         base.InitCharacter();
 
-        unlockedAffinities.unlocked = new HashSet<AffinityTypes>(((PlayerObject) characterObject).UnlockedStartingAffinities);
+        unlockedAffinities.set = new HashSet<AffinityTypes>(((PlayerObject) characterObject).UnlockedStartingAffinities);
         
-        unlockedElementRecipes.unlocked = new HashSet<ElementRecipeObject>();
-        unlockedMinionRecipes.unlocked = new HashSet<MinionRecipeObject>();
+        unlockedElementRecipes.set = new HashSet<ElementRecipeObject>();
+        unlockedMinionRecipes.set = new HashSet<MinionRecipeObject>();
+        unlockedRelicRecipes.set = new HashSet<RelicRecipeObject>();
 
         foreach(PlayerObject.UnlockedRecipeEntry recipeEntry in ((PlayerObject) characterObject).UnlockedElementRecipeEntries)
         {
             if(recipeEntry.RecipeSet)
             {
-                unlockedElementRecipes.unlocked.UnionWith(recipeEntry.Set.ElementRecipes);
-                unlockedMinionRecipes.unlocked.UnionWith(recipeEntry.Set.MinionRecipes);
-                unlockedRelicRecipes.unlocked.UnionWith(recipeEntry.Set.RelicRecipes);
+                unlockedElementRecipes.set.UnionWith(recipeEntry.Set.ElementRecipes);
+                unlockedMinionRecipes.set.UnionWith(recipeEntry.Set.MinionRecipes);
+                unlockedRelicRecipes.set.UnionWith(recipeEntry.Set.RelicRecipes);
             }
             else
             {
                 if(recipeEntry.Recipe is ElementRecipeObject)
                 {
-                    unlockedElementRecipes.unlocked.Add((ElementRecipeObject) recipeEntry.Recipe);
+                    unlockedElementRecipes.set.Add((ElementRecipeObject) recipeEntry.Recipe);
                 }
                 else if(recipeEntry.Recipe is MinionRecipeObject)
                 {
-                    unlockedMinionRecipes.unlocked.Add((MinionRecipeObject) recipeEntry.Recipe);
+                    unlockedMinionRecipes.set.Add((MinionRecipeObject) recipeEntry.Recipe);
                 }
                 else if(recipeEntry.Recipe is RelicRecipeObject)
                 {
-                    unlockedRelicRecipes.unlocked.Add((RelicRecipeObject) recipeEntry.Recipe);
+                    unlockedRelicRecipes.set.Add((RelicRecipeObject) recipeEntry.Recipe);
                 }
             }
+        }
+
+        reRollElements.set = new HashSet<ElementObject>();
+
+        foreach(ElementObject element in ((PlayerObject) characterObject).StartingReRollElements)
+        {
+            reRollElements.set.Add(element);
         }
     }
 
@@ -118,12 +128,12 @@ public class Player : Character
 
     public bool UnlockAffinity(AffinityTypes affinity)
     {
-        return unlockedAffinities.unlocked.Add(affinity);
+        return unlockedAffinities.set.Add(affinity);
     }
 
     public bool LockAffinity(AffinityTypes affinity)
     {
-        return unlockedAffinities.unlocked.Remove(affinity);
+        return unlockedAffinities.set.Remove(affinity);
     }
 
     public bool UnlockRecipeSet(RecipeSet recipeSet)
@@ -132,7 +142,7 @@ public class Player : Character
 
         foreach(ElementRecipeObject er in recipeSet.ElementRecipes)
         {
-            if(unlockedElementRecipes.unlocked.Add(er) == false)
+            if(unlockedElementRecipes.set.Add(er) == false)
             {
                 allAdded = false;
             }
@@ -140,7 +150,7 @@ public class Player : Character
 
         foreach(MinionRecipeObject mr in recipeSet.MinionRecipes)
         {
-            if(unlockedMinionRecipes.unlocked.Add(mr) == false)
+            if(unlockedMinionRecipes.set.Add(mr) == false)
             {
                 allAdded = false;
             }
@@ -148,7 +158,7 @@ public class Player : Character
 
         foreach(RelicRecipeObject rr in recipeSet.RelicRecipes)
         {
-            if(unlockedRelicRecipes.unlocked.Add(rr) == false)
+            if(unlockedRelicRecipes.set.Add(rr) == false)
             {
                 allAdded = false;
             }
@@ -163,7 +173,7 @@ public class Player : Character
 
         foreach(ElementRecipeObject er in recipeSet.ElementRecipes)
         {
-            if(unlockedElementRecipes.unlocked.Remove(er) == false)
+            if(unlockedElementRecipes.set.Remove(er) == false)
             {
                 allRemoved = false;
             }
@@ -171,7 +181,7 @@ public class Player : Character
 
         foreach(MinionRecipeObject mr in recipeSet.MinionRecipes)
         {
-            if(unlockedMinionRecipes.unlocked.Remove(mr) == false)
+            if(unlockedMinionRecipes.set.Remove(mr) == false)
             {
                 allRemoved = false;
             }
@@ -179,7 +189,7 @@ public class Player : Character
 
         foreach(RelicRecipeObject rr in recipeSet.RelicRecipes)
         {
-            if(unlockedRelicRecipes.unlocked.Remove(rr) == false)
+            if(unlockedRelicRecipes.set.Remove(rr) == false)
             {
                 allRemoved = false;
             }
@@ -189,17 +199,17 @@ public class Player : Character
     }
 
     [System.Serializable]
-    public class UnlockedList<T> : ISerializationCallbackReceiver
+    public class SerializableHashSet<T> : ISerializationCallbackReceiver
     {
-        [ReadOnly, SerializeField] List<T> _unlocked = new List<T>();
-        public HashSet<T> unlocked = new HashSet<T>();
+        [ReadOnly, SerializeField] List<T> _list = new List<T>();
+        public HashSet<T> set = new HashSet<T>();
     
         public void OnBeforeSerialize()
         {
-            _unlocked.Clear();
-            foreach(T affinityType in unlocked)
+            _list.Clear();
+            foreach(T entry in set)
             {
-                _unlocked.Add(affinityType);
+                _list.Add(entry);
             }
         }
 

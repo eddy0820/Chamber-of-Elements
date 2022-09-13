@@ -20,8 +20,8 @@ MonoBehaviour:
   affinityType: 0
   elementTexture: {fileID: 21300000, guid: fd0fcae1a96c155409933faf6e5a051b, type: 3}
   description: 'ATTACK: Deal 15 damage, generate all water primals next turn.'
-  hitParticle: {fileID: 0}
-  hitParticleTexture: {fileID: 0}
+  hitParticle: {fileID: 7756811820607607484, guid: b766130fe4be72e498b1c7ce40bf197c, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: fd0fcae1a96c155409933faf6e5a051b, type: 3}
   damage: 15
   doAttackInBehavior: 0
   behavior: {fileID: 4130917817620115265, guid: 2e56bd3477e9f6b4a8e3bfaf67073365, type: 3}
@@ -51,3 +51,8 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6

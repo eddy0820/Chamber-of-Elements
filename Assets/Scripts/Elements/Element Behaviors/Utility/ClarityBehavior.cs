@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,28 +22,18 @@ public class ClarityBehavior : AbstractElementBehavior
 
     private AffinityTypes GenerateAffinity()
     {
-        int affinity = Random.Range(1, 6);
-        AffinityTypes affinityType = AffinityTypes.None;
+        System.Random rand  = new System.Random();
+        int affinityNum = rand.Next(Player.Instance.UnlockedAffinities.set.Count + 1);
 
-        switch(affinity) 
+        try
         {
-            case 1:
-                affinityType = AffinityTypes.Water;
-                break;
-            case 2:
-                affinityType = AffinityTypes.Fire;
-                break;
-            case 3:
-                affinityType = AffinityTypes.Earth;
-                break;
-            case 4:
-                affinityType = AffinityTypes.Air;
-                break;
-            case 5:
-                affinityType = AffinityTypes.None;
-                break;
+            Player.Instance.UnlockedAffinities.set.ElementAt(affinityNum);
+        }
+        catch
+        {
+            return AffinityTypes.None;
         }
 
-        return affinityType;
+        return GameManager.Instance.AffinityDatabase.GetAffinity[Player.Instance.UnlockedAffinities.set.ElementAt(affinityNum)].Type;
     }
 }

@@ -6,6 +6,6 @@ public class ClericFocusBehavior : AbstractFocusBehavior
 { 
     public override void PerformFocus(FocusObject focus, Character character)
     {
-        Player.Instance.Stats.Heal(character.Stats.Stats["FocusValue"].value, Player.Instance);
+        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.Heal(character.Stats.Stats["FocusValue"].value);
     }
 }

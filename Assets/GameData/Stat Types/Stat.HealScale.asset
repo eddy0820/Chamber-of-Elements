@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfa0cccceee5af43802d15878579998, type: 3}
   m_Name: Stat.HealScale
   m_EditorClassIdentifier: 
-  name: Heal Scale
+  name: HealScale
   defaultValue: 0
   defaultMinValue: 0
   defaultMaxValue: Infinity

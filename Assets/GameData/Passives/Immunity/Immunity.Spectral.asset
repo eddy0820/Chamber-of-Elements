@@ -17,6 +17,9 @@ MonoBehaviour:
   description: Immune to Wet, Dry, & Scorched
   additiveTypes: []
   removalTypes: []
+  isPositiveEffect: 1
+  particle: {fileID: 0}
+  particleTexture: {fileID: 0}
   immuneToAffinityTypes: 0
   immuneToAffinitesList: 
   immuneToPassives: 1

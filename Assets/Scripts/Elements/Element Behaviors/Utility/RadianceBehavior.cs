@@ -12,7 +12,7 @@ public class RadianceBehavior : AbstractElementBehavior
         {
             if(!GameStateManager.Instance.playerTurnGameState.hasUsedRadiance)
             {
-                character.Stats.Heal(utilityElement.HealAmount, character);
+                character.Stats.Heal(utilityElement.HealAmount);
 
                 GameStateManager.Instance.playerTurnGameState.hasUsedRadiance = true;
 
@@ -23,7 +23,7 @@ public class RadianceBehavior : AbstractElementBehavior
         {
             if(!GameStateManager.Instance.minionTurnGameState.hasUsedRadiance)
             {
-                character.Stats.Heal(utilityElement.HealAmount, character);
+                character.Stats.Heal(utilityElement.HealAmount);
 
                 GameStateManager.Instance.minionTurnGameState.hasUsedRadiance = true;
 

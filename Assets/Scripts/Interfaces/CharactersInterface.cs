@@ -86,7 +86,7 @@ public class CharactersInterface : AbstractGameInterface
                         {
                             if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
                             {
-                                Player.Instance.Stats.Heal(((UtilityElementObject) element).HealAmount, Player.Instance);
+                                Player.Instance.Stats.Heal(((UtilityElementObject) element).HealAmount);
                             }
 
                             if(element.Behavior.DoBehavior(element, Player.Instance))
@@ -125,7 +125,7 @@ public class CharactersInterface : AbstractGameInterface
 
                 if(UnityEngine.Random.Range(0, 101) > Player.Instance.Stats.Stats["HitChance"].value)
                 {
-                    Debug.Log("Miss");
+                    DamageIndicatorController.Instance.DoMissIndicator(GameManager.Instance.Enemy.transform.position);
 
                     GameStateManager.Instance.playerTurnGameState.GoToNextState();
                     GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
@@ -263,7 +263,7 @@ public class CharactersInterface : AbstractGameInterface
                             {
                                 if(!(((UtilityElementObject) element).DoHealInBehavior) && ((UtilityElementObject) element).HealAmount >= 0)
                                 {
-                                    Player.Instance.Minion.Stats.Heal(((UtilityElementObject) element).HealAmount, Player.Instance.Minion);
+                                    Player.Instance.Minion.Stats.Heal(((UtilityElementObject) element).HealAmount);
                                 }
 
                                 if(element.Behavior.DoBehavior(element, Player.Instance.Minion))

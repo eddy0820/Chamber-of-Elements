@@ -24,12 +24,17 @@ public abstract class PassiveObject : ScriptableObject
     [SerializeField] bool isPositiveEffect = true;
     public bool IsPositiveEffect => isPositiveEffect;
 
+    [Header("Particle")]
+    [SerializeField] GameObject particle;
+    public GameObject Particle => particle;
+    [SerializeField] Sprite particleTexture;
+    public Sprite ParticleTexture => particleTexture;
+
     protected StatModifier modifier;
     protected Action action;
 
     public abstract void TakeAffect(Character character);
     public abstract void RemoveAffect(Character character);
-
    
     [System.Serializable]
     public class ChangeTypeEntry

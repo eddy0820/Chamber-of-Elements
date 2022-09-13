@@ -132,6 +132,14 @@ public class ElementSlotsInterface : AbstractGameInterface
         elementsDisplayed[obj].UpdateSlot(new Element()); 
 
         tooltip.SetActive(false);
+
+        if(Player.Instance.HasRelic && Player.Instance.Relic.RelicObject.Behavior is IOnClickRelic)
+        {
+            if(Player.Instance.Relic.RelicObject.BehaviorEntries.IClickRelicElements.Find(x => x.ID == GameManager.Instance.mouseElement.element.ID))
+            {
+                transform.parent.GetComponentInChildren<RelicInterface>().GetComponentInChildren<Animator>().SetBool("Pulsate", true);
+            }  
+        }
     }
 
     public void OnDragEnd(GameObject obj)
@@ -215,6 +223,11 @@ public class ElementSlotsInterface : AbstractGameInterface
                 UpdateToolTip(mouseElement);
 
                 elementOnMouse.RemoveMouseElement(Destroy);  
+            }
+
+            if(Player.Instance.HasRelic && Player.Instance.Relic.RelicObject.Behavior is IOnClickRelic)
+            {
+                transform.parent.GetComponentInChildren<RelicInterface>().GetComponentInChildren<Animator>().SetBool("Pulsate", false); 
             }
         }
     }

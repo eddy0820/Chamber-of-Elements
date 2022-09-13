@@ -35,7 +35,7 @@ MonoBehaviour:
     element3: {fileID: 0}
     passive1:
       passive: {fileID: 11400000, guid: d4b8056d12c077a458b6efeaa44f4f5b, type: 2}
-      value: 50
+      value: -50
     passive2:
       passive: {fileID: 0}
       value: -1
@@ -52,5 +52,10 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
   healAmount: -1
   doHealInBehavior: 0

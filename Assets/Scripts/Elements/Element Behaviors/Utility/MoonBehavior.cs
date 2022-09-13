@@ -10,7 +10,7 @@ public class MoonBehavior : AbstractElementBehavior
 
         if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[utilityElement.BehaviorEntries.Weather1].GetType())
         {
-           character.Stats.Heal(utilityElement.HealAmount, character);
+           character.Stats.Heal(utilityElement.HealAmount);
         }
 
        WeatherStateManager.Instance.ClearWeather();

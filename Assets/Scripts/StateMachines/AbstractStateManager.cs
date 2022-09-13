@@ -8,8 +8,11 @@ public abstract class AbstractStateManager : MonoBehaviour
 
     private void Update()
     {
-        OnUpdate();
-        RunStateMachine();
+        if(PauseMenu.Instance.IsGamePaused == false)
+        {
+            OnUpdate();
+            RunStateMachine();
+        } 
     }
 
     protected virtual void RunStateMachine()

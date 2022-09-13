@@ -6,6 +6,6 @@ public class LightningElementalFocusBehavior : AbstractFocusBehavior
 { 
     public override void PerformFocus(FocusObject focus, Character character)
     {
-        GameManager.Instance.Enemy.Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, GameManager.Instance.Enemy, character);
+       GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
     }
 }

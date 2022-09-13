@@ -1,24 +1,15 @@
 # Chamber of Elements
-
-- re do how i do re roll elements and using the array
-- re do "reroll specific" code
-- "miss" ui element
-- "immune" ui element
-- drop down menu for dynamic passives to see what theyve got stacked on top and how many turns for each stack
 - for elements that deal damage two seperate times you need to delay the hit markers with a queue and coroutines maybe
-- screen shake settings
 - take art folder out of repository
 - need to update hailstorm and frost when multiple enemies are added
 - need to update radiance and light/life when multiple minions are added
-- add animation for new element when using philosophers stone as well as adding a animation for the philosophers stone aswell
 - make more singletons
 - add minion attack particles
-- health grows bigger on hit
-- clariy element needs to be changed to work with other affinitytypes
 - attack particles for enemy wizard and guardian
 - guardian focus particles
 - make gridy layout for character card be resizable depending on how many characters
 - redo main menu navigation
+- fix passive particle not moving w enemy on attck and making it above enemy
 
 - Elements That Need To Be Implemented
 	- Shield - ask joey about this one
@@ -26,9 +17,9 @@
 	- confusion element
   
 - visuals
-- pause screen and win/lose state
 - component guide
 
+- drop down menu for dynamic passives to see what theyve got stacked on top and how many turns for each stack
 - Mana System
 - Ability for minion and element slots
 - RogueLike
@@ -67,3 +58,4 @@ Changed Or Added Things from Godot
 - Weather Interact Object
 - Minions behave like other characters (i.e. have passives and utitlity elements can be used on them
 - Element tooltip
+- pause menu

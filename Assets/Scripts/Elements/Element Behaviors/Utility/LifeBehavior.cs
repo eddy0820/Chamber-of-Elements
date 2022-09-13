@@ -12,7 +12,7 @@ public class LifeBehavior : AbstractElementBehavior
         {
             if(!GameStateManager.Instance.playerTurnGameState.hasUsedLife)
             {
-                character.Stats.Heal(utilityElement.HealAmount, character);
+                character.Stats.Heal(utilityElement.HealAmount);
                 GameStateManager.Instance.playerTurnGameState.hasUsedLife = true;
 
                 return true;
@@ -22,7 +22,7 @@ public class LifeBehavior : AbstractElementBehavior
         {
             if(!GameStateManager.Instance.minionTurnGameState.hasUsedLife)
             {
-                character.Stats.Heal(utilityElement.HealAmount, character);
+                character.Stats.Heal(utilityElement.HealAmount);
                 GameStateManager.Instance.minionTurnGameState.hasUsedLife = true;
 
                 return true;

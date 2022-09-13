@@ -25,6 +25,11 @@ public class DataHolder : MonoBehaviour
         player = playerGO.GetComponent<CharacterSelectionCardHolder>().characterObject as PlayerObject;
     }
 
+    public void SetPlayer(PlayerObject _player)
+    {
+        player = _player;
+    }
+
     public void UnSetPlayer()
     {
         playerGO = null;
@@ -35,6 +40,11 @@ public class DataHolder : MonoBehaviour
     {
         enemyGO = go;
         enemy = enemyGO.GetComponent<CharacterSelectionCardHolder>().characterObject as EnemyObject;
+    }
+
+    public void SetEnemy(EnemyObject _enemy)
+    {
+        enemy = _enemy;
     }
 
     public void UnSetEnemy()

@@ -11,7 +11,7 @@ public class Enemy : Character
             characterObject = enemyObject;
         }
 
-        stats = new EnemyStats(characterObject.BaseStats, HPText);
+        stats = new EnemyStats(characterObject.BaseStats, HPText, this);
     
         InitCharacter();
         ChangeAttacker(Player.Instance);

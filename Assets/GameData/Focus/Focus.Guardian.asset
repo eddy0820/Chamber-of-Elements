@@ -47,3 +47,5 @@ MonoBehaviour:
     affinity1: 0
     affinity2: 1
     affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 01000000

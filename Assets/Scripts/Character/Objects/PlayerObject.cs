@@ -12,6 +12,9 @@ public class PlayerObject : CharacterObject
     [SerializeField] List<UnlockedRecipeEntry> unlockedRecipeEntries;
     public List<UnlockedRecipeEntry> UnlockedElementRecipeEntries => unlockedRecipeEntries;
 
+    [SerializeField] List<ElementObject> startingReRollElements;
+    public List<ElementObject> StartingReRollElements => startingReRollElements;
+
     [Header("Character Card Settings")]
     [SerializeField] Vector3 cardPosition;
     public Vector3 CardPosition => cardPosition;

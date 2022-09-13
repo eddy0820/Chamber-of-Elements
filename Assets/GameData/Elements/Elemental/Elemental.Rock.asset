@@ -19,22 +19,40 @@ MonoBehaviour:
   type: 2
   affinityType: 2
   elementTexture: {fileID: 21300000, guid: 86c2b3fec89a1354f90db1a450e3b609, type: 3}
-  hitParticle: {fileID: 0}
-  hitParticleTexture: {fileID: 0}
   description: 'ATTACK: A sturdy, jagged material.'
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: 7ca537a6018ef894f831cc4a07a08df3, type: 3}
   damage: 10
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6

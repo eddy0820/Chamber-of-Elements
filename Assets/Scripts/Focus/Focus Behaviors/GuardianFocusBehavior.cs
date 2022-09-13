@@ -8,13 +8,13 @@ public class GuardianFocusBehavior : AbstractFocusBehavior
     {
         if(GameManager.Instance.Enemy.AffinityType == focus.BehaviorEntries.Affinity1)
         {
-            GameManager.Instance.Enemy.SwitchAffinity(focus.BehaviorEntries.Affinity2);
-            GameManager.Instance.Enemy.GetComponentInChildren<Animator>().runtimeAnimatorController = focus.BehaviorEntries.AnimController2;
+            GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).SwitchAffinity(focus.BehaviorEntries.Affinity2);
+            GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).GetComponentInChildren<Animator>().runtimeAnimatorController = focus.BehaviorEntries.AnimController2;
         }
         else
         {
-            GameManager.Instance.Enemy.SwitchAffinity(focus.BehaviorEntries.Affinity1);
-            GameManager.Instance.Enemy.GetComponentInChildren<Animator>().runtimeAnimatorController = focus.BehaviorEntries.AnimController1;
+            GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).SwitchAffinity(focus.BehaviorEntries.Affinity1);
+            GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).GetComponentInChildren<Animator>().runtimeAnimatorController = focus.BehaviorEntries.AnimController1;
         }
 
         GameManager.Instance.gameObject.GetComponent<EnemyTurnGameState>().finishedAttacking = true;

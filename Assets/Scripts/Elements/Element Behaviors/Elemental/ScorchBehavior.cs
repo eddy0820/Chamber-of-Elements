@@ -13,7 +13,7 @@ public class ScorchBehavior : AbstractElementBehavior
         if(slot > 0)
         {
             GameManager.Instance.ElementSlotsInv.Container.elementSlots[slot].UpdateSlot(new Element());
-            character.Stats.TakeDamage(elementalElement.Damage, elementalElement.AffinityType, character, Player.Instance);
+            character.Stats.TakeDamage(elementalElement.Damage, elementalElement.AffinityType, Player.Instance);
         }
 
         return true;

@@ -10,17 +10,17 @@ public class MinionStats : CharacterStats
         stats = new Dictionary<string, Stat>();
     }
 
-    public MinionStats(BaseStatsObject _baseStats, GameObject _HPText)
+    public MinionStats(BaseStatsObject _baseStats, GameObject _HPText, Character _character)
     {
         baseStats = _baseStats;
         InitializeCharacterStats();
-
+        character = _character;
         HPText = _HPText;
     }
 
-    public override void Die(Character character)
+    public override void Die()
     {
-        base.Die(character);
+        base.Die();
 
         Player.Instance.Minion.NullifyMinion();
     }

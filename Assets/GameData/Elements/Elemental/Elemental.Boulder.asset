@@ -20,8 +20,8 @@ MonoBehaviour:
   affinityType: 2
   elementTexture: {fileID: 21300000, guid: dc8e6c95696e0b340927bd118356e5d9, type: 3}
   description: 'ATTACK: Consume all Earth elements and deal 60 damage'
-  hitParticle: {fileID: 0}
-  hitParticleTexture: {fileID: 0}
+  hitParticle: {fileID: 7328236829984476569, guid: 19a35c0d9c9bd4c4885a9d31c727af3d, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: 7ca537a6018ef894f831cc4a07a08df3, type: 3}
   damage: 60
   doAttackInBehavior: 0
   behavior: {fileID: 6973485075947670194, guid: 276e08361151db543b8db91a4ad03358, type: 3}
@@ -51,3 +51,8 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6

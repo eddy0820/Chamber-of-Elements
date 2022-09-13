@@ -59,7 +59,15 @@ public class EnemyTurnGameState : GameState
                 {
                     if(UnityEngine.Random.Range(0, 101) > GameManager.Instance.Enemy.Stats.Stats["FocusHitChance"].value)
                     {
-                        Debug.Log("Focus Miss");
+                        foreach(CharacterEntry characterEntry in ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.BehaviorEntries.FocusAffectedCharacters)
+                        {
+                            Character character = GameManager.Instance.ConvertCharacterEntry(characterEntry);
+
+                            if(character.CharacterObject != null)
+                            {
+                                DamageIndicatorController.Instance.DoMissIndicator(character.transform.position);
+                            }
+                        }    
                     }
                     else
                     {
@@ -75,9 +83,7 @@ public class EnemyTurnGameState : GameState
                     hasAttacked = true;
                 }
                 
-            }
-
-            
+            } 
         }
         
         /* ACTUAL ATTACK TAKES PLACE IN ANIMATION EVENT LISTENER */

@@ -8,7 +8,7 @@ public class Minion : Character
     {
         if(characterObject != null)
         {
-            stats = new MinionStats(characterObject.BaseStats, HPText);
+            stats = new MinionStats(characterObject.BaseStats, HPText, this);
 
             ChangeAttacker(GameManager.Instance.Enemy);
             InitCharacter();
@@ -74,6 +74,8 @@ public class Minion : Character
             Player.Instance.SetMinionExists(false);
 
             HPText.SetActive(false);
+
+            particles = null;
         }
     }
 
@@ -83,7 +85,7 @@ public class Minion : Character
         {
             characterObject = minionObject;
 
-            stats = new MinionStats(characterObject.BaseStats, HPText);
+            stats = new MinionStats(characterObject.BaseStats, HPText, this);
 
             ChangeAttacker(GameManager.Instance.Enemy);
             InitCharacter();

@@ -6,9 +6,9 @@ public class SlimeFocusBehavior : AbstractFocusBehavior
 { 
     public override void PerformFocus(FocusObject focus, Character character)
     {
-        Player.Instance.Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, Player.Instance, character);
-        DoParticleEffectEnemy(Player.Instance);
+        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
+        DoParticleEffectEnemy(GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]));
 
-        ScreenShakeBehavior.Instance.StartShake(1.5f, 0.8f, 7.5f);
+        ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }
 }

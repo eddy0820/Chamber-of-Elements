@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using TMPro;
 
 public abstract class Character : MonoBehaviour
@@ -15,16 +16,14 @@ public abstract class Character : MonoBehaviour
     [ReadOnly, SerializeField] AffinityTypes affinityType;
     public AffinityTypes AffinityType => affinityType;
 
-    [Space(15)]
-    [SerializeField] GameObject damageIndicatorPrefab;
-    public GameObject DamageIndicatorPrefab => damageIndicatorPrefab;
-
     protected HashSet<PassiveObject> passives = new HashSet<PassiveObject>();
     public HashSet<PassiveObject> Passives => passives;
     [SerializeField] protected PassivesInterface passivesInterface;
     public PassivesInterface PassivesInterface => passivesInterface;
 
     [SerializeField] protected GameObject HPText;
+    [SerializeField] protected GameObject spriteObject;
+    public GameObject SpriteObject => spriteObject;
 
     Character attacker;
     public Character Attacker => attacker;
@@ -38,6 +37,8 @@ public abstract class Character : MonoBehaviour
     [System.NonSerialized] public Dictionary<AffinityTypes, ImmunityPassiveObject> immunityAffinityTypes;
     [System.NonSerialized] public Dictionary<PassiveObject, ImmunityPassiveObject> immunityPassives;
     [System.NonSerialized] public Dictionary<ElementObject, ImmunityPassiveObject> immunityElements;
+
+    protected Dictionary<PassiveObject, GameObject> particles;
 
     protected CharacterStats stats;
     public CharacterStats Stats => stats;
@@ -79,7 +80,9 @@ public abstract class Character : MonoBehaviour
             }
         } 
 
-        HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP";  
+        HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP"; 
+
+        particles = new Dictionary<PassiveObject, GameObject>(); 
     }
 
     private void PassiveTurnCalcRemove()
@@ -88,7 +91,7 @@ public abstract class Character : MonoBehaviour
 
         foreach(KeyValuePair<string, PassiveWithTurnsInfo> passive in passivesWithTurns)
         {
-            if(passive.Value.turnCounter == GameManager.Instance.turnCounter)
+            if(passive.Value.turnCounter == GameManager.Instance.TurnCounter)
             {
                 if(!(passive.Value.passive is DynamicPassiveObject))
                 {
@@ -130,6 +133,8 @@ public abstract class Character : MonoBehaviour
         {  
             passive.TakeAffect(this);
             passivesInterface.InitPassiveSlotUI(passive);
+
+            PlayPassiveParticle(passive);
         }
   
         return added;
@@ -187,6 +192,8 @@ public abstract class Character : MonoBehaviour
 
             passive.TakeAffect(this);
             passivesInterface.InitPassiveSlotUI(passive);
+
+            PlayPassiveParticle(passive);
         }
 
         return added;
@@ -241,6 +248,8 @@ public abstract class Character : MonoBehaviour
             passive.InitDynamicPassive(value);
             passive.TakeAffect(this);
 
+            PlayPassiveParticle(passive);
+
             if(added)
             {
                 passivesInterface.InitPassiveSlotUI(passive);
@@ -259,6 +268,8 @@ public abstract class Character : MonoBehaviour
                 passive.InitDynamicPassive(value);
                 passive.TakeAffect(this);
                 passivesInterface.InitPassiveSlotUI(passive);
+
+                PlayPassiveParticle(passive);
             }
             else
             {
@@ -379,6 +390,8 @@ public abstract class Character : MonoBehaviour
         {
             passive.RemoveAffect(this);
             passivesInterface.RemovePassiveSlotUI(passive);
+
+            DestroyPassiveParticle(passive);
         }
 
         return removed;
@@ -391,7 +404,7 @@ public abstract class Character : MonoBehaviour
             {
                 if(type.Key == element.AffinityType)
                 {
-                    Debug.Log("Immune!");
+                    DamageIndicatorController.Instance.DoImmuneIndicator(transform.position);
                     return true;
                 }
             }
@@ -403,7 +416,7 @@ public abstract class Character : MonoBehaviour
             {
                 if(elementObject.Key.ID == element.ID)
                 {
-                    Debug.Log("Immune");
+                    DamageIndicatorController.Instance.DoImmuneIndicator(transform.position);
                     return true;
                 }
             }
@@ -420,7 +433,7 @@ public abstract class Character : MonoBehaviour
             {
                 if(typeEntry.Key == type)
                 {
-                    Debug.Log("Immune!");
+                    DamageIndicatorController.Instance.DoImmuneIndicator(transform.position);
                     return true;
                 }
             }
@@ -432,6 +445,32 @@ public abstract class Character : MonoBehaviour
     public void ChangeAttacker(Character character)
     {
         attacker = character;
+    }
+
+    public void PlayPassiveParticle(PassiveObject passive)
+    {
+        if(passive.Particle != null)
+        {
+            GameObject particle = Instantiate(passive.Particle, transform.position, Quaternion.identity, transform);
+            ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+            particleSystem.textureSheetAnimation.SetSprite(0, passive.ParticleTexture);
+            particleSystem.Play();
+
+            particles.Add(passive, particle);
+        }
+    }
+
+    public void DestroyPassiveParticle(PassiveObject passive)
+    {
+        if(passive.Particle != null)
+        {
+            if(particles.ContainsKey(passive))
+            {
+                GameObject obj = particles[passive];
+                Destroy(obj);
+                particles.Remove(passive);
+            }
+        } 
     }
     
     [System.Serializable]
@@ -451,7 +490,7 @@ public abstract class Character : MonoBehaviour
         public PassiveWithTurnsInfo(PassiveObject _passive, float _addedValue, int _addedTurns) : this()
         {
             passive = _passive;
-            turnCounter = GameManager.Instance.turnCounter + _addedTurns;
+            turnCounter = GameManager.Instance.TurnCounter + _addedTurns;
             addedValue = _addedValue;
             addedTurns = _addedTurns;
         }
@@ -459,7 +498,7 @@ public abstract class Character : MonoBehaviour
         public PassiveWithTurnsInfo(PassiveObject _passive, int _addedTurns) : this()
         {
             passive = _passive;
-            turnCounter = GameManager.Instance.turnCounter + _addedTurns;
+            turnCounter = GameManager.Instance.TurnCounter + _addedTurns;
             addedValue = -1;
             addedTurns = -1;
         }

@@ -77,4 +77,14 @@ public class BehaviorScriptEntries
     public AffinityTypes Affinity2 => affinity2;
     [SerializeField] AffinityTypes affinity3 = AffinityTypes.None;
     public AffinityTypes Affinity3 => affinity3;
+
+    [HorizontalLine(color: EColor.Gray, height: 2)]
+
+    [SerializeField] List<ElementObject> iClickRelicElements;
+    public List<ElementObject> IClickRelicElements => iClickRelicElements;
+
+    [HorizontalLine(color: EColor.Gray, height: 2)]
+
+    [SerializeField] List<CharacterEntry> focusAffectedCharacters;
+    public List<CharacterEntry> FocusAffectedCharacters => focusAffectedCharacters;
 }

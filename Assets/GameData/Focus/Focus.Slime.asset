@@ -12,7 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7dd37c9b2ac8a48bd58929e6061fd0, type: 3}
   m_Name: Focus.Slime
   m_EditorClassIdentifier: 
-  name: Slime
-  behavior: {fileID: 2864702665856269318, guid: edd32880e001d3949b5b6e6526b317fc, type: 3}
   permaScriptPath: 
   permaPrefabPath: 
+  name: Slime
+  behavior: {fileID: 2864702665856269318, guid: edd32880e001d3949b5b6e6526b317fc, type: 3}
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 00000000

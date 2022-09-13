@@ -13,9 +13,9 @@ public class PhilosophersStoneRelicBehavior : AbstractRelicBehavior, IOnClickRel
 
     public void OnRelicClick(RelicObject relic, Element element)
     {
-        ElementObject metal = relic.BehaviorEntries.Element1;
-        ElementObject silver = relic.BehaviorEntries.Element2;
-        ElementObject gold = relic.BehaviorEntries.Element3;
+        ElementObject metal = relic.BehaviorEntries.IClickRelicElements[0];
+        ElementObject silver = relic.BehaviorEntries.IClickRelicElements[1];
+        ElementObject gold = relic.BehaviorEntries.IClickRelicElements[2];
         
         ElementObject elementObject = null;
 
@@ -32,8 +32,12 @@ public class PhilosophersStoneRelicBehavior : AbstractRelicBehavior, IOnClickRel
             elementObject = metal;
         }
 
-        element.UpdateSlot(new Element(elementObject));
-        GameManager.Instance.mouseElement.obj.GetComponent<Image>().sprite = elementObject.ElementTexture; 
-        //GameManager.Instance.mouseElement.obj.GetComponent<Animator>().SetTrigger("NewElement");
+        if(elementObject != null)
+        {
+            element.UpdateSlot(new Element(elementObject));
+            GameManager.Instance.mouseElement.obj.GetComponent<Image>().sprite = elementObject.ElementTexture; 
+            GameManager.Instance.mouseElement.obj.GetComponent<Animator>().SetTrigger("NewElement");
+        }
+        
     } 
 }

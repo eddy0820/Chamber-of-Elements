@@ -38,7 +38,7 @@ public class WeatherStateManager : AbstractStateManager
 
     protected override void OnUpdate()
     {
-        if(turnTimer == GameManager.Instance.turnCounter)
+        if(turnTimer == GameManager.Instance.TurnCounter)
         {
             ClearWeather();
         }   
@@ -58,7 +58,7 @@ public class WeatherStateManager : AbstractStateManager
     {
         SwitchToNextState(getWeatherState[weather]);
 
-        turnTimer = GameManager.Instance.turnCounter + _turnTimer + 1;
+        turnTimer = GameManager.Instance.TurnCounter + _turnTimer + 1;
 
         currState = ((WeatherState) currentState).StateName;
         weatherSprite.sprite = weather.WeatherTexture;

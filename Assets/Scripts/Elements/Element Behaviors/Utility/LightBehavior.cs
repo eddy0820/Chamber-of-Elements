@@ -10,7 +10,7 @@ public class LightBehavior : AbstractElementBehavior
 
         int healAmount = Random.Range((int) utilityElement.HealAmount, ((int) utilityElement.BehaviorEntries.Float1) + 1);
 
-        character.Stats.Heal(healAmount, character);
+        character.Stats.Heal(healAmount);
         
         return true;
     }

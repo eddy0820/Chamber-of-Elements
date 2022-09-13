@@ -37,7 +37,7 @@ public class PlayerTurnGameState : GameState
     {       
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        GameManager.Instance.turnCounter++;
+        GameManager.Instance.SetTurnCounter(GameManager.Instance.TurnCounter + 1);
 
         foreach(KeyValuePair<int, System.Action> action in Player.Instance.actionsToDoStartOfEveryTurn)
         {
@@ -49,13 +49,16 @@ public class PlayerTurnGameState : GameState
 
     public void Attack(AffinityTypes damageType, float value)
     {
-        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, GameManager.Instance.Enemy, Player.Instance);
+        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, Player.Instance);
 
-        ScreenShakeBehavior.Instance.StartShake(0.7f, 0.3f, 7.5f);
+        if(GameManager.Instance.Enemy.Stats.CurrentHealth > 0)
+        {
+            ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Medium);
 
-        GameObject.Find("Slash Animation").GetComponent<Animator>().SetTrigger("Attack");
+            GameObject.Find("Slash Animation").GetComponent<Animator>().SetTrigger("Attack");
 
-        goToNextState = true;
+            goToNextState = true;
+        }  
     }
 
     public override void OnExitState()

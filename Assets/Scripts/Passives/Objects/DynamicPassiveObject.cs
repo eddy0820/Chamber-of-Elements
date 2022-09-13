@@ -63,6 +63,8 @@ public class DynamicPassiveObject : PassiveObject
         {
             TakeAffectBehavior(character);
         }
+
+        
     }
 
     public override void RemoveAffect(Character character)
@@ -118,27 +120,27 @@ public class DynamicPassiveObject : PassiveObject
                 
                     if(OnHitBehavior)
                     {
-                        action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, character, null);
+                        action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, null);
                     }
                     else
                     {
-                        action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, character, null);
+                        action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, null);
                     }
 
                     break;
                 case PassiveBehaviorTypes.DamageToAttacker:
                     if(OnHitBehavior)
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character.Attacker, character);
+                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character);
                     }
                     else
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character.Attacker, character);
+                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character);
                     }
 
                     break;
                 case PassiveBehaviorTypes.Heal:
-                    action = ()=> character.Stats.Heal(value, character); 
+                    action = ()=> character.Stats.Heal(value); 
                     break;
                 case PassiveBehaviorTypes.Enlightenment:
                     action = ()=> GameManager.Instance.InterfaceCanvas.transform.GetChild(0).GetComponent<ElementSlotsInterface>().DoEnlightenment();

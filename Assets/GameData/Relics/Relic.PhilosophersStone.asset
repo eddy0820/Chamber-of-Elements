@@ -22,9 +22,9 @@ MonoBehaviour:
     float1: -1
     float2: -1
     float3: -1
-    element1: {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
-    element2: {fileID: 11400000, guid: b8a61e91befef35479f2a9d93a4e01c4, type: 2}
-    element3: {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
     passive1:
       passive: {fileID: 0}
       value: -1
@@ -41,3 +41,15 @@ MonoBehaviour:
     recipeSet1: {fileID: 0}
     recipeSet2: {fileID: 0}
     recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements:
+    - {fileID: 11400000, guid: 75bc7558872023949b23d067827348b1, type: 2}
+    - {fileID: 11400000, guid: b8a61e91befef35479f2a9d93a4e01c4, type: 2}
+    - {fileID: 11400000, guid: 5957e7aba4364c6428e2051f3984d95d, type: 2}
