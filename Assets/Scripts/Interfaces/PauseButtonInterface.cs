@@ -32,6 +32,4 @@ public class PauseButtonInterface : AbstractGameInterface
     }
 
     protected override void UpdateInterface() {}
-
-    protected override void UpdateMouseObjectTransform() {}
 }

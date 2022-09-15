@@ -25,5 +25,5 @@ MonoBehaviour:
   focus: {fileID: 11400000, guid: 990e651a345a43b41afa5769da2ad30f, type: 2}
   hitParticle: {fileID: 0}
   hitParticleTexture: {fileID: 0}
-  cardPosition: {x: 227, y: 534, z: 0}
+  cardPosition: {x: 222, y: -249, z: 0}
   cardScale: {x: 4.75, y: 4.75, z: 1}

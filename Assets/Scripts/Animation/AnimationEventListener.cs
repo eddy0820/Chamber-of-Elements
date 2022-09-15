@@ -78,7 +78,7 @@ public class AnimationEventListener : MonoBehaviour
                     {
                         foreach(CharacterEntry characterEntry in ((MinionObject) Player.Instance.Minion.CharacterObject).Focus.BehaviorEntries.FocusAffectedCharacters)
                         {
-                            Character character = GameManager.Instance.ConvertCharacterEntry(characterEntry);
+                            Character character = ElementBehaviorUtil.ConvertCharacterEntry(characterEntry);
 
                             if(character.CharacterObject != null)
                             {

@@ -34,7 +34,7 @@ public class Minion : Character
         {
             foreach(MinionObject.PassiveEntryTarget characterPassive in ((MinionObject) characterObject).PassivesToGiveCharacters) 
             {
-                Character character = GameManager.Instance.ConvertCharacterEntry(characterPassive.character);
+                Character character = ElementBehaviorUtil.ConvertCharacterEntry(characterPassive.character);
 
                 character.RemovePassive(characterPassive.passive);
             } 
@@ -102,7 +102,7 @@ public class Minion : Character
 
         foreach(MinionObject.PassiveEntryTarget characterPassive in ((MinionObject) characterObject).PassivesToGiveCharacters)
         {
-            Character character = GameManager.Instance.ConvertCharacterEntry(characterPassive.character);
+            Character character = ElementBehaviorUtil.ConvertCharacterEntry(characterPassive.character);
 
             if(characterPassive.passive is FlatPassiveObject)
             {

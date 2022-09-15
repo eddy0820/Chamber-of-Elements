@@ -106,5 +106,4 @@ public class PassivesInterface : AbstractGameInterface
     }
 
     protected override void UpdateInterface() {}
-    protected override void UpdateMouseObjectTransform() {}
 }

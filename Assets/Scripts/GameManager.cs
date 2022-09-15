@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -127,26 +128,40 @@ public class GameManager : MonoBehaviour
         elementSlotsInv.ClearElements();
     }
 
-    // Find another place for this
-    public Character ConvertCharacterEntry(CharacterEntry characterEntry)
-    {
-        switch(characterEntry)
-        {
-            case CharacterEntry.Player:
-                return Player.Instance;
-            
-            case CharacterEntry.Enemy:
-                return GameManager.Instance.Enemy;
-            case CharacterEntry.Minion:
-                return Player.Instance.Minion;
-            default:
-                return null;
-        }
-    }
-
     public void SetTurnCounter(int amount)
     {
         turnCounter = amount;
         turnCounterText.GetComponent<TextMeshProUGUI>().text = "Turn " + turnCounter;
+    }
+}
+
+[System.Serializable]
+public class MouseElement
+{
+    [ReadOnly] public GameObject obj;
+    [ReadOnly] public Element element;
+    [ReadOnly] public GameObject hoverObj;
+    [ReadOnly] public Element hoverElement;
+    [ReadOnly] public GameObject cursorTextObj;
+
+    public MouseElement()
+    {
+        obj = null;
+        element = new Element();
+        hoverObj = null;
+        hoverElement = new Element();
+        cursorTextObj = null;
+    }
+
+    public void RemoveMouseElement(Action<GameObject> Destroy)
+    {
+        Destroy(obj);
+        element.UpdateSlot(new Element());
+    }
+
+    public void RemoveMouseCursorText(Action<GameObject> Destroy)
+    {
+        Destroy(cursorTextObj);
+        cursorTextObj = null;
     }
 }

@@ -21,8 +21,8 @@ MonoBehaviour:
   elementTexture: {fileID: 21300000, guid: 7af12ef8f10dfb84a992b4a269a1d000, type: 3}
   description: 'ATTACK: Deal 30 damage. If the target is Scorched, deal an additional
     30 damage.'
-  hitParticle: {fileID: 0}
-  hitParticleTexture: {fileID: 0}
+  hitParticle: {fileID: 8316068027778661337, guid: 23d2d10607009f047a0df5993c63dee5, type: 3}
+  hitParticleTexture: {fileID: 21300000, guid: cbb191dbb8d21794fa64a04dc56b95fc, type: 3}
   damage: 30
   doAttackInBehavior: 0
   behavior: {fileID: 383022335381711025, guid: 1c3c52a4fd1a1dc479cba6fd118aef35, type: 3}
@@ -52,3 +52,10 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

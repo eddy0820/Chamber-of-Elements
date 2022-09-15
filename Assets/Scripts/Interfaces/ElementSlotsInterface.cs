@@ -58,10 +58,7 @@ public class ElementSlotsInterface : AbstractGameInterface
                 _slot.Key.transform.GetChild(0).GetComponent<Image>().sprite = emptySlotSprite;
             }
         }
-    }
 
-    protected override void UpdateMouseObjectTransform()
-    {
         if(GameManager.Instance.mouseElement.obj != null)
         {
             GameManager.Instance.mouseElement.obj.GetComponent<RectTransform>().position = Input.mousePosition;

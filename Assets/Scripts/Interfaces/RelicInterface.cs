@@ -53,6 +53,4 @@ public class RelicInterface : AbstractGameInterface
     }
 
     protected override void UpdateInterface() {}
-
-    protected override void UpdateMouseObjectTransform() {}
 }

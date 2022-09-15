@@ -6,11 +6,11 @@ public class WizardFocusBehavior : AbstractFocusBehavior
 { 
     public override void PerformFocus(FocusObject focus, Character character)
     {
-        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
-        DoParticleEffectEnemy(GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]));
+        ElementBehaviorUtil.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
+        DoParticleEffectEnemy(ElementBehaviorUtil.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[0]));
 
-        GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
-        DoParticleEffectEnemy(GameManager.Instance.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]));
+        ElementBehaviorUtil.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]).Stats.TakeDamage(character.Stats.Stats["FocusValue"].value, character.AffinityType, character);
+        DoParticleEffectEnemy(ElementBehaviorUtil.ConvertCharacterEntry(focus.BehaviorEntries.FocusAffectedCharacters[1]));
 
         ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }

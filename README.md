@@ -1,47 +1,71 @@
 # Chamber of Elements
-- take art folder out of repository
-- need to update hailstorm and frost when multiple enemies are added
-- need to update radiance and light/life when multiple minions are added
-- add minion attack particles
-- attack particles for enemy wizard and guardian
-- guardian focus particles
-- make gridy layout for character card be resizable depending on how many characters
-- redo main menu navigation
 
-- clean this readme
+# GOOGLE DRIVE LINK
+https://drive.google.com/drive/folders/1Kaz0sey5ly2tzVek4WswLY5fNqq7zcHK?usp=sharing
 
-- Elements That Need To Be Implemented
-	- Shield - ask joey about this one
-	- hearth
-	- confusion element
-  
-- visuals
-- component guide
+# TODO
+- Finish Particles
+	- attack particles for enemy wizard and guardian
+	- Guardian Focus
+	- Tornado
+	- Explosion
+	- Earthquake
+	- Electricity
+	- Storm
+	- Hurricane
+	- Tremor
+	- Overflow
+	- Frost
+	- Grenade
+	- Blade
+	- Sandstorm
+	- Chains
+	- Spikes
+	- Implosion
+	- Elemental Blades
+	- Buff Particles
+	- Heal Particles
+	- New Affinity Particles
+	
+- Component Guide
+	
+# Future Maintenance	
+	
+- Update hailstorm and frost when multiple enemies are added
+- Update radiance and light/life when multiple minions are added
+- Fix Bug with character cards and the override sprite issue
 
-- drop down menu for dynamic passives to see what theyve got stacked on top and how many turns for each stack
+# Planned Features
+
+- Shield Element
+- Redo UI across the board
+	- Resizable Grid Layout?
+- Minion Attack Particles
+- Drop Down Menu for Dynamic Passives
 - Mana System
-- Ability for minion and element slots
-- RogueLike
-- book
+	- Elements To Add
+		- Enchant
+		- Runestone
+	- Relics To Add
+	    - Diamond Ring
+	- Minions To Add
+	    - Ceramic Golem
+		- Diamond Golem
+- Minon & Element Slots
+- RogueLike Aspect
+- Element Book
 
-When Adding Mana
--------
-- Diamond Ring 
-- Ceramic Golem
-- Diamond Golem
-- Enchant
-- Runestone
+- Sprites Needed
+	- Retaliation Passive
+	- Enlightenment Passive
+	- Spell Powers
+	- Potencies
+	- Weather Affinites
+	- Weather Potencies
+	- Weathers
+	- Enlightened Healing Passive
 
-
-Sprites Needed
-- Retaliation Passive
-- Enlightenment Passive
-- Spell Powers
-- Potencies
-- Weather Affinites
-- Weather Potencies
-- Weathers
-- enlightened healing passive
+# Important Info
 
 Behavior Every End Of Turn Passive Orders
 1 - Poison
@@ -53,8 +77,9 @@ Behavior Start of Turn Passive Orders
 Behavior On Hit Passive Orders
 1 - Retaliation
 
-Changed Or Added Things from Godot
+# Changed Or Added Things from Godot
+
 - Weather Interact Object
 - Minions behave like other characters (i.e. have passives and utitlity elements can be used on them
 - Element tooltip
-- pause menu
+- Pause menu

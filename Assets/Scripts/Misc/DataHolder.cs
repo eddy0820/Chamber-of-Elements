@@ -22,7 +22,7 @@ public class DataHolder : MonoBehaviour
     public void SetPlayer(GameObject go)
     {
         playerGO = go;
-        player = playerGO.GetComponent<CharacterSelectionCardHolder>().characterObject as PlayerObject;
+        player = playerGO.GetComponent<CharacterSelectionCardHolder>().CharacterObject as PlayerObject;
     }
 
     public void SetPlayer(PlayerObject _player)
@@ -39,7 +39,7 @@ public class DataHolder : MonoBehaviour
     public void SetEnemy(GameObject go)
     {
         enemyGO = go;
-        enemy = enemyGO.GetComponent<CharacterSelectionCardHolder>().characterObject as EnemyObject;
+        enemy = enemyGO.GetComponent<CharacterSelectionCardHolder>().CharacterObject as EnemyObject;
     }
 
     public void SetEnemy(EnemyObject _enemy)

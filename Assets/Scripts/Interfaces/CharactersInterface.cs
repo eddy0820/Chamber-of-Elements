@@ -50,9 +50,7 @@ public class CharactersInterface : AbstractGameInterface
         minionInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
     }
 
-    protected override void UpdateInterface() {}
-
-    protected override void UpdateMouseObjectTransform()
+    protected override void UpdateInterface() 
     {
         if(GameManager.Instance.mouseElement.cursorTextObj != null)
         {

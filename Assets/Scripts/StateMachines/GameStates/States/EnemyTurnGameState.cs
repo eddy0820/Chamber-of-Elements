@@ -75,7 +75,7 @@ public class EnemyTurnGameState : GameState
                 {
                     foreach(CharacterEntry characterEntry in ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).Focus.BehaviorEntries.FocusAffectedCharacters)
                     {
-                        Character character = GameManager.Instance.ConvertCharacterEntry(characterEntry);
+                        Character character = ElementBehaviorUtil.ConvertCharacterEntry(characterEntry);
 
                         if(character.CharacterObject != null)
                         {

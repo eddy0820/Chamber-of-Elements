@@ -16,4 +16,20 @@ public static class ElementBehaviorUtil
         Player.Instance.Minion.Stats.TakeDamage(value, damageType, null);
         ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }
+
+    public static Character ConvertCharacterEntry(CharacterEntry characterEntry)
+    {
+        switch(characterEntry)
+        {
+            case CharacterEntry.Player:
+                return Player.Instance;
+            
+            case CharacterEntry.Enemy:
+                return GameManager.Instance.Enemy;
+            case CharacterEntry.Minion:
+                return Player.Instance.Minion;
+            default:
+                return null;
+        }
+    }
 }
