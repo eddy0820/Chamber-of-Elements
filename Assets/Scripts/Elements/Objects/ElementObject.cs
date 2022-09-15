@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public abstract class ElementObject : AbstractCustomScriptable
 {
@@ -59,6 +61,8 @@ public abstract class ElementObject : AbstractCustomScriptable
     [ContextMenu("Create File Paths")]
     public override void CreateFilePaths()
     {
+        #if UNITY_EDITOR
+
         permaNewName = Regex.Replace(name, @"\s+", "");
 
         switch(type)
@@ -92,10 +96,14 @@ public abstract class ElementObject : AbstractCustomScriptable
                 permaPrefabPath = "";
                 break;
         }
+
+        #endif
     }
 
     public override void CreateBehaviorScript()
     {   
+        #if UNITY_EDITOR
+
         if(File.Exists(permaScriptPath) == false)
         {
             using (StreamWriter outfile = new StreamWriter(permaScriptPath))
@@ -119,10 +127,14 @@ public abstract class ElementObject : AbstractCustomScriptable
         {
             Debug.Log("Behavior Script Already Exists!");
         }
+
+        #endif
     }
 
     public override void CreateBehaviorPrefab()
     {
+        #if UNITY_EDITOR
+
         GameObject obj = new GameObject(permaNewName + "Behavior");
         obj.transform.position = Vector3.zero;
         obj.transform.rotation = Quaternion.identity;
@@ -138,5 +150,7 @@ public abstract class ElementObject : AbstractCustomScriptable
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        #endif
     }
 }

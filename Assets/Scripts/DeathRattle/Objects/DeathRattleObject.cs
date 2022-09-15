@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Death Rattle", menuName = "Death Rattle")]
 public class DeathRattleObject : AbstractCustomScriptable
@@ -20,14 +22,20 @@ public class DeathRattleObject : AbstractCustomScriptable
     [ContextMenu("Create File Paths")]
     public override void CreateFilePaths()
     {
+        #if UNITY_EDITOR
+
         permaNewName = Regex.Replace(name, @"\s+", "");
 
         permaScriptPath = "Assets/Scripts/DeathRattle/" + permaNewName + "DRBehavior.cs";
-        permaPrefabPath = "Assets/Prefabs/DeathRattles/" + permaNewName + "DRBehavior.prefab";    
+        permaPrefabPath = "Assets/Prefabs/DeathRattles/" + permaNewName + "DRBehavior.prefab"; 
+
+        #endif   
     }
 
     public override void CreateBehaviorScript()
     {   
+        #if UNITY_EDITOR
+
         if(File.Exists(permaScriptPath) == false)
         {
             using (StreamWriter outfile = new StreamWriter(permaScriptPath))
@@ -51,10 +59,14 @@ public class DeathRattleObject : AbstractCustomScriptable
         {
             Debug.Log("DR Behavior Script Already Exists!");
         }
+
+        #endif
     }
 
     public override void CreateBehaviorPrefab()
     {
+        #if UNITY_EDITOR
+
         GameObject obj = new GameObject(permaNewName + "DRBehavior");
         obj.transform.position = Vector3.zero;
         obj.transform.rotation = Quaternion.identity;
@@ -70,5 +82,7 @@ public class DeathRattleObject : AbstractCustomScriptable
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        #endif
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Chains
   ID: 18
   type: 2
-  affinityType: 6
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: f96fdcd06da5ab9448f3bf273143980a, type: 3}
   description: 'ATTACK: Chain the enemy with ice, preventing the use of Focus attacks
     for 3 turns.'
@@ -52,3 +52,10 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

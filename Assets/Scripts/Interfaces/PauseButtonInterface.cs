@@ -28,6 +28,12 @@ public class PauseButtonInterface : AbstractGameInterface
 
     private void OnClickPauseButton(GameObject obj, PointerEventData eventData)
     {
+        if(GameManager.Instance.mouseElement.element.ID != -1)
+        {
+            ElementSlotsInterface.Instance.ElementsDisplayed[GameManager.Instance.mouseElement.sourceSlot].UpdateSlot(GameManager.Instance.mouseElement.element);
+            GameManager.Instance.mouseElement.RemoveMouseElement(Destroy);
+        }
+
         PauseMenu.Instance.PauseGame();
     }
 

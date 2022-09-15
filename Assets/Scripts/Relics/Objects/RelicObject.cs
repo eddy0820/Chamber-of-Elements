@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 
 [CreateAssetMenu(fileName = "New Relic", menuName = "Relic")]
 public class RelicObject : AbstractCustomScriptable
@@ -25,19 +26,24 @@ public class RelicObject : AbstractCustomScriptable
     [SerializeField] BehaviorScriptEntries behaviorEntries;
     public BehaviorScriptEntries BehaviorEntries => behaviorEntries;
 
-
     [ContextMenu("Create File Paths")]
     public override void CreateFilePaths()
     {
+        #if UNITY_EDITOR
+
         permaNewName = Regex.Replace(name, @"\s+", "");
         permaNewName = Regex.Replace(permaNewName, "'", "");
 
         permaScriptPath = "Assets/Scripts/Relics/Relic Behaviors/" + permaNewName + "RelicBehavior.cs";
         permaPrefabPath = "Assets/Prefabs/RelicBehaviors/" + permaNewName + "RelicBehavior.prefab";
+
+        #endif
     }
 
     public override void CreateBehaviorScript()
     {   
+        #if UNITY_EDITOR
+
         if(File.Exists(permaScriptPath) == false)
         {
             using (StreamWriter outfile = new StreamWriter(permaScriptPath))
@@ -71,10 +77,14 @@ public class RelicObject : AbstractCustomScriptable
         {
             Debug.Log("Behavior Script Already Exists!");
         }
+
+        #endif
     }
 
     public override void CreateBehaviorPrefab()
     {
+        #if UNITY_EDITOR
+
         GameObject obj = new GameObject(permaNewName + "RelicBehavior");
         obj.transform.position = Vector3.zero;
         obj.transform.rotation = Quaternion.identity;
@@ -90,6 +100,7 @@ public class RelicObject : AbstractCustomScriptable
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-    }
 
+        #endif
+    }
 }

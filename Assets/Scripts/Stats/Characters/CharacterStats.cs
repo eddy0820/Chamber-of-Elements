@@ -71,7 +71,7 @@ public abstract class CharacterStats
 
         damage = CalcDamage(damage, damageType, source, (WeatherState) WeatherStateManager.Instance.currentState);
 
-        System.Math.Round(damage, 1);
+        damage = Mathf.Floor(damage);
 
         currentHealth -= damage;
 

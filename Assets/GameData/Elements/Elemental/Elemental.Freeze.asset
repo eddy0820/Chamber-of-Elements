@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Freeze
   ID: 24
   type: 2
-  affinityType: 6
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: 1cc7c6bb9415fc049adf18657e7c79e6, type: 3}
   description: 'ATTACK: Deal 25 damage. Changes your water primals to ice.'
   hitParticle: {fileID: 0}
@@ -51,3 +51,10 @@ MonoBehaviour:
     weather1: {fileID: 0}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

@@ -30,7 +30,7 @@ public class Minion : Character
 
     public void NullifyMinion()
     {
-        if(characterObject != null)
+        if(characterObject != null && Player.Instance.MinionExists)
         {
             foreach(MinionObject.PassiveEntryTarget characterPassive in ((MinionObject) characterObject).PassivesToGiveCharacters) 
             {
@@ -81,7 +81,7 @@ public class Minion : Character
 
     public void CreateMinion(MinionObject minionObject)
     {
-        if(characterObject == null)
+        if(characterObject == null && Player.Instance.MinionExists == false)
         {
             characterObject = minionObject;
 

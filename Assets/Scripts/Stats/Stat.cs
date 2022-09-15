@@ -154,13 +154,30 @@ public class Stat
                 // modifier of a different type or until we reach the end of the list.
                 if( i + 1 >= statModifiers.Count || statModifiers[i + 1].type != StatModifierTypes.PercentAdd)
                 {
-                    finalValue *= 1 + sumPercentAdd;
+                    if((baseValue == 0 && maxValue == 100))
+                    {
+                        finalValue = 100 * sumPercentAdd;
+                    }
+                    else
+                    {
+                        finalValue *= 1 + sumPercentAdd;
+                    }
+                    
                     sumPercentAdd = 0;
                 }            
             }
             else if(modifier.type == StatModifierTypes.PercentMult)
             {
-                finalValue *= 1 + modifier.value;
+                if((baseValue == 0 && maxValue == 100))
+                {
+                    finalValue = 100 * modifier.value;
+                }
+                else
+                {
+                    finalValue *= 1 + modifier.value;
+                }
+
+                
             }
         }
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Focus", menuName = "Focus")]
 public class FocusObject : AbstractCustomScriptable
@@ -17,18 +19,23 @@ public class FocusObject : AbstractCustomScriptable
     [SerializeField] BehaviorScriptEntries behaviorEntries;
     public BehaviorScriptEntries BehaviorEntries => behaviorEntries;
 
-
     [ContextMenu("Create File Paths")]
     public override void CreateFilePaths()
     {
+        #if UNITY_EDITOR
+
         permaNewName = Regex.Replace(name, @"\s+", "");
 
         permaScriptPath = "Assets/Scripts/Focus/Focus Behaviors/" + permaNewName + "FocusBehavior.cs";
         permaPrefabPath = "Assets/Prefabs/FocusBehaviors/" + permaNewName + "FocusBehavior.prefab";
+
+        #endif
     }
 
     public override void CreateBehaviorScript()
     {   
+        #if UNITY_EDITOR
+
         if(File.Exists(permaScriptPath) == false)
         {
             using (StreamWriter outfile = new StreamWriter(permaScriptPath))
@@ -52,10 +59,14 @@ public class FocusObject : AbstractCustomScriptable
         {
             Debug.Log("Behavior Script Already Exists!");
         }
+
+        #endif
     }
 
     public override void CreateBehaviorPrefab()
     {
+        #if UNITY_EDITOR
+
         GameObject obj = new GameObject(permaNewName + "FocusBehavior");
         obj.transform.position = Vector3.zero;
         obj.transform.rotation = Quaternion.identity;
@@ -71,5 +82,7 @@ public class FocusObject : AbstractCustomScriptable
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        #endif
     }
 }

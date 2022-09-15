@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Avalanche
   ID: 17
   type: 2
-  affinityType: 6
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: e3880a15834e8464493d2465d51e508d, type: 3}
   description: 'ATTACK: Deal 50 damage & an additional 20 damage to everything while
     in a hailstorm.'
@@ -52,3 +52,10 @@ MonoBehaviour:
     weather1: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

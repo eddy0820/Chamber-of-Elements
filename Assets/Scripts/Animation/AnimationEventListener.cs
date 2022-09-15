@@ -39,7 +39,7 @@ public class AnimationEventListener : MonoBehaviour
                 
                 if(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle != null)
                 {
-                    GameObject particle = Instantiate(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle, Player.Instance.transform.position, Quaternion.identity);
+                    GameObject particle = Instantiate(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle, Player.Instance.Minion.transform.position, Quaternion.identity);
                     ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
                     particleSystem.textureSheetAnimation.SetSprite(0, ((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticleTexture);
                     particleSystem.Play();

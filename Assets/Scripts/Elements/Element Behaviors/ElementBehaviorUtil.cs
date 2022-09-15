@@ -4,7 +4,12 @@ public static class ElementBehaviorUtil
     {
         Player.Instance.Stats.TakeDamage(value, damageType, null);
         GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, Player.Instance);
-        Player.Instance.Minion.Stats.TakeDamage(value, damageType, null);
+
+        if(Player.Instance.MinionExists)
+        {
+            Player.Instance.Minion.Stats.TakeDamage(value, damageType, null);
+        }
+        
         ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }
 
@@ -13,7 +18,12 @@ public static class ElementBehaviorUtil
     public static void DealDamageToEverythingExceptEnemy(AffinityTypes damageType, float value)
     {
         Player.Instance.Stats.TakeDamage(value, damageType, null);
-        Player.Instance.Minion.Stats.TakeDamage(value, damageType, null);
+
+        if(Player.Instance.MinionExists)
+        {
+            Player.Instance.Minion.Stats.TakeDamage(value, damageType, null);
+        }
+        
         ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Large);
     }
 

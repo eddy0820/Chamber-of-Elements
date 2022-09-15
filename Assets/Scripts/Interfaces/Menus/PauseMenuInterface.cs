@@ -8,9 +8,10 @@ public class PauseMenuInterface : ButtonInterface
     [Scene]
     [SerializeField] string mainMenuScene;
 
-    public void ResumeButtonClick()
+    public void ResumeButtonClick(GameObject arrow)
     {
         PauseMenu.Instance.ResumeGame();
+        arrow.SetActive(false);
     }
 
     public void MainMenuButtonClick()

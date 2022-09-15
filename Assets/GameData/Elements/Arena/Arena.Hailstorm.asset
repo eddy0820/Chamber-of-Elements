@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Hailstorm
   ID: 64
   type: 4
-  affinityType: 6
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: 4cf81c245b6b44c49b39da7775208026, type: 3}
   description: 'ARENA: Deal 30 damage and leave a hailstorm for 3 turns.'
   hitParticle: {fileID: 0}
@@ -51,3 +51,10 @@ MonoBehaviour:
     weather1: {fileID: 11400000, guid: c78083d079eb4524aadd6523203c5982, type: 2}
     weather2: {fileID: 0}
     weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

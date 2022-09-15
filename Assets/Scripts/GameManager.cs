@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        elementSlotsInv.ClearElements();
         elementSlotsInv.ReRollElements();
     }
 
@@ -140,6 +141,7 @@ public class MouseElement
 {
     [ReadOnly] public GameObject obj;
     [ReadOnly] public Element element;
+    [ReadOnly] public GameObject sourceSlot;
     [ReadOnly] public GameObject hoverObj;
     [ReadOnly] public Element hoverElement;
     [ReadOnly] public GameObject cursorTextObj;
@@ -148,6 +150,7 @@ public class MouseElement
     {
         obj = null;
         element = new Element();
+        sourceSlot = null;
         hoverObj = null;
         hoverElement = new Element();
         cursorTextObj = null;
@@ -157,6 +160,7 @@ public class MouseElement
     {
         Destroy(obj);
         element.UpdateSlot(new Element());
+        sourceSlot = null;
     }
 
     public void RemoveMouseCursorText(Action<GameObject> Destroy)

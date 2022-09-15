@@ -16,6 +16,13 @@ public class InventoryObject : ScriptableObject
     {
         System.Random rand  = new System.Random();
 
+        ElementObject excludedElement = null;
+
+        if(Player.Instance.AffinityType != AffinityTypes.None)
+        {
+            excludedElement = GameManager.Instance.AffinityDatabase.GetAffinity[Player.Instance.AffinityType].RecipeElement;
+        }
+
         for(int i = 0; i < container.elementSlots.Length; i++)
         {
             Dictionary<int, int> IDAndAmount = new Dictionary<int, int>();
@@ -37,29 +44,36 @@ public class InventoryObject : ScriptableObject
 
             if(container.elementSlots[i].ID < 0)
             {
-                container.elementSlots[i].UpdateSlot(new Element(RollElement(IDAndAmount, rand)));
+                container.elementSlots[i].UpdateSlot(new Element(RollElement(IDAndAmount, rand, excludedElement)));
             }
         }
     }
 
-    private ElementObject RollElement(Dictionary<int, int> IDAndAmount, System.Random rand)
+    private ElementObject RollElement(Dictionary<int, int> IDAndAmount, System.Random rand, ElementObject excludedElement)
     {
         ElementObject element = database.GetElement[Player.Instance.ReRollElements.set.ElementAt(rand.Next(Player.Instance.ReRollElements.set.Count)).ID];
 
-        if(IDAndAmount.ContainsKey(element.ID))
+        if(excludedElement != null && excludedElement.ID == element.ID)
         {
-            if(IDAndAmount[element.ID] >= 2)
+            return RollElement(IDAndAmount, rand, excludedElement);
+        }
+        else
+        {
+            if(IDAndAmount.ContainsKey(element.ID))
             {
-                return RollElement(IDAndAmount, rand);
+                if(IDAndAmount[element.ID] >= 2)
+                {
+                    return RollElement(IDAndAmount, rand, excludedElement);
+                }
+                else
+                {
+                    return element;
+                }
             }
             else
             {
                 return element;
             }
-        }
-        else
-        {
-            return element;
         }
     }
 
@@ -91,7 +105,7 @@ public class InventoryObject : ScriptableObject
 
         foreach(ElementRecipeObject recipe in Player.Instance.UnlockedElementRecipes.set)
         {  
-            if(recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID]))
+            if((recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID])) && hoverElement.ID != mouseElement.ID)
             {
                 return recipe.Result.ID;
             }
@@ -103,6 +117,11 @@ public class InventoryObject : ScriptableObject
     public MinionObject CanCombineMinion(Element hoverElement, Element mouseElement)
     {
         MinionObject minion = null;
+
+        if(Player.Instance.MinionExists)
+        {
+            return minion;
+        }
 
         foreach(MinionRecipeObject recipe in Player.Instance.UnlockedMinionRecipes.set)
         {
@@ -136,7 +155,7 @@ public class InventoryObject : ScriptableObject
     {
         foreach(RelicRecipeObject recipe in Player.Instance.UnlockedRelicRecipes.set)
         {
-            if(recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID]))
+            if((recipe.Ingredients.Contains(database.GetElement[hoverElement.ID]) && recipe.Ingredients.Contains(database.GetElement[mouseElement.ID])) && hoverElement.ID != mouseElement.ID)
             {
                 return recipe.Result;
             }
@@ -195,7 +214,10 @@ public class InventoryObject : ScriptableObject
 
     public void ClearElements()
     {
-        container.elementSlots = new Element[ElementSlotsInterface.Instance.transform.childCount];
+        foreach(Element e in container.elementSlots)
+        {
+            e.UpdateSlot(new Element());
+        }
     }
 }
 

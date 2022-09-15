@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Hail
   ID: 27
   type: 2
-  affinityType: 6
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: 13587ed1b3ac55144bf16f6b9719dffd, type: 3}
   description: 'ATTACK: Deal 15 damage & an additional 35 damage in a hailstorm.'
   hitParticle: {fileID: 9192612883960613093, guid: 732d65bd40a570c4d92620b5c2b85507, type: 3}
@@ -56,3 +56,5 @@ MonoBehaviour:
     affinity1: 6
     affinity2: 6
     affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

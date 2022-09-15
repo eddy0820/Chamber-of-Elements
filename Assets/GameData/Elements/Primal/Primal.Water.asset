@@ -12,29 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e849d132837d8409b43efc3746d61b, type: 3}
   m_Name: Primal.Water
   m_EditorClassIdentifier: 
+  permaScriptPath: 
+  permaPrefabPath: 
   name: Water
   ID: 0
   type: 0
-  affinityTypes: 00000000
+  affinityType: 0
   elementTexture: {fileID: 21300000, guid: 30733fe03d4c2b646ad83713c192dba8, type: 3}
+  description: 
   hitParticle: {fileID: 980740984292300388, guid: 82d2b4145e58c6345974b6a7ba9c6299, type: 3}
   hitParticleTexture: {fileID: 21300000, guid: 1ee5fe3c90a06914fa112e694dae63d6, type: 3}
-  description: 
   damage: 5
   doAttackInBehavior: 0
   behavior: {fileID: 7749014426493901885, guid: 3c5eaa16071b05b4598a650a0b5f3464, type: 3}
-  extraValue: -1
-  secondaryExtraValue: -1
-  associatedElement: {fileID: 0}
-  secondaryAssociatedElement: {fileID: 0}
-  associatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  secondaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  tertiaryAssociatedPassive:
-    passive: {fileID: 0}
-    value: -1
-  permaScriptPath: 
-  permaPrefabPath: 
+  behaviorEntries:
+    float1: -1
+    float2: -1
+    float3: -1
+    element1: {fileID: 0}
+    element2: {fileID: 0}
+    element3: {fileID: 0}
+    passive1:
+      passive: {fileID: 0}
+      value: -1
+    passive2:
+      passive: {fileID: 0}
+      value: -1
+    passive3:
+      passive: {fileID: 0}
+      value: -1
+    relic1: {fileID: 0}
+    relic2: {fileID: 0}
+    relic3: {fileID: 0}
+    relicList: []
+    recipeSet1: {fileID: 0}
+    recipeSet2: {fileID: 0}
+    recipeSet3: {fileID: 0}
+    weather1: {fileID: 0}
+    weather2: {fileID: 0}
+    weather3: {fileID: 0}
+    animController1: {fileID: 0}
+    animController2: {fileID: 0}
+    affinity1: 6
+    affinity2: 6
+    affinity3: 6
+    iClickRelicElements: []
+    focusAffectedCharacters: 

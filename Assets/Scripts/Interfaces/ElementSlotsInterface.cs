@@ -16,6 +16,7 @@ public class ElementSlotsInterface : AbstractGameInterface
 
     GameObject[] slots;
     Dictionary<GameObject, Element> elementsDisplayed = new Dictionary<GameObject, Element>();
+    public Dictionary<GameObject, Element> ElementsDisplayed => elementsDisplayed;
 
     protected override void OnAwake()
     {
@@ -128,6 +129,7 @@ public class ElementSlotsInterface : AbstractGameInterface
 
         GameManager.Instance.mouseElement.obj = mouseObject;
         GameManager.Instance.mouseElement.element.UpdateSlot(elementsDisplayed[obj]);
+        GameManager.Instance.mouseElement.sourceSlot = obj;
 
         GameManager.Instance.mouseElement.hoverElement.UpdateSlot(new Element());
         elementsDisplayed[obj].UpdateSlot(new Element()); 

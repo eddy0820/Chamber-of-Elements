@@ -93,6 +93,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7c684667c7096a4db6a0951a5a8ca29, type: 2}
   - {fileID: 11400000, guid: fb68e3245befd4a40bd4df226dd46358, type: 2}
   - {fileID: 11400000, guid: a455ee380e6688240b57c4e0fb0276e4, type: 2}
+  - {fileID: 11400000, guid: 5fb27b5e7d0a3b348b9b49e329a93c3f, type: 2}
   minionRecipes:
   - {fileID: 11400000, guid: 86d89c83a8f16d6479bba8cf8aa7ba7e, type: 2}
   - {fileID: 11400000, guid: a70774592e64e6e429c16598c2adb461, type: 2}

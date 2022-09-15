@@ -24,11 +24,17 @@ MonoBehaviour:
     passive: {fileID: 11400000, guid: 2f60f9d603abf00479c87dcec9215398, type: 2}
     value: -1
   isPositiveEffect: 0
+  particle: {fileID: 0}
+  particleTexture: {fileID: 0}
+  value: -0.1
   statModifyingPassive: 1
   affectedStat: {fileID: 11400000, guid: fe5a1f87754f2f141bcd76ea0fb59285, type: 2}
   secondaryAffectedStat: {fileID: 0}
   modifierType: 200
-  behaviorEveryTurnPassive: 0
+  behaviorPassive: 0
+  startOfTurnBehavior: 0
+  endOfTurnBehavior: 0
+  onHitBehavior: 0
   behaviorType: 0
-  affinityTypeForDamageBehavior: 0
-  value: -0.1
+  behaviorOrder: 0
+  affinityTypeForDamageSelfBehavior: 0

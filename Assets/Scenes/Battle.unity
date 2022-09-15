@@ -2159,7 +2159,7 @@ MonoBehaviour:
         - m_Target: {fileID: 623891271}
           m_TargetAssemblyTypeName: PauseMenuInterface, Assembly-CSharp
           m_MethodName: ResumeButtonClick
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6610,6 +6610,7 @@ MonoBehaviour:
       name: 
       id: -1
       affinityType: 6
+    sourceSlot: {fileID: 0}
     hoverObj: {fileID: 0}
     hoverElement:
       name: 
@@ -6617,10 +6618,10 @@ MonoBehaviour:
       affinityType: 6
     cursorTextObj: {fileID: 0}
   debug: 1
-  debugElement1: {fileID: 11400000, guid: bc69ada1b5d0e1549b5c5f5b726b004a, type: 2}
-  debugElement2: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
-  debugElement3: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
-  debugElement4: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
+  debugElement1: {fileID: 11400000, guid: 2cd49fac583ab4d4c93708f3cc9bea97, type: 2}
+  debugElement2: {fileID: 11400000, guid: 2cd49fac583ab4d4c93708f3cc9bea97, type: 2}
+  debugElement3: {fileID: 11400000, guid: a8f74223c99ba464ebaed0862369aac4, type: 2}
+  debugElement4: {fileID: 11400000, guid: a8f74223c99ba464ebaed0862369aac4, type: 2}
   debugElement5: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}
 --- !u!4 &1625356783
 Transform:
