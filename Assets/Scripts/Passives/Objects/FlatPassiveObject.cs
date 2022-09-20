@@ -4,12 +4,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Flat Passive", menuName = "Passives/Flat")]
 public class FlatPassiveObject : PassiveObject
-{
-    [Header("Stat Modifying Passive")]
-    [Header("Flat Passive Specific")]
-
+{   
+    [Space(15)]
     [SerializeField] float value;
 
+    [Header("Stat Modifying Passive")]
+    [Header("Flat Passive Specific")]
     [SerializeField] bool statModifyingPassive;
     public bool StatModifyingPassive => statModifyingPassive;
     [SerializeField] StatTypeObject affectedStat;

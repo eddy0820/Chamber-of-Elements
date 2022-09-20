@@ -20,6 +20,8 @@ public abstract class CharacterStats
     protected float lastHitDamage;
     public float LastHitDamage => lastHitDamage;
 
+    Queue<DamageIndicatorValues> damageIndicatorQueue;
+
     protected GameObject HPText;
 
     protected void InitializeCharacterStats()
@@ -32,6 +34,8 @@ public abstract class CharacterStats
         }
 
         currentHealth = stats["MaxHealth"].value;
+
+        damageIndicatorQueue = new Queue<DamageIndicatorValues>();
     }
     
     public void TakeDamage(float damage, AffinityTypes damageType, Character source)
@@ -86,7 +90,8 @@ public abstract class CharacterStats
         }
         else
         {
-            DamageIndicatorController.Instance.DoDamageIndicator(damage, character.transform.position);
+            damageIndicatorQueue.Enqueue(new DamageIndicatorValues(damage, character.transform.position));
+            //DamageIndicatorController.Instance.DoDamageIndicator(damage, character.transform.position);
         }
 
         HandlePassiveAdditiveRemovalTypes(damageType);
@@ -232,5 +237,38 @@ public abstract class CharacterStats
         {
             character.RemovePassive(passive);
         }  
+    }
+
+    public IEnumerator DoDamageIndicator()
+    {
+        while(true)
+        {
+            if(damageIndicatorQueue.Count > 0)
+            {
+                DamageIndicatorValues di = damageIndicatorQueue.Peek();
+
+                DamageIndicatorController.Instance.DoDamageIndicator(di.damage, di.position);
+
+                damageIndicatorQueue.Dequeue();
+
+                yield return new WaitForSeconds(DamageIndicatorController.Instance.DamageIndicatorDelay);
+            }
+            else
+            {
+                yield return null;
+            }
+        }  
+    }
+
+    class DamageIndicatorValues
+    {
+        public float damage;
+        public Vector3 position;
+
+        public DamageIndicatorValues(float _damage, Vector3 _position)
+        {
+            damage = _damage;
+            position = _position;
+        }
     }
 }

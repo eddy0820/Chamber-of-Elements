@@ -4,7 +4,6 @@
 https://drive.google.com/drive/folders/1Kaz0sey5ly2tzVek4WswLY5fNqq7zcHK?usp=sharing
 
 # TODO
-- add save / save project to component guide
 - Finish Particles
 	- attack particles for enemy wizard and guardian
 	- Guardian Focus
@@ -27,8 +26,6 @@ https://drive.google.com/drive/folders/1Kaz0sey5ly2tzVek4WswLY5fNqq7zcHK?usp=sha
 	- Buff Particles
 	- Heal Particles
 	- New Affinity Particles
-	
-- Component Guide
 	
 # Future Maintenance	
 	

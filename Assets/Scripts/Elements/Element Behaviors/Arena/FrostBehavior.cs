@@ -9,8 +9,8 @@ public class FrostBehavior : AbstractElementBehavior
         ArenaElementObject arenaElement = (ArenaElementObject) element;
 
         BehaviorScriptEntries be = arenaElement.BehaviorEntries;
-
-        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[be.Weather1].GetType())
+        
+        if(WeatherStateManager.Instance.CompareWeatherStates((WeatherState) WeatherStateManager.Instance.currentState, WeatherStateManager.Instance.GetWeatherState[be.Weather1]))
         {
             WeatherStateManager.Instance.SwitchWeather(be.Weather2);
         }

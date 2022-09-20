@@ -8,7 +8,9 @@ public class HailBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[elementalElement.BehaviorEntries.Weather1].GetType())
+        BehaviorScriptEntries be = elementalElement.BehaviorEntries;
+
+        if(WeatherStateManager.Instance.CompareWeatherStates((WeatherState) WeatherStateManager.Instance.currentState, WeatherStateManager.Instance.GetWeatherState[be.Weather1]))
         {
             character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, GameManager.Instance.mouseElement.element.AffinityType, Player.Instance);
         }

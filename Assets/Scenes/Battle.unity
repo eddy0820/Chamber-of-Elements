@@ -1945,6 +1945,7 @@ MonoBehaviour:
   defaultScaleFactor: 4
   missIndicatorText: Miss!
   immuneIndicatorText: Immune!
+  damageIndicatorDelay: 1
 --- !u!1 &548613931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6617,9 +6618,9 @@ MonoBehaviour:
       id: -1
       affinityType: 6
     cursorTextObj: {fileID: 0}
-  debug: 1
-  debugElement1: {fileID: 11400000, guid: 2cd49fac583ab4d4c93708f3cc9bea97, type: 2}
-  debugElement2: {fileID: 11400000, guid: 2cd49fac583ab4d4c93708f3cc9bea97, type: 2}
+  debug: 0
+  debugElement1: {fileID: 11400000, guid: dab3d85200a471d438a18711784e3c9e, type: 2}
+  debugElement2: {fileID: 11400000, guid: dcb2e22fa700c1b46b9b22a545aefba5, type: 2}
   debugElement3: {fileID: 11400000, guid: a8f74223c99ba464ebaed0862369aac4, type: 2}
   debugElement4: {fileID: 11400000, guid: a8f74223c99ba464ebaed0862369aac4, type: 2}
   debugElement5: {fileID: 11400000, guid: 43335a72ab786ad4f8d5fab8e170cb04, type: 2}

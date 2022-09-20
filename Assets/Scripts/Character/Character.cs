@@ -81,7 +81,9 @@ public abstract class Character : MonoBehaviour
             }
         } 
 
-        HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP"; 
+        HPText.GetComponent<TextMeshProUGUI>().text = stats.CurrentHealth + " HP";
+
+        StartCoroutine(stats.DoDamageIndicator()); 
     }
 
     private void PassiveTurnCalcRemove()

@@ -4981,7 +4981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alpha Demo v1.0 (Unity)
+  m_text: Alpha Demo v1.2 (Unity)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d83f00bc8a90f41498dda7c5d366cf29, type: 2}
   m_sharedMaterial: {fileID: 8422593929953566250, guid: d83f00bc8a90f41498dda7c5d366cf29, type: 2}

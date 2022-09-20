@@ -87,4 +87,16 @@ public class WeatherStateManager : AbstractStateManager
         weatherSprite.sprite = startingWeather.WeatherTexture;
     }
 
+    public bool CompareWeatherStates(WeatherState weather1, WeatherState weather2)
+    {
+        if(weather1.WeatherObject.Name == weather2.WeatherObject.Name)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

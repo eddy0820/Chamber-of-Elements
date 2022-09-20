@@ -8,7 +8,9 @@ public class MoonBehavior : AbstractElementBehavior
     {
         UtilityElementObject utilityElement = (UtilityElementObject) element;
 
-        if(WeatherStateManager.Instance.currentState.GetType() == WeatherStateManager.Instance.GetWeatherState[utilityElement.BehaviorEntries.Weather1].GetType())
+        BehaviorScriptEntries be = utilityElement.BehaviorEntries;
+
+        if(WeatherStateManager.Instance.CompareWeatherStates((WeatherState) WeatherStateManager.Instance.currentState, WeatherStateManager.Instance.GetWeatherState[be.Weather1]))
         {
            character.Stats.Heal(utilityElement.HealAmount);
         }

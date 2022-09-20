@@ -18,6 +18,10 @@ public class DamageIndicatorController : MonoBehaviour
     [SerializeField] string missIndicatorText;
     [SerializeField] string immuneIndicatorText;
 
+    [Space(15)]
+    [SerializeField] float damageIndicatorDelay = 1.0f;
+    public float DamageIndicatorDelay => damageIndicatorDelay;
+
     private void Awake()
     {
         Instance = this;
