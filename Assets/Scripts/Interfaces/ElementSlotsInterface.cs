@@ -268,6 +268,7 @@ public class ElementSlotsInterface : AbstractGameInterface
         {
             tooltip.SetActive(true);
             tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = element.Name;
+
             if(element.AffinityType is AffinityTypes.None)
             {
                 tooltip.transform.GetChild(1).GetComponent<Image>().sprite = Player.Instance.AffinityNoneSprite;
@@ -276,8 +277,18 @@ public class ElementSlotsInterface : AbstractGameInterface
             {
                 tooltip.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.Instance.AffinityDatabase.GetAffinity[element.AffinityType].Sprite;
             }
-            tooltip.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Type.ToString();
-            tooltip.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Description;
+
+            if(element.SecondaryAffinityType is AffinityTypes.None)
+            {
+                tooltip.transform.GetChild(2).GetComponent<Image>().sprite = Player.Instance.AffinityNoneSprite;
+            }
+            else
+            {
+                tooltip.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.Instance.AffinityDatabase.GetAffinity[element.SecondaryAffinityType].Sprite;
+            }
+
+            tooltip.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Type.ToString();
+            tooltip.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = GameManager.Instance.ElementDatabase.GetElement[element.ID].Description;
         } 
     }
 

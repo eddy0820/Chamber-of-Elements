@@ -19,6 +19,8 @@ public abstract class ElementObject : AbstractCustomScriptable
     [Header("General Info")]
     [SerializeField] AffinityTypes affinityType = AffinityTypes.None;
     public AffinityTypes AffinityType => affinityType;
+    [SerializeField] AffinityTypes secondaryAffinityType = AffinityTypes.None;
+    public AffinityTypes SecondaryAffinityType => secondaryAffinityType;
     [SerializeField] Sprite elementTexture;
     public Sprite ElementTexture => elementTexture;
 

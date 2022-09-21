@@ -403,7 +403,7 @@ public abstract class Character : MonoBehaviour
         {
             foreach(KeyValuePair<AffinityTypes, ImmunityPassiveObject> type in immunityAffinityTypes)
             {
-                if(type.Key == element.AffinityType)
+                if(type.Key == element.AffinityType || type.Key == element.SecondaryAffinityType)
                 {
                     DamageIndicatorController.Instance.DoImmuneIndicator(transform.position);
                     return true;

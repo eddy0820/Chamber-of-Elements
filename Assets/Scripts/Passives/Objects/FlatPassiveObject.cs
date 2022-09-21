@@ -93,22 +93,22 @@ public class FlatPassiveObject : PassiveObject
 
                 if(OnHitBehavior)
                 {
-                    action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, null);
+                    action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, AffinityTypes.None, null);
                 }
                 else
                 {
-                    action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, null);
+                    action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, AffinityTypes.None, null);
                 }
                 
                 break;
             case PassiveBehaviorTypes.DamageToAttacker:
                 if(OnHitBehavior)
                 {
-                    action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, null);
+                    action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, AffinityTypes.None, null);
                 }
                 else
                 {
-                    action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, null);
+                    action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, AffinityTypes.None, null);
                 }
 
                 break;

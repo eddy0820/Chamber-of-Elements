@@ -10,7 +10,7 @@ public class ElectricityBehavior : AbstractElementBehavior
 
         if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
         {
-            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, new Element(elementalElement).AffinityType, Player.Instance);
+            character.Stats.TakeDamage(elementalElement.BehaviorEntries.Float1, GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, Player.Instance);
         }
 
         return true;

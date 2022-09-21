@@ -14,7 +14,7 @@ public class AnimationEventListener : MonoBehaviour
             }
             else if(Player.Instance.IsImmuneAffinity(GameManager.Instance.Enemy.AffinityType) == false)
             {
-                Player.Instance.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, GameManager.Instance.Enemy);
+                Player.Instance.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, AffinityTypes.None, GameManager.Instance.Enemy);
                 ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Medium);
 
                 if(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle != null)
@@ -34,7 +34,7 @@ public class AnimationEventListener : MonoBehaviour
             }
             else if(Player.Instance.Minion.IsImmuneAffinity(GameManager.Instance.Enemy.AffinityType) == false)
             {
-                Player.Instance.Minion.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, GameManager.Instance.Enemy);
+                Player.Instance.Minion.Stats.TakeDamage(GameManager.Instance.Enemy.Stats.Stats["BasicAttack"].value, GameManager.Instance.Enemy.AffinityType, AffinityTypes.None, GameManager.Instance.Enemy);
                 ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Medium);
                 
                 if(((EnemyObject) GameManager.Instance.Enemy.CharacterObject).HitParticle != null)
@@ -114,7 +114,7 @@ public class AnimationEventListener : MonoBehaviour
         }
         else if(GameManager.Instance.Enemy.IsImmuneAffinity(Player.Instance.Minion.AffinityType) == false)
         {
-            GameManager.Instance.Enemy.Stats.TakeDamage(Player.Instance.Minion.Stats.Stats["BasicAttack"].value, Player.Instance.Minion.AffinityType, Player.Instance.Minion);
+            GameManager.Instance.Enemy.Stats.TakeDamage(Player.Instance.Minion.Stats.Stats["BasicAttack"].value, Player.Instance.Minion.AffinityType, AffinityTypes.None, Player.Instance.Minion);
             ScreenShakeBehavior.Instance.StartShake(ScreenShakeBehavior.ShakePresets.Medium);
         }
     }

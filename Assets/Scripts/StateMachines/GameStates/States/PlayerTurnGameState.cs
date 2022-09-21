@@ -47,9 +47,9 @@ public class PlayerTurnGameState : GameState
         DoReRoll();
     }
 
-    public void Attack(AffinityTypes damageType, float value)
+    public void Attack(AffinityTypes damageType, AffinityTypes secondaryAffinitType, float value)
     {
-        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, Player.Instance);
+        GameManager.Instance.Enemy.Stats.TakeDamage(value, damageType, secondaryAffinitType, Player.Instance);
 
         if(GameManager.Instance.Enemy.Stats.CurrentHealth > 0)
         {

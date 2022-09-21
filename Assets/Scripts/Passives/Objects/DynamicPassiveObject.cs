@@ -120,22 +120,22 @@ public class DynamicPassiveObject : PassiveObject
                 
                     if(OnHitBehavior)
                     {
-                        action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, null);
+                        action = ()=> character.Stats.TakeDamageNoActions(value, AffinityTypeForDamageSelfBehavior, AffinityTypes.None,null);
                     }
                     else
                     {
-                        action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, null);
+                        action = ()=> character.Stats.TakeDamage(value, AffinityTypeForDamageSelfBehavior, AffinityTypes.None, null);
                     }
 
                     break;
                 case PassiveBehaviorTypes.DamageToAttacker:
                     if(OnHitBehavior)
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, character);
+                        action = ()=> character.Attacker.Stats.TakeDamageNoActions(value, character.AffinityType, AffinityTypes.None, character);
                     }
                     else
                     {
-                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, character);
+                        action = ()=> character.Attacker.Stats.TakeDamage(value, character.AffinityType, AffinityTypes.None, character);
                     }
 
                     break;

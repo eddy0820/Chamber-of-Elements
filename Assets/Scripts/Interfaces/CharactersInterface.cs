@@ -22,6 +22,7 @@ public class CharactersInterface : AbstractGameInterface
     [SerializeField] CharacterInteractEntry weatherInteract;
     [SerializeField] CharacterInteractEntry minionInteract;
 
+    [Space(15)]
     [SerializeField] Sprite cursorUse;
     [SerializeField] Sprite cursorAttack;
 
@@ -240,7 +241,7 @@ public class CharactersInterface : AbstractGameInterface
                                 
                                 if(!element.DoAttackInBehavior)
                                 {
-                                    GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
+                                    GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
                                 }
 
                                 if(element.Behavior.DoBehavior(element, GameManager.Instance.Enemy))
@@ -258,7 +259,7 @@ public class CharactersInterface : AbstractGameInterface
                 }
                 else
                 {
-                    GameStateManager.Instance.playerTurnGameState.Attack(Player.Instance.AffinityType, Player.Instance.Stats.Stats["BasicAttack"].value);
+                    GameStateManager.Instance.playerTurnGameState.Attack(Player.Instance.AffinityType, AffinityTypes.None, Player.Instance.Stats.Stats["BasicAttack"].value);
                 }
                 
             }
@@ -310,7 +311,7 @@ public class CharactersInterface : AbstractGameInterface
                         {
                             if(GameManager.Instance.Enemy.IsImmuneElementAndAffinity(GameManager.Instance.mouseElement.element) == false)
                             {
-                                GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
+                                GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, GameManager.Instance.ElementDatabase.GetElement[GameManager.Instance.mouseElement.element.ID].Damage);
                             }
                             else
                             {

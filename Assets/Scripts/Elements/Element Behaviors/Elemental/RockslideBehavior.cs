@@ -10,7 +10,7 @@ public class RockslideBehavior : AbstractElementBehavior
 
         float damageAmount = Random.Range(elementalElement.Damage, elementalElement.BehaviorEntries.Float1);
 
-        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, damageAmount);
+        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, damageAmount);
 
         return true;
     }

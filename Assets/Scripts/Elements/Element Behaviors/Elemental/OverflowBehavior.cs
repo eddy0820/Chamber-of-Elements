@@ -21,7 +21,7 @@ public class OverflowBehavior : AbstractElementBehavior
             }
         }
 
-        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, damage);
+        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, damage);
 
         return true;
     }

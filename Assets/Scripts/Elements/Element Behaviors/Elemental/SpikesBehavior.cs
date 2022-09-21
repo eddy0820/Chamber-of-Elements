@@ -21,7 +21,7 @@ public class SpikesBehavior : AbstractElementBehavior
             }
         }
 
-        character.Stats.TakeDamage(damage, GameManager.Instance.mouseElement.element.AffinityType, Player.Instance);
+        character.Stats.TakeDamage(damage, GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, Player.Instance);
     
         return true;
     }

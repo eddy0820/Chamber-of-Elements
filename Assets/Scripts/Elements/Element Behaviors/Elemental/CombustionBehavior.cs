@@ -8,7 +8,7 @@ public class CombustionBehavior : AbstractElementBehavior
     {
         ElementalElementObject elementalElement = (ElementalElementObject) element;
 
-        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, Player.Instance.Stats.LastHitDamage + elementalElement.Damage);
+        GameStateManager.Instance.playerTurnGameState.Attack(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, Player.Instance.Stats.LastHitDamage + elementalElement.Damage);
         
         return true;
     }

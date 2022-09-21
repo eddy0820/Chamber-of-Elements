@@ -38,9 +38,9 @@ public abstract class CharacterStats
         damageIndicatorQueue = new Queue<DamageIndicatorValues>();
     }
     
-    public void TakeDamage(float damage, AffinityTypes damageType, Character source)
+    public void TakeDamage(float damage, AffinityTypes damageType, AffinityTypes secondaryAffinityType, Character source)
     {
-        TakeDamageNoActions(damage, damageType, source);
+        TakeDamageNoActions(damage, damageType, secondaryAffinityType, source);
         
         if(damage <= 0)
         {
@@ -56,7 +56,7 @@ public abstract class CharacterStats
         } 
     }
 
-    public void TakeDamageNoActions(float damage, AffinityTypes damageType, Character source)
+    public void TakeDamageNoActions(float damage, AffinityTypes damageType, AffinityTypes secondaryAffinityType, Character source)
     {
         if(damage <= 0)
         {
@@ -94,7 +94,7 @@ public abstract class CharacterStats
             //DamageIndicatorController.Instance.DoDamageIndicator(damage, character.transform.position);
         }
 
-        HandlePassiveAdditiveRemovalTypes(damageType);
+        HandlePassiveAdditiveRemovalTypes(damageType, secondaryAffinityType);
     }
 
     private float CalcDamage(float damage, AffinityTypes damageType, Character source, WeatherState weather)
@@ -185,7 +185,7 @@ public abstract class CharacterStats
         }
     }
 
-    private void HandlePassiveAdditiveRemovalTypes(AffinityTypes damageType)
+    private void HandlePassiveAdditiveRemovalTypes(AffinityTypes damageType, AffinityTypes secondaryAffinityType)
     {
         List<PassiveObject.ChangeTypeEntry> passivesToAdd = new List<PassiveObject.ChangeTypeEntry>();
         List<PassiveObject> passivesToRemove = new List<PassiveObject>();
@@ -194,7 +194,7 @@ public abstract class CharacterStats
         {
             foreach(PassiveObject.ChangeTypeEntry typeEntry in passive.AdditiveTypes)
             {
-                if(typeEntry.AffinityType == damageType)
+                if(typeEntry.AffinityType == damageType || typeEntry.AffinityType == secondaryAffinityType)
                 {
                     if(typeEntry.Passive != null)
                     {
@@ -205,7 +205,7 @@ public abstract class CharacterStats
 
             foreach(PassiveObject.ChangeTypeEntry typeEntry in passive.RemovalTypes)
             {
-                if(typeEntry.AffinityType == damageType)
+                if(typeEntry.AffinityType == damageType || typeEntry.AffinityType == secondaryAffinityType)
                 {
                     passivesToRemove.Add(passive);
 

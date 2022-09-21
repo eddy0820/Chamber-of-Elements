@@ -12,7 +12,7 @@ public class AvalancheBehavior : AbstractElementBehavior
 
         if(WeatherStateManager.Instance.CompareWeatherStates((WeatherState) WeatherStateManager.Instance.currentState, WeatherStateManager.Instance.GetWeatherState[be.Weather1]))
         {
-            ElementBehaviorUtil.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, elementalElement.BehaviorEntries.Float1);
+            ElementBehaviorUtil.DealDamageToEverything(GameManager.Instance.mouseElement.element.AffinityType, GameManager.Instance.mouseElement.element.SecondaryAffinityType, elementalElement.BehaviorEntries.Float1);
         }
 
         if(character.Passives.Contains(elementalElement.BehaviorEntries.Passive1.passive))
