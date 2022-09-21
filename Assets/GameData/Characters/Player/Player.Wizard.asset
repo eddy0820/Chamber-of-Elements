@@ -16,9 +16,14 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: 4a50d26c70a7c3e47bcaa53bfa40ed6d, type: 2}
   affinityType: 6
   startingPassives: []
-  sprite: {fileID: 3422849895820167655, guid: afea853677156e84caea72894a4fba29, type: 3}
+  sprite: {fileID: -3417436698567514372, guid: dddcc10fe6446384bad0521d75a9b73c, type: 3}
   animationController: {fileID: 9100000, guid: 6d717cab3ae79144b94652cde9553eb6, type: 2}
   deathRattles: []
+  outlineInteractSize:
+    left: 330.3409
+    right: 1156.11
+    top: 214.9578
+    bottom: -69.12509
   unlockedStartingAffinities: 00000000010000000200000003000000
   unlockedRecipeEntries:
   - recipeSet: 1

@@ -8,6 +8,15 @@ using TMPro;
 public class CharactersInterface : AbstractGameInterface
 {   
     public static CharactersInterface Instance {get; private set; }
+
+    [SerializeField] RectTransformPosition playerBox;
+    [SerializeField] RectTransformPosition enemyBox;
+    [SerializeField] RectTransformPosition weatherBox;
+
+    [Space(15)]
+    [SerializeField] RectTransformPosition weatherOutlineBox;
+
+    [Space(15)]
     [SerializeField] CharacterInteractEntry playerInteract;
     [SerializeField] CharacterInteractEntry enemyInteract;
     [SerializeField] CharacterInteractEntry weatherInteract;
@@ -33,21 +42,71 @@ public class CharactersInterface : AbstractGameInterface
         AddEvent(playerInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitPlayer(playerInteract.interactObject); });
         AddEvent(playerInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnPlayerClick(playerInteract.interactObject, (PointerEventData)data); });
         playerInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        playerInteract.sprite.material.SetColor("_OutlineColor", playerInteract.interactColor);
+
+        if(playerInteract.outlineInteract)
+        {
+            playerInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(Player.Instance.CharacterObject.OutlineInteractSize.Left, Player.Instance.CharacterObject.OutlineInteractSize.Bottom);
+            playerInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-Player.Instance.CharacterObject.OutlineInteractSize.Right, -Player.Instance.CharacterObject.OutlineInteractSize.Top);
+        }
+        else
+        {
+            playerInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(playerBox.Left, playerBox.Bottom);
+            playerInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-playerBox.Right, -playerBox.Top);
+        }
         
         AddEvent(enemyInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterEnemy(enemyInteract.interactObject); });
         AddEvent(enemyInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitEnemy(enemyInteract.interactObject); });
         AddEvent(enemyInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnEnemyClick(enemyInteract.interactObject, (PointerEventData)data); });
         enemyInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        enemyInteract.sprite.material.SetColor("_OutlineColor", enemyInteract.interactColor);
+
+        if(enemyInteract.outlineInteract)
+        {
+            enemyInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(GameManager.Instance.Enemy.CharacterObject.OutlineInteractSize.Left, GameManager.Instance.Enemy.CharacterObject.OutlineInteractSize.Bottom);
+            enemyInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-GameManager.Instance.Enemy.CharacterObject.OutlineInteractSize.Right, -GameManager.Instance.Enemy.CharacterObject.OutlineInteractSize.Top);
+        }
+        else
+        {
+            enemyInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(enemyBox.Left, enemyBox.Bottom);
+            enemyInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-enemyBox.Right, -enemyBox.Top);
+        }
 
         AddEvent(weatherInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterWeather(weatherInteract.interactObject); });
         AddEvent(weatherInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitWeather(weatherInteract.interactObject); });
         AddEvent(weatherInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnWeatherClick(weatherInteract.interactObject, (PointerEventData)data); });
         weatherInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        weatherInteract.sprite.material.SetColor("_OutlineColor", weatherInteract.interactColor);
+
+        if(weatherInteract.outlineInteract)
+        {
+            weatherInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(weatherOutlineBox.Left, weatherOutlineBox.Bottom);
+            weatherInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-weatherOutlineBox.Right, -weatherOutlineBox.Top);
+        }
+        else
+        {
+            weatherInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(weatherBox.Left, weatherBox.Bottom);
+            weatherInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-weatherBox.Right, -weatherBox.Top);
+        }
 
         AddEvent(minionInteract.interactObject, EventTriggerType.PointerEnter, delegate { OnEnterMinion(minionInteract.interactObject); });
         AddEvent(minionInteract.interactObject, EventTriggerType.PointerExit, delegate { OnExitMinion(minionInteract.interactObject); });
         AddEvent(minionInteract.interactObject, EventTriggerType.PointerClick, (data) => { OnMinionClick(minionInteract.interactObject, (PointerEventData)data); });
         minionInteract.interactObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        minionInteract.sprite.material.SetColor("_OutlineColor", minionInteract.interactColor);
+    }
+
+    [ContextMenu("Reset Character Boxes")]
+    public void ResetCharacterBoxes()
+    {
+        playerInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(playerBox.Left, playerBox.Bottom);
+        playerInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-playerBox.Right, -playerBox.Top);
+
+        enemyInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(enemyBox.Left, enemyBox.Bottom);
+        enemyInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-enemyBox.Right, -enemyBox.Top);
+
+        weatherInteract.interactObject.GetComponent<RectTransform>().offsetMin = new Vector2(weatherBox.Left, weatherBox.Bottom);
+        weatherInteract.interactObject.GetComponent<RectTransform>().offsetMax = new Vector2(-weatherBox.Right, -weatherBox.Top);
     }
 
     protected override void UpdateInterface() 
@@ -60,15 +119,30 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterPlayer(GameObject obj)
     {
-        obj.GetComponent<Image>().color = playerInteract.interactColor;
+        if(playerInteract.outlineInteract)
+        {
+            playerInteract.sprite.material.SetFloat("_OutlineThickness", playerInteract.outlineThickness); 
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = playerInteract.interactColor;
+        }
+        
 
         CreateCursorTextObj(cursorUse);
     }
 
     private void OnExitPlayer(GameObject obj)
     {
-        obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-
+        if(playerInteract.outlineInteract)
+        {
+            playerInteract.sprite.material.SetFloat("_OutlineThickness", 0);
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        }
+        
         GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
     }
 
@@ -105,14 +179,28 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterEnemy(GameObject obj)
     {
-        obj.GetComponent<Image>().color = enemyInteract.interactColor;
+        if(enemyInteract.outlineInteract)
+        {
+            enemyInteract.sprite.material.SetFloat("_OutlineThickness", playerInteract.outlineThickness);
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = enemyInteract.interactColor;
+        }
 
         CreateCursorTextObj(cursorAttack);
     }
 
     private void OnExitEnemy(GameObject obj)
     {
-        obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        if(enemyInteract.outlineInteract)
+        {
+            enemyInteract.sprite.material.SetFloat("_OutlineThickness", 0);
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        }
 
         GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
     }
@@ -180,14 +268,28 @@ public class CharactersInterface : AbstractGameInterface
 
     private void OnEnterWeather(GameObject obj)
     {
-        obj.GetComponent<Image>().color = weatherInteract.interactColor;
+        if(weatherInteract.outlineInteract)
+        {
+            weatherInteract.sprite.material.SetFloat("_OutlineThickness", weatherInteract.outlineThickness);
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = weatherInteract.interactColor;
+        }
 
         CreateCursorTextObj(cursorUse);
     }
 
     private void OnExitWeather(GameObject obj)
     {
-        obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        if(weatherInteract.outlineInteract)
+        {
+            weatherInteract.sprite.material.SetFloat("_OutlineThickness", 0);
+        }
+        else
+        {
+            obj.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        }
 
         GameManager.Instance.mouseElement.RemoveMouseCursorText(Destroy);
     }
@@ -235,6 +337,11 @@ public class CharactersInterface : AbstractGameInterface
     {
         if(Player.Instance.MinionExists)
         {
+            if(minionInteract.outlineInteract)
+            {
+                minionInteract.sprite.material.SetFloat("_OutlineThickness", minionInteract.outlineThickness);
+            }
+
             minionText.text = ((MinionObject) Player.Instance.Minion.CharacterObject).Description;
         }
     }
@@ -243,6 +350,11 @@ public class CharactersInterface : AbstractGameInterface
     {
         if(Player.Instance.MinionExists)
         {
+            if(minionInteract.outlineInteract)
+            {
+                minionInteract.sprite.material.SetFloat("_OutlineThickness", 0);
+            }
+
             minionText.text = "";
         }  
     }
@@ -306,5 +418,21 @@ public class CharactersInterface : AbstractGameInterface
     {
         public GameObject interactObject;
         public Color interactColor;
+        public bool outlineInteract;
+        public SpriteRenderer sprite;
+        public float outlineThickness;
+    }
+
+    [System.Serializable]
+    public class RectTransformPosition
+    {
+        [SerializeField] float left;
+        public float Left => left;
+        [SerializeField] float right;
+        public float Right => right;
+        [SerializeField] float top;
+        public float Top => top;
+        [SerializeField] float bottom;
+        public float Bottom => bottom;
     }
 }

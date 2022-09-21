@@ -4,6 +4,7 @@
 https://drive.google.com/drive/folders/1Kaz0sey5ly2tzVek4WswLY5fNqq7zcHK?usp=sharing
 
 # TODO
+- Re do all minion sprites for the sprite outline to work
 - Finish Particles
 	- attack particles for enemy wizard and guardian
 	- Guardian Focus
@@ -36,7 +37,6 @@ https://drive.google.com/drive/folders/1Kaz0sey5ly2tzVek4WswLY5fNqq7zcHK?usp=sha
 # Planned Features
 
 - Secondary Affinity
-- Change interaction color popup for white outline
 - Shield Element
 - Redo UI across the board
 	- Resizable Grid Layout?

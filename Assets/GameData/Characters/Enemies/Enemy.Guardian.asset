@@ -21,6 +21,11 @@ MonoBehaviour:
   sprite: {fileID: 5279917591105545394, guid: c475abdeb18c8ad48bda67ac3f627069, type: 3}
   animationController: {fileID: 9100000, guid: 8682c5060822204429a2fa6540be2f72, type: 2}
   deathRattles: []
+  outlineInteractSize:
+    left: 1213.166
+    right: 311.036
+    top: 103.3996
+    bottom: -88.81181
   position: {x: 4.16, y: 0.15, z: 0}
   focus: {fileID: 11400000, guid: 990e651a345a43b41afa5769da2ad30f, type: 2}
   hitParticle: {fileID: 0}

@@ -31,4 +31,9 @@ public abstract class CharacterObject : ScriptableObject
 
     [SerializeField] DeathRattleObject[] deathRattles;
     public DeathRattleObject[] DeathRattles => deathRattles;
+
+    [Space(15)]
+
+    [SerializeField] CharactersInterface.RectTransformPosition outlineInteractSize;
+    public CharactersInterface.RectTransformPosition OutlineInteractSize => outlineInteractSize;
 }
