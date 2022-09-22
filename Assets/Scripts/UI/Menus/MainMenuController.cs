@@ -14,6 +14,8 @@ public class MainMenuController : MonoBehaviour
     public GameObject CharacterSelectScreen => characterSelectScreen;
     [SerializeField] GameObject enemySelectScreen;
     public GameObject EnemySelectScreen => enemySelectScreen;
+    [SerializeField] GameObject chooseGameModeScreen;
+    public GameObject ChooseGameModeScreen => chooseGameModeScreen;
 
     [Space(15)]
 
@@ -21,6 +23,13 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] string battleScene;
     public string BattleScene => battleScene;
     [SerializeField] GameObject dataHolderPrefab;
+
+    [Space(15)]
+
+    [SerializeField] GameObject characterSelectNext;
+    public GameObject CharacterSelectNext => characterSelectNext;
+    [SerializeField] GameObject characterSelectStart;
+    public GameObject CharacterSelectStart => characterSelectStart;
 
     [Space(15)]
 

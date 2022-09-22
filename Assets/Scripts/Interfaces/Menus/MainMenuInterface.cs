@@ -13,11 +13,18 @@ public class MainMenuInterface : ButtonInterface
         MainMenuController.Instance.CharacterSelectScreen.SetActive(true);
     }
 
-    public void HowToPlaySceen(GameObject arrow)
+    public void HowToPlaySrceen(GameObject arrow)
     {
         arrow.SetActive(false);
         MainMenuController.Instance.MainMenuScreen.SetActive(false);
         MainMenuController.Instance.HowToPlayMenuScreen.SetActive(true);
+    }
+
+    public void ChooseGameModeScreen(GameObject arrow)
+    {
+        arrow.SetActive(false);
+        MainMenuController.Instance.MainMenuScreen.SetActive(false);
+        MainMenuController.Instance.ChooseGameModeScreen.SetActive(true);
     }
 
     public void ExitGame(GameObject arrow)

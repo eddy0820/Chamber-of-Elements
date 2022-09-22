@@ -21,6 +21,14 @@ public class CharacterSelectScreen : AbstractSelectScreen
         MainMenuController.Instance.MainMenuScreen.SetActive(true);
     }
 
+    public void ChooseGameModeScreen(GameObject arrow)
+    {
+        arrow.SetActive(false);
+        UnsetCharacter();
+        MainMenuController.Instance.CharacterSelectScreen.SetActive(false);
+        MainMenuController.Instance.ChooseGameModeScreen.SetActive(true);
+    }
+
     public void EnemySelectScreen(GameObject arrow)
     {
         arrow.SetActive(false);
@@ -28,5 +36,9 @@ public class CharacterSelectScreen : AbstractSelectScreen
         MainMenuController.Instance.EnemySelectScreen.SetActive(true);
     }
 
-
+    public void StartAdventureMode(GameObject arrow)
+    {
+        arrow.SetActive(false);
+        Debug.Log("Adventure Mode Started");
+    }
 }

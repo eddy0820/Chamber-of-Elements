@@ -14,6 +14,9 @@ public class DataHolder : MonoBehaviour
     GameObject enemyGO;
     public GameObject EnemyGO => enemyGO;
 
+    [SerializeField, ReadOnly] GameModes mode;
+    public GameModes Mode => mode;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -51,5 +54,10 @@ public class DataHolder : MonoBehaviour
     {
         enemyGO = null;
         enemy = null;
+    }
+
+    public void SetGameMode(GameModes _mode)
+    {
+        mode = _mode;
     }
 }
