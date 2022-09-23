@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class Player : Character
 {
@@ -52,7 +53,6 @@ public class Player : Character
 
         minion = GameObject.FindWithTag("Minion").GetComponent<Minion>();
         relic = GetComponentInChildren<Relic>();
-        
     }
 
     public override void SwitchAffinity(AffinityTypes type)
@@ -124,6 +124,14 @@ public class Player : Character
     public void SetHasRelic(bool exists)
     {
         hasRelic = exists;
+    }
+
+    public void SetUnlockablesAdventureMode(SerializableHashSet<ElementRecipeObject> _unlockedElementRecipes, SerializableHashSet<MinionRecipeObject> _unlockedMinionRecipes, SerializableHashSet<RelicRecipeObject> _unlockedRelicRecipes, SerializableHashSet<ElementObject> _reRollElements)
+    {
+        unlockedElementRecipes = _unlockedElementRecipes;
+        unlockedMinionRecipes = _unlockedMinionRecipes;
+        unlockedRelicRecipes = _unlockedRelicRecipes;
+        reRollElements = _reRollElements;
     }
 
     public bool UnlockAffinity(AffinityTypes affinity)

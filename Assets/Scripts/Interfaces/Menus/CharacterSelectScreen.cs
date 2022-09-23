@@ -39,6 +39,7 @@ public class CharacterSelectScreen : AbstractSelectScreen
     public void StartAdventureMode(GameObject arrow)
     {
         arrow.SetActive(false);
-        Debug.Log("Adventure Mode Started");
+        MainMenuController.Instance.BuildRun();
+        MainMenuController.Instance.RunTracker.StartBattle();
     }
 }

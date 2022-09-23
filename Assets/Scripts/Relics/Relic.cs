@@ -10,7 +10,7 @@ public class Relic : MonoBehaviour
     [SerializeField] Sprite noRelicSprite;
     [SerializeField] Image relicImage;
 
-    public void Awake()
+    public void DoAwake()
     {
         if(relicObject != null)
         {
@@ -60,5 +60,10 @@ public class Relic : MonoBehaviour
         }
         
         InitRelic(relic);
+    }
+
+    public void SetRelicObject(RelicObject _relicObject)
+    {
+        relicObject = _relicObject;
     }
 }

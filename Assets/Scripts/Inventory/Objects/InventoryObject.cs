@@ -50,7 +50,7 @@ public class InventoryObject : ScriptableObject
     }
 
     private ElementObject RollElement(Dictionary<int, int> IDAndAmount, System.Random rand, ElementObject excludedElement)
-    {
+    {   
         ElementObject element = database.GetElement[Player.Instance.ReRollElements.set.ElementAt(rand.Next(Player.Instance.ReRollElements.set.Count)).ID];
 
         if(excludedElement != null && excludedElement.ID == element.ID)

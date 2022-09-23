@@ -185,6 +185,12 @@ public abstract class CharacterStats
         }
     }
 
+    public void SetHealth(float health)
+    {
+        currentHealth = health;
+        HPText.GetComponent<TextMeshProUGUI>().text = currentHealth + " HP";
+    }
+
     private void HandlePassiveAdditiveRemovalTypes(AffinityTypes damageType, AffinityTypes secondaryAffinityType)
     {
         List<PassiveObject.ChangeTypeEntry> passivesToAdd = new List<PassiveObject.ChangeTypeEntry>();

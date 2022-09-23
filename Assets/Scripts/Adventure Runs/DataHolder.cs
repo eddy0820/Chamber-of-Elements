@@ -20,6 +20,7 @@ public class DataHolder : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        mode = GameModes.Battle;
     }
 
     public void SetPlayer(GameObject go)

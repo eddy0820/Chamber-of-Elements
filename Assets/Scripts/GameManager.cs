@@ -28,14 +28,27 @@ public class GameManager : MonoBehaviour
 
     [Space(15)]
 
-    [SerializeField] GameObject winCanvas;
+    [SerializeField] GameObject winCanvasBattle;
+    [SerializeField] GameObject loseCanvasBattle;
+    [SerializeField] GameObject pauseCanvasBattle;
+
+    [Space(10)]
+
+    [SerializeField] GameObject winCanvasAdventure;
+    [SerializeField] GameObject loseCanvasAdventure;
+    [SerializeField] GameObject pauseCanvasAdventure;
+
+    GameObject winCanvas;
     public GameObject WinCanvas => winCanvas;
-    [SerializeField] GameObject loseCanvas;
+    GameObject loseCanvas;
     public GameObject LoseCanvas => loseCanvas;
+    GameObject pauseCanvas;
+    public GameObject PauseCanvas => pauseCanvas;
+
+    [Space(10)]
+
     [SerializeField] GameObject flashCanvas;
     public GameObject FlashCanvas => flashCanvas;
-    [SerializeField] GameObject pauseCanvas;
-    public GameObject PauseCanvas => pauseCanvas;
     
     [Space(15)]
 
@@ -48,9 +61,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] ElementObject debugElement3;
     [SerializeField] ElementObject debugElement4;
     [SerializeField] ElementObject debugElement5;
+    [SerializeField] ElementObject debugElement6;
+    [SerializeField] ElementObject debugElement7;
+    [SerializeField] ElementObject debugElement8;
+    [SerializeField] ElementObject debugElement9;
+    [SerializeField] ElementObject debugElement0;
 
     DataHolder dataHolder;
     public DataHolder DataHolder => dataHolder;
+    RunTracker runTracker;
+    public RunTracker RunTracker => runTracker;
 
     private void Awake()
     {
@@ -59,6 +79,7 @@ public class GameManager : MonoBehaviour
         try
         {
             dataHolder = GameObject.FindWithTag("DataHolder").GetComponent<DataHolder>();
+            runTracker = GameObject.FindWithTag("RunTracker").GetComponent<RunTracker>();
         }
         catch {}
         
@@ -85,6 +106,28 @@ public class GameManager : MonoBehaviour
             dataHolder.SetPlayer(Player.Instance.CharacterObject as PlayerObject);
             dataHolder.SetEnemy(enemy.CharacterObject as EnemyObject);
         }  
+
+        if(dataHolder.Mode == GameModes.Adventure)
+        {
+            winCanvas = winCanvasAdventure;
+            loseCanvas = loseCanvasAdventure;
+            pauseCanvas = pauseCanvasAdventure;
+
+            if(runTracker.lastBattle != null)
+            {
+                Player.Instance.Stats.SetHealth(runTracker.PlayerHealth);
+                Player.Instance.Relic.SetRelicObject(runTracker.PlayerRelic);
+                Player.Instance.SetUnlockablesAdventureMode(runTracker.UnlockedElementRecipes, runTracker.UnlockedMinionRecipes, runTracker.UnlockedRelicRecipes, runTracker.ReRollElements);
+            } 
+        }
+        else
+        {
+            winCanvas = winCanvasBattle;
+            loseCanvas = loseCanvasBattle;
+            pauseCanvas = pauseCanvasBattle;
+        }
+
+        Player.Instance.Relic.DoAwake();
     }
 
     private void Start()
@@ -120,6 +163,31 @@ public class GameManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Alpha5))
             {
                 elementSlotsInv.Container.elementSlots[4].UpdateSlot(new Element(debugElement5));
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                elementSlotsInv.Container.elementSlots[0].UpdateSlot(new Element(debugElement6));
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                elementSlotsInv.Container.elementSlots[1].UpdateSlot(new Element(debugElement7));
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                elementSlotsInv.Container.elementSlots[2].UpdateSlot(new Element(debugElement8));
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                elementSlotsInv.Container.elementSlots[3].UpdateSlot(new Element(debugElement9));
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                elementSlotsInv.Container.elementSlots[4].UpdateSlot(new Element(debugElement0));
             }
         }
     }
