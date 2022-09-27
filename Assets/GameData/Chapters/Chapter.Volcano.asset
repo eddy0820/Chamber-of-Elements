@@ -14,19 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Volcano
   background: {fileID: 0}
-  firstHalfBattleRange:
-    min: 3
-    max: 4
-  firstHalfEliteBattleRange:
+  battles:
     min: 2
-    max: 2
-  secondHalfBattleRange:
-    min: 3
-    max: 4
-  secondHalfEliteBattleRange:
+    max: 3
+    branchChance: 1
+    maxBranches: 4
+  eliteBattles:
+    min: 1
+    max: 3
+    branchChance: 0.75
+    maxBranches: 3
+  battlesPlus:
     min: 2
-    max: 2
-  firstBattleEnemy: {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
+    max: 3
+    branchChance: 1
+    maxBranches: 4
+  eliteBattlesPlus:
+    min: 1
+    max: 3
+    branchChance: 0.75
+    maxBranches: 3
+  firstBattleEnemyPool:
+  - {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
   battleEnemyPool:
   - {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
   eliteBattleEnemyPool:

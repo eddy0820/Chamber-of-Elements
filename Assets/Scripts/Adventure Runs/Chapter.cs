@@ -9,50 +9,58 @@ public class Chapter
     ChapterObject chapterObject;
     public ChapterObject ChapterObject => chapterObject;
 
-    int firstHalfNumBattles;
-    int firstHalfNumEliteBattles;
-    int secondHalfNumBattles;
-    int secondHalfNumEliteBattles;
+    int numBattles;
+    int numEliteBattles;
+    int numBattlesPlus;
+    int numEliteBattlesPlus;
 
-    Queue<Battle> battles;
-    public Queue<Battle> Battles => battles;
+    //Queue<Battle> battles;
+    //public Queue<Battle> Battles => battles;
 
-    public Chapter(ChapterObject _chapterObject, int _firtHalfNumBattles, int _firtHalfNumEliteBattles, int _secondHalfNumBattles, int _secondHalfNumEliteBattles)
+    Queue<BattleSelection> battles;
+    public Queue<BattleSelection> Battles => battles;
+
+    public Chapter(ChapterObject _chapterObject, int _numBattles, int _numEliteBattles, int _numBattlesPlus, int _numEliteBattlesPlus)
     {
         System.Random rand = new System.Random();
 
         chapterObject = _chapterObject;
-        firstHalfNumBattles = _firtHalfNumBattles;
-        firstHalfNumEliteBattles = _firtHalfNumEliteBattles;
-        secondHalfNumBattles = _secondHalfNumBattles;
-        secondHalfNumEliteBattles = _secondHalfNumEliteBattles;
+        numBattles = _numBattles;
+        numEliteBattles = _numEliteBattles;
+        numBattlesPlus = _numBattlesPlus;
+        numEliteBattlesPlus = _numEliteBattlesPlus;
 
-        battles = new Queue<Battle>();
+        battles = new Queue<BattleSelection>();
 
-        battles.Enqueue(new Battle(chapterObject.FirstBattleEnemy, BattleTypes.Starting));
+        battles.Enqueue(new BattleSelection(1, chapterObject, chapterObject.FirstBattleEnemyPool, BattleTypes.Starting, rand));
 
-        for(int i = 0; i < firstHalfNumBattles; i++)
-        {
-            battles.Enqueue(new Battle(chapterObject.BattleEnemyPool.ElementAt(rand.Next(chapterObject.BattleEnemyPool.Count)), BattleTypes.Battle));
+        for(int i = 0; i < numBattles; i++)
+        {   
+            battles.Enqueue(new BattleSelection(CalculateBranches(chapterObject.Battles.BranchChance, chapterObject.Battles.MaxBranches), chapterObject, chapterObject.BattleEnemyPool, BattleTypes.Battle, rand));
         }
 
-        for(int i = 0; i < firstHalfNumEliteBattles; i++)
+        for(int i = 0; i < numEliteBattles; i++)
         {
-            battles.Enqueue(new Battle(chapterObject.EliteBattleEnemyPool.ElementAt(rand.Next(chapterObject.EliteBattleEnemyPool.Count)), BattleTypes.EliteBattle));
+            battles.Enqueue(new BattleSelection(CalculateBranches(chapterObject.EliteBattles.BranchChance, chapterObject.EliteBattles.MaxBranches), chapterObject, chapterObject.EliteBattleEnemyPool, BattleTypes.EliteBattle, rand));
         }
 
-        battles.Enqueue(new Battle(chapterObject.MiniBossEnemyPool.ElementAt(rand.Next(chapterObject.MiniBossEnemyPool.Count)), BattleTypes.MiniBoss));
+        battles.Enqueue(new BattleSelection(1, chapterObject, chapterObject.MiniBossEnemyPool, BattleTypes.MiniBoss, rand));
 
-        for(int i = 0; i < secondHalfNumBattles; i++)
+        for(int i = 0; i < numBattlesPlus; i++)
         {
-            battles.Enqueue(new Battle(chapterObject.BattleEnemyPool.ElementAt(rand.Next(chapterObject.BattleEnemyPool.Count)), BattleTypes.BattlePlus));
+            battles.Enqueue(new BattleSelection(CalculateBranches(chapterObject.BattlesPlus.BranchChance, chapterObject.BattlesPlus.MaxBranches), chapterObject, chapterObject.BattleEnemyPool, BattleTypes.BattlePlus, rand));
         }
 
-        for(int i = 0; i < secondHalfNumEliteBattles; i++)
+        for(int i = 0; i < numEliteBattlesPlus; i++)
         {
-            battles.Enqueue(new Battle(chapterObject.EliteBattleEnemyPool.ElementAt(rand.Next(chapterObject.EliteBattleEnemyPool.Count)), BattleTypes.EliteBattlePlus));
+            battles.Enqueue(new BattleSelection(CalculateBranches(chapterObject.EliteBattlesPlus.BranchChance, chapterObject.EliteBattlesPlus.MaxBranches), chapterObject, chapterObject.EliteBattleEnemyPool, BattleTypes.EliteBattlePlus, rand));
         }
 
-        battles.Enqueue(new Battle(chapterObject.BossEnemyPool.ElementAt(rand.Next(chapterObject.BossEnemyPool.Count)), BattleTypes.Boss));
+        battles.Enqueue(new BattleSelection(1, chapterObject, chapterObject.BossEnemyPool, BattleTypes.Boss, rand));
+    }
+
+    public int CalculateBranches(float branchChance, int maxBranches)
+    {
+        return Random.Range(0.0f, 1.0f) <= branchChance ? Random.Range(2, maxBranches + 1) : 1; 
     }
 }

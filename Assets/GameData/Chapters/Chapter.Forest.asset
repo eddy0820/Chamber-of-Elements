@@ -14,19 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Forest
   background: {fileID: 0}
-  firstHalfBattleRange:
+  battles:
     min: 1
     max: 2
-  firstHalfEliteBattleRange:
+    branchChance: 0.5
+    maxBranches: 2
+  eliteBattles:
     min: 1
     max: 1
-  secondHalfBattleRange:
+    branchChance: 0
+    maxBranches: 1
+  battlesPlus:
     min: 1
     max: 2
-  secondHalfEliteBattleRange:
+    branchChance: 0.5
+    maxBranches: 2
+  eliteBattlesPlus:
     min: 1
     max: 1
-  firstBattleEnemy: {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
+    branchChance: 0
+    maxBranches: 1
+  firstBattleEnemyPool:
+  - {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
   battleEnemyPool:
   - {fileID: 11400000, guid: 2b3de6f6b978b6e4786963b1844daddc, type: 2}
   eliteBattleEnemyPool:

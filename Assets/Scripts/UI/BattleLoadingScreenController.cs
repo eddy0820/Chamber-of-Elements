@@ -28,11 +28,49 @@ public class BattleLoadingScreenController : MonoBehaviour
     private void Start()
     {
         runTracker.currentChapter = runTracker.chapters.Peek();
-        runTracker.currentBattle = runTracker.currentChapter.Battles.Peek();
+        runTracker.currentBattle = runTracker.currentChapter.Battles.Peek().Branches[0]; ///////
 
         SetText();
 
         StartCoroutine(DoChapterText());
+    }
+
+    IEnumerator DoChapterText()
+    {
+        yield return new WaitForSeconds(1f);
+
+        chapterText.GetComponent<TextAnimatorPlayer>().StartShowingText();
+
+        yield break;
+    }
+
+    public void ShowBattleText()
+    {
+        StartCoroutine(DoBattleText());
+    }
+
+    IEnumerator DoBattleText()
+    {
+        yield return new WaitForSeconds(1f);
+
+        battleText.GetComponent<TextAnimatorPlayer>().StartShowingText();
+
+        yield break;
+    }
+
+    public void GoToBattle()
+    {
+        StartCoroutine(DoBattle());
+    }
+
+    IEnumerator DoBattle()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        dataHolder.SetEnemy(runTracker.currentBattle.Enemy);
+        SceneManager.LoadScene(battleScene);
+
+        yield break;
     }
 
     private void SetText()
@@ -63,43 +101,5 @@ public class BattleLoadingScreenController : MonoBehaviour
                 battleText.GetComponent<TextMeshProUGUI>().text = "Boss";
                 break;
         }
-    }
-
-    IEnumerator DoChapterText()
-    {
-        yield return new WaitForSeconds(1f);
-
-        chapterText.GetComponent<TextAnimatorPlayer>().StartShowingText();
-
-        yield break;
-    }
-
-    IEnumerator DoBattleText()
-    {
-        yield return new WaitForSeconds(1f);
-
-        battleText.GetComponent<TextAnimatorPlayer>().StartShowingText();
-
-        yield break;
-    }
-
-    public void ShowBattleText()
-    {
-        StartCoroutine(DoBattleText());
-    }
-
-    public void GoToBattle()
-    {
-        StartCoroutine(DoBattle());
-    }
-
-    IEnumerator DoBattle()
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        dataHolder.SetEnemy(runTracker.currentBattle.Enemy);
-        SceneManager.LoadScene(battleScene);
-
-        yield break;
     }
 }

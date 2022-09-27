@@ -39,7 +39,7 @@ public class CharacterSelectScreen : AbstractSelectScreen
     public void StartAdventureMode(GameObject arrow)
     {
         arrow.SetActive(false);
-        MainMenuController.Instance.BuildRun();
-        MainMenuController.Instance.RunTracker.StartBattle();
+        MainMenuController.Instance.RunTracker.BuildRun();
+        MainMenuController.Instance.RunTracker.GoToPathSelection();
     }
 }
