@@ -7,7 +7,6 @@ using TMPro;
 
 public class CharacterSelectScreen : AbstractSelectScreen
 {
-
     protected override void Init()
     {
         playerOrEnemy = true;

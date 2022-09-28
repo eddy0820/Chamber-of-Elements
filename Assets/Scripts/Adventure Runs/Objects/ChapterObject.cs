@@ -50,7 +50,7 @@ public class ChapterObject : ScriptableObject
         [SerializeField] float branchChance = 0.5f;
         public float BranchChance => branchChance;
         
-        [Range(1, 5)]
+        [Range(1, 4)]
         [SerializeField] int maxBranches;
         public int MaxBranches => maxBranches;
     }

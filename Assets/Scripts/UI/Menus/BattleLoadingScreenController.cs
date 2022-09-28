@@ -27,9 +27,6 @@ public class BattleLoadingScreenController : MonoBehaviour
 
     private void Start()
     {
-        runTracker.currentChapter = runTracker.chapters.Peek();
-        runTracker.currentBattle = runTracker.currentChapter.Battles.Peek().Branches[0]; ///////
-
         SetText();
 
         StartCoroutine(DoChapterText());

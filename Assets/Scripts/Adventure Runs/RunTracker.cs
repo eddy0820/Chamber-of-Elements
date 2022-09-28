@@ -12,12 +12,14 @@ public class RunTracker : MonoBehaviour
 
     [Scene]
     [SerializeField] string battleLoadingScreen;
+    public string BattleLoadingScreen => battleLoadingScreen;
 
     [Space(15)]
     [SerializeField] AdventureRunObject defaultRun;
 
     public Chapter currentChapter;
     public Battle currentBattle;
+    public BattleSelection currentBattleSelection;
 
     public Battle lastBattle;
 
@@ -48,16 +50,11 @@ public class RunTracker : MonoBehaviour
         SceneManager.LoadScene(pathSelectionScreen);
     }
 
-    public void StartBattle()
-    {   
-        SceneManager.LoadScene(battleLoadingScreen);
-    }
-
-    public void EndBattle(float _playerHealth, RelicObject _playerRelic, Player.SerializableHashSet<ElementRecipeObject> _unlockedElementRecipes,  Player.SerializableHashSet<MinionRecipeObject> _unlockedMinionRecipes, Player.SerializableHashSet<RelicRecipeObject> _unlockedRelicRecipes, Player.SerializableHashSet<ElementObject> _reRollElements)
+    public void EndBattle(float _playerHealth, RelicObject _playerRelic, Player.SerializableHashSet<AffinityTypes> _unlockedAffinities, Player.SerializableHashSet<ElementRecipeObject> _unlockedElementRecipes,  Player.SerializableHashSet<MinionRecipeObject> _unlockedMinionRecipes, Player.SerializableHashSet<RelicRecipeObject> _unlockedRelicRecipes, Player.SerializableHashSet<ElementObject> _reRollElements)
     {
-        currentChapter.Battles.Dequeue();
+        currentChapter.BattleSelections.Dequeue();
 
-        if(currentChapter.Battles.Count == 0)
+        if(currentChapter.BattleSelections.Count == 0)
         {
             chapters.Dequeue();
         }
@@ -66,19 +63,20 @@ public class RunTracker : MonoBehaviour
 
         playerHealth = _playerHealth;
         playerRelic = _playerRelic;
+        unlockedAffinities = _unlockedAffinities;
         unlockedElementRecipes = _unlockedElementRecipes;
         unlockedMinionRecipes = _unlockedMinionRecipes;
         unlockedRelicRecipes = _unlockedRelicRecipes;
         reRollElements = _reRollElements;
 
-        if(chapters.Count == 0 && currentChapter.Battles.Count == 0)
+        if(chapters.Count == 0 && currentChapter.BattleSelections.Count == 0)
         {
             // End Run
             Debug.Log("Run Finished!");
         }
         else
         {
-            StartBattle();
+            GoToPathSelection();
         }    
     }
 
@@ -98,7 +96,7 @@ public class RunTracker : MonoBehaviour
             ));
         }   
 
-        DebugPrintRun();
+        //DebugPrintRun();
     }
 
     public void DebugPrintRun()
@@ -107,7 +105,7 @@ public class RunTracker : MonoBehaviour
         {
             Debug.Log("Chapter: " + chapter.ChapterObject.Name);
 
-            foreach(BattleSelection battleSelection in chapter.Battles)
+            foreach(BattleSelection battleSelection in chapter.BattleSelections)
             {
                 switch(battleSelection.BranchBattleType)
                 {

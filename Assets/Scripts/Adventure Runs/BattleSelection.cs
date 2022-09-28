@@ -17,9 +17,6 @@ public class BattleSelection
     BattleTypes branchBattleType;
     public BattleTypes BranchBattleType => branchBattleType;
 
-    //Battle chosenBattle = null;
-    //public Battle ChosenBattle => chosenBattle;
-
     public BattleSelection(int _numBranches, ChapterObject _chapterObject, List<EnemyObject> enemyPool, BattleTypes _branchBattleType, System.Random rand)
     {
         branches = new List<Battle>();

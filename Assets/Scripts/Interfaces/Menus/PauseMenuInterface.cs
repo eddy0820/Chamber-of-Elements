@@ -28,6 +28,7 @@ public class PauseMenuInterface : ButtonInterface
         GameManager.Instance.RunTracker.chapters = null;
         GameManager.Instance.RunTracker.currentChapter = null;
         GameManager.Instance.RunTracker.currentBattle = null;
+        GameManager.Instance.RunTracker.currentBattleSelection = null;
         GameManager.Instance.DataHolder.SetGameMode(GameModes.Battle);
         GameManager.Instance.DataHolder.UnSetPlayer();
         GameManager.Instance.DataHolder.UnSetEnemy();

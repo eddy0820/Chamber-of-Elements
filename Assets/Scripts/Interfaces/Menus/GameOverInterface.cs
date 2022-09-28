@@ -25,6 +25,7 @@ public class GameOverInterface : ButtonInterface
         GameManager.Instance.RunTracker.chapters = null;
         GameManager.Instance.RunTracker.currentChapter = null;
         GameManager.Instance.RunTracker.currentBattle = null;
+        GameManager.Instance.RunTracker.currentBattleSelection = null;
         GameManager.Instance.DataHolder.SetGameMode(GameModes.Battle);
         GameManager.Instance.DataHolder.UnSetPlayer();
         GameManager.Instance.DataHolder.UnSetEnemy();
@@ -33,6 +34,6 @@ public class GameOverInterface : ButtonInterface
 
     public void NextBattle()
     {
-        GameManager.Instance.RunTracker.EndBattle(Player.Instance.Stats.CurrentHealth, Player.Instance.Relic.RelicObject, Player.Instance.UnlockedElementRecipes, Player.Instance.UnlockedMinionRecipes, Player.Instance.UnlockedRelicRecipes, Player.Instance.ReRollElements);
+        GameManager.Instance.RunTracker.EndBattle(Player.Instance.Stats.CurrentHealth, Player.Instance.Relic.RelicObject, Player.Instance.UnlockedAffinities, Player.Instance.UnlockedElementRecipes, Player.Instance.UnlockedMinionRecipes, Player.Instance.UnlockedRelicRecipes, Player.Instance.ReRollElements);
     }
 }

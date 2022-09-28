@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
             {
                 Player.Instance.Stats.SetHealth(runTracker.PlayerHealth);
                 Player.Instance.Relic.SetRelicObject(runTracker.PlayerRelic);
-                Player.Instance.SetUnlockablesAdventureMode(runTracker.UnlockedElementRecipes, runTracker.UnlockedMinionRecipes, runTracker.UnlockedRelicRecipes, runTracker.ReRollElements);
+                Player.Instance.SetUnlockablesAdventureMode(runTracker.UnlockedAffinities, runTracker.UnlockedElementRecipes, runTracker.UnlockedMinionRecipes, runTracker.UnlockedRelicRecipes, runTracker.ReRollElements);
             } 
         }
         else

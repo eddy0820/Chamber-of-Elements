@@ -126,8 +126,9 @@ public class Player : Character
         hasRelic = exists;
     }
 
-    public void SetUnlockablesAdventureMode(SerializableHashSet<ElementRecipeObject> _unlockedElementRecipes, SerializableHashSet<MinionRecipeObject> _unlockedMinionRecipes, SerializableHashSet<RelicRecipeObject> _unlockedRelicRecipes, SerializableHashSet<ElementObject> _reRollElements)
+    public void SetUnlockablesAdventureMode(SerializableHashSet<AffinityTypes> _unlockedAffinities, SerializableHashSet<ElementRecipeObject> _unlockedElementRecipes, SerializableHashSet<MinionRecipeObject> _unlockedMinionRecipes, SerializableHashSet<RelicRecipeObject> _unlockedRelicRecipes, SerializableHashSet<ElementObject> _reRollElements)
     {
+        unlockedAffinities = _unlockedAffinities;
         unlockedElementRecipes = _unlockedElementRecipes;
         unlockedMinionRecipes = _unlockedMinionRecipes;
         unlockedRelicRecipes = _unlockedRelicRecipes;
